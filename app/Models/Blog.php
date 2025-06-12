@@ -45,5 +45,9 @@ public function scopeAccessibleBy($query, $user)
         });
     }
 
+    public function popup(){
+        return $this->hasOne(Popup::class);
+    }
+
 
 }

@@ -34,6 +34,7 @@ class AttachmentController extends Controller
         $attachment = new Attachment();
         $thumbnail = $request->file('thumbnail')?->store('uploads/attachment', 'public') ?? null;
         $attachment->title = $request->title;
+        $attachment->uuid = Str::uuid();
         $attachment->slug = Str::slug($request->title).'-'.rand(1,10000000000);
         $attachment->attachment = $thumbnail;
         $attachment->save();

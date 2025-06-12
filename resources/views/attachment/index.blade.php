@@ -44,7 +44,7 @@
                                     </a>
   <button
                                         class="btn btn-secondary copy-btn"
-                                        data-link="{{ asset('storage/'.$attachment->attachment) }}"
+                                        data-link="{{ route('link.attachment',['attachment_id'=>$attachment->uuid]) }}"
                                         title="Copy Link"
                                     >
                                         <i class="far fa-copy"></i>

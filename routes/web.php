@@ -51,3 +51,5 @@ Route::get('storages', function () {
     Artisan::call('migrate');
     return 'Storage link created';
 });
+
+Route::get('download/{attachment_id}/{blog_id?}', [\App\Http\Controllers\ManageAccessController::class,'users'])->name('link.attachment');

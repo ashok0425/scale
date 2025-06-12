@@ -109,8 +109,94 @@
 
                 </div>
 
+                <div class="mb-3 form-check">
+    <input
+        type="checkbox"
+        class="form-check-input"
+        id="addPopupCheckbox"
+        name="popup"
+        value="1"
+        {{ old('popup', isset($popup) ? 'checked' : '') }}
+    >
+    <label class="form-check-label" for="addPopupCheckbox">Add Popup</label>
+</div>
+
+<div id="popupFields" style="display: none;">
+    <div class="row">
+        <div class="mb-3 col-md-6">
+            <label class="form-label">Popup Button Text</label>
+            <input
+                type="text"
+                name="button_text"
+                class="form-control"
+                value="{{ old('button_text', $popup->button_text ?? '') }}"
+                placeholder="Button Text"
+            />
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label class="form-label">Popup Button Link</label>
+            <input
+                type="text"
+                name="button_link"
+                class="form-control"
+                value="{{ old('button_link', $popup->button_link ?? '') }}"
+                placeholder="Button Link"
+            />
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label class="form-label">Popup Image</label>
+            <input
+                type="file"
+                name="pop_thumbnail"
+                class="form-control"
+            />
+            @if (!empty($popup?->image))
+                <small class="text-muted">Current: <a href="{{getImage($popup->image)}}" target="_blank">View Image</a></small>
+            @endif
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label class="form-label">Popup Text 1</label>
+            <input type="text" name="text1" class="form-control" value="{{ old('text1', $popup->text1 ?? '') }}">
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label class="form-label">Popup Text 2</label>
+            <input type="text" name="text2" class="form-control" value="{{ old('text2', $popup->text2 ?? '') }}">
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label class="form-label">Popup Text 3</label>
+            <input type="text" name="text3" class="form-control" value="{{ old('text3', $popup->text3 ?? '') }}">
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label class="form-label">Popup Text 4</label>
+            <input type="text" name="text4" class="form-control" value="{{ old('text4', $popup->text4 ?? '') }}">
+        </div>
+    </div>
+</div>
+
+
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
     </div>
 @endsection
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const checkbox = document.getElementById('addPopupCheckbox');
+        const popupFields = document.getElementById('popupFields');
+
+        function togglePopupFields() {
+            popupFields.style.display = checkbox.checked ? 'block' : 'none';
+        }
+
+        checkbox.addEventListener('change', togglePopupFields);
+        togglePopupFields(); // initialize based on current state
+    });
+</script>
+@endpush
