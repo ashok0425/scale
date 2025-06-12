@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Models\Crm;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -231,5 +232,26 @@ class ManageAccessController extends Controller
 
         $users = User::latest()->paginate(20);
         return view('user.index', compact('users'));
+    }
+
+    public function crm(Request $request)
+    {
+        // if (!auth()->user()->can('can:do_anything')) {
+        //     $notification = [
+        //         'alert-type' => 'error',
+        //         'message' => 'You do not have sufficient permissions.',
+        //     ];
+        //     return redirect()->back()->with($notification);
+        // }
+
+        $users = Crm::where('type',$request->type)->latest()->paginate(20);
+        if($request->type==1)
+        return view("crm.waitlist", compact('users'));
+
+         if($request->type==2)
+        return view("crm.access", compact('users'));
+
+         if($request->type==3)
+        return view("crm.download", compact('users'));
     }
 }

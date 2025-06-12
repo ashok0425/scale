@@ -99,6 +99,29 @@
             </li>
             @endcan
 
+             <li class="sidebar-header">CRM</li>
+
+            <li class="sidebar-item">
+                <a class="sidebar-link {{Request::is('crm','crm/*')?'text-light':' '}}" href="{{ route('crm',['type'=>1]) }}">
+                    <i class="far fa-calendar-minus"></i>
+                    <span class="align-middle">Waitlist</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a class="sidebar-link {{Request::is('websites','websites/*')?'text-light':' '}}" href="{{ route('cms.edit', 1) }}">
+                    <i class="fas fa-images"></i>
+                    <span class="align-middle">Priority Access</span>
+                </a>
+            </li>
+
+               <li class="sidebar-item">
+                <a class="sidebar-link {{Request::is('websites','websites/*')?'text-light':' '}}" href="{{ route('cms.edit', 1) }}">
+                    <i class="fas fa-images"></i>
+                    <span class="align-middle">Pdf Download</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>

@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('pages', \App\Http\Controllers\PageController::class)->middleware('can:do anything');
     Route::resource('cms', \App\Http\Controllers\CmsController::class)->middleware('can:do anything');
     Route::get('users/index', [\App\Http\Controllers\ManageAccessController::class,'users'])->middleware('can:do anything')->name('users');
+    Route::get('crm', [\App\Http\Controllers\ManageAccessController::class,'crm'])->name('crm');
 
 
     Route::group(['prefix' => 'manage-access'], function () {
