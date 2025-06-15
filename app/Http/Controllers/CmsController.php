@@ -43,6 +43,8 @@ class CmsController extends Controller
         $cms->facebook = $request->facebook;
         $cms->twitter = $request->twitter;
         $cms->instagram = $request->instagram;
+        $cms->total_seat = $request->total_seat;
+        $cms->booked_seat = $request->booked_seat;
         $cms->linkedin = $request->linkedin;
         $cms->logo = $request->file('logo')?->store('uploads', 'public') ?? $cms->logo;
         $cms->fevicon = $request->file('fevicon')?->store('uploads','public') ?? $cms->fevicon;

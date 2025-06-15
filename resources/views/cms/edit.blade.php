@@ -170,6 +170,28 @@
                 />
               </div>
 
+                   <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Total Seat</label>
+                <input
+                  type="number"
+                  name="total_seat"
+                  class="form-control"
+                  value="{{ $cms->total_seat }}"
+                />
+              </div>
+
+                   <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Booked Seat</label>
+                <input
+                  type="number"
+                  name="booked_seat"
+                  class="form-control"
+                  value="{{ $cms->booked_seat }}"
+                />
+              </div>
+
                             <input type="submit" value="update" class="btn btn-block btn-info" />
                         </div>
                     </div>

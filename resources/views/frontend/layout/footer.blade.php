@@ -1,3 +1,6 @@
+@php
+    $pages=App\Models\Page::all();
+@endphp
 <footer>
       <div
         class="before:bg-brand-purple after:bg-triangles relative isolate overflow-clip py-11 before:absolute before:-top-14 before:-left-14 before:z-20 before:size-72 before:rounded-full before:blur-[130px] after:absolute after:top-0 after:left-0 after:z-10 after:aspect-square after:h-full after:bg-no-repeat sm:py-16 md:py-[3.125rem]"
@@ -92,44 +95,40 @@
               </div>
             </div>
             <ul class="flex-[1.5] space-y-3">
-              <li>
+                @foreach ($pages as $page)
+                     <li>
                 <a
-                  href="#"
+                  href="{{$page->slug}}"
                   class="text-body-2 hover:text-text-light text-base leading-[24px] duration-200"
-                  >Terms & Conditions</a
+                  >{{Str::title($page->name)}}</a
                 >
               </li>
+                @endforeach
+
               <li>
                 <a
-                  href="#"
-                  class="text-body-2 hover:text-text-light text-base leading-[24px] duration-200"
-                  >Privacy policy</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
+                  href="{{route('investor')}}"
                   class="text-body-2 hover:text-text-light text-base leading-[24px] duration-200"
                   >Investors</a
                 >
               </li>
               <li>
                 <a
-                  href="#"
+                  href="{{route('blog')}}"
                   class="text-body-2 hover:text-text-light text-base leading-[24px] duration-200"
                   >Blogs</a
                 >
               </li>
               <li>
                 <a
-                  href="#"
+                  href="{{route('founder')}}"
                   class="text-body-2 hover:text-text-light text-base leading-[24px] duration-200"
                   >Founders</a
                 >
               </li>
               <li>
                 <a
-                  href="#"
+                  href="{{route('freelancer')}}"
                   class="text-body-2 hover:text-text-light text-base leading-[24px] duration-200"
                   >Freelancers</a
                 >
@@ -170,11 +169,11 @@
           </a>
         </div>
         <div class="b2 flex items-center gap-1 max-sm:flex-wrap max-sm:justify-center">
-          <span>&copy; 2025 ScaleDux</span>
-          <span>|</span>
-          <span><a href="#" class="hover:text-gray-300">Terms</a></span>
-          <span>|</span>
-          <span><a href="#" class="hover:text-gray-300">Privacy</a></span>
+          <span>&copy; {{date('Y')}} ScaleDux</span>
+           @foreach ($pages as $page)
+                   <span>|</span>
+          <span><a href="{{$page->slug}}" class="hover:text-gray-300">{{Str::title($page->name)}}</a></span>
+           @endforeach
           <!-- <span>|</span>
           <span><a href="#">Cookies</a></span> -->
         </div>
