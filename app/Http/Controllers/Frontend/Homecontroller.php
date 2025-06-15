@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Category;
+use DOMDocument;
 use Request;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -37,4 +39,42 @@ class HomeController extends Controller
         $features=Blog::with('category')->where('status',1)->where('feature_post',1)->latest()->skip(4)->limit(4)->get();
         return view('frontend.blog',compact('categories','blogs','featureBlog','featuresPost','features'));
     }
+
+    public function blogDetail($slug){
+        $blog=Blog::with('category')->where('status',1)->where('slug',$slug)->firstOrFail();
+        $blogs=Blog::where('category_id',$blog->category_id)->limit(5)->get();
+     $data = $this->generateTableOfContents($blog->long_description);
+$toc = $data['toc'];
+$blog->long_description = $data['content'];
+
+        return view('frontend.blog-detail',compact('blog','blogs','toc'));
+    }
+
+    function generateTableOfContents($html)
+{
+    $dom = new DOMDocument();
+    libxml_use_internal_errors(true); // Suppress HTML5 warnings
+    $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+
+    $toc = [];
+    $headings = ['h1', 'h2', 'h3'];
+
+    foreach ($headings as $tag) {
+        $nodes = $dom->getElementsByTagName($tag);
+        foreach ($nodes as $node) {
+            $text = $node->textContent;
+            $id = Str::slug($text);
+            $node->setAttribute('id', $id); // Add anchor ID to heading tag
+            $toc[] = [
+                'text' => $text,
+                'tag' => $tag,
+                'id' => $id,
+            ];
+        }
+    }
+
+    $modifiedHtml = $dom->saveHTML();
+
+    return ['toc' => $toc, 'content' => $modifiedHtml];
+}
 }

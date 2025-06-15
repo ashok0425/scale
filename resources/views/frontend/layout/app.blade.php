@@ -13,6 +13,7 @@
     <title>ScaleDux</title>
     <script type="module" crossorigin src="{{asset('frontend/assets/main.js')}}"></script>
     <link rel="stylesheet" crossorigin href="{{asset('frontend/assets/main.css')}}">
+    @stack('style')
   </head>
   <body>
     @include('frontend.layout.header')
