@@ -58,13 +58,16 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required',
             'long_description' => 'required',
+            'audio' => 'nullable|mimes:mp3,wav,ogg|max:10240', // optional but type-checked
+
         ]);
 
         $post = new Blog();
         // $category=Category::find($request->category);
-
         $thumbnail = $request->file('thumbnail')?->store('uploads', 'public') ?? null;
         $cover = $request->file('cover')?->store('uploads', 'public') ?? null;
+        $audio = $request->file('audio')?->store('uploads', 'public') ?? null;
+
         $post->title = $request->title;
         $post->slug = Str::slug($request->title);
         $post->short_description = $request->short_description;
@@ -72,7 +75,11 @@ class BlogController extends Controller
         $post->category_id = $request->category;
         $post->status = $request->status ?? $post->status;
         $post->thumbnail = $thumbnail;
+        $post->audio = $audio;
         $post->feature_post = $request->feature_post;
+        $post->author = $request->author;
+        $post->author_post = $request->author_position;
+        $post->read_time = $this->estimateReadingTime($request->long_description);
         $post->user_id = Auth::user()->id;
         $post->cover = $cover;
         $post->save();
@@ -123,14 +130,19 @@ class BlogController extends Controller
 
         $thumbnail = $request->file('thumbnail')?->store('uploads', 'public') ?? $post->thumbnail;
         $cover = $request->file('cover')?->store('uploads', 'public') ?? $post->thumbnail;
+        $audio = $request->file('audio')?->store('uploads', 'public') ?? $post->audio;
 
         $post->title = $request->title;
         $post->slug = Str::slug($request->title);
         $post->short_description = $request->short_description;
         $post->long_description = $request->long_description;
         $post->thumbnail = $thumbnail;
+        $post->audio = $audio;
         $post->status = $request->status ?? $post->status;
-         $post->feature_post = $request->feature_post;
+        $post->feature_post = $request->feature_post;
+        $post->author = $request->author;
+        $post->author_post = $request->author_position;
+        $post->read_time = $this->estimateReadingTime($request->long_description);
         $post->category_id = $request->category;
         $post->cover = $cover;
         $post->save();
@@ -186,4 +198,12 @@ class BlogController extends Controller
 
         return redirect()->route('blogs.index')->with($notification);
     }
+
+    function estimateReadingTime($content)
+{
+    $wordCount = str_word_count(strip_tags($content)); // remove HTML tags and count words
+    $wpm = 200; // words per minute
+    $minutes = ceil($wordCount / $wpm);
+    return $minutes;
+}
 }

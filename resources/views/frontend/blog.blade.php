@@ -34,13 +34,14 @@
         </div>
       </div>
       <section class="container my-10 sm:my-16 md:my-[100px]">
-        <div class="flex flex-col gap-8 sm:flex-row">
+        @if ($featureBlog)
+         <div class="flex flex-col gap-8 sm:flex-row">
           <div class="fex-1">
             <div class="blog-card-wrapper">
-              <a href="{{route('blog.detail',['slug'=>$blog->slug])}}">
+              <a href="{{route('blog.detail',['slug'=>$featureBlog->slug])}}">
                 <div class="blog-card-thumbnail">
                   <img
-                    src="{{ asset('frontend/images/blog-thumb.png') }}"
+                    src="{{ getImage($featureBlog->thumbnail) }}"
                     alt=""
                     class="w-full object-cover sm:min-h-[410px]"
                   />
@@ -49,16 +50,16 @@
                   <div
                     class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
                   >
-                    <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
+                    <p class="b3 w-fit font-semibold text-white uppercase">{{$featureBlog->category->name}}</p>
                     <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                    <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
+                    <p class="b3 text-body-2 w-fit font-medium uppercase">{{$featureBlog->read_time}} Min Read</p>
                   </div>
                   <h5 class="dh-5 my-3">
-                    Start up kinetic rolls out money for building their robotaxis
+                    {{$featureBlog->title}}
                   </h5>
                   <p class="b3 text-light">
-                    Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti
-                    luctus facilisis cras cursus. Ut sem turpis
+                    {{$featureBlog->short_description}}
+
                   </p>
                 </div>
               </a>
@@ -66,211 +67,93 @@
           </div>
           <div class="fex-1 flex flex-col gap-8">
             <h2 class="heading-2 border-brand-purple border-b">Featured posts</h2>
-            <div class="blog-card-wrapper">
-              <a href="/read-blog">
+            @foreach ($featuresPost as $post)
+                  <div class="blog-card-wrapper">
+              <a href="{{route('blog.detail',['slug'=>$post->slug])}}">
                 <div class="blog-card-body">
                   <div
                     class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
                   >
-                    <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
+                    <p class="b3 w-fit font-semibold text-white uppercase">{{$post->category->name}}</p>
                     <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                    <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
+                    <p class="b3 text-body-2 w-fit font-medium uppercase">{{$post->read_time}} Min Read</p>
                   </div>
                   <h5 class="dh-5 my-3">
-                    Start up kinetic rolls out money for building their robotaxis
-                  </h5>
+{{$post->title}}                  </h5>
                   <p class="b3 text-light">
-                    Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti
-                    luctus facilisis cras cursus. Ut sem turpis
+                    {{$post->short_description}}
                   </p>
                 </div>
               </a>
             </div>
-            <div class="blog-card-wrapper">
-              <a href="/read-blog">
-                <div class="blog-card-body">
-                  <div
-                    class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
-                  >
-                    <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
-                    <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                    <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
-                  </div>
-                  <h5 class="dh-5 my-3">
-                    Start up kinetic rolls out money for building their robotaxis
-                  </h5>
-                  <p class="b3 text-light">
-                    Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti
-                    luctus facilisis cras cursus. Ut sem turpis
-                  </p>
-                </div>
-              </a>
-            </div>
-            <div class="blog-card-wrapper">
-              <a href="/read-blog">
-                <div class="blog-card-body">
-                  <div
-                    class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
-                  >
-                    <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
-                    <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                    <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
-                  </div>
-                  <h5 class="dh-5 my-3">
-                    Start up kinetic rolls out money for building their robotaxis
-                  </h5>
-                  <p class="b3 text-light">
-                    Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti
-                    luctus facilisis cras cursus. Ut sem turpis
-                  </p>
-                </div>
-              </a>
-            </div>
+            @endforeach
+
+
           </div>
         </div>
+        @endif
+
         <div
           class="my-7 grid grid-cols-1 gap-x-8 gap-y-7 sm:my-12 sm:grid-cols-2 sm:gap-y-12 md:grid-cols-4"
         >
-          <div class="blog-card-wrapper">
-            <a href="/read-blog">
+        @foreach ($features as $feature)
+            <div class="blog-card-wrapper">
+            <a href="{{route('blog.detail',['slug'=>$feature->slug])}}">
               <div class="blog-card-thumbnail">
-                <img src="{{ asset('frontend/images/blog-thumb.png') }}" alt="" class="aspect-[3/2] w-full object-cover" />
+                <img src="{{ getImage($feature->thumbnail) }}" alt="" class="aspect-[3/2] w-full object-cover" />
               </div>
               <div class="blog-card-body">
                 <div
                   class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
                 >
-                  <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
+                  <p class="b3 w-fit font-semibold text-white uppercase">{{$feature->category->name}}</p>
                   <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                  <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
+                  <p class="b3 text-body-2 w-fit font-medium uppercase">{{$feature->read_time}} Min Read</p>
                 </div>
                 <h5 class="dh-5 my-3">
-                  Start up kinetic rolls out money for building their robotaxis
+                 {{$feature->title}}
                 </h5>
                 <p class="b3 text-light">
-                  Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti luctus
-                  facilisis cras cursus. Ut sem turpis
+                 {{$feature->short_description}}
                 </p>
               </div>
             </a>
           </div>
-          <div class="blog-card-wrapper">
-            <a href="/read-blog">
-              <div class="blog-card-thumbnail">
-                <img src="{{ asset('frontend/images/blog-thumb.png') }}" alt="" class="aspect-[3/2] w-full object-cover" />
-              </div>
-              <div class="blog-card-body">
-                <div
-                  class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
-                >
-                  <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
-                  <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                  <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
-                </div>
-                <h5 class="dh-5 my-3">
-                  Start up kinetic rolls out money for building their robotaxis
-                </h5>
-                <p class="b3 text-light">
-                  Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti luctus
-                  facilisis cras cursus. Ut sem turpis
-                </p>
-              </div>
-            </a>
-          </div>
-          <div class="blog-card-wrapper">
-            <a href="/read-blog">
-              <div class="blog-card-thumbnail">
-                <img src="{{ asset('frontend/images/blog-thumb.png') }}" alt="" class="aspect-[3/2] w-full object-cover" />
-              </div>
-              <div class="blog-card-body">
-                <div
-                  class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
-                >
-                  <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
-                  <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                  <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
-                </div>
-                <h5 class="dh-5 my-3">
-                  Start up kinetic rolls out money for building their robotaxis
-                </h5>
-                <p class="b3 text-light">
-                  Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti luctus
-                  facilisis cras cursus. Ut sem turpis
-                </p>
-              </div>
-            </a>
-          </div>
-          <div class="blog-card-wrapper">
-            <a href="/read-blog">
-              <div class="blog-card-thumbnail">
-                <img src="{{ asset('frontend/images/blog-thumb.png') }}" alt="" class="aspect-[3/2] w-full object-cover" />
-              </div>
-              <div class="blog-card-body">
-                <div
-                  class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
-                >
-                  <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
-                  <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                  <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
-                </div>
-                <h5 class="dh-5 my-3">
-                  Start up kinetic rolls out money for building their robotaxis
-                </h5>
-                <p class="b3 text-light">
-                  Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti luctus
-                  facilisis cras cursus. Ut sem turpis
-                </p>
-              </div>
-            </a>
-          </div>
+        @endforeach
+
         </div>
 
-        <div class="my-7 space-y-12 sm:my-12">
+        @foreach ($categories as $category)
+        @if ($loop->odd)
+
+             <div class="my-7 space-y-12 sm:my-12">
           <div class="border-brand-purple flex items-center justify-between gap-4 border-b">
-            <h2 class="heading-2">Marketing</h2>
+            <h2 class="heading-2">{{$category->name}}</h2>
             <a href="#" class="heading-2 duration-200 hover:text-white/70">See More</a>
           </div>
           <div class="has-divide grid grid-cols-1 gap-x-8 gap-y-7 sm:gap-y-12 md:grid-cols-3">
-            <div class="blog-card-wrapper">
+            @foreach ($category->blogs()->where('status',1)->latest()->limit(2)->get() as $blog)
+                 <div class="blog-card-wrapper">
               <a href="/read-blog">
                 <div class="blog-card-body">
                   <div
                     class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
                   >
-                    <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
+                    <p class="b3 w-fit font-semibold text-white uppercase">{{$category->name}}</p>
                     <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                    <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
+                    <p class="b3 text-body-2 w-fit font-medium uppercase">{{$blog->read_time}} Min Read</p>
                   </div>
                   <h5 class="dh-5 my-3">
-                    Start up kinetic rolls out money for building their robotaxis
+                    {{$blog->title}}
                   </h5>
                   <p class="b3 text-light">
-                    Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti
-                    luctus facilisis cras cursus. Ut sem turpis
+            {{$blog->short_description}}
                   </p>
                 </div>
               </a>
             </div>
-            <div class="blog-card-wrapper">
-              <a href="/read-blog">
-                <div class="blog-card-body">
-                  <div
-                    class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
-                  >
-                    <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
-                    <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                    <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
-                  </div>
-                  <h5 class="dh-5 my-3">
-                    Start up kinetic rolls out money for building their robotaxis
-                  </h5>
-                  <p class="b3 text-light">
-                    Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti
-                    luctus facilisis cras cursus. Ut sem turpis
-                  </p>
-                </div>
-              </a>
-            </div>
+            @endforeach
+
             <div
               class="gradient-border before:bg-brand-purple after:bg-triangles relative isolate row-span-2 flex items-center justify-center overflow-hidden rounded-3xl p-6 before:absolute before:top-0 before:left-0 before:z-10 before:aspect-square before:size-1/3 before:bg-repeat before:blur-3xl after:absolute after:top-0 after:left-0 after:z-10 after:aspect-square after:size-1/2 after:bg-repeat"
             >
@@ -312,179 +195,67 @@
               </div>
             </div>
 
-            <div class="blog-card-wrapper">
+              @foreach ($category->blogs()->where('status',1)->latest()->skip(2)->limit(2)->get() as $blog)
+                 <div class="blog-card-wrapper">
               <a href="/read-blog">
                 <div class="blog-card-body">
                   <div
                     class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
                   >
-                    <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
+                    <p class="b3 w-fit font-semibold text-white uppercase">{{$category->name}}</p>
                     <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                    <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
+                    <p class="b3 text-body-2 w-fit font-medium uppercase">{{$blog->read_time}} Min Read</p>
                   </div>
                   <h5 class="dh-5 my-3">
-                    Start up kinetic rolls out money for building their robotaxis
+                    {{$blog->title}}
                   </h5>
                   <p class="b3 text-light">
-                    Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti
-                    luctus facilisis cras cursus. Ut sem turpis
+            {{$blog->short_description}}
                   </p>
                 </div>
               </a>
             </div>
-            <div class="blog-card-wrapper">
-              <a href="/read-blog">
-                <div class="blog-card-body">
-                  <div
-                    class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
-                  >
-                    <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
-                    <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                    <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
-                  </div>
-                  <h5 class="dh-5 my-3">
-                    Start up kinetic rolls out money for building their robotaxis
-                  </h5>
-                  <p class="b3 text-light">
-                    Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti
-                    luctus facilisis cras cursus. Ut sem turpis
-                  </p>
-                </div>
-              </a>
-            </div>
+            @endforeach
           </div>
         </div>
+        @else
+
 
         <div class="my-7 space-y-12 sm:my-12">
           <div class="border-brand-purple flex items-center justify-between gap-4 border-b">
-            <h2 class="heading-2">Marketing</h2>
+            <h2 class="heading-2">{{$category->name}}</h2>
             <a href="#" class="heading-2 duration-200 hover:text-white/70">See More</a>
           </div>
           <div
             class="has-divide grid grid-cols-1 gap-x-8 gap-y-7 sm:grid-cols-2 sm:gap-y-12 md:grid-cols-3"
           >
-            <div class="blog-card-wrapper">
+  @foreach ($category->blogs()->where('status',1)->latest()->limit(6)->get() as $blog)
+                 <div class="blog-card-wrapper">
               <a href="/read-blog">
                 <div class="blog-card-body">
                   <div
                     class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
                   >
-                    <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
+                    <p class="b3 w-fit font-semibold text-white uppercase">{{$category->name}}</p>
                     <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                    <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
+                    <p class="b3 text-body-2 w-fit font-medium uppercase">{{$blog->read_time}} Min Read</p>
                   </div>
                   <h5 class="dh-5 my-3">
-                    Start up kinetic rolls out money for building their robotaxis
+                    {{$blog->title}}
                   </h5>
                   <p class="b3 text-light">
-                    Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti
-                    luctus facilisis cras cursus. Ut sem turpis
+            {{$blog->short_description}}
                   </p>
                 </div>
               </a>
             </div>
-            <div class="blog-card-wrapper">
-              <a href="/read-blog">
-                <div class="blog-card-body">
-                  <div
-                    class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
-                  >
-                    <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
-                    <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                    <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
-                  </div>
-                  <h5 class="dh-5 my-3">
-                    Start up kinetic rolls out money for building their robotaxis
-                  </h5>
-                  <p class="b3 text-light">
-                    Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti
-                    luctus facilisis cras cursus. Ut sem turpis
-                  </p>
-                </div>
-              </a>
-            </div>
-            <div class="blog-card-wrapper">
-              <a href="/read-blog">
-                <div class="blog-card-body">
-                  <div
-                    class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
-                  >
-                    <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
-                    <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                    <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
-                  </div>
-                  <h5 class="dh-5 my-3">
-                    Start up kinetic rolls out money for building their robotaxis
-                  </h5>
-                  <p class="b3 text-light">
-                    Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti
-                    luctus facilisis cras cursus. Ut sem turpis
-                  </p>
-                </div>
-              </a>
-            </div>
-            <div class="blog-card-wrapper">
-              <a href="/read-blog">
-                <div class="blog-card-body">
-                  <div
-                    class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
-                  >
-                    <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
-                    <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                    <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
-                  </div>
-                  <h5 class="dh-5 my-3">
-                    Start up kinetic rolls out money for building their robotaxis
-                  </h5>
-                  <p class="b3 text-light">
-                    Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti
-                    luctus facilisis cras cursus. Ut sem turpis
-                  </p>
-                </div>
-              </a>
-            </div>
-            <div class="blog-card-wrapper">
-              <a href="/read-blog">
-                <div class="blog-card-body">
-                  <div
-                    class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
-                  >
-                    <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
-                    <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                    <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
-                  </div>
-                  <h5 class="dh-5 my-3">
-                    Start up kinetic rolls out money for building their robotaxis
-                  </h5>
-                  <p class="b3 text-light">
-                    Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti
-                    luctus facilisis cras cursus. Ut sem turpis
-                  </p>
-                </div>
-              </a>
-            </div>
-            <div class="blog-card-wrapper">
-              <a href="/read-blog">
-                <div class="blog-card-body">
-                  <div
-                    class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
-                  >
-                    <p class="b3 w-fit font-semibold text-white uppercase">project management</p>
-                    <span class="size-1 rounded-full bg-white max-sm:hidden"></span>
-                    <p class="b3 text-body-2 w-fit font-medium uppercase">10 Min Read</p>
-                  </div>
-                  <h5 class="dh-5 my-3">
-                    Start up kinetic rolls out money for building their robotaxis
-                  </h5>
-                  <p class="b3 text-light">
-                    Lorem ipsum dolor sit amet consectetur. Lacus nunc at massa nullam potenti
-                    luctus facilisis cras cursus. Ut sem turpis
-                  </p>
-                </div>
-              </a>
-            </div>
+            @endforeach
           </div>
         </div>
+        @endif
+
+        @endforeach
+
       </section>
 
       <section class="bg-[#12002B] py-[72px]">
@@ -509,38 +280,12 @@
               <i data-lucide="arrow-left" class="!size-4"></i>
             </div>
             <div class="swiper-wrapper">
-              <div class="swiper-slide space-y-3">
-                <img src="{{ asset('frontend/images/blog-thumb.png') }}" alt="" class="aspect-[3/2] w-full object-cover" />
-                <h5 class="heading-5 text-center">Fundraising</h5>
+                @foreach ($categories as $category)
+                     <div class="swiper-slide space-y-3">
+                <img src="{{ getImage($category->thumbnail) }}" alt="" class="aspect-[3/2] w-full object-cover" />
+                <h5 class="heading-5 text-center">{{$category->name}}</h5>
               </div>
-              <div class="swiper-slide space-y-3">
-                <img src="{{ asset('frontend/images/blog-thumb.png') }}" alt="" class="aspect-[3/2] w-full object-cover" />
-                <h5 class="heading-5 text-center">Startups problems</h5>
-              </div>
-              <div class="swiper-slide space-y-3">
-                <img src="{{ asset('frontend/images/blog-thumb.png') }}" alt="" class="aspect-[3/2] w-full object-cover" />
-                <h5 class="heading-5 text-center">How to recruit</h5>
-              </div>
-              <div class="swiper-slide space-y-3">
-                <img src="{{ asset('frontend/images/blog-thumb.png') }}" alt="" class="aspect-[3/2] w-full object-cover" />
-                <h5 class="heading-5 text-center">How to recruit</h5>
-              </div>
-              <div class="swiper-slide space-y-3">
-                <img src="{{ asset('frontend/images/blog-thumb.png') }}" alt="" class="aspect-[3/2] w-full object-cover" />
-                <h5 class="heading-5 text-center">Fundraising</h5>
-              </div>
-              <div class="swiper-slide space-y-3">
-                <img src="{{ asset('frontend/images/blog-thumb.png') }}" alt="" class="aspect-[3/2] w-full object-cover" />
-                <h5 class="heading-5 text-center">Startups problems</h5>
-              </div>
-              <div class="swiper-slide space-y-3">
-                <img src="{{ asset('frontend/images/blog-thumb.png') }}" alt="" class="aspect-[3/2] w-full object-cover" />
-                <h5 class="heading-5 text-center">How to recruit</h5>
-              </div>
-              <div class="swiper-slide space-y-3">
-                <img src="{{ asset('frontend/images/blog-thumb.png') }}" alt="" class="aspect-[3/2] w-full object-cover" />
-                <h5 class="heading-5 text-center">How to recruit</h5>
-              </div>
+                @endforeach
             </div>
           </div>
         </div>

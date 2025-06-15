@@ -49,5 +49,9 @@ public function scopeAccessibleBy($query, $user)
         return $this->hasOne(Popup::class);
     }
 
+      public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
 
 }

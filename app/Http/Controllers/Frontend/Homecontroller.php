@@ -30,8 +30,11 @@ class HomeController extends Controller
 
        public function blog(Request $request)
     {
-        $categories=Category::where('status',1)->latest()->get();
+        $categories=Category::whereHas('blogs')->where('status',1)->latest()->get();
         $blogs=Blog::where('status',1)->latest()->get();
-        return view('frontend.blog',compact('categories','blogs'));
+        $featureBlog=Blog::with('category')->where('status',1)->where('feature_post',1)->latest()->first();
+        $featuresPost=Blog::with('category')->where('status',1)->where('feature_post',1)->latest()->skip(1)->limit(3)->get();
+        $features=Blog::with('category')->where('status',1)->where('feature_post',1)->latest()->skip(4)->limit(4)->get();
+        return view('frontend.blog',compact('categories','blogs','featureBlog','featuresPost','features'));
     }
 }

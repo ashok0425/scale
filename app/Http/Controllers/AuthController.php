@@ -14,7 +14,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
+        return view('login');
     }
 
     public function dashboard(Request $request)

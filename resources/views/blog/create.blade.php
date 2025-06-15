@@ -45,8 +45,15 @@
                         </select>
                     </div>
 
+                     <div class="form-group col-md-4 mb-3">
+                        <label for="status">Is Featured Post</label>
+                        <select name="feature_post" id="feature_post" class="form-control">
+                            <option value="0" {{ old('feature_post')  == 0 ? 'selected' : '' }}>No</option>
+                            <option value="1" {{old('feature_post') == 1 ? 'selected' : '' }}>Yes</option>
+                        </select>
+                    </div>
 
-                    <div class="mb-3 col-md-6">
+                    <div class="mb-3 col-md-4">
                         <label class="form-label">Thumbnail</label>
                         <div class="file-upload-wrapper" data-text="Select your file!">
                             <input
@@ -59,7 +66,7 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 col-md-6">
+                    <div class="mb-3 col-md-4">
                         <label class="form-label">Cover Photo (optional)</label>
                         <div class="file-upload-wrapper" data-text="Select your file!">
                             <input
@@ -70,6 +77,42 @@
                             />
                         </div>
                     </div>
+
+                     <div class="mb-3 col-md-4">
+                        <label class="form-label">Audio</label>
+                        <input
+                            type="file"
+                            name="audio"
+                            class="form-control"
+                            placeholder="Audio"
+                            value="{{ old('audio') }}"
+                            required
+                        />
+                    </div>
+                     <div class="mb-3 col-md-4">
+                        <label class="form-label">Author</label>
+                        <input
+                            type="text"
+                            name="author"
+                            class="form-control"
+                            placeholder="Post Author"
+                            value="{{ old('author') }}"
+                            required
+                        />
+                    </div>
+
+                      <div class="mb-3 col-md-4">
+                        <label class="form-label">Author Position</label>
+                        <input
+                            type="text"
+                            name="author_position"
+                            class="form-control"
+                            placeholder="Author Position"
+                            value="{{ old('author_position') }}"
+                            required
+                        />
+                    </div>
+
 
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Short Description</label>

@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::table('blogs', function (Blueprint $table) {
             $table->integer('feature_post')->nullable()->default(0);
+            $table->integer('read_time')->nullable();
+            $table->string('audio')->nullable();
+            $table->string('author')->nullable();
+            $table->string('author_post')->nullable();
+
+
         });
     }
 
@@ -26,7 +32,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('blogs', function (Blueprint $table) {
-            $table->dropColumn('feature_post');
+            $table->dropColumn(['feature_post','audio','read_time','author','author_post']);
         });
     }
 };
