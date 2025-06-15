@@ -1,9 +1,27 @@
 <?php
 
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/freelancer', [HomeController::class, 'freelancer'])->name('freelancer');
+Route::get('/investors', [HomeController::class, 'investor'])->name('investor');
+Route::get('/founders', [HomeController::class, 'founder'])->name('founder');
+Route::get('/blogs', [HomeController::class, 'blog'])->name('blog');
+Route::get('/blog/{slug}', [HomeController::class, 'blogDetail'])->name('blog.detail');
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'index'])->name('login');
-Route::get('/', [\App\Http\Controllers\AuthController::class, 'index']);
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'store']);
 //admin guard middleware
 Route::middleware('auth')->group(function () {

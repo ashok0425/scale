@@ -72,6 +72,7 @@ class BlogController extends Controller
         $post->category_id = $request->category;
         $post->status = $request->status ?? $post->status;
         $post->thumbnail = $thumbnail;
+        $post->feature_post = $request->feature_post;
         $post->user_id = Auth::user()->id;
         $post->cover = $cover;
         $post->save();
@@ -129,6 +130,7 @@ class BlogController extends Controller
         $post->long_description = $request->long_description;
         $post->thumbnail = $thumbnail;
         $post->status = $request->status ?? $post->status;
+         $post->feature_post = $request->feature_post;
         $post->category_id = $request->category;
         $post->cover = $cover;
         $post->save();
