@@ -139,5 +139,9 @@
         html,body {
   scroll-behavior: smooth;
 }
+[id] {
+  scroll-margin-top: 150px; /* Adjust based on your fixed nav height */
+}
+
     </style>
 @endpush
