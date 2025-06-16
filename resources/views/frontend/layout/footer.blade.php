@@ -83,10 +83,12 @@
               </div>
               <div class="space-y-2">
                 <h6 class="dh-6">Subscribe to our Newsletter</h6>
-                <form class="flex flex-wrap gap-3">
+                <form class="flex flex-wrap gap-3" method="POST" action="{{route('subscribe.store')}}">
+                    @csrf
                   <input
                     type="email"
                     required
+                    name="email"
                     placeholder="Enter your email"
                     class="max-sm:w-full"
                   />

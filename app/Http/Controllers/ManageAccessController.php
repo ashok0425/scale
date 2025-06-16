@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Crm;
+use App\Models\Subscriber;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -253,5 +254,12 @@ class ManageAccessController extends Controller
 
          if($request->type==3)
         return view("crm.download", compact('users'));
+    }
+
+      public function subscriber(Request $request)
+    {
+        $users=Subscriber::latest()->get();
+        return view("subscriber.index", compact('users'));
+
     }
 }

@@ -169,6 +169,7 @@
                   value="{{ $cms->linkedin }}"
                 />
               </div>
+            </div>
 
                    <div class="col-md-6">
               <div class="mb-3">
@@ -180,6 +181,7 @@
                   value="{{ $cms->total_seat }}"
                 />
               </div>
+                   </div>
 
                    <div class="col-md-6">
               <div class="mb-3">

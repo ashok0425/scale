@@ -1,4 +1,37 @@
 @extends('frontend.layout.app')
+@section('seo')
+
+<!-- Primary Meta Tags -->
+<title>{{cms()->meta_title}}</title>
+<meta name="title" content="{{cms()->meta_title}}">
+<meta name="description" content="{{cms()->meta_description}}">
+
+<!-- Canonical -->
+<link rel="canonical" href="{{request()->url()}}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{request()->url()}}">
+<meta property="og:title" content="{{cms()->meta_title}}">
+<meta property="og:description" content="{{cms()->meta_description}}">
+<meta property="og:image" content="{{getImage(cms()->logo)}}">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="{{request()->url()}}">
+<meta name="twitter:title" content="{{cms()->meta_title}}">
+<meta name="twitter:description" content="{{cms()->meta_description}}">
+<meta name="twitter:image" content="{{getImage(cms()->logo)}}">
+
+<!-- Robots -->
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="{{cms()->meta_keyword}}">
+
+<!-- Viewport & Charset -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+@endsection
 @section('content')
         <main class="">
       <section

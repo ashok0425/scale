@@ -122,6 +122,12 @@
                 </a>
             </li>
 
+                 <li class="sidebar-item">
+                <a class="sidebar-link {{Request::is('subscriber','subscriber/*')?'text-light':' '}}" href="{{ route('subscriber') }}">
+                    <i class="fas fa-images"></i>
+                    <span class="align-middle">Subscriber</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

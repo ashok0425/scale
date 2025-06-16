@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Subscriber;
 use DOMDocument;
-use Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class HomeController extends Controller
@@ -77,4 +78,24 @@ $blog->long_description = $data['content'];
 
     return ['toc' => $toc, 'content' => $modifiedHtml];
 }
+
+public function subscribe(Request $request)
+{
+   $validate= $request->validate([
+        'email' => 'required|email|unique:subscribers,email',
+    ]);
+    try {
+        Subscriber::create([
+            'email' => $validate['email'],
+        ]);
+
+        return back()->with('message', 'Thank you for subscribing our newsletter.')->with('type', 'success');
+
+    } catch (\Exception $e) {
+        // Log error if needed
+        return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
+    }
+}
+
+
 }

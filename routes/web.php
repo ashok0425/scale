@@ -10,6 +10,8 @@ Route::get('/investors', [HomeController::class, 'investor'])->name('investor');
 Route::get('/founders', [HomeController::class, 'founder'])->name('founder');
 Route::get('/blogs', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog/{slug}', [HomeController::class, 'blogDetail'])->name('blog.detail');
+Route::post('/subscribe', [HomeController::class, 'subscribe'])->name('subscribe.store');
+
 
 
 
@@ -44,6 +46,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('cms', \App\Http\Controllers\CmsController::class)->middleware('can:do anything');
     Route::get('users/index', [\App\Http\Controllers\ManageAccessController::class,'users'])->middleware('can:do anything')->name('users');
     Route::get('crm', [\App\Http\Controllers\ManageAccessController::class,'crm'])->name('crm');
+    Route::get('subscribe', [\App\Http\Controllers\ManageAccessController::class,'subscriber'])->name('subscriber');
+
 
 
     Route::group(['prefix' => 'manage-access'], function () {

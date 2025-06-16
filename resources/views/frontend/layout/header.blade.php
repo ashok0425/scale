@@ -1,9 +1,10 @@
  <header class="header">
       <div class="container">
         <a href="/">
-          <img src="{{asset('frontend/assets/images/logo.svg')}}" alt="" class="h-5 md:h-7" />
+          <img src="{{getImage(cms()->logo)}}" alt="" class="h-5 md:h-7" />
         </a>
         <ul class="nav">
+
           <li>
             <a href="{{route('founder')}}" class="nav-item">Founder</a>
           </li>

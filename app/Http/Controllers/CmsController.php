@@ -50,6 +50,8 @@ class CmsController extends Controller
         $cms->fevicon = $request->file('fevicon')?->store('uploads','public') ?? $cms->fevicon;
         $cms->save();
 
+        Cache::forget('cms');
+
 
         $notification = [
             'alert-type' => 'success',
