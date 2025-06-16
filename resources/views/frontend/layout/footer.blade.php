@@ -2,7 +2,7 @@
     $pages=App\Models\Page::all();
 @endphp
 <footer>
-      <div
+      <div id="waitlistSection"
         class="before:bg-brand-purple after:bg-triangles relative isolate overflow-clip py-11 before:absolute before:-top-14 before:-left-14 before:z-20 before:size-72 before:rounded-full before:blur-[130px] after:absolute after:top-0 after:left-0 after:z-10 after:aspect-square after:h-full after:bg-no-repeat sm:py-16 md:py-[3.125rem]"
       >
         <div class="container">
@@ -27,10 +27,12 @@
                 </p>
               </div>
               <div class="mx-auto mt-6 sm:w-fit">
-                <from class="flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row">
+                <form class="flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row" method="POST" action="{{route('waitlist.store')}}">
+                    @csrf
                   <input
                     class="max-sm:w-full sm:max-w-[224px]"
                     type="text"
+                    name="full_name"
                     required
                     placeholder="Enter full name"
                   />
@@ -38,9 +40,10 @@
                     class="max-sm:w-full sm:max-w-[224px]"
                     type="email"
                     required
+                    name="email"
                     placeholder="Enter your email"
                   />
-                  <select class="max-sm:w-full sm:max-w-[224px]">
+                  <select class="max-sm:w-full sm:max-w-[224px]" name="role" required>
                     <option value="">Select your role</option>
                     <option value="founder">Founder/Aspiring Founder</option>
                     <option value="freelancer">Freelancer/Agency</option>
@@ -58,7 +61,7 @@
                       </span>
                     </span>
                   </button>
-                </from>
+                </form>
               </div>
             </div>
           </div>

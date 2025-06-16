@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Crm;
 use App\Models\Subscriber;
 use DOMDocument;
 use Illuminate\Http\Request;
@@ -90,6 +91,32 @@ public function subscribe(Request $request)
         ]);
 
         return back()->with('message', 'Thank you for subscribing our newsletter.')->with('type', 'success');
+
+    } catch (\Exception $e) {
+        // Log error if needed
+        return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
+    }
+}
+
+public function waitlist(Request $request)
+{
+   $validated= $request->validate([
+        'full_name' => 'required',
+        'email' => 'required|email|unique:subscribers,email',
+        'role' => 'required|in:founder,freelancer,investor,mentor',
+    ]);
+    try {
+        $page = parse_url(url()->previous(), PHP_URL_PATH);
+
+       $waitlist=new Crm();
+       $waitlist->name=$validated['full_name'];
+       $waitlist->email=$validated['email'];
+       $waitlist->role=$validated['role'];
+       $waitlist->page=$page;
+       $waitlist->type=1;
+       $waitlist->save();
+
+        return back()->with('message', 'Thank you for joining our waitlist.')->with('type', 'success');
 
     } catch (\Exception $e) {
         // Log error if needed

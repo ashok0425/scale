@@ -20,7 +20,7 @@
         </ul>
         <div class="flex items-center justify-end gap-6">
           <div class="flex flex-wrap items-center gap-6">
-            <button class="btn-outline max-md:hidden">Join the waitlist</button>
+            <a href="#waitlistSection" class="btn-outline max-md:hidden">Join the waitlist</a>
             <a
               href="/priority-access"
               class="btn-primary hover:shadow-brand-purple/60 group hover:shadow-lg"

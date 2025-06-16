@@ -14,7 +14,15 @@
     <link rel="stylesheet" crossorigin href="{{asset('frontend/assets/main.css')}}">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     @stack('style')
-    @yield('seo');
+    @yield('seo')
+    <style>
+        .after\:bg-no-repeat:after{
+            z-index: -1!important;
+        }
+        html,body{
+            scroll-behavior: smooth;
+        }
+    </style>
   </head>
   <body>
     @include('frontend.layout.header')

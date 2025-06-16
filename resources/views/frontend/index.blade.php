@@ -65,18 +65,25 @@
             </div>
           </div>
           <div class="mx-auto mt-6 sm:w-fit">
+            <form method="POST" action="{{route('waitlist.store')}}">
+                @csrf
             <div class="flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row">
               <input
                 class="min-w-[250px] max-sm:w-full"
                 type="text"
+                required
+                name="full_name"
                 placeholder="Enter full name"
               />
               <input
                 class="min-w-[250px] max-sm:w-full"
                 type="email"
+                required
+                name="email"
                 placeholder="Enter your email"
               />
-              <select class="min-w-[250px] max-sm:w-full">
+              <select class="min-w-[250px] max-sm:w-full"
+                name="role" required>
                 <option value="">Select your role</option>
                 <option value="founder">Founder/Aspiring Founder</option>
                 <option value="freelancer">Freelancer/Agency</option>
@@ -92,6 +99,7 @@
                 </span>
               </button>
             </div>
+            </form>
           </div>
         </div>
         <div class="center z-10 container">
