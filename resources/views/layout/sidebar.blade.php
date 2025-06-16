@@ -109,14 +109,14 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link {{Request::is('websites','websites/*')?'text-light':' '}}" href="{{ route('cms.edit', 1) }}">
+                <a class="sidebar-link {{Request::is('crm','crm/*')?'text-light':' '}}" href="{{ route('crm',['type'=>2]) }}">
                     <i class="fas fa-images"></i>
                     <span class="align-middle">Priority Access</span>
                 </a>
             </li>
 
                <li class="sidebar-item">
-                <a class="sidebar-link {{Request::is('websites','websites/*')?'text-light':' '}}" href="{{ route('cms.edit', 1) }}">
+              <a class="sidebar-link {{Request::is('crm','crm/*')?'text-light':' '}}" href="{{ route('crm',['type'=>3]) }}">
                     <i class="fas fa-images"></i>
                     <span class="align-middle">Pdf Download</span>
                 </a>

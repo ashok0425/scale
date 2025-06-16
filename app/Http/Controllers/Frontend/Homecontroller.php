@@ -32,6 +32,46 @@ class HomeController extends Controller
         return view('frontend.founder');
     }
 
+    public function priorityAccess()
+    {
+        return view('frontend.form');
+    }
+
+    public function storePriorityAccess(Request $request)
+    {
+       $validated= $request->validate([
+        'full_name' => 'required',
+        'email' => 'required|email|unique:subscribers,email',
+        'role' => 'required|in:founder,freelancer,investor,mentor',
+        'phone' => 'required',
+        'linkedin' => 'nullable',
+        'city' => 'required',
+        'message' => 'required',
+
+    ]);
+    try {
+        $page = parse_url(url()->previous(), PHP_URL_PATH);
+
+       $waitlist=new Crm();
+       $waitlist->name=$validated['full_name'];
+       $waitlist->email=$validated['email'];
+       $waitlist->role=$validated['role'];
+       $waitlist->phone=$validated['phone'];
+       $waitlist->city=$validated['city'];
+       $waitlist->linkedin=$validated['linkedin'];
+       $waitlist->message=$validated['message'];
+       $waitlist->page=$page;
+       $waitlist->type=2;
+       $waitlist->save();
+
+        return back()->with('message', 'Thank you for joining our waitlist.')->with('type', 'success');
+
+    } catch (\Exception $e) {
+        // Log error if needed
+        return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
+    }
+    }
+
        public function blog(Request $request)
     {
         $categories=Category::whereHas('blogs')->where('status',1)->latest()->get();

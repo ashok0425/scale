@@ -20,6 +20,7 @@
                         <th>Phone</th>
                         <th>City</th>
                         <th>Linkedin</th>
+                        <th>Message</th>
                         <th>Register on</th>
                     </tr>
                 </thead>
@@ -33,6 +34,8 @@
                             <td>{{ $user->phone }}</td>
                             <td>{{ $user->city }}</td>
                             <td>{{ $user->linkedin }}</td>
+                            <td>{{ $user->message }}</td>
+
                             <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}</td>
                         </tr>
                     @endforeach

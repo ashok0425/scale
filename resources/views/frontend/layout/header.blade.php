@@ -22,7 +22,7 @@
           <div class="flex flex-wrap items-center gap-6">
             <a href="#waitlistSection" class="btn-outline max-md:hidden">Join the waitlist</a>
             <a
-              href="/priority-access"
+              href="{{route('priority.access')}}"
               class="btn-primary hover:shadow-brand-purple/60 group hover:shadow-lg"
             >
               <span class="inner-wrapper inline-flex h-6 overflow-hidden">

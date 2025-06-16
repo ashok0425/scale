@@ -12,6 +12,10 @@ Route::get('/blogs', [HomeController::class, 'blog'])->name('blog');
 Route::get('/blog/{slug}', [HomeController::class, 'blogDetail'])->name('blog.detail');
 Route::post('/subscribe', [HomeController::class, 'subscribe'])->name('subscribe.store');
 Route::post('/waitlist', [HomeController::class, 'waitlist'])->name('waitlist.store');
+Route::get('/priority-access', [HomeController::class, 'priorityAccess'])->name('priority.access');
+Route::post('/priority-access', [HomeController::class, 'storePriorityAccess']);
+
+
 
 
 
