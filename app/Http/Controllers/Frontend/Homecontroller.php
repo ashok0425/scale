@@ -85,8 +85,8 @@ public function subscribe(Request $request)
         'email' => 'required|email|unique:subscribers,email',
     ]);
     try {
-        Subscriber::create([
-            'email' => $validate['email'],
+        Subscriber::updateOrCreate([
+            'email' => $validate['email']
         ]);
 
         return back()->with('message', 'Thank you for subscribing our newsletter.')->with('type', 'success');
