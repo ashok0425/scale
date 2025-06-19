@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
+use App\Models\Attachment;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Crm;
 use App\Models\Page;
 use App\Models\Subscriber;
+use App\Notifications\SendAttachmentNotification;
 use DOMDocument;
 use DOMXPath;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use URL;
 
 class HomeController extends Controller
 {
@@ -213,9 +218,58 @@ public function pages()
 }
 
 
-public function download()
+public function attachment($attachment_id,$blog_id=null)
 {
-     return view('frontend.download');
+    $attachment=Attachment::where('uuid',$attachment_id)->firstOrFail();
+     return view('frontend.download',compact('attachment'));
 }
+
+public function SaveAttachment(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email',
+        'attachment_id' => 'required'
+    ]);
+
+    $link = route('link.attachment', ['attachment_id' => $request->attachment_id]);
+
+    $crm = new Crm();
+    $crm->email = $request->email;
+    $crm->type = 3;
+    $crm->attachment_link = $link;
+    $crm->save();
+
+    $encodedId = base64_encode($request->attachment_id);
+
+    $downloadLink = URL::signedRoute('attachment.download.file', [
+    'encoded_id' => $encodedId,
+    'token' => uniqid(),
+]);
+
+    Notification::route('mail', $request->email)->notify(new SendAttachmentNotification($downloadLink));
+
+    return back()->with('message', 'Check your email. We have sent a download link to your email.')
+                 ->with('type', 'success');
+}
+
+public function downloadFile($encoded_id, $token)
+{
+    try {
+        $attachment_id = base64_decode($encoded_id);
+        $attachment = Attachment::where('uuid', $attachment_id)->firstOrFail();
+
+        $filePath = $attachment->attachment; // adjust field name if different
+
+        // if (!Storage::disk('public')->exists($filePath)) {
+        //     abort(404, 'File not found.');
+        // }
+
+        return Storage::disk('public')->download($filePath, $attachment->original_name ?? $attachment->file_name);
+
+    } catch (\Exception $e) {
+        abort(404, 'Invalid or expired download link.');
+    }
+}
+
 
 }

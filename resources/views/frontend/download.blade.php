@@ -6,11 +6,12 @@
       <div class="custom-content">
         <h1 class="dh-1 mb-4">Download Resource</h1>
         <p class="mb-6">Enter your Email address, we will send download link to you.</p>
-        <form method="POST" class="flex flex-col" action="#">
+        <form method="POST" class="flex flex-col" action="{{route('link.attachment.save')}}">
+            <input type="hidden" value="{{$attachment->uuid}}" name="attachment_id">
           @csrf
           <input
             type="email"
-            name="message"
+            name="email"
             required
             placeholder="Email Address"
             class="custom-input"

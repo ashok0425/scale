@@ -5,9 +5,9 @@
     <div class="mb-7 space-y-6 md:mb-12">
       <div class="flex items-center gap-3">
         <a href="/" class="cursor-pointer text-white underline hover:text-gray-300">Home</a>
-        <img src="{{ asset('frontend/images/arrow-right.svg') }}" alt="" />
+        <img src="{{ asset('frontend/images/arrow-right.svg') }}" alt="{{$blog->title}}" />
         <a href="/blog" class="cursor-pointer text-white underline hover:text-gray-300">{{$blog->category->name}}</a>
-        <img src="{{ asset('frontend/images/arrow-right.svg') }}" alt="" />
+        <img src="{{ asset('frontend/images/arrow-right.svg') }}" alt="{{$blog->title}}" />
         <span>{{$blog->title}}</span>
       </div>
       <h1 class="dh-2">{{$blog->title}}</h1>
@@ -15,7 +15,7 @@
       <div class="flex items-center justify-between gap-x-4">
         <div class="flex items-center gap-3">
           <div class="size-[52px] overflow-clip rounded-full bg-[#CFC3A7]">
-            <img src="{{ asset('frontend/images/author.png') }}" alt="" class="size-[52px]" />
+            <img src="{{ asset('frontend/images/author.png') }}" alt="{{$blog->title}}" class="size-[52px]" />
           </div>
           <div class="space-y-1">
             <p class="b2 text-light font-semibold">By John Doe</p>
@@ -23,7 +23,7 @@
           </div>
         </div>
         <button id="shareBtn" class="flex cursor-pointer items-center gap-3 duration-200 hover:opacity-80">
-          <img src="{{ asset('frontend/images/share.svg') }}" alt="" class="size-6" />
+          <img src="{{ asset('frontend/images/share.svg') }}" alt="{{$blog->title}}" class="size-6" />
           <span class="b3 text-light text-sm">Save</span>
         </button>
 
@@ -126,7 +126,7 @@ function renderToc($items, $level = 0) {
             <div class="blog-card-wrapper swiper-slide">
               <a href="/read-blog">
                 <div class="blog-card-thumbnail">
-                  <img src="{{ getImage($blog->thumbnail) }}" alt="" class="aspect-[3/2] w-full object-cover" />
+                  <img src="{{ getImage($blog->thumbnail) }}" alt="{{$blog->title}}" class="aspect-[3/2] w-full object-cover" />
                 </div>
                 <div class="blog-card-body">
                   <div class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-6">
@@ -152,7 +152,7 @@ function renderToc($items, $level = 0) {
     class="gradient-border before:from-brand-purple/40 before:to-brand-blue/40 relative isolate overflow-hidden rounded-3xl px-4 py-6 before:absolute before:inset-0 before:bg-gradient-to-l before:opacity-50 w-[200px]"
   >
     <div class="flex flex-col items-center gap-4">
-      <img src="/images/scaledux-book.png" alt="" class="w-[120px] shrink-0" />
+      <img src="/images/scaledux-book.png" alt="{{$blog->title}}" class="w-[120px] shrink-0" />
       <div class="isolate z-10 w-full space-y-4 text-center">
         <h3 class="dh-3 text-white">{{$blog->popup->text1}}</h3>
         <p class="b1 text-white text-sm">

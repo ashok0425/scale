@@ -17,8 +17,9 @@ Route::post('/priority-access', [HomeController::class, 'storePriorityAccess']);
 Route::get('/about-us', [HomeController::class, 'pages']);
 Route::get('/term-condition', [HomeController::class, 'pages']);
 Route::get('/privacy-policy', [HomeController::class, 'pages']);
-Route::get('/download', [HomeController::class, 'download']);
-
+Route::get('attachment/{attachment_id}/{blog_id?}', [HomeController::class,'attachment'])->name('link.attachment');
+Route::post('attachment', [HomeController::class,'SaveAttachment'])->name('link.attachment.save');
+Route::get('attachment-download/{encoded_id}/{token}', [HomeController::class, 'downloadFile'])->name('attachment.download.file')->middleware('signed');
 
 
 
@@ -89,4 +90,3 @@ Route::get('storages', function () {
     return 'Storage link created';
 });
 
-Route::get('download/{attachment_id}/{blog_id?}', [\App\Http\Controllers\ManageAccessController::class,'users'])->name('link.attachment');
