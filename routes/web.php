@@ -17,6 +17,8 @@ Route::post('/priority-access', [HomeController::class, 'storePriorityAccess']);
 Route::get('/about-us', [HomeController::class, 'pages']);
 Route::get('/term-condition', [HomeController::class, 'pages']);
 Route::get('/privacy-policy', [HomeController::class, 'pages']);
+Route::get('/download', [HomeController::class, 'download']);
+
 
 
 

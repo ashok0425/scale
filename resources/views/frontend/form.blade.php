@@ -61,7 +61,7 @@
                 </span>
               </button>
               <span class="b4 !leading-[0]"
-                >Have Questions? Email us directly at founding@scaledux.com. We personally read
+                >Have Questions? Email us directly at {{cms()->email1}}. We personally read
                 every message.</span
               >
             </div>

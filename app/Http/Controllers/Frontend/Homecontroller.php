@@ -213,4 +213,9 @@ public function pages()
 }
 
 
+public function download()
+{
+     return view('frontend.download');
+}
+
 }
