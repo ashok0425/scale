@@ -14,6 +14,12 @@ Route::post('/subscribe', [HomeController::class, 'subscribe'])->name('subscribe
 Route::post('/waitlist', [HomeController::class, 'waitlist'])->name('waitlist.store');
 Route::get('/priority-access', [HomeController::class, 'priorityAccess'])->name('priority.access');
 Route::post('/priority-access', [HomeController::class, 'storePriorityAccess']);
+Route::get('/about-us', [HomeController::class, 'pages']);
+Route::get('/term-condition', [HomeController::class, 'pages']);
+Route::get('/privacy-policy', [HomeController::class, 'pages']);
+
+
+
 
 
 

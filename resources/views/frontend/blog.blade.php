@@ -134,7 +134,7 @@
           <div class="has-divide grid grid-cols-1 gap-x-8 gap-y-7 sm:gap-y-12 md:grid-cols-3">
             @foreach ($category->blogs()->where('status',1)->latest()->limit(2)->get() as $blog)
                  <div class="blog-card-wrapper">
-              <a href="/read-blog">
+              <a href="{{route('blog.detail',['slug'=>$featureBlog->slug])}}">
                 <div class="blog-card-body">
                   <div
                     class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
@@ -165,12 +165,13 @@
                   </p>
                 </div>
                 <div class="mx-auto mt-6 w-full">
-                  <from
+                  <from method="POST" action="{{route('waitlist.store')}}"
                     class="flex w-full flex-col flex-wrap items-center justify-center gap-3 sm:flex-row"
                   >
-                    <input class="w-full" type="text" required placeholder="Enter full name" />
-                    <input class="w-full" type="email" required placeholder="Enter your email" />
-                    <select class="w-full min-w-[250px]">
+                  @csrf
+                    <input class="w-full" type="text" required placeholder="Enter full name" name="full_name"/>
+                    <input class="w-full" type="email" required placeholder="Enter your email" name="email"/>
+                    <select class="w-full min-w-[250px]" required name="rol">
                       <option value="">Select your role</option>
                       <option value="founder">Founder/Aspiring Founder</option>
                       <option value="freelancer">Freelancer/Agency</option>
@@ -197,7 +198,7 @@
 
               @foreach ($category->blogs()->where('status',1)->latest()->skip(2)->limit(2)->get() as $blog)
                  <div class="blog-card-wrapper">
-              <a href="/read-blog">
+              <a href="{{route('blog.detail',['slug'=>$featureBlog->slug])}}">
                 <div class="blog-card-body">
                   <div
                     class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
@@ -231,7 +232,7 @@
           >
   @foreach ($category->blogs()->where('status',1)->latest()->limit(6)->get() as $blog)
                  <div class="blog-card-wrapper">
-              <a href="/read-blog">
+              <a href="{{route('blog.detail',['slug'=>$featureBlog->slug])}}">
                 <div class="blog-card-body">
                   <div
                     class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
