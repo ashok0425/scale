@@ -8,7 +8,10 @@ use App\Models\Category;
 use App\Models\Crm;
 use App\Models\Page;
 use App\Models\Subscriber;
+use App\Notifications\PreAccessNotification;
 use App\Notifications\SendAttachmentNotification;
+use App\Notifications\SubscriberNotification;
+use App\Notifications\WaitlistNotification;
 use DOMDocument;
 use DOMXPath;
 use Illuminate\Http\Request;
@@ -48,7 +51,7 @@ class HomeController extends Controller
     {
        $validated= $request->validate([
         'full_name' => 'required',
-        'email' => 'required|email|unique:subscribers,email',
+        'email' => 'required|email|unique:crms,email',
         'role' => 'required|in:founder,freelancer,investor,mentor',
         'phone' => 'required',
         'linkedin' => 'nullable',
@@ -70,8 +73,9 @@ class HomeController extends Controller
        $waitlist->page=$page;
        $waitlist->type=2;
        $waitlist->save();
+Notification::route('mail', $request->email)->notify(new PreAccessNotification());
 
-        return back()->with('message', 'Thank you for joining our waitlist.')->with('type', 'success');
+        return back()->with('message', 'Thank you for joining.')->with('type', 'success');
 
     } catch (\Exception $e) {
         // Log error if needed
@@ -175,7 +179,7 @@ public function subscribe(Request $request)
         Subscriber::updateOrCreate([
             'email' => $validate['email']
         ]);
-
+    Notification::route('mail', $request->email)->notify(new SubscriberNotification());
         return back()->with('message', 'Thank you for subscribing our newsletter.')->with('type', 'success');
 
     } catch (\Exception $e) {
@@ -188,7 +192,7 @@ public function waitlist(Request $request)
 {
    $validated= $request->validate([
         'full_name' => 'required',
-        'email' => 'required|email|unique:subscribers,email',
+        'email' => 'required|email|unique:crms,email',
         'role' => 'required|in:founder,freelancer,investor,mentor',
     ]);
     try {
@@ -201,7 +205,7 @@ public function waitlist(Request $request)
        $waitlist->page=$page;
        $waitlist->type=1;
        $waitlist->save();
-
+     Notification::route('mail', $request->email)->notify(new WaitlistNotification());
         return back()->with('message', 'Thank you for joining our waitlist.')->with('type', 'success');
 
     } catch (\Exception $e) {
