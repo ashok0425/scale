@@ -154,24 +154,24 @@
       <hr class="hr" />
       <div class="container flex items-center justify-between gap-4 py-6 max-sm:flex-col">
         <div class="flex gap-[9px]">
-          <a href="twitter.com" target="_blank" rel="noopener noreferrer">
+          <a href="{{cms()->twitter}}" target="_blank" rel="noopener noreferrer">
             <img src="{{ asset('frontend/images/twitter.svg') }}" alt="" class="size-6" />
           </a>
-          <a href="linkedin.com" target="_blank" rel="noopener noreferrer">
+          <a href="{{cms()->linkedin}}" target="_blank" rel="noopener noreferrer">
             <img src="{{ asset('frontend/images/linkedin.svg') }}" alt="" class="size-6" />
           </a>
-          <a href="instagram.com" target="_blank" rel="noopener noreferrer">
+          <a href="{{cms()->instagram}}" target="_blank" rel="noopener noreferrer">
             <img src="{{ asset('frontend/images/instagram.svg') }}" alt="" class="size-6" />
           </a>
-          <a href="facebook.com" target="_blank" rel="noopener noreferrer">
+          <a href="{{cms()->facebook}}" target="_blank" rel="noopener noreferrer">
             <img src="{{ asset('frontend/images/facebook.svg') }}" alt="" class="size-6" />
           </a>
-          <a href="reddit.com" target="_blank" rel="noopener noreferrer">
+          {{-- <a href="reddit.com" target="_blank" rel="noopener noreferrer">
             <img src="{{ asset('frontend/images/reddit.svg') }}" alt="" class="size-6" />
           </a>
           <a href="youtube.com" target="_blank" rel="noopener noreferrer">
             <img src="{{ asset('frontend/images/youtube.svg') }}" alt="" class="size-6" />
-          </a>
+          </a> --}}
         </div>
         <div class="b2 flex items-center gap-1 max-sm:flex-wrap max-sm:justify-center">
           <span>&copy; {{date('Y')}} ScaleDux</span>

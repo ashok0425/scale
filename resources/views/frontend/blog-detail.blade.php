@@ -22,10 +22,32 @@
             <p class="b3 text-light">Co-founder, ScaleDux</p>
           </div>
         </div>
-        <button class="flex cursor-pointer items-center gap-3 duration-200 hover:opacity-80">
+        <button id="shareBtn" class="flex cursor-pointer items-center gap-3 duration-200 hover:opacity-80">
           <img src="{{ asset('frontend/images/share.svg') }}" alt="" class="size-6" />
           <span class="b3 text-light text-sm">Save</span>
         </button>
+
+        <div id="shareOptions" class="hidden absolute mt-2 right-0 bg-gray-800 rounded-lg shadow-lg p-3 space-y-2 z-50 w-40">
+  <button id="closeShare" aria-label="Close share options" class="absolute top-1 right-1 text-white hover:text-red-400">
+    &times;
+  </button>
+  <a href="#" class="flex items-center gap-2 text-white hover:text-blue-500" target="_blank" rel="noopener" id="facebookShare">
+    <img src="{{ asset('frontend/images/facebook.svg') }}" alt="Facebook" class="w-5 h-5" /> Facebook
+  </a>
+  <a href="#" class="flex items-center gap-2 text-white hover:text-blue-400" target="_blank" rel="noopener" id="twitterShare">
+    <img src="{{ asset('frontend/images/twitter.svg') }}" alt="Twitter" class="w-5 h-5" /> Twitter
+  </a>
+  <a href="#" class="flex items-center gap-2 text-white hover:text-blue-700" target="_blank" rel="noopener" id="linkedinShare">
+    <img src="{{ asset('frontend/images/linkedin.svg') }}" alt="LinkedIn" class="w-5 h-5" /> LinkedIn
+  </a>
+  <a href="#" class="flex items-center gap-2 text-white hover:text-green-500" target="_blank" rel="noopener" id="whatsappShare">
+    <img src="{{ asset('frontend/images/whatsapp.svg') }}" alt="WhatsApp" class="w-5 h-5" /> WhatsApp
+  </a>
+  <a href="#" class="flex items-center gap-2 text-white hover:text-pink-500" target="_blank" rel="noopener" id="instagramShare">
+    <img src="{{ asset('frontend/images/instagram.svg') }}" alt="Instagram" class="w-5 h-5" /> Instagram
+  </a>
+</div>
+
       </div>
     </div>
 
@@ -149,6 +171,17 @@ function renderToc($items, $level = 0) {
 
 @push('style')
 <style>
+    #closeShare {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  font-size: 1.25rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
     .popup{
         position: fixed;
         bottom: 0px;
@@ -188,9 +221,51 @@ function renderToc($items, $level = 0) {
 
 @push('script')
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const shareBtn = document.getElementById('shareBtn');
+  const shareOptions = document.getElementById('shareOptions');
+  const closeBtn = document.getElementById('closeShare');
+
+  // Toggle share options visibility
+  shareBtn.addEventListener('click', () => {
+    shareOptions.classList.toggle('hidden');
+  });
+
+  // Close share options when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!shareBtn.contains(e.target) && !shareOptions.contains(e.target)) {
+      shareOptions.classList.add('hidden');
+    }
+  });
+
+  // Close share options when clicking close button
+  closeBtn.addEventListener('click', () => {
+    shareOptions.classList.add('hidden');
+  });
+
+ // Get current page URL and title
+  const pageUrl = encodeURIComponent(window.location.href);
+  const pageTitle = encodeURIComponent(document.title);
+
+  // Set share URLs
+  document.getElementById('facebookShare').href =
+    `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+
+  document.getElementById('twitterShare').href =
+    `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+
+  document.getElementById('linkedinShare').href =
+    `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}&title=${pageTitle}`;
+
+  document.getElementById('whatsappShare').href =
+    `https://api.whatsapp.com/send?text=${pageTitle}%20${pageUrl}`;
+
+  // Instagram does not support direct URL sharing, so you can link to your Instagram page or hide this option
+  document.getElementById('instagramShare').href = 'https://www.instagram.com/yourprofile/';
+});
 
 setTimeout(() => {
-    document.querySelector('.popup').style.display = 'block';
+    document.querySelector('.popup').style='display:block'
 }, 5000);
 
 document.addEventListener('DOMContentLoaded', function () {
