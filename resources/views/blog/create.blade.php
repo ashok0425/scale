@@ -174,25 +174,25 @@
             />
         </div>
 
-        <div class="mb-3 col-md-6">
+        {{-- <div class="mb-3 col-md-6">
             <label class="form-label">Popup Image</label>
             <input
                 type="file"
                 name="pop_thumbnail"
                 class="form-control"
             />
-        </div>
+        </div> --}}
 
         <div class="mb-3 col-md-6">
-            <label class="form-label">Popup Text 1</label>
+            <label class="form-label">Popup Title</label>
             <input type="text" name="text1" class="form-control" value="{{ old('text1') }}" placeholder="Popup Text 1">
         </div>
 
         <div class="mb-3 col-md-6">
-            <label class="form-label">Popup Text 2</label>
+            <label class="form-label">Popup Description</label>
             <input type="text" name="text2" class="form-control" value="{{ old('text2') }}" placeholder="Popup Text 2">
         </div>
-
+{{--
         <div class="mb-3 col-md-6">
             <label class="form-label">Popup Text 3</label>
             <input type="text" name="text3" class="form-control" value="{{ old('text3') }}" placeholder="Popup Text 3">
@@ -201,7 +201,7 @@
         <div class="mb-3 col-md-6">
             <label class="form-label">Popup Text 4</label>
             <input type="text" name="text4" class="form-control" value="{{ old('text4') }}" placeholder="Popup Text 4">
-        </div>
+        </div> --}}
     </div>
 </div>
 

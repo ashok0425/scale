@@ -122,11 +122,40 @@ function renderToc($items, $level = 0) {
       </div>
     </div>
   </div>
+
+  @if ($blog->popup)
+
+ <div class="popup  flex justify-center" style="display: none">
+  <div
+    class="gradient-border before:from-brand-purple/40 before:to-brand-blue/40 relative isolate overflow-hidden rounded-3xl px-4 py-6 before:absolute before:inset-0 before:bg-gradient-to-l before:opacity-50 w-[200px]"
+  >
+    <div class="flex flex-col items-center gap-4">
+      <img src="/images/scaledux-book.png" alt="" class="w-[120px] shrink-0" />
+      <div class="isolate z-10 w-full space-y-4 text-center">
+        <h3 class="dh-3 text-white">{{$blog->popup->text1}}</h3>
+        <p class="b1 text-white text-sm">
+          {{$blog->popup->text2}}
+        </p>
+        <a href="{{$blog->popup->button_link}}" class="btn-orange w-full">{{$blog->popup->button_text}}</a>
+      </div>
+    </div>
+  </div>
+</div>
+  @endif
+
+
 </main>
 @endsection
 
 @push('style')
 <style>
+    .popup{
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+        z-index: 99999999;
+        width: 300px;
+    }
   html, body {
     scroll-behavior: smooth;
   }
@@ -159,6 +188,11 @@ function renderToc($items, $level = 0) {
 
 @push('script')
 <script>
+
+setTimeout(() => {
+    document.querySelector('.popup').style.display = 'block';
+}, 5000);
+
 document.addEventListener('DOMContentLoaded', function () {
     const tocWrapper = document.querySelector('.toc-wrapper');
     const activeIndicator = document.getElementById('active-indicator');

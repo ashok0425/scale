@@ -189,7 +189,7 @@
             />
         </div>
 
-        <div class="mb-3 col-md-6">
+        {{-- <div class="mb-3 col-md-6">
             <label class="form-label">Popup Image</label>
             <input
                 type="file"
@@ -199,18 +199,18 @@
             @if (!empty($popup?->image))
                 <small class="text-muted">Current: <a href="{{getImage($popup->image)}}" target="_blank">View Image</a></small>
             @endif
-        </div>
+        </div> --}}
 
         <div class="mb-3 col-md-6">
-            <label class="form-label">Popup Text 1</label>
+            <label class="form-label">Popup Title</label>
             <input type="text" name="text1" class="form-control" value="{{ old('text1', $popup->text1 ?? '') }}">
         </div>
 
         <div class="mb-3 col-md-6">
-            <label class="form-label">Popup Text 2</label>
+            <label class="form-label">Popup Description</label>
             <input type="text" name="text2" class="form-control" value="{{ old('text2', $popup->text2 ?? '') }}">
         </div>
-
+{{--
         <div class="mb-3 col-md-6">
             <label class="form-label">Popup Text 3</label>
             <input type="text" name="text3" class="form-control" value="{{ old('text3', $popup->text3 ?? '') }}">
@@ -219,7 +219,7 @@
         <div class="mb-3 col-md-6">
             <label class="form-label">Popup Text 4</label>
             <input type="text" name="text4" class="form-control" value="{{ old('text4', $popup->text4 ?? '') }}">
-        </div>
+        </div> --}}
     </div>
 </div>
 
