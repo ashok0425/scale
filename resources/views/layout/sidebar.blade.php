@@ -41,28 +41,20 @@
            </a>
        </li>
 
-       {{-- @can('user:view')
+       @can('can:do anything')
        <li class="sidebar-item">
            <a class="sidebar-link {{Request::is('manage-access','manage-access/*')?'text-light':' '}}" href="{{ route('access.index') }}">
                <i class="fas fa-users"></i>
                <span class="align-middle">Employee</span>
            </a>
        </li>
-       @endcan --}}
-
-       @can('do:anthing')
-       <li class="sidebar-item">
-           <a class="sidebar-link {{Request::is('users','users/*')?'text-light':' '}}" href="{{ route('users') }}">
-               <i class="fas fa-users"></i>
-               <span class="align-middle">Users</span>
-           </a>
-       </li>
        @endcan
+
 
         <ul class="sidebar-nav">
             <li class="sidebar-header">Manage Post</li>
 
-          @can('do:anything')
+          @can('view:category')
           <li class="sidebar-item">
             <a class="sidebar-link {{Request::is('categories','categories/*')?'text-light':' '}}" href="{{ route('categories.index') }}">
                 <i class="fas fa-shopping-cart"></i>
@@ -99,6 +91,10 @@
             </li>
             @endcan
 
+
+       @can('user:view')
+
+
              <li class="sidebar-header">CRM</li>
 
             <li class="sidebar-item">
@@ -128,7 +124,10 @@
                     <span class="align-middle">Subscriber</span>
                 </a>
             </li>
+
+       @endcan
         </ul>
     </div>
+
 </nav>
 

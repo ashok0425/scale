@@ -18,11 +18,6 @@ public function scopeAccessibleBy($query, $user)
     if ($user->can('do:anything')) {
         return $query;
     }
-
-    if ($user->role == 2) {
-        return $query;
-    }
-
     return $query->where('user_id', $user->id);
 }
 
@@ -53,5 +48,8 @@ public function scopeAccessibleBy($query, $user)
         return $this->belongsTo(Category::class);
     }
 
+     public function user(){
+        return $this->belongsTo(User::class);
+    }
 
 }

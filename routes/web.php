@@ -9,6 +9,8 @@ Route::get('/freelancer', [HomeController::class, 'freelancer'])->name('freelanc
 Route::get('/investors', [HomeController::class, 'investor'])->name('investor');
 Route::get('/founders', [HomeController::class, 'founder'])->name('founder');
 Route::get('/blogs', [HomeController::class, 'blog'])->name('blog');
+Route::get('/categort/{slug}', [HomeController::class, 'categoryBlog'])->name('category');
+
 Route::get('/blog/{slug}', [HomeController::class, 'blogDetail'])->name('blog.detail');
 Route::post('/subscribe', [HomeController::class, 'subscribe'])->name('subscribe.store');
 Route::post('/waitlist', [HomeController::class, 'waitlist'])->name('waitlist.store');
@@ -60,7 +62,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('pages', \App\Http\Controllers\PageController::class)->middleware('can:do anything');
     Route::resource('cms', \App\Http\Controllers\CmsController::class)->middleware('can:do anything');
     Route::get('users/index', [\App\Http\Controllers\ManageAccessController::class,'users'])->middleware('can:do anything')->name('users');
-    Route::get('crm', [\App\Http\Controllers\ManageAccessController::class,'crm'])->name('crm');
+    Route::get('crm', [\App\Http\Controllers\ManageAccessController::class,'crm'])->name('crm')->can('view:user');
     Route::get('subscribe', [\App\Http\Controllers\ManageAccessController::class,'subscriber'])->name('subscriber');
 
 

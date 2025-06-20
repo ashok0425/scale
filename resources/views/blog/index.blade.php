@@ -76,13 +76,13 @@
                                     >
                                         <i class="far fa-edit"></i>
                                     </a>
-                                    <a
+                                    {{-- <a
                                     href="{{ route('blogs.show', $post) }}"
                                     class="btn btn-primary"
                                     target="_blank"
                                 >
                                     <i class="far fa-eye"></i>
-                                </a>
+                                </a> --}}
                                   @can('post:delete')
   <a
                                     href="{{ route('blogs.destroy',$post) }}"

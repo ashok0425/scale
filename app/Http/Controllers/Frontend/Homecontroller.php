@@ -82,16 +82,43 @@ Notification::route('mail', $request->email)->notify(new PreAccessNotification()
         return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
     }
     }
+public function blog(Request $request)
+{
+    $categories = Category::whereHas('blogs')
+        ->where('status', 1)
+        ->latest()
+        ->get();
 
-       public function blog(Request $request)
-    {
-        $categories=Category::whereHas('blogs')->where('status',1)->latest()->get();
-        $blogs=Blog::where('status',1)->latest()->get();
-        $featureBlog=Blog::with('category')->where('status',1)->where('feature_post',1)->latest()->first();
-        $featuresPost=Blog::with('category')->where('status',1)->where('feature_post',1)->latest()->skip(1)->limit(3)->get();
-        $features=Blog::with('category')->where('status',1)->where('feature_post',1)->latest()->skip(4)->limit(4)->get();
-        return view('frontend.blog',compact('categories','blogs','featureBlog','featuresPost','features'));
-    }
+    $sort = $request->get('sort', 'latest');
+    $sortDirection = $sort === 'oldest' ? 'asc' : 'desc';
+
+    // All featured blogs sorted
+    $allFeaturedBlogs = Blog::with('category')
+        ->where('status', 1)
+        ->where('feature_post', 1)
+        ->orderBy('created_at', $sortDirection)
+        ->get();
+
+    // Slice featured blogs based on position
+    $featureBlog = $allFeaturedBlogs->first();
+    $featuresPost = $allFeaturedBlogs->slice(1, 3);
+    $features = $allFeaturedBlogs->slice(4, 4);
+
+    // All blogs sorted
+    $blogs = Blog::with('category')
+        ->where('status', 1)
+        ->orderBy('created_at', $sortDirection)
+        ->paginate(6);
+
+    return view('frontend.blog', compact(
+        'categories',
+        'blogs',
+        'featureBlog',
+        'featuresPost',
+        'features',
+        'sort'
+    ));
+}
 
 public function blogDetail($slug)
 {
@@ -105,6 +132,16 @@ public function blogDetail($slug)
     return view('frontend.blog-detail', compact('blog', 'blogs', 'toc'));
 }
 
+
+public function categoryBlog($slug)
+{
+     $categories = Category::whereHas('blogs')
+        ->where('status', 1)
+        ->latest()
+        ->get();
+   $category=Category::where('slug',$slug)->firstOrFail();
+    return view('frontend.category-blog', compact('category','categories'));
+}
 function extractHeadings($html)
 {
     $dom = new \DOMDocument();

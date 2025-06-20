@@ -73,10 +73,10 @@ class ManageAccessController extends Controller
             [
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email',
-                'phone' => 'required|integer|unique:users,phone',
+                // 'phone' => 'required|integer|unique:users,phone',
                 'password' => 'required',
                 'permissions' => 'nullable|array',
-                'role' => 'required|integer',
+                // 'role' => 'required|integer',
             ],
         );
 
@@ -90,11 +90,11 @@ class ManageAccessController extends Controller
             'password' => bcrypt($request->password),
             'phone' => $request->phone,
             'status' => $request->status,
-            'role' => $request->role ?? 4,
+            // 'role' => $request->role ?? 4,
         ]);
 
 
-        $user->syncPermissions($request->permissions);
+        // $user->syncPermissions($request->permissions);
 
         $notification = [
             'alert-type' => 'success',
@@ -146,9 +146,9 @@ class ManageAccessController extends Controller
             [
                 'name' => 'required',
                 'email' => 'required|email',
-                'phone' => 'required|integer',
+                // 'phone' => 'required|integer',
                 'permissions' => 'nullable|array',
-                'role' => 'required|integer',
+                // 'role' => 'required|integer',
             ],
         );
 
@@ -163,7 +163,7 @@ class ManageAccessController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'status' => $request->status,
-            'role' => $request->role ?? 4,
+            // 'role' => $request->role ?? 4,
         ]);
 
         if ($request->password) {
@@ -171,7 +171,7 @@ class ManageAccessController extends Controller
             $user->save();
         }
 
-        $user->syncPermissions($request->permissions);
+        // $user->syncPermissions($request->permissions);
 
         $notification = [
             'alert-type' => 'success',

@@ -46,9 +46,9 @@
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="form-group">
-                                    <label class="col-form-label">Enter Phone <span class="text-danger">*</span></label>
+                                    <label class="col-form-label">Enter Position <span class="text-danger">*</span></label>
                                     <div class="">
-                                        <input type="number" value="{{ old('phone', $user->phone) }}" class="form-control"
+                                        <input type="text" value="{{ old('phone', $user->phone) }}" class="form-control"
                                             name="phone">
 
                                         @error('phone')
@@ -77,28 +77,12 @@
                                         <option value="0" {{ $user->status == 0 ? 'selected' : '' }}>Draft</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-3 mb-3 mb-3">
-                                    <label><input {{ $user->role == 1 ? 'checked' : '' }} name="role" type="radio"
-                                            style="transform: scale(2)" value="1"><span class="mx-3">Super
-                                            Admin</span></label>
-                                </div>
 
-                                <div class="form-group col-md-3 mb-3 mb-3">
-                                    <label><input {{ $user->role == 2 ? 'checked' : '' }} name="role" type="radio"
-                                            style="transform: scale(2)" value="2"><span class="mx-3">Admin</span></label>
-                                </div>
-
-                              <div class="form-group col-md-3 mb-3 mb-3">
-                        <label><input {{ $user->role == 3 ? 'checked' : '' }} name="role" type="radio" style="transform: scale(2)" value="3"><span class="mx-3">Ward Admin</span></label>
-                    </div>
-                      <div class="form-group col-md-3 mb-3 mb-3">
-                        <label><input {{ $user->role == 4 ? 'checked' : '' }} name="role" type="radio" style="transform: scale(2)" value="4"><span class="mx-3">Ward User</span></label>
-                    </div>
                             </div>
                         @endcan
 
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="col-form-label">
                                 <h3>Permissions <span class="text-danger">*</span></h3>
                             </label>
@@ -125,7 +109,7 @@
                                 </div>
                             @endforeach
 
-                        </div>
+                        </div> --}}
                         <div>
                             <button class="btn btn-primary mt-3">save</button>
                         </div>

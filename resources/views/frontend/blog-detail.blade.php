@@ -18,8 +18,8 @@
             <img src="{{ asset('frontend/images/author.png') }}" alt="{{$blog->title}}" class="size-[52px]" />
           </div>
           <div class="space-y-1">
-            <p class="b2 text-light font-semibold">By John Doe</p>
-            <p class="b3 text-light">Co-founder, ScaleDux</p>
+            <p class="b2 text-light font-semibold">By {{$blog->user->name}}</p>
+            <p class="b3 text-light">{{$blog->user->phone}}</p>
           </div>
         </div>
         <button id="shareBtn" class="flex cursor-pointer items-center gap-3 duration-200 hover:opacity-80">

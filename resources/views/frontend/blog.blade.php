@@ -3,18 +3,18 @@
      <main class="pt-8">
       <div class="container">
         <div class="flex max-w-full items-center justify-between gap-6 overflow-auto">
-          <div class="flex items-center gap-4">
-             <a href="">
+            <div class="flex items-center gap-4">
+             <a href="{{route('blog')}}">
              <span
-              class="bg-brand-purple font-inter cursor-pointer rounded-4xl px-3 py-2 text-xs whitespace-nowrap text-white"
+              class=" {{request()->path()=='blogs'?'bg-brand-purple':'gradient-border '}} font-inter cursor-pointer rounded-4xl px-3 py-2 text-xs whitespace-nowrap text-white"
             >
             View All
             </span>
            </a>
           @foreach ($categories as $category)
-               <a href="">
+               <a href="{{route('category',['slug'=>$category->slug])}}">
              <span
-              class="bg-brand-purple font-inter cursor-pointer rounded-4xl px-3 py-2 text-xs whitespace-nowrap text-white"
+              class="{{request()->slug==$category->slug?'bg-brand-purple':'gradient-border '}} font-inter cursor-pointer rounded-4xl px-3 py-2 text-xs whitespace-nowrap text-white"
             >
             {{$category->name}}
             </span>
@@ -23,13 +23,19 @@
 
           </div>
           <div class="gradient-border overflow-clip rounded-md">
-            <select
-              class="font-inter cursor-pointer border-none py-2 !pr-10 pl-3 text-xs whitespace-nowrap"
-            >
-              <option value="">Sort By</option>
-              <option value="latest">Latest</option>
-              <option value="oldest">Oldest</option>
-            </select>
+           <form id="sortForm" method="GET" action="{{ url()->current() }}">
+  <div class="gradient-border overflow-clip rounded-md w-max">
+    <select
+      name="sort"
+      class="font-inter cursor-pointer border-none py-2 !pr-10 pl-3 text-xs whitespace-nowrap bg-transparent focus:outline-none"
+      onchange="document.getElementById('sortForm').submit();"
+    >
+      <option value="">Sort By</option>
+      <option value="latest" {{ request('sort') === 'latest' ? 'selected' : '' }}>Latest</option>
+      <option value="oldest" {{ request('sort') === 'oldest' ? 'selected' : '' }}>Oldest</option>
+    </select>
+  </div>
+</form>
           </div>
         </div>
       </div>
@@ -134,7 +140,7 @@
           <div class="has-divide grid grid-cols-1 gap-x-8 gap-y-7 sm:gap-y-12 md:grid-cols-3">
             @foreach ($category->blogs()->where('status',1)->latest()->limit(2)->get() as $blog)
                  <div class="blog-card-wrapper">
-              <a href="{{route('blog.detail',['slug'=>$featureBlog->slug])}}">
+              <a href="{{route('blog.detail',['slug'=>$blog->slug])}}">
                 <div class="blog-card-body">
                   <div
                     class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
@@ -165,13 +171,13 @@
                   </p>
                 </div>
                 <div class="mx-auto mt-6 w-full">
-                  <from method="POST" action="{{route('waitlist.store')}}"
+                  <form method="POST" action="{{route('waitlist.store')}}"
                     class="flex w-full flex-col flex-wrap items-center justify-center gap-3 sm:flex-row"
                   >
                   @csrf
                     <input class="w-full" type="text" required placeholder="Enter full name" name="full_name"/>
                     <input class="w-full" type="email" required placeholder="Enter your email" name="email"/>
-                    <select class="w-full min-w-[250px]" required name="rol">
+                    <select class="w-full min-w-[250px]" required name="role">
                       <option value="">Select your role</option>
                       <option value="founder">Founder/Aspiring Founder</option>
                       <option value="freelancer">Freelancer/Agency</option>
@@ -191,7 +197,7 @@
                         </span>
                       </span>
                     </button>
-                  </from>
+                  </form>
                 </div>
               </div>
             </div>
