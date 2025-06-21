@@ -103,7 +103,7 @@
                 @foreach ($pages as $page)
                      <li>
                 <a
-                  href="{{$page->slug}}"
+                  href="{{url($page->slug)}}"
                   class="text-body-2 hover:text-text-light text-base leading-[24px] duration-200"
                   >{{Str::title($page->name)}}</a
                 >

@@ -69,14 +69,14 @@
                             value="{{ old('author_position') }}" required />
                     </div>
 
-                     <div class="mb-3 col-md-4">
+                    <div class="mb-3 col-md-4">
                         <label class="form-label">User Photo </label>
                         <div class="file-upload-wrapper" data-text="Select your file!">
                             <input name="cover" type="file" class="file-upload-field" value="" />
                         </div>
                     </div>
 
-                     <div class="mb-3 col-md-12">
+                    <div class="mb-3 col-md-12">
                         <label class="form-label">Slug</label>
                         <input type="text" name="slug" class="form-control" placeholder="Enter Slug"
                             value="{{ old('slug') }}" required />
@@ -85,16 +85,15 @@
 
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Short Description</label>
-                        <textarea type="text" name="short_description" class="form-control" placeholder="Post Detail"
-                            style="padding: 0;margin:0" required>
-                              {{ old('short_description') }}
-                          </textarea>
-                    </div>
+                        <textarea name="short_description" id="short_description" class="form-control" placeholder="Post Detail" required
+                            rows="2" maxlength="160" oninput="updateCharCount(this, 160)">{{ old('short_description') }}</textarea>
+                        <small id="char-count-msg" class="text-danger"></small>
 
+                    </div>
                     <div class="mb-3 col-md-12  px-5">
                         <label class="form-label">Long Description</label>
-                        <textarea type="text" name="long_description" id="summernote" class="form-control"
-                            placeholder="Post Description" required>
+                        <textarea type="text" name="long_description" id="summernote" class="form-control" placeholder="Post Description"
+                            required>
     {{ old('long_description') }}
                           </textarea>
                     </div>
@@ -172,5 +171,13 @@
             checkbox.addEventListener('change', togglePopupFields);
             togglePopupFields(); // initialize on load
         });
+    </script>
+
+    <script>
+        function updateCharCount(el, max) {
+            const len = el.value.length;
+            const msg = document.getElementById('char-count-msg');
+            msg.textContent = `${len}/${max} characters`;
+        }
     </script>
 @endpush

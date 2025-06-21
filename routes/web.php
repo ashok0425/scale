@@ -18,7 +18,7 @@ Route::post('/waitlist', [HomeController::class, 'waitlist'])->name('waitlist.st
 Route::get('/priority-access', [HomeController::class, 'priorityAccess'])->name('priority.access');
 Route::post('/priority-access', [HomeController::class, 'storePriorityAccess']);
 Route::get('/about-us', [HomeController::class, 'pages']);
-Route::get('/term-condition', [HomeController::class, 'pages']);
+Route::get('/terms-of-services', [HomeController::class, 'pages']);
 Route::get('/privacy-policy', [HomeController::class, 'pages']);
 Route::get('attachment/{attachment_id}/{blog_id?}', [HomeController::class,'attachment'])->name('link.attachment');
 Route::post('attachment', [HomeController::class,'SaveAttachment'])->name('link.attachment.save');

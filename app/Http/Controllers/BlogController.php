@@ -58,6 +58,7 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required',
             'long_description' => 'required',
+            'short_description' => 'required|max:160',
             'audio' => 'nullable|mimes:mp3,wav,ogg|max:10240', // optional but type-checked
 
         ]);
@@ -126,6 +127,7 @@ class BlogController extends Controller
         $request->validate([
             'title' => 'required',
             'long_description' => 'required',
+           'short_description' => 'required|max:160',
         ]);
 
         $thumbnail = $request->file('thumbnail')?->store('uploads', 'public') ?? $post->thumbnail;
