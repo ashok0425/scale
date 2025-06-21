@@ -42,8 +42,11 @@ class SeoController extends Controller
             'meta_description' => 'nullable',
             'meta_keywords' => 'nullable|max:255',
         ],$messages);
+        $thumbnail = $request->file('file')?->store('uploads/seo', 'public') ?? null;
+         $request['thumbnail']=$thumbnail;
 
         Seo::create($request->all());
+
 
         return redirect()->route('seos.index')
                          ->with('success', 'SEO Meta Tag created successfully.');
@@ -84,6 +87,10 @@ class SeoController extends Controller
             'meta_keywords' => 'nullable|max:255',
         ],$messages);
 
+          $thumbnail = $request->file('file')?->store('uploads/seo', 'public') ?? null;
+          if ($thumbnail) {
+         $request['thumbnail']=$thumbnail;
+          }
         $Seo->update($request->all());
 
         return redirect()->route('seos.index')

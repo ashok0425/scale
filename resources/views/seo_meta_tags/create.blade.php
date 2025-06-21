@@ -7,7 +7,7 @@
                 <h5 class="card-title text-white mb-0">Add SEO Record</h5>
             </div>
 
-            <form action="{{ route('seos.store') }}" method="POST">
+            <form action="{{ route('seos.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
@@ -28,6 +28,18 @@
                     <div class="form-group">
                         <label for="keyword">Meta Keywords</label>
                         <input type="text" name="meta_keywords" id="keyword" class="form-control">
+                    </div>
+
+                 <div class="mb-3 col-md-4">
+                        <label class="form-label">Thumbnail</label>
+                        <div class="file-upload-wrapper" data-text="Select your file!">
+                            <input
+                                name="file"
+                                type="file"
+                                class="file-upload-field"
+                                value=""
+                            />
+                        </div>
                     </div>
                 </div>
 

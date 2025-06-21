@@ -10,6 +10,6 @@ class Seo extends Model
     use HasFactory;
 
   protected  $fillable=[
-        'page_url','meta_title','meta_keywords','meta_description'
+        'page_url','meta_title','meta_keywords','meta_description','thumbnail'
     ];
 }

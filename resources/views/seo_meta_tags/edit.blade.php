@@ -7,7 +7,7 @@
                 <h5 class="card-title text-white mb-0">Edit SEO Record</h5>
             </div>
 
-            <form action="{{ route('seos.update', $seo->id) }}" method="POST">
+            <form action="{{ route('seos.update', $seo->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="card-body">
@@ -28,7 +28,20 @@
 
                     <div class="form-group">
                         <label for="keyword">Meta Keywords</label>
-                        <input type="text" name="meta_keyword" id="keyword" value="{{ old('meta_keyword', $seo->meta_keyword) }}" class="form-control">
+                        <input type="text" name="meta_keyword" id="keyword" value="{{ old('meta_keyword', $seo->meta_keywords) }}" class="form-control">
+                    </div>
+
+                 <div class="mb-3 col-md-12">
+                        <label class="form-label">Thumbnail</label>
+                        <div class="file-upload-wrapper" data-text="Select your file!">
+                            <input
+                                name="file"
+                                type="file"
+                                class="file-upload-field"
+                                value=""
+                            />
+                        </div>
+                        <img src="{{getImage($seo->thumbnail)}}" alt="" width="100">
                     </div>
                 </div>
 
