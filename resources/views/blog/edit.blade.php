@@ -53,11 +53,11 @@
                             value="{{ old('thumbnail_alt',$post->thumbnail_alt) }}" required />
                     </div>
 
-                       <div class="mb-3 col-md-4">
+                       {{-- <div class="mb-3 col-md-4">
                         <label class="form-label">Cover Alt</label>
                         <input type="text" name="cover_alt" class="form-control" placeholder="Alt"
                             value="{{ old('cover_alt',$post->cover_alt) }}" required />
-                    </div>
+                    </div> --}}
 
 
                     <div class="mb-3 col-md-4">
