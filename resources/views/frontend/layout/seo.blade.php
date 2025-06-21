@@ -1,8 +1,6 @@
 @php
-if (!isset($seo)) {
  $pageUrl = request()->path();
     $seo = \App\Models\Seo::where('page_url', $pageUrl)->first();
-}
 
 @endphp
 
