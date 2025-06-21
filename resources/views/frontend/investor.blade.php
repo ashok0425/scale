@@ -403,50 +403,130 @@
               </p>
             </div>
           </div>
-          <div class="container-sm mt-20">
-            <div class="accordion-wrapper">
-              <div class="accordion group accordion-open cursor-pointer">
-                <div class="accordion-trigger">
-                  <h5 class="accordion-title">Discover and Learn</h5>
-                  <img src="{{ asset('frontend/images/plus.svg') }}" alt="" class="icon" />
-                </div>
-                <p class="accordion-content">
-                  Access curated resources, templates, and learning materials tailored to your
-                  industry and stage. Build your foundation with confidence.
-                </p>
-              </div>
-              <div class="accordion group cursor-pointer">
-                <div class="accordion-trigger">
-                  <h5 class="accordion-title">Discover and Learn</h5>
-                  <img src="{{ asset('frontend/images/plus.svg') }}" alt="" class="icon" />
-                </div>
-                <p class="accordion-content">
-                  Access curated resources, templates, and learning materials tailored to your
-                  industry and stage. Build your foundation with confidence.
-                </p>
-              </div>
-              <div class="accordion group cursor-pointer">
-                <div class="accordion-trigger">
-                  <h5 class="accordion-title">Discover and Learn</h5>
-                  <img src="{{ asset('frontend/images/plus.svg') }}" alt="" class="icon" />
-                </div>
-                <p class="accordion-content">
-                  Access curated resources, templates, and learning materials tailored to your
-                  industry and stage. Build your foundation with confidence.
-                </p>
-              </div>
-              <div class="accordion group cursor-pointer">
-                <div class="accordion-trigger">
-                  <h5 class="accordion-title">Discover and Learn</h5>
-                  <img src="{{ asset('frontend/images/plus.svg') }}" alt="" class="icon" />
-                </div>
-                <p class="accordion-content">
-                  Access curated resources, templates, and learning materials tailored to your
-                  industry and stage. Build your foundation with confidence.
-                </p>
-              </div>
-            </div>
-          </div>
+       <div class="container-sm mt-20">
+  <div class="accordion-wrapper">
+
+    <div class="accordion group cursor-pointer">
+      <div class="accordion-trigger">
+        <h5 class="accordion-title">Who qualifies as an Enabler on ScaleDux?</h5>
+        <img src="{{ asset('frontend/images/plus.svg') }}" alt="Toggle Icon" class="icon" />
+      </div>
+      <p class="accordion-content">
+        ScaleDux is built for people who move founders forward — with capital, guidance, or tools that matter. If you're an investor who backs bold ideas with more than money — someone who values alignment, progress, and potential — this platform is for you.<br><br>
+        If you're a mentor who shares real-world insights, offers thoughtful direction, and genuinely wants to see early-stage teams succeed — you belong here too.<br><br>
+        We also welcome SaaS providers, operators, advisors, and domain experts who bring structured value that helps startups grow smarter and faster.<br><br>
+        But let’s be clear — this isn’t a platform for casual browsers or cold outreach hunters. Everyone here is verified. Every connection is intentional.<br><br>
+        If you show up with substance and a mindset to contribute, ScaleDux is where you'll find a community that respects your time, your energy, and your expertise.
+      </p>
+    </div>
+
+    <div class="accordion group cursor-pointer">
+      <div class="accordion-trigger">
+        <h5 class="accordion-title">Can I offer mentorship, invest, or both?</h5>
+        <img src="{{ asset('frontend/images/plus.svg') }}" alt="Toggle Icon" class="icon" />
+      </div>
+      <p class="accordion-content">
+        Absolutely — many of our enablers wear more than one hat, and ScaleDux is built to support that depth.<br><br>
+        Right now, each account is set up for one role at a time — either mentor or investor — so we can keep your experience focused, your recommendations accurate, and your connections deeply relevant.<br><br>
+        If you'd like to contribute in both capacities, you’re more than welcome to create a second account using a different email. It’s quick, and it allows us to tailor each journey without overlap or noise.<br><br>
+        We're already working on smarter ways to unify multi-role journeys — but until then, this setup ensures you stay intentional, visible, and high-trust in whichever path you choose first.<br><br>
+        Your expertise is welcome in every form — we just want to deliver the experience you (and founders) truly deserve.
+      </p>
+    </div>
+
+    <div class="accordion group cursor-pointer">
+      <div class="accordion-trigger">
+        <h5 class="accordion-title">How are startups verified before I engage with them (an investor)?</h5>
+        <img src="{{ asset('frontend/images/plus.svg') }}" alt="Toggle Icon" class="icon" />
+      </div>
+      <p class="accordion-content">
+        Every startup on ScaleDux goes through a multi-layered verification process — because we know your time and trust aren't things to gamble with.<br><br>
+        Before any founder is introduced to enablers like you, we verify:<br>
+        • Their identity and business legitimacy<br>
+        • The clarity of their startup intent<br>
+        • Their readiness level — from idea stage to post-MVP<br>
+        • And most importantly, their intent to build, not just browse<br><br>
+        We don’t just check documents. We review context — their ask, their story, and their alignment with real startup milestones.<br><br>
+        This isn’t an open gate. If a founder isn’t serious, if they haven’t taken the basic steps toward execution, or if their intentions feel extractive rather than collaborative — they don’t get in.<br><br>
+        That’s how we protect your inbox, your focus, and your energy — and keep ScaleDux a high-signal space where real builders meet real enablers.
+      </p>
+    </div>
+
+    <div class="accordion group cursor-pointer">
+      <div class="accordion-trigger">
+        <h5 class="accordion-title">Do I have control over who reaches out to me?</h5>
+        <img src="{{ asset('frontend/images/plus.svg') }}" alt="Toggle Icon" class="icon" />
+      </div>
+      <p class="accordion-content">
+        Yes — completely.<br><br>
+        We built ScaleDux knowing that your inbox isn’t just another place to get pitched. It’s your decision space — and we protect that.<br><br>
+        Only verified founders can request to connect with you, and even then, you decide who gets through. No random DMs. No cold spam.<br><br>
+        Just curated matches that align with what you actually care about — your sectors, your stage focus, your values.<br><br>
+        You’ll set your preferences, and we’ll surface the most relevant startup profiles — but the first move is always yours to make.<br><br>
+        Because your time deserves clarity. Your focus deserves context. And your trust deserves better than “just another platform.”
+      </p>
+    </div>
+
+    <div class="accordion group cursor-pointer">
+      <div class="accordion-trigger">
+        <h5 class="accordion-title">How will ScaleDux help me discover the right startups faster?</h5>
+        <img src="{{ asset('frontend/images/plus.svg') }}" alt="Toggle Icon" class="icon" />
+      </div>
+      <p class="accordion-content">
+        We know the real challenge isn’t volume — it’s relevance.<br><br>
+        That’s why ScaleDux doesn’t just show you every startup on the platform. Instead, we curate your discovery based on the preferences you set:<br>
+        Sector, stage, traction, geography, funding readiness, and more.<br><br>
+        Whether you're looking for MVP-stage teams in SaaS or pre-seed founders solving for climate — we surface startups that match your lens, not someone else’s.<br><br>
+        Each profile includes clear, context-rich insights — so you're not chasing down decks, asking for basic details, or guessing where they are in the journey.<br><br>
+        No endless pitch decks. No inbox noise. Just the right conversations — with the right teams — at the right time.<br><br>
+        Because when you're investing time or capital, speed matters. But signal clarity matters even more.
+      </p>
+    </div>
+
+    <div class="accordion group cursor-pointer">
+      <div class="accordion-trigger">
+        <h5 class="accordion-title">Will I get access to data like traction, pitch decks, funding needs, etc.?</h5>
+        <img src="{{ asset('frontend/images/plus.svg') }}" alt="Toggle Icon" class="icon" />
+      </div>
+      <p class="accordion-content">
+        Yes — and more than you’re probably used to.<br><br>
+        Every startup profile on ScaleDux is built to give you context upfront — so you're not chasing pitch decks or asking basic questions just to figure out if it’s worth your time.<br><br>
+        You’ll see what stage they’re in, what they’ve built so far, where they’re stuck, and what kind of support they’re looking for — funding, mentorship, or both.<br><br>
+        We include:<br>
+        • Traction snapshots (if available)<br>
+        • Fundraising goals and readiness<br>
+        • Product progress, team composition, and timelines<br>
+        • Their next move — and why they’re making it<br><br>
+        It’s not a pile of raw data. It’s a clean, story-backed view of their journey — structured so you can make fast, focused decisions.<br><br>
+        So when a profile catches your eye, you’re already in context. Not sorting files. Not asking for basics.<br><br>
+        Just moving straight to what matters: “Can I help — and is this the right fit?”
+      </p>
+    </div>
+
+    <div class="accordion group cursor-pointer">
+      <div class="accordion-trigger">
+        <h5 class="accordion-title">Is there a fee? What do I get with Priority Access?</h5>
+        <img src="{{ asset('frontend/images/plus.svg') }}" alt="Toggle Icon" class="icon" />
+      </div>
+      <p class="accordion-content">
+        You can explore ScaleDux for free — no barriers, no strings. Browse startup profiles, see how the platform works, and decide if it’s a fit.<br><br>
+        But when you're ready to engage — to connect with founders, access premium tools, or unlock curated deal flow — that's when Priority Access comes in.<br><br>
+        For investors, that includes a one-time Priority Access fee (₹399) and an optional subscription when you’re ready to go deeper.<br><br>
+        Here’s what you unlock:<br>
+        • 30% lifetime discount on subscription plans<br>
+        • 0% commission on your first 5 engagements<br>
+        • Full visibility into verified, context-rich startup profiles<br>
+        • Early access to filtered deal flow<br>
+        • Smart filters, investor-ready dashboards, and proposal tools (as we roll out)<br><br>
+        We designed this not as a cost — but as a signal of seriousness and a way to keep the ecosystem focused, trusted, and high-signal.<br><br>
+        No commitments until you're ready.<br>
+        No noise when you are.
+      </p>
+    </div>
+
+  </div>
+</div>
+
         </section>
       </div>
       <section
@@ -604,5 +684,71 @@
         </div>
       </section>
     </main>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Who qualifies as an Enabler on ScaleDux?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ScaleDux is built for people who move founders forward — with capital, guidance, or tools that matter. If you're an investor who backs bold ideas with more than money — someone who values alignment, progress, and potential — this platform is for you. If you're a mentor who shares real-world insights, offers thoughtful direction, and genuinely wants to see early-stage teams succeed — you belong here too. We also welcome SaaS providers, operators, advisors, and domain experts who bring structured value that helps startups grow smarter and faster. But let’s be clear — this isn’t a platform for casual browsers or cold outreach hunters. Everyone here is verified. Every connection is intentional. If you show up with substance and a mindset to contribute, ScaleDux is where you'll find a community that respects your time, your energy, and your expertise."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I offer mentorship, invest, or both?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely — many of our enablers wear more than one hat, and ScaleDux is built to support that depth. Right now, each account is set up for one role at a time — either mentor or investor — so we can keep your experience focused, your recommendations accurate, and your connections deeply relevant. If you'd like to contribute in both capacities, you’re more than welcome to create a second account using a different email. It’s quick, and it allows us to tailor each journey without overlap or noise. We're already working on smarter ways to unify multi-role journeys — but until then, this setup ensures you stay intentional, visible, and high-trust in whichever path you choose first. Your expertise is welcome in every form — we just want to deliver the experience you (and founders) truly deserve."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are startups verified before I engage with them (an investor)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every startup on ScaleDux goes through a multi-layered verification process — because we know your time and trust aren't things to gamble with. Before any founder is introduced to enablers like you, we verify: their identity and business legitimacy, the clarity of their startup intent, their readiness level — from idea stage to post-MVP, and most importantly, their intent to build, not just browse. We don’t just check documents. We review context — their ask, their story, and their alignment with real startup milestones. This isn’t an open gate. If a founder isn’t serious, if they haven’t taken the basic steps toward execution, or if their intentions feel extractive rather than collaborative — they don’t get in. That’s how we protect your inbox, your focus, and your energy — and keep ScaleDux a high-signal space where real builders meet real enablers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I have control over who reaches out to me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — completely. We built ScaleDux knowing that your inbox isn’t just another place to get pitched. It’s your decision space — and we protect that. Only verified founders can request to connect with you, and even then, you decide who gets through. No random DMs. No cold spam. Just curated matches that align with what you actually care about — your sectors, your stage focus, your values. You’ll set your preferences, and we’ll surface the most relevant startup profiles — but the first move is always yours to make. Because your time deserves clarity. Your focus deserves context. And your trust deserves better than “just another platform.”"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How will ScaleDux help me discover the right startups faster?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We know the real challenge isn’t volume — it’s relevance. That’s why ScaleDux doesn’t just show you every startup on the platform. Instead, we curate your discovery based on the preferences you set: sector, stage, traction, geography, funding readiness, and more. Whether you're looking for MVP-stage teams in SaaS or pre-seed founders solving for climate — we surface startups that match your lens, not someone else’s. Each profile includes clear, context-rich insights — so you're not chasing down decks, asking for basic details, or guessing where they are in the journey. No endless pitch decks. No inbox noise. Just the right conversations — with the right teams — at the right time. Because when you're investing time or capital, speed matters. But signal clarity matters even more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will I get access to data like traction, pitch decks, funding needs, etc.?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — and more than you’re probably used to. Every startup profile on ScaleDux is built to give you context upfront — so you're not chasing pitch decks or asking basic questions just to figure out if it’s worth your time. You’ll see what stage they’re in, what they’ve built so far, where they’re stuck, and what kind of support they’re looking for — funding, mentorship, or both. We include: traction snapshots (if available), fundraising goals and readiness, product progress, team composition, and timelines, their next move — and why they’re making it. It’s not a pile of raw data. It’s a clean, story-backed view of their journey — structured so you can make fast, focused decisions. So when a profile catches your eye, you’re already in context. Not sorting files. Not asking for basics. Just moving straight to what matters: “Can I help — and is this the right fit?”"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a fee? What do I get with Priority Access?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can explore ScaleDux for free — no barriers, no strings. Browse startup profiles, see how the platform works, and decide if it’s a fit. But when you're ready to engage — to connect with founders, access premium tools, or unlock curated deal flow — that's when Priority Access comes in. For investors, that includes a one-time Priority Access fee (₹399) and an optional subscription when you’re ready to go deeper. Here’s what you unlock: 30% lifetime discount on subscription plans, 0% commission on your first 5 engagements, full visibility into verified, context-rich startup profiles, early access to filtered deal flow, smart filters, investor-ready dashboards, and proposal tools (as we roll out). We designed this not as a cost — but as a signal of seriousness and a way to keep the ecosystem focused, trusted, and high-signal. No commitments until you're ready. No noise when you are."
+      }
+    }
+  ]
+}
+</script>
+
 
 @endsection
