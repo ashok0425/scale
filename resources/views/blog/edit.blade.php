@@ -93,7 +93,7 @@
                     </div>
 
                     <div class="mb-3 col-md-4">
-                        <label class="form-label">Cover Photo (optional)</label>
+                        <label class="form-label">Author Photo </label>
                         <div class="file-upload-wrapper" data-text="Select your file!">
                             <input
                                 name="cover"
