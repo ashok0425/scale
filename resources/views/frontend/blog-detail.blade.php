@@ -132,7 +132,7 @@ function renderToc($items, $level = 0) {
         <div class="swiper-wrapper">
           @foreach ($blogs as $blog)
             <div class="blog-card-wrapper swiper-slide">
-              <a href="{{route('blog.detail',['slug'=>$featureBlog->slug])}}">
+              <a href="{{route('blog.detail',['slug'=>$blog->slug])}}">
                 <div class="blog-card-thumbnail">
                   <img src="{{ getImage($blog->thumbnail) }}" alt="{{$blog->title}}" class="aspect-[3/2] w-full object-cover" />
                 </div>
