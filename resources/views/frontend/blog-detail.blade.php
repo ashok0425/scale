@@ -108,7 +108,9 @@ function renderToc($items, $level = 0) {
 
           <p class="b3 text-light text-center text-sm">Play audio transcript here</p>
         </div>
-        {!! $blogWithIds ?? $blog->long_description !!}
+        <div class="blog-content">
+            {!! $blogWithIds ?? $blog->long_description !!}
+        </div>
       </div>
     </div>
 
@@ -217,7 +219,10 @@ function renderToc($items, $level = 0) {
     transition: top 0.3s ease;
     height: 24px; /* height of the active indicator, adjust as needed */
 }
-
+.blog-content a{
+text-decoration: underline!important;
+color: #2407f8!important;
+}
 .toc-link {
     display: block;
     padding-left: 0.75rem; /* space from left border */
