@@ -30,6 +30,25 @@
     @yield('content')
 
     @include('frontend.layout.footer')
+
+
+   <script type="application/ld+json">
+{!! json_encode([
+    "@context" => "https://schema.org",
+    "@type" => "WebSite",
+    "name" => "ScaleDux",
+    "url" => url('/'),
+    "description" => $seo?->meta_description ?? 'Hire trusted talent, connect with real investors, and get personalized mentorship — all in one verified platform built for founders and growing startups.',
+    "publisher" => [
+        "@type" => "Organization",
+        "name" => "ScaleDux Software Innovations Pvt Ltd",
+        "url" => url('/')
+    ],
+    "keywords" => explode(',', $seo?->meta_keywords ?? 'startup marketplace, find trusted freelancers, connect with investors, early stage startup funding, find mentors for startups, freelance for startups, startup launch toolkit, startup service providers India, scaledux'),
+    "inLanguage" => "en"
+], JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT) !!}
+</script>
+
     <script type="module" crossorigin src="{{asset('frontend/assets/main.js')}}"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script>
