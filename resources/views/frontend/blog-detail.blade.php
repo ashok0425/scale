@@ -59,7 +59,7 @@
         {{$blog->title}}
       </h2> --}}
       {{-- <p class="mt-5">Written by: Vivin Richard</p> --}}
-      <div class="mt-10 flex justify-end">
+      <div class="mt-10 flex justify-end updated">
         <span>Updated: {{Carbon\Carbon::parse($blog->created_at)->format('d.m.Y')}}</span>
       </div>
     </div>
@@ -186,7 +186,9 @@ function renderToc($items, $level = 0) {
 
 @push('style')
 <style>
-    #closeShare {
+.updated{
+    line-height: 40;
+}    #closeShare {
   position: absolute;
   top: 0.25rem;
   right: 0.25rem;
