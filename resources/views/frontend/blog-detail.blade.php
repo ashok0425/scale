@@ -18,7 +18,7 @@
       <div class="flex items-center justify-between gap-x-4">
         <div class="flex items-center gap-3">
           <div class="size-[52px] overflow-clip rounded-full bg-[#CFC3A7]">
-            <img src="{{ getImage($blog->cover)??asset('frontend/images/author.png') }}" alt="{{$blog->title}}" class="size-[52px]" />
+            <img src="{{ getImage($blog->author_image)??asset('frontend/images/author.png') }}" alt="{{$blog->title}}" class="size-[52px]" />
           </div>
           <div class="space-y-1">
             <p class="b2 text-light font-semibold">By {{$blog->author}}</p>
@@ -54,10 +54,10 @@
       </div>
     </div>
 
-    <div class="mb-9 aspect-video max-h-[540px] w-full overflow-clip rounded-3xl p-[90px] pb-[26px] sm:mb-16 md:mb-[100px] pad" style="background-image: url('{{ asset('frontend/images/blog-detail.png') }}') !important;">
-      <h2 class="max-w-[14ch] text-3xl leading-[1.31] font-bold text-balance sm:text-4xl md:text-5xl lg:text-6xl">
+    <div class="mb-9 aspect-video max-h-[540px] w-full overflow-clip rounded-3xl p-[90px] pb-[26px] sm:mb-16 md:mb-[100px] pad" style="background-image: url('{{ getImage($blog->cover)?? asset('frontend/images/blog-detail.png') }}') !important;">
+      {{-- <h2 class="max-w-[14ch] text-3xl leading-[1.31] font-bold text-balance sm:text-4xl md:text-5xl lg:text-6xl">
         {{$blog->title}}
-      </h2>
+      </h2> --}}
       <p class="mt-5">Written by: Vivin Richard</p>
       <div class="mt-10 flex justify-end">
         <span>Updated: {{Carbon\Carbon::parse($blog->created_at)->format('d.m.Y')}}</span>

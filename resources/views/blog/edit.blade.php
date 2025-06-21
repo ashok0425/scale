@@ -39,6 +39,14 @@
                         <img src="{{ getImage($post->thumbnail) }}" alt="" width="100">
                     </div>
 
+                      <div class="mb-3 col-md-4">
+                        <label class="form-label">Cover</label>
+                        <div class="file-upload-wrapper" data-text="Select your file!">
+                            <input name="cover" type="file" class="file-upload-field" value="" />
+                        </div>
+                        <img src="{{ getImage($post->cover) }}" alt="" width="100">
+                    </div>
+
 
                     <div class="mb-3 col-md-4">
                         <label class="form-label">Audio</label>
@@ -63,9 +71,9 @@
                     <div class="mb-3 col-md-4">
                         <label class="form-label">Author Photo </label>
                         <div class="file-upload-wrapper" data-text="Select your file!">
-                            <input name="cover" type="file" class="file-upload-field" value="" />
+                            <input name="author_image" type="file" class="file-upload-field" value="" />
                         </div>
-                        <img src="{{ getImage($post->cover) }}" alt="" width="100">
+                        <img src="{{ getImage($post->author_image) }}" alt="" width="100">
 
                     </div>
                     <div class="col-md-4 mb-3">

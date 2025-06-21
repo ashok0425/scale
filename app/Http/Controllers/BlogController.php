@@ -68,6 +68,7 @@ class BlogController extends Controller
         $thumbnail = $request->file('thumbnail')?->store('uploads', 'public') ?? null;
         $cover = $request->file('cover')?->store('uploads', 'public') ?? null;
         $audio = $request->file('audio')?->store('uploads', 'public') ?? null;
+        $author_image = $request->file('author_image')?->store('uploads', 'public') ?? null;
 
         $post->title = $request->title;
         $post->slug = Str::slug($request->slug??$request->title);
@@ -76,6 +77,7 @@ class BlogController extends Controller
         $post->category_id = $request->category;
         $post->status = $request->status ?? $post->status;
         $post->thumbnail = $thumbnail;
+        $post->author_image = $author_image;
         $post->audio = $audio;
         $post->feature_post = $request->feature_post;
         $post->author = $request->author;
@@ -132,6 +134,7 @@ class BlogController extends Controller
 
         $thumbnail = $request->file('thumbnail')?->store('uploads', 'public') ?? $post->thumbnail;
         $cover = $request->file('cover')?->store('uploads', 'public') ?? $post->thumbnail;
+        $author_image = $request->file('author_image')?->store('uploads', 'public') ?? $post->author_image;
         $audio = $request->file('audio')?->store('uploads', 'public') ?? $post->audio;
 
         $post->title = $request->title;
@@ -140,6 +143,7 @@ class BlogController extends Controller
         $post->short_description = $request->short_description;
         $post->long_description = $request->long_description;
         $post->thumbnail = $thumbnail;
+        $post->author_image = $author_image;
         $post->audio = $audio;
         $post->status = $request->status ?? $post->status;
         $post->feature_post = $request->feature_post;

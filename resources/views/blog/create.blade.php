@@ -50,7 +50,12 @@
                         </div>
                     </div>
 
-
+ <div class="mb-3 col-md-4">
+                        <label class="form-label">Cover Photo </label>
+                        <div class="file-upload-wrapper" data-text="Select your file!">
+                            <input name="cover" type="file" class="file-upload-field" value="" />
+                        </div>
+                    </div>
 
                     <div class="mb-3 col-md-4">
                         <label class="form-label">Audio</label>
@@ -72,7 +77,7 @@
                     <div class="mb-3 col-md-4">
                         <label class="form-label">User Photo </label>
                         <div class="file-upload-wrapper" data-text="Select your file!">
-                            <input name="cover" type="file" class="file-upload-field" value="" />
+                            <input name="author_image" type="file" class="file-upload-field" value="" />
                         </div>
                     </div>
 
