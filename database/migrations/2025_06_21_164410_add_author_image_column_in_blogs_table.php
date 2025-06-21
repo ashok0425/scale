@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::table('blogs', function (Blueprint $table) {
             $table->string('author_image')->nullable();
+            $table->string('thumbnail_alt')->nullable();
+            $table->string('cover_alt')->nullable();
+
+
         });
     }
 
@@ -26,7 +30,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('blogs', function (Blueprint $table) {
-            $table->dropColumn('author_image');
+            $table->dropColumn(['author_image','thumbnail_alt','cover_alt']);
         });
     }
 };

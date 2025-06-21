@@ -78,6 +78,8 @@ class BlogController extends Controller
         $post->status = $request->status ?? $post->status;
         $post->thumbnail = $thumbnail;
         $post->author_image = $author_image;
+         $post->thumbnail_alt = $request->thumbnail_alt;
+        $post->cover_alt = $request->cover_alt;
         $post->audio = $audio;
         $post->feature_post = $request->feature_post;
         $post->author = $request->author;
@@ -142,6 +144,8 @@ class BlogController extends Controller
         $post->slug = Str::slug($request->slug??$request->title);
         $post->short_description = $request->short_description;
         $post->long_description = $request->long_description;
+        $post->thumbnail_alt = $request->thumbnail_alt;
+        $post->cover_alt = $request->cover_alt;
         $post->thumbnail = $thumbnail;
         $post->author_image = $author_image;
         $post->audio = $audio;
