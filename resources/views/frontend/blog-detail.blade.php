@@ -1,11 +1,7 @@
 @extends('frontend.layout.app')
-{{-- @php
-    $seo=(object)[
-        'meta_title'=>$blog->meta_title,
-        'meta_keywords'=>$blog->meta_keyword,
-        'meta_description'=>$blog->meta_description,
-    ]
-@endphp --}}
+@php
+    $popup=$blog->popup
+@endphp
 @section('content')
 <main class="relative py-9">
   <div class="container px-2">
@@ -102,7 +98,7 @@ function renderToc($items, $level = 0) {
 
       <div class="[&_p]:b1 [&_p]:text-body-2 col-span-12 space-y-6 sm:col-span-7 md:col-span-8 [&_p]:leading-8 [&_p]:font-normal">
         <div class="space-y-3">
-            {{$blog->popup?->button_text}}
+
       @if (getImage($blog->audio))
     <audio controls class="custom-audio">
         <source src="{{ getImage($blog->audio) }}" type="audio/mpeg" />
@@ -136,7 +132,7 @@ function renderToc($items, $level = 0) {
         <div class="swiper-wrapper">
           @foreach ($blogs as $blog)
             <div class="blog-card-wrapper swiper-slide">
-              <a href="/read-blog">
+              <a href="{{route('blog.detail',['slug'=>$featureBlog->slug])}}">
                 <div class="blog-card-thumbnail">
                   <img src="{{ getImage($blog->thumbnail) }}" alt="{{$blog->title}}" class="aspect-[3/2] w-full object-cover" />
                 </div>
@@ -157,7 +153,7 @@ function renderToc($items, $level = 0) {
     </div>
   </div>
 
-  @if ($blog->popup)
+  @if ($popup)
 
  <div class="popup  flex justify-center" style="display: none">
   <div
