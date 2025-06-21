@@ -31,14 +31,14 @@
 <meta property="og:description" content="{{ $seo?->meta_description ?? 'Hire trusted talent, connect with real investors, and get personalized mentorship — all in one verified platform built for founders and growing startups.' }}" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="{{ url()->current() }}" />
-<meta property="og:image" content="{{ $seo?->thumbnail ?? getImage(cms()->logo) }}" />
+<meta property="og:image" content="{{ getImage($seo?->thumbnail) ?? getImage(cms()->logo) }}" />
 <meta property="og:site_name" content="ScaleDux" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="{{ $seo?->meta_title ?? 'ScaleDux | Verified Marketplace to Hire, Fund & Get Mentored' }}" />
 <meta name="twitter:description" content="{{ $seo?->meta_description ?? 'Hire trusted talent, connect with real investors, and get personalized mentorship — all in one verified platform built for founders and growing startups.' }}" />
-<meta name="twitter:image" content="{{ $seo?->thumbnail ?? getImage(cms()->logo) }}" />
+<meta name="twitter:image" content="{{ getImage($seo?->thumbnail) ?? getImage(cms()->logo) }}" />
 
 
     <link rel="stylesheet" crossorigin href="{{asset('frontend/assets/main.css')}}">
