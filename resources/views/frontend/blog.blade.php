@@ -48,7 +48,7 @@
                 <div class="blog-card-thumbnail">
                   <img
                     src="{{ getImage($featureBlog->thumbnail) }}"
-                    alt=""
+                    alt="{{$featureBlog->thumbnail_alt}}"
                     class="w-full object-cover sm:min-h-[410px]"
                   />
                 </div>
@@ -106,7 +106,7 @@
             <div class="blog-card-wrapper">
             <a href="{{route('blog.detail',['slug'=>$feature->slug])}}">
               <div class="blog-card-thumbnail">
-                <img src="{{ getImage($feature->thumbnail) }}" alt="" class="aspect-[3/2] w-full object-cover" />
+                <img src="{{ getImage($feature->thumbnail) }}" alt="{{$feature->thumbnail_alt}}" class="aspect-[3/2] w-full object-cover" />
               </div>
               <div class="blog-card-body">
                 <div
@@ -289,7 +289,7 @@
             <div class="swiper-wrapper">
                 @foreach ($categories as $category)
                      <div class="swiper-slide space-y-3">
-                <img src="{{ getImage($category->thumbnail) }}" alt="" class="aspect-[3/2] w-full object-cover" />
+                <img src="{{ getImage($category->thumbnail) }}" alt="{{$category->name}}" class="aspect-[3/2] w-full object-cover" />
                 <h5 class="heading-5 text-center">{{$category->name}}</h5>
               </div>
                 @endforeach

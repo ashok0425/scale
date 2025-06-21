@@ -54,7 +54,7 @@
       </div>
     </div>
 
-    <div class="mb-9 aspect-video max-h-[540px] w-full overflow-clip rounded-3xl p-[90px] pb-[26px] sm:mb-16 md:mb-[100px] pad" style="background-image: url('{{ getImage($blog->cover)?? asset('frontend/images/blog-detail.png') }}') !important;background-position:center center">
+    <div class="mb-9 aspect-video max-h-[540px] w-full overflow-clip rounded-3xl p-[90px] pb-[26px] sm:mb-16 md:mb-[100px] pad" style="background-image: url('{{ getImage($blog->cover)?? asset('frontend/images/blog-detail.png') }}') !important;background-position:center center" >
       {{-- <h2 class="max-w-[14ch] text-3xl leading-[1.31] font-bold text-balance sm:text-4xl md:text-5xl lg:text-6xl">
         {{$blog->title}}
       </h2> --}}
