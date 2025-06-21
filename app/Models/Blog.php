@@ -41,7 +41,7 @@ public function scopeAccessibleBy($query, $user)
     }
 
     public function popup(){
-        return $this->hasOne(Popup::class);
+        return $this->hasOne(Popup::class,'blog_id','id');
     }
 
       public function category(){
