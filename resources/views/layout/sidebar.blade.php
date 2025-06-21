@@ -125,6 +125,13 @@
                 </a>
             </li>
 
+             <li class="sidebar-item">
+                <a class="sidebar-link {{Request::is('seos','seos/*')?'text-light':' '}}" href="{{ route('seos.index') }}">
+                    <i class="fas fa-users"></i>
+                    <span class="align-middle">Seo</span>
+                </a>
+            </li>
+
        @endcan
         </ul>
     </div>

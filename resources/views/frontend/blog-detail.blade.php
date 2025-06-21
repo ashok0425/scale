@@ -1,4 +1,11 @@
 @extends('frontend.layout.app')
+{{-- @php
+    $seo=(object)[
+        'meta_title'=>$blog->meta_title,
+        'meta_keywords'=>$blog->meta_keyword,
+        'meta_description'=>$blog->meta_description,
+    ]
+@endphp --}}
 @section('content')
 <main class="relative py-9">
   <div class="container px-2">

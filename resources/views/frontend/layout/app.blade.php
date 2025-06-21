@@ -14,7 +14,7 @@
     <link rel="stylesheet" crossorigin href="{{asset('frontend/assets/main.css')}}">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     @stack('style')
-    @yield('seo')
+    @include('frontend.layout.seo')
     <style>
         .after\:bg-no-repeat:after{
             z-index: -1!important;
