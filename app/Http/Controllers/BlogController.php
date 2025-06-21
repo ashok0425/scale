@@ -69,7 +69,7 @@ class BlogController extends Controller
         $audio = $request->file('audio')?->store('uploads', 'public') ?? null;
 
         $post->title = $request->title;
-        $post->slug = Str::slug($request->title);
+        $post->slug = Str::slug($request->slug??$request->title);
         $post->short_description = $request->short_description;
         $post->long_description = $request->long_description;
         $post->category_id = $request->category;
@@ -134,6 +134,7 @@ class BlogController extends Controller
 
         $post->title = $request->title;
         $post->slug = Str::slug($request->title);
+        $post->slug = Str::slug($request->slug??$request->title);
         $post->short_description = $request->short_description;
         $post->long_description = $request->long_description;
         $post->thumbnail = $thumbnail;

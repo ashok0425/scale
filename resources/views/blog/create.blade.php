@@ -76,6 +76,12 @@
                         </div>
                     </div>
 
+                     <div class="mb-3 col-md-12">
+                        <label class="form-label">Slug</label>
+                        <input type="text" name="slug" class="form-control" placeholder="Enter Slug"
+                            value="{{ old('slug') }}" required />
+                    </div>
+
 
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Short Description</label>
