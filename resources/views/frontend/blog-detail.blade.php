@@ -167,11 +167,11 @@ function renderToc($items, $level = 0) {
     <div class="flex flex-col items-center gap-4">
       {{-- <img src="/images/scaledux-book.png" alt="{{$blog->title}}" class="w-[120px] shrink-0" /> --}}
       <div class="isolate z-10 w-full space-y-4 text-center">
-        <h3 class="dh-3 text-white">{{$blog->popup->text1}}</h3>
+        <h3 class="dh-3 text-white">{{$popup->text1}}</h3>
         <p class="b1 text-white text-sm">
-          {{$blog->popup->text2}}
+          {{$popup->text2}}
         </p>
-        <a href="{{$blog->popup->button_link}}" class="btn-orange w-full">{{$blog->popup->button_text}}</a>
+        <a href="{{$popup->button_link}}" class="btn-orange w-full">{{$popup->button_text}}</a>
       </div>
     </div>
   </div>
