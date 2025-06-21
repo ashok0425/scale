@@ -22,11 +22,11 @@
       <div class="flex items-center justify-between gap-x-4">
         <div class="flex items-center gap-3">
           <div class="size-[52px] overflow-clip rounded-full bg-[#CFC3A7]">
-            <img src="{{ asset('frontend/images/author.png') }}" alt="{{$blog->title}}" class="size-[52px]" />
+            <img src="{{ getImage($blog->cover)??asset('frontend/images/author.png') }}" alt="{{$blog->title}}" class="size-[52px]" />
           </div>
           <div class="space-y-1">
-            <p class="b2 text-light font-semibold">By {{$blog->user->name}}</p>
-            <p class="b3 text-light">{{$blog->user->phone}}</p>
+            <p class="b2 text-light font-semibold">By {{$blog->author}}</p>
+            <p class="b3 text-light">{{$blog->author_post}}</p>
           </div>
         </div>
         <button id="shareBtn" class="flex cursor-pointer items-center gap-3 duration-200 hover:opacity-80">
@@ -58,7 +58,7 @@
       </div>
     </div>
 
-    <div class="mb-9 aspect-video max-h-[540px] w-full overflow-clip rounded-3xl p-[90px] pb-[26px] sm:mb-16 md:mb-[100px]" style="background-image: url('{{ asset('frontend/images/blog-detail.png') }}') !important;">
+    <div class="mb-9 aspect-video max-h-[540px] w-full overflow-clip rounded-3xl p-[90px] pb-[26px] sm:mb-16 md:mb-[100px] pad" style="background-image: url('{{ asset('frontend/images/blog-detail.png') }}') !important;">
       <h2 class="max-w-[14ch] text-3xl leading-[1.31] font-bold text-balance sm:text-4xl md:text-5xl lg:text-6xl">
         {{$blog->title}}
       </h2>
@@ -102,9 +102,13 @@ function renderToc($items, $level = 0) {
 
       <div class="[&_p]:b1 [&_p]:text-body-2 col-span-12 space-y-6 sm:col-span-7 md:col-span-8 [&_p]:leading-8 [&_p]:font-normal">
         <div class="space-y-3">
-          <audio controls class="w-full">
-            <source src="{{getImage($blog->audio)}}" type="audio/mpeg" />
-          </audio>
+      @if (getImage($blog->audio))
+    <audio controls class="custom-audio">
+        <source src="{{ getImage($blog->audio) }}" type="audio/mpeg" />
+    </audio>
+@endif
+
+
           <p class="b3 text-light text-center text-sm">Play audio transcript here</p>
         </div>
         {!! $blogWithIds ?? $blog->long_description !!}
@@ -158,8 +162,13 @@ function renderToc($items, $level = 0) {
   <div
     class="gradient-border before:from-brand-purple/40 before:to-brand-blue/40 relative isolate overflow-hidden rounded-3xl px-4 py-6 before:absolute before:inset-0 before:bg-gradient-to-l before:opacity-50 w-[200px]"
   >
+
+<button id="popup-close"
+    class="absolute  text-white text-2xl font-bold leading-none hover:text-gray-300"
+    aria-label="Close popup"
+>&times;</button>
     <div class="flex flex-col items-center gap-4">
-      <img src="/images/scaledux-book.png" alt="{{$blog->title}}" class="w-[120px] shrink-0" />
+      {{-- <img src="/images/scaledux-book.png" alt="{{$blog->title}}" class="w-[120px] shrink-0" /> --}}
       <div class="isolate z-10 w-full space-y-4 text-center">
         <h3 class="dh-3 text-white">{{$blog->popup->text1}}</h3>
         <p class="b1 text-white text-sm">
@@ -224,6 +233,26 @@ function renderToc($items, $level = 0) {
     color: #f6703b;
 }
 </style>
+
+<style>
+
+     .custom-audio {
+            width: 100%;
+        }
+#popup-close{
+    top: 0;
+    right: 15px!important;
+}
+    @media (max-width: 640px) {
+       .custom-audio {
+        width: 80%;
+        margin: auto;
+    }
+    .pad{
+        padding: 1rem!important;
+    }
+    }
+</style>
 @endpush
 
 @push('script')
@@ -274,6 +303,11 @@ document.addEventListener('DOMContentLoaded', function () {
 setTimeout(() => {
     document.querySelector('.popup').style='display:block'
 }, 5000);
+
+// Close popup when close button clicked
+document.getElementById('popup-close').addEventListener('click', () => {
+    document.querySelector('.popup').style.display = 'none';
+});
 
 document.addEventListener('DOMContentLoaded', function () {
     const tocWrapper = document.querySelector('.toc-wrapper');

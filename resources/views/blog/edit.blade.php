@@ -53,19 +53,6 @@
                         <img src="{{getImage($post->thumbnail)}}" alt="" width="100">
                     </div>
 
-                    <div class="mb-3 col-md-4">
-                        <label class="form-label">Cover Photo (optional)</label>
-                        <div class="file-upload-wrapper" data-text="Select your file!">
-                            <input
-                                name="cover"
-                                type="file"
-                                class="file-upload-field"
-                                value=""
-                            />
-                        </div>
-                        <img src="{{getImage($post->cover)}}" alt="" width="100">
-
-                    </div>
 
                     <div class="mb-3 col-md-4">
                         <label class="form-label">Audio</label>
@@ -104,7 +91,21 @@
                             required
                         />
                     </div>
-                    <div class="col-md-6 mb-3">
+
+                    <div class="mb-3 col-md-4">
+                        <label class="form-label">Cover Photo (optional)</label>
+                        <div class="file-upload-wrapper" data-text="Select your file!">
+                            <input
+                                name="cover"
+                                type="file"
+                                class="file-upload-field"
+                                value=""
+                            />
+                        </div>
+                        <img src="{{getImage($post->cover)}}" alt="" width="100">
+
+                    </div>
+                    <div class="col-md-4 mb-3">
                         <label for="status">Status</label>
                         <select name="status" id="status" class="form-control form-select">
                             <option value="1" {{ $post->status == 1 ? 'selected' : '' }}>Publish</option>
@@ -112,7 +113,7 @@
                         </select>
                     </div>
 
-                      <div class="col-md-6 mb-3">
+                      <div class="col-md-4 mb-3">
                         <label for="status">Is Featured Post</label>
                         <select name="feature_post" id="feature_post" class="form-control form-select">
                             <option value="1" {{ $post->feature_post == 1 ? 'selected' : '' }}>Yes</option>
