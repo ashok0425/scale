@@ -156,7 +156,7 @@ function renderToc($items, $level = 0) {
     </div>
   </div>
 
-  @if ($blog->popup)
+  {{-- @if ($blog->popup) --}}
 
  <div class="popup  flex justify-center" style="display: none">
   <div
@@ -179,7 +179,7 @@ function renderToc($items, $level = 0) {
     </div>
   </div>
 </div>
-  @endif
+  {{-- @endif --}}
 
 
 </main>
