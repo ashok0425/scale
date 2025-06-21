@@ -7,7 +7,7 @@
   <div class="container px-2">
     <div class="mb-7 space-y-6 md:mb-12">
       <div class="flex items-center gap-3">
-        <a href="/" class="cursor-pointer text-white underline hover:text-gray-300">Home</a>
+        <a href="{{route('blog')}}" class="cursor-pointer text-white underline hover:text-gray-300">Home</a>
         <img src="{{ asset('frontend/images/arrow-right.svg') }}" alt="{{$blog->title}}" />
         <a href="/blog" class="cursor-pointer text-white underline hover:text-gray-300">{{$blog->category->name}}</a>
         <img src="{{ asset('frontend/images/arrow-right.svg') }}" alt="{{$blog->title}}" />
@@ -58,7 +58,7 @@
       {{-- <h2 class="max-w-[14ch] text-3xl leading-[1.31] font-bold text-balance sm:text-4xl md:text-5xl lg:text-6xl">
         {{$blog->title}}
       </h2> --}}
-      <p class="mt-5">Written by: Vivin Richard</p>
+      {{-- <p class="mt-5">Written by: Vivin Richard</p> --}}
       <div class="mt-10 flex justify-end">
         <span>Updated: {{Carbon\Carbon::parse($blog->created_at)->format('d.m.Y')}}</span>
       </div>
@@ -220,8 +220,8 @@ function renderToc($items, $level = 0) {
     height: 24px; /* height of the active indicator, adjust as needed */
 }
 .blog-content a{
-text-decoration: underline!important;
-color: #2407f8!important;
+/* text-decoration: underline!important; */
+color: #7f04ff!important;
 }
 .toc-link {
     display: block;
@@ -232,7 +232,7 @@ color: #2407f8!important;
 }
 
 .toc-link:hover {
-    color: #f6703b;
+    color: #7f04ff;
 }
 </style>
 
