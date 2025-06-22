@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\SeoController;
 use Illuminate\Support\Facades\Artisan;
@@ -66,6 +67,8 @@ Route::middleware('auth')->group(function () {
     Route::get('crm', [\App\Http\Controllers\ManageAccessController::class,'crm'])->name('crm')->can('view:user');
     Route::get('subscribe', [\App\Http\Controllers\ManageAccessController::class,'subscriber'])->name('subscriber');
     Route::resource('seos', SeoController::class);
+    Route::resource('faqs', FaqController::class);
+
 
 
 

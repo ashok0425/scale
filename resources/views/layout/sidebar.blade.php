@@ -133,7 +133,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link {{Request::is('seos','seos/*')?'text-light':' '}}" href="{{ route('seos.index') }}">
+                <a class="sidebar-link {{Request::is('faqs','faqs/*')?'text-light':' '}}" href="{{ route('faqs.index') }}">
                     <i class="fas fa-copy"></i>
                     <span class="align-middle">Faq</span>
                 </a>

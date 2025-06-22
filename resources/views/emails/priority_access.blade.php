@@ -205,7 +205,7 @@
     <p>
       You’re receiving this email because you joined the ScaleDux waitlist or priority access or interacted with one of our startup tools or resources.<br>
       <a href="{{ url('/privacy-policy') }}">Privacy Policy</a> |
-      <a href="{{ url('/terms-of-service') }}">Terms of Service</a> |
+      <a href="{{ url('/terms-of-services') }}">Terms of Service</a> |
       <a href="{{ url('/unsubscribe') }}">Unsubscribe</a>
     </p>
 

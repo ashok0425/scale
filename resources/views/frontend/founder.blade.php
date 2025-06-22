@@ -1,5 +1,8 @@
 @extends('frontend.layout.app')
 @section('content')
+@php
+    $faqs=App\Models\Faq::where('page_url',request()->path())->get();
+@endphp
       <main class="-mt-[90px]">
       <section
         class="bg-hero-bg relative isolate flex items-center justify-center overflow-hidden bg-cover pt-32 pb-52 before:absolute before:inset-0 before:[background-image:url('/images/hero-bg-effect.png')] before:bg-cover before:opacity-40 md:pt-[290px] md:pb-[294px]"
@@ -416,127 +419,20 @@
           </div>
 <div class="container-sm mt-20">
   <div class="accordion-wrapper">
-
-    <div class="accordion group cursor-pointer">
-      <div class="accordion-trigger">
-        <h5 class="accordion-title">Don’t have a product or MVP yet. Can I still join ScaleDux?</h5>
-        <img src="{{ asset('frontend/images/plus.svg') }}" alt="" class="icon" />
+    @foreach($faqs as $faq)
+      <div class="accordion group cursor-pointer">
+        <div class="accordion-trigger">
+          <h5 class="accordion-title">{{ $faq->question }}</h5>
+          <img src="{{ asset('frontend/images/plus.svg') }}" alt="" class="icon" />
+        </div>
+        <p class="accordion-content">
+          {!! nl2br(e($faq->answer)) !!}
+        </p>
       </div>
-      <p class="accordion-content">
-        Absolutely — that’s exactly when you should join. You don’t need a deck, a dev team, or even a logo.
-        If you’ve got an idea you believe in — even if it’s just a note on your phone — ScaleDux is the right
-        place to start.<br><br>
-        We’re built for the full journey. From refining your idea and validating the market, to finding
-        co-founders, building your prototype, and preparing for launch — you’ll find the right people,
-        tools, and guidance at every step.<br><br>
-        So if you’re at “I think this could work,” that’s more than enough. We’ll help you figure out
-        the rest — one smart connection at a time.
-      </p>
-    </div>
-
-    <div class="accordion group cursor-pointer">
-      <div class="accordion-trigger">
-        <h5 class="accordion-title">What kind of freelancers, service providers, or mentors can I find on ScaleDux?</h5>
-        <img src="{{ asset('frontend/images/plus.svg') }}" alt="" class="icon" />
-      </div>
-      <p class="accordion-content">
-        From startup mentors to full-stack developers — ScaleDux brings together the people who help you move forward.<br><br>
-        You’ll find:<br>
-        • Tech talent — developers, product managers, UI/UX designers<br>
-        • Growth experts — marketers, brand strategists, GTM specialists<br>
-        • Business pros — legal, compliance, finance, and fundraising support<br>
-        • Mentors — not just for advice, but for real startup-building<br><br>
-        This isn’t surface-level guidance or 15-minute calls. We’re redefining what mentorship means for founders.
-        Personalized, hands-on support to help you figure out whatever you’re stuck on — GTM strategy,
-        tech stack decisions, building your first team, refining your product roadmap, or choosing the right AI model.<br><br>
-        Whatever you’re building — and wherever you are in the journey — you’ll find people who’ve been
-        there, who get it, and who are ready to walk with you.
-      </p>
-    </div>
-
-    <div class="accordion group cursor-pointer">
-      <div class="accordion-trigger">
-        <h5 class="accordion-title">Can ScaleDux help me connect with investors?</h5>
-        <img src="{{ asset('frontend/images/plus.svg') }}" alt="" class="icon" />
-      </div>
-      <p class="accordion-content">
-        Yes — and you don’t need a pitch deck on day one to start that journey.<br><br>
-        ScaleDux helps founders connect with early-stage investors in a smarter, more intentional way.
-        You can opt in when you’re ready — whether that’s at idea stage, MVP, or after launch.<br><br>
-        We guide you through it step-by-step:<br>
-        • Preparing your profile and pitch<br>
-        • Matching with relevant investors based on stage and sector<br>
-        • Creating a warm, trust-first connection — not cold DMs<br><br>
-        When you’re ready to raise, ScaleDux helps you show up prepared and seen.
-      </p>
-    </div>
-
-    <div class="accordion group cursor-pointer">
-      <div class="accordion-trigger">
-        <h5 class="accordion-title">How does ScaleDux ensure trust and safety?</h5>
-        <img src="{{ asset('frontend/images/plus.svg') }}" alt="" class="icon" />
-      </div>
-      <p class="accordion-content">
-        We built ScaleDux around one core principle: not everyone gets in. And that’s a good thing.<br><br>
-        Every founder, freelancer, investor, or mentor must pass a mandatory verification process — not just
-        their email, but their identity, business legitimacy, and intent to build or contribute meaningfully.<br><br>
-        • Verified IDs and business documents<br>
-        • Trust badges for top contributors<br>
-        • Escrow-protected payments (coming soon)<br>
-        • Peer reviews that actually matter<br><br>
-        We’re not building a crowd. We’re building a curated network you can rely on.
-      </p>
-    </div>
-
-    <div class="accordion group cursor-pointer">
-      <div class="accordion-trigger">
-        <h5 class="accordion-title">Do I need to have a registered company to use ScaleDux?</h5>
-        <img src="{{ asset('frontend/images/plus.svg') }}" alt="" class="icon" />
-      </div>
-      <p class="accordion-content">
-        Not at all. You don’t need a company, pitch deck, or fancy website to get started here.<br><br>
-        If you're obsessing over a problem and believe it needs solving — that’s more than enough to belong.<br><br>
-        ScaleDux supports you across every step of the journey:<br>
-        • Idea validation and market research<br>
-        • Finding your first teammate or freelancer<br>
-        • Fundraising, scaling, and beyond
-      </p>
-    </div>
-
-    <div class="accordion group cursor-pointer">
-      <div class="accordion-trigger">
-        <h5 class="accordion-title">What makes ScaleDux better than LinkedIn, Upwork, and WhatsApp?</h5>
-        <img src="{{ asset('frontend/images/plus.svg') }}" alt="" class="icon" />
-      </div>
-      <p class="accordion-content">
-        You’re not doing it wrong. You’re just doing too much.<br><br>
-        If your startup stack includes 7 tabs and a prayer... we get it.<br>
-        LinkedIn for talent, Upwork for projects, WhatsApp for convos, Google Sheets for tracking... chaos.<br><br>
-        ScaleDux replaces that mess with one platform built for real startup workflows:<br>
-        • Verified talent, mentors, and investors — all in one place<br>
-        • Smart matching that saves 20+ hours/week<br>
-        • Built-in collaboration, feedback, and (soon) escrow<br>
-        • A trust-first ecosystem with no noise or spam
-      </p>
-    </div>
-
-    <div class="accordion group cursor-pointer">
-      <div class="accordion-trigger">
-        <h5 class="accordion-title">What happens after I join the waitlist?</h5>
-        <img src="{{ asset('frontend/images/plus.svg') }}" alt="" class="icon" />
-      </div>
-      <p class="accordion-content">
-        You’ll receive a confirmation and welcome email — and a quiet thank you for being early.<br><br>
-        You’ll also get:<br>
-        • Behind-the-scenes updates<br>
-        • Private Slack invite<br>
-        • A chance to shape what ScaleDux becomes<br><br>
-        This isn’t just a mailing list. It’s your backstage pass to help build the future of startup support.
-      </p>
-    </div>
-
+    @endforeach
   </div>
 </div>
+
 
         </section>
       </div>
@@ -639,70 +535,24 @@
       </section>
     </main>
 
-
-    <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    @foreach($faqs as $faq)
     {
       "@type": "Question",
-      "name": "I don’t have a product or MVP yet. Can I still join ScaleDux?",
+      "name": {!! json_encode($faq->question) !!},
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Absolutely — that’s exactly when you should join. You don’t need a deck, a dev team, or even a logo. If you’ve got an idea you believe in — even if it’s just a note on your phone — ScaleDux is the right place to start. We’re built for the full journey. From refining your idea and validating the market, to finding co-founders, building your prototype, and preparing for launch — you’ll find the right people, tools, and guidance at every step. So if you’re at “I think this could work,” that’s more than enough. We’ll help you figure out the rest — one smart connection at a time."
+        "text": {!! json_encode(strip_tags($faq->answer)) !!}
       }
-    },
-    {
-      "@type": "Question",
-      "name": "What kind of freelancers, service providers, or mentors can I find on ScaleDux?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "From startup mentors to full-stack developers — ScaleDux brings together the people who help you move forward. You’ll find: Tech talent — developers, product managers, UI/UX designers; Growth experts — marketers, brand strategists, GTM specialists; Business pros — legal, compliance, finance, and fundraising support; Mentors — not just for advice, but for real startup building. This isn’t surface-level guidance or 15-minute calls. We’re redefining what mentorship means for founders. Personalized, hands-on support to help you figure out whatever you’re stuck on: GTM strategy, tech stack decisions, building your first team, refining your product roadmap, or choosing the right AI model. Whatever you’re building — and wherever you are in the journey — you’ll find people who’ve been there, who get it, and who are ready to walk with you. Every profile is verified. Every connection is built on trust. This is startup support, the way it should be."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can ScaleDux help me connect with investors?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes — and you don’t need a pitch deck on day one to start that journey. ScaleDux helps founders connect with early-stage investors in a smarter, more intentional way. You can opt in when you’re ready — whether that’s at idea stage, MVP, or after launch. We guide you through it step-by-step: Preparing your profile and pitch; Matching with relevant investors based on stage and sector; Creating a warm, trust-first connection — not cold DMs. When you’re ready to raise, ScaleDux helps you show up prepared and seen. Investor discovery shouldn’t feel like a numbers game. Here, it’s about the right fit — for both founders and investors."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does ScaleDux ensure trust and safety?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We built ScaleDux around one core principle: not everyone gets in. And that’s a good thing. Unlike open marketplaces where anyone can sign up and start bidding or posting, ScaleDux is intentionally gated. Every founder, freelancer, investor, or mentor must pass a mandatory verification process — not just their email, but their identity, their business legitimacy, and their intent to build or contribute meaningfully. If you're here to grow, we welcome you. If you're here to spam, extract, or fake credibility — you're out before you begin. Verified IDs and business documents; Trust badges for top contributors; Escrow-protected payments (coming soon); Peer reviews that actually matter — because they come from verified users, not fake accounts. We’re not building a crowd. We’re building a curated network you can rely on. Because in the startup world, one wrong connection can cost more than money — it can cost momentum, trust and growth. ScaleDux is here to protect that."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to have a registered company to use ScaleDux?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Not at all. You don’t need a company, pitch deck, or fancy website to get started here. All you need is the intention to build — and the courage to take the first step. If you're obsessing over a problem and believe it needs solving — that’s more than enough to join ScaleDux. Because we know real founders don’t start with paperwork. They start with a spark — and a lot of questions. That’s why ScaleDux is built to support you across every step of the journey: From idea validation and market research; To finding your first teammate or freelancer; All the way to fundraising, scaling, and beyond. So no, you don’t need a company. But if you have a dream and you're ready to take action — you’re already in the right place."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What makes ScaleDux better than managing everything on LinkedIn, Upwork, and WhatsApp?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You might be thinking — why switch from what I already know? LinkedIn for networking, Upwork for hiring, WhatsApp for follow-ups. But if your startup stack includes 7 tabs and a prayer... we get it. You start on LinkedIn to find talent or investors, switch to Upwork to post a project, juggle conversations on WhatsApp, and chase updates across emails, DMs, and spreadsheets. Before you know it, you're managing tools more than your actual startup. ScaleDux replaces that chaos with one platform — built for real-world startup workflows. Verified talent, mentors, and investors — in one place; Because searching ≠ qualifying ≠ collaborating — we bridge all three; Smart matching that saves 20+ hours/week; In-platform collaboration, feedback, and (soon) escrow payments; A trust-first ecosystem: no noise, no spam, no shady profiles. We're not just aggregating services. We’re designing the infrastructure founders actually need — from idea to funding — without the friction."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What happens after I join the waitlist?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You’ll receive a confirmation and welcome email in your inbox — along with a quiet thank you for being early. Then, we’ll keep you in the loop with early updates, behind-the-scenes progress, and real stories from the journey. We’ll also invite you to join our private Slack channel, where early users hang out, share feedback, and stay close to everything as it unfolds. This isn’t just a mailing list. It’s an invitation to help shape what ScaleDux becomes. Have thoughts? Ideas? Frustrations with other platforms? We want to hear them. Your input could directly influence what we build next. So what happens after you join? You become part of the crew building something better — together."
-      }
-    }
+    }@if(!$loop->last),@endif
+    @endforeach
   ]
 }
 </script>
+
 
 @endsection

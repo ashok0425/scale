@@ -16,9 +16,10 @@ class PreAccessNotification extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public $user;
+    public function __construct($user)
     {
-        //
+        $this->user=$user;
     }
 
     /**
@@ -43,8 +44,8 @@ class PreAccessNotification extends Notification
     return (new \Illuminate\Notifications\Messages\MailMessage)
         ->subject('Priority Access Email Confirmation')
         ->view('emails.priority_access', [
-            'firstName' => $notifiable->first_name, // or however you get user's first name
-            'role' => $notifiable->role,             // user role: founder, freelancer, investor, mentor
+            'firstName' => $this->user->name,
+            'role' => $this->user->role,
         ]);
 }
 

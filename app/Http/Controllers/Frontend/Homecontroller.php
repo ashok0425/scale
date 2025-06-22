@@ -66,7 +66,7 @@ class HomeController extends Controller
     'message' => 'required',
 ]);
 
-    try {
+    // try {
         $page = parse_url(url()->previous(), PHP_URL_PATH);
 
        $waitlist=new Crm();
@@ -76,7 +76,7 @@ class HomeController extends Controller
        $waitlist->phone=$validated['phone'];
        $waitlist->city=$validated['city'];
        $waitlist->linkedin=$validated['linkedin'];
-       $waitlist->message=$validated['message'];
+    //    $waitlist->message=$validated['message'];
        $waitlist->page=$page;
        $waitlist->type=2;
        $waitlist->save();
@@ -84,10 +84,10 @@ Notification::route('mail', $request->email)->notify(new PreAccessNotification($
 
         return back()->with('message', 'Thank you for joining.')->with('type', 'success');
 
-    } catch (\Exception $e) {
-        // Log error if needed
-        return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
-    }
+    // } catch (\Exception $e) {
+    //     // Log error if needed
+    //     return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
+    // }
     }
 public function blog(Request $request)
 {
