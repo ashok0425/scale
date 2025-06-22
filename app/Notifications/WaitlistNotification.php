@@ -16,9 +16,12 @@ class WaitlistNotification extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public $user;
+
+    public function __construct($user)
     {
-        //
+        $this->user=$user;
+
     }
 
     /**
@@ -40,11 +43,12 @@ class WaitlistNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->subject('You have joined out waitlist')
-                    ->line('You have successfully joined our waitlist.')
-                    // ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+          return (new \Illuminate\Notifications\Messages\MailMessage)
+        ->subject('WAITLIST EMAIL CONFIRMATION:')
+        ->view('emails.waitlist', [
+            'firstName' => $this->user->name,
+            'role' => $this->user->role,
+        ]);
     }
 
     /**

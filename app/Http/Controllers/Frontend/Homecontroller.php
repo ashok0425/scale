@@ -236,7 +236,9 @@ public function waitlist(Request $request)
 {
    $validated= $request->validate([
         'full_name' => 'required',
-        'email' => 'required|email|unique:crms,email',
+        'email' => 'required|email',Rule::unique('crms')->where(function ($query) use ($request) {
+            return $query->where('type', 1);
+        }),
         'role' => 'required|in:founder,freelancer,investor,mentor',
     ]);
     try {
@@ -249,7 +251,7 @@ public function waitlist(Request $request)
        $waitlist->page=$page;
        $waitlist->type=1;
        $waitlist->save();
-     Notification::route('mail', $request->email)->notify(new WaitlistNotification());
+     Notification::route('mail', $request->email)->notify(new WaitlistNotification($waitlist));
         return back()->with('message', 'Thank you for joining our waitlist.')->with('type', 'success');
 
     } catch (\Exception $e) {

@@ -40,11 +40,10 @@ class SubscriberNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->subject('Thank you for subscribing our Newsletter')
-                    ->line('THaThank you for subscribing our Newsletternk')
-                    // ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+         return (new \Illuminate\Notifications\Messages\MailMessage)
+        ->subject('Newsletter Subscribe email confirmation ')
+        ->view('emails.newsletter', [
+        ]);
     }
 
     /**
