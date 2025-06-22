@@ -44,7 +44,7 @@ class WaitlistNotification extends Notification
     public function toMail($notifiable)
     {
           return (new \Illuminate\Notifications\Messages\MailMessage)
-        ->subject('WAITLIST EMAIL CONFIRMATION:')
+        ->subject('WAITLIST EMAIL CONFIRMATION')
         ->view('emails.waitlist', [
             'firstName' => $this->user->name,
             'role' => $this->user->role,
