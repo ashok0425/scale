@@ -20,7 +20,7 @@
                         {{cms()->booked_seat}}/{{cms()->total_seat}} already registered
                       </p>
                     </div>
-                    <button class="btn-primary hover:shadow-brand-purple/60 group hover:shadow-lg">
+                    <a href="{{route('priority.access')}}" class="btn-primary hover:shadow-brand-purple/60 group hover:shadow-lg">
                       <span class="inner-wrapper inline-flex h-6 overflow-hidden">
                         <span
                           class="inner flex flex-col duration-200 group-hover:-translate-y-full"
@@ -29,6 +29,6 @@
                           <span class="text">Get Priority Access</span>
                         </span>
                       </span>
-                    </button>
+                    </a>
                   </div>
                 </div>
