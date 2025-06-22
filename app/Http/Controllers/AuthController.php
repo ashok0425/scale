@@ -28,6 +28,12 @@ class AuthController extends Controller
         return view('profile');
     }
 
+    public function upload(Request $request){
+    $path = $request->file('upload')?->store('uploads', 'public') ?? null;
+    return ['url'=> getImage($path)];
+
+    }
+
     public function store(Request $request)
     {
 

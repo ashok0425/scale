@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/update', [\App\Http\Controllers\AuthController::class, 'update'])->name('profile.update');
     Route::post('/password/update', [\App\Http\Controllers\AuthController::class, 'changePassword'])->name('password');
     Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+    Route::post('/upload', [\App\Http\Controllers\AuthController::class, 'upload']);
 
     Route::resource('categories', \App\Http\Controllers\CategoryController::class)->middleware('can:do anything');
 
