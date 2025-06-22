@@ -52,7 +52,21 @@
         html,body{
             scroll-behavior: smooth;
         }
+
+        select {
+
+}
+
+/* The custom arrow using a background SVG */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg fill='none' stroke='%236B7280' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25rem 1.25rem;
+}
     </style>
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+
   </head>
   <body>
     @include('frontend.layout.header')

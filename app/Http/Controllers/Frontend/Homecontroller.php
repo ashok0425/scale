@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use URL;
 
 class HomeController extends Controller
@@ -49,16 +50,22 @@ class HomeController extends Controller
 
     public function storePriorityAccess(Request $request)
     {
-       $validated= $request->validate([
-        'full_name' => 'required',
-        'email' => 'required|email|unique:crms,email',
-        'role' => 'required|in:founder,freelancer,investor,mentor',
-        'phone' => 'required',
-        'linkedin' => 'nullable',
-        'city' => 'required',
-        'message' => 'required',
+       $validated = $request->validate([
+    'full_name' => 'required',
+    'email' => [
+        'required',
+        'email',
+        Rule::unique('crms')->where(function ($query) use ($request) {
+            return $query->where('type', 2);
+        }),
+    ],
+    'role' => 'required|in:founder,freelancer,investor,mentor',
+    'phone' => 'required',
+    'linkedin' => 'nullable',
+    'city' => 'required',
+    'message' => 'required',
+]);
 
-    ]);
     try {
         $page = parse_url(url()->previous(), PHP_URL_PATH);
 
@@ -73,7 +80,7 @@ class HomeController extends Controller
        $waitlist->page=$page;
        $waitlist->type=2;
        $waitlist->save();
-Notification::route('mail', $request->email)->notify(new PreAccessNotification());
+Notification::route('mail', $request->email)->notify(new PreAccessNotification($waitlist));
 
         return back()->with('message', 'Thank you for joining.')->with('type', 'success');
 

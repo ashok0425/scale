@@ -38,15 +38,15 @@ class PreAccessNotification extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-                    ->subject('PreAccess Granted')
-                    ->line('You have got your pre access to our site')
-
-                    // ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
+   public function toMail($notifiable)
+{
+    return (new \Illuminate\Notifications\Messages\MailMessage)
+        ->subject('Priority Access Email Confirmation')
+        ->view('emails.priority_access', [
+            'firstName' => $notifiable->first_name, // or however you get user's first name
+            'role' => $notifiable->role,             // user role: founder, freelancer, investor, mentor
+        ]);
+}
 
     /**
      * Get the array representation of the notification.

@@ -1,0 +1,54 @@
+:root {
+  --bg-x: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQ0MCIgaGVpZ2h0PSIxNzI3IiB2aWV3Qm94PSIwIDAgMTQ0MCAxNzI3IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBvcGFjaXR5PSIwLjIiIGQ9Ik05MTUuMTMzIDEwNjUuNkM5OTguMzA3IDEwNjUuNiAxMDc2Ljg5IDExMDAuNDUgMTEzMC44IDExNjEuMTVIMTEzMC44TDE1NDcuMDUgMTY3Mi4yMUwxNTQ3LjkzIDE2NzMuM1YxNjczLjI1QzE1NjQuMzIgMTY5NS4wMyAxNTQ4LjE4IDE3MjUuOTcgMTUxOS43NSAxNzI1Ljk3SDEyNzMuNzZDMTI2Mi45OSAxNzI1Ljk3IDEyNTIuODYgMTcyMS4xOSAxMjQ2LjI4IDE3MTIuOTlIMTI0Ni4yOEw3MjcuMjYgMTA2NS42SDkxNS4xMzNaTS0xOTMuNDk3IDAuNjcwODk4SDc3LjAyNjRDODcuOTczMSAwLjY3MTAwOSA5OC4zMDk3IDUuNjQwMjIgMTA0LjgxNSAxNC4wMTc2TDEwNS4xMjIgMTQuNDE5OUwxMDUuMTIzIDE0LjQyMDlMNDUxLjQ4MyA0NzEuMzM2QzUzNS45MTIgNTgyLjc1IDU4MC42MDIgNzE0LjkzNyA1ODAuNjAyIDg1Mi40OUM1ODAuNjAyIDk4OC45NjkgNTM2Ljc4NCAxMTE5LjU3IDQ1My44OTggMTIzMC4zNEw0NTEuOTM0IDEyMzIuOTVMODkuNzk0OSAxNzEyLjA0QzgzLjIxODQgMTcyMC42NyA3Mi44MTU3IDE3MjUuOCA2MS42OTczIDE3MjUuOEgtMTk0Ljc1OUMtMjIyLjg4MyAxNzI1LjggLTIzOS4yNjkgMTY5NS4zOSAtMjIzLjEyMSAxNjczLjMxTC0yMjMuMTIyIDE2NzMuMzFMMzc1LjQ1NiA4NTcuODk3TDM3NS42NzUgODU3LjYwMUwzNzUuNDU0IDg1Ny4zMDRMLTIyMS43NzEgNTMuMzI2MkgtMjIxLjc3MUMtMjM4LjA5NSAzMS4zMzUyIC0yMjEuNzEgMC42NzA4OTggLTE5My40OTcgMC42NzA4OThaTTEyNzMuNzYgMC41SDE1MTkuNzVDMTU0OC40NSAwLjUwMDE3OSAxNTY0LjYzIDMyLjAzMTEgMTU0Ny40NiA1My44MzY5TDE1NDcuMDUgNTQuMzUwNkwxNTQ3LjA1IDU0LjM1MTZMMTEzMS42NCA1NjQuMzgyTDExMzAuODIgNTY1LjMxMUMxMDc2LjgxIDYyNi4wMTkgOTk4LjMxNCA2NjAuODc1IDkxNS4xMzMgNjYwLjg3NUg3MjcuMjU5TDEyNDYuMjggMTMuNDgxNEwxMjQ2LjI4IDEzLjQ4MDVDMTI1Mi44NiA1LjI4NTQxIDEyNjIuOTkgMC41IDEyNzMuNzYgMC41WiIgc3Ryb2tlPSIjRkFGQUZBIi8+Cjwvc3ZnPgo=);
+}
+
+@theme {
+  /* fonts */
+  --font-inter: 'Inter', sans-serif;
+  --font-hubot: 'Hubot Sans', sans-serif;
+
+  /* colors */
+  --color-deep-indigo: #0a0118;
+  --color-card-fill: #0c0c0e;
+  --color-light: #f8f8f8;
+  --color-text-light: #fafafa;
+  --color-body-2: #b2b2b2;
+  --color-brand-purple: #7401e8;
+  --color-brand-blue: #1f01ff;
+  --color-brand-purple-light: #bc79ff;
+  --color-brand-brand-orange: #ff621e;
+  --color-btn-gradient: linear-gradient(90deg, #2407f8 0.31%, #7f04ff 100%);
+  --color-dark-to-b: linear-gradient(180deg, rgba(12, 12, 14, 1) 0%, rgba(40, 40, 40, 1) 100%);
+  --color-pseudo: linear-gradient(
+    90.43deg,
+    #7400e8 12.77%,
+    #be67d5 38.49%,
+    #bc79ff 67.36%,
+    #1e00ff 107.78%
+  );
+  --background-image-isometric-grid: url('/images/iso-grid.svg');
+  --background-image-blured-line: url('/images/blured-line.svg');
+  --background-image-twisted-line: url('/images/V1.png');
+  --background-image-chevron-down: url('/images/chevron-down.svg');
+  --background-image-chevron-up: url('/images/chevron-up.svg');
+  --background-image-dotted-grid: radial-gradient(
+    circle at 1px 1px,
+    currentColor 1px,
+    transparent 0
+  );
+  --background-sizes: '20px 20px';
+  --background-image-triangles: url('/images/triangle-pattern.svg');
+  --background-image-hero-bg: url('/images/hero-bg.png');
+  --background-image-hero-mesh: url('/images/hero-mesh.png');
+  --animate-skew: skew 200ms ease;
+}
+
+@keyframes skew {
+  0%,
+  100% {
+    transform: skewX(0deg);
+  }
+  50% {
+    transform: skewX(3deg);
+  }
+}

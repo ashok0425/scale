@@ -1,3 +1,13 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+/* Put all imports at the top */
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
+@import './theme.css';
+@import './utility.css';
+@import './component.css';
+
+/* Then add Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
