@@ -150,7 +150,7 @@
                       class="bg bg-brand-purple absolute top-1/2 -z-10 h-56 w-full -skew-y-[48deg] rounded-lg"
                     ></div>
                     <div class="space-y-2 p-6">
-                      <a href="/freelancers.html" class="flex items-center gap-2">
+                      <a href="{{route('freelancer')}}" class="flex items-center gap-2">
                         <h6 class="dh-5 text-white">Freelancer</h6>
                         <img src="{{ asset('frontend/images/link.svg') }}" alt="" class="size-6" />
                       </a>
@@ -174,7 +174,7 @@
                       class="bg bg-brand-blue absolute top-1/2 -z-10 h-56 w-full -skew-y-[48deg] rounded-lg"
                     ></div>
                     <div class="space-y-2 p-6">
-                      <a href="/startup-founder.html" class="flex items-center gap-2">
+                      <a href="{{route('founder')}}" class="flex items-center gap-2">
                         <h6 class="dh-5 text-white">Founders</h6>
                         <img src="{{ asset('frontend/images/link.svg') }}" alt="" class="size-6" />
                       </a>
@@ -198,7 +198,7 @@
                       class="bg bg-brand-purple absolute top-1/2 -z-10 h-56 w-full -skew-y-[48deg] rounded-lg"
                     ></div>
                     <div class="space-y-2 p-6">
-                      <a href="/investors.html" class="flex items-center gap-2">
+                      <a href="{{route('investor')}}" class="flex items-center gap-2">
                         <h6 class="dh-5 text-white">Investors/Mentors</h6>
                         <img src="{{ asset('frontend/images/link.svg') }}" alt="" class="size-6" />
                       </a>
@@ -539,7 +539,7 @@
                 ScaleDux brings founders, talent, investors, and mentors into one intelligent
                 platform - creating the connections that used to take months in just minutes.
               </p>
-              <a href="#" class="btn-primary hover:shadow-brand-purple/60 group hover:shadow-lg">
+              <a href="{{route('priority.access')}}" class="btn-primary hover:shadow-brand-purple/60 group hover:shadow-lg">
                 <span class="inner-wrapper inline-flex h-6 overflow-hidden">
                   <span class="inner flex flex-col duration-200 group-hover:-translate-y-full">
                     <span class="text">Get Priority access</span>

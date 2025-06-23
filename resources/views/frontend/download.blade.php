@@ -4,25 +4,51 @@
   <section class="custom-section">
     <div class="custom-container">
       <div class="custom-content">
-        <h1 class="dh-1 mb-4">Download Resource</h1>
-        <p class="mb-6">Enter your Email address, we will send download link to you.</p>
+        <h1 class="dh-1 mb-4">🎁 Get Your Free Resource</h1>
+        <p class="mb-6">Tell us your name and where to send it - and it’s yours.
+            <br>
+            We respect your inbox and your time. (No spam. No noise)
+        </p>
         <form method="POST" class="flex flex-col" action="{{route('link.attachment.save')}}">
             <input type="hidden" value="{{$attachment->uuid}}" name="attachment_id">
           @csrf
+           <input
+              class="w-full @error('name') border-red-300 @enderror"
+              type="text"
+              placeholder="Enter full name"
+              name="name"
+              value="{{ old('name') }}"
+            />
+            @error('name')
+              <p class="error-text text-sm mt-1">{{ $message }}</p>
+            @enderror
+
             <input
-            type="text"
-            name="name"
-            required
-            placeholder="Enter full name"
-            class="custom-input"
-          />
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="Email Address"
-            class="custom-input"
-          />
+              class="w-full mt-5 @error('email') border-red-300 @enderror"
+              type="email"
+              placeholder="Email address"
+              name="email"
+              value="{{ old('email') }}"
+            />
+            @error('email')
+              <p class="error-text text-sm mt-1">{{ $message }}</p>
+            @enderror
+             <label class=" mt-3  gap-1">
+              <input
+                type="checkbox"
+                name="terms"
+                value="1"
+                {{ old('terms') ? 'checked' : '' }}
+                class="@error('terms') border-red-300 @enderror"
+              >
+              &nbsp;
+              <small class="text-white">
+                By continuing, I confirm that I’ve read and accept <a href="/priority-access-refund-policy" class="underline">ScaleDux’s Refund Policy</a>, <a href="/privacy-policy" class="underline">Privacy Policy</a>, and <a href="/priority-access-refund-policy" class="underline">Terms of Service</a>.
+              </small>
+            </label>
+            @error('terms')
+              <p class="error-text text-sm mt-1">{{ $message }}</p>
+            @enderror
           <button type="submit" class="custom-button mt-2">Download</button>
         </form>
       </div>

@@ -29,7 +29,7 @@
                 <option value="investor">Investor</option>
                 <option value="mentor">Mentor</option>
               </select> -->
-              <button
+              <a href="#waitlistSection"
                 class="btn-primary hover:shadow-brand-purple/60 group hover:shadow-lg max-sm:w-full"
               >
                 <span class="inner-wrapper inline-flex h-6 overflow-hidden">
@@ -38,7 +38,7 @@
                     <span class="text">Join our waitlist</span>
                   </span>
                 </span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -405,7 +405,7 @@
                 class="access-gradient before:brand-gradient relative -z-10 mb-1 h-px before:absolute before:bottom-0 before:left-1/2 before:h-[126px] before:w-[450px] before:-translate-x-1/2 before:rounded-full before:blur-[100px]"
               ></div>
               <p class="b1 text-center text-white">
-                Cant find an answer? email us at contact@scaledux.com
+                Cant find an answer? email us at {{cms()->email1}}
               </p>
             </div>
           </div>

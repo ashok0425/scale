@@ -45,6 +45,9 @@
     @stack('style')
 
     <style>
+        .text-purple{
+            color: #7f04ff;
+        }
         .after\:bg-no-repeat:after{
             z-index: -1!important;
         }
@@ -52,9 +55,6 @@
             scroll-behavior: smooth;
         }
 
-        select {
-
-}
 
 /* The custom arrow using a background SVG */
 select {
@@ -89,6 +89,15 @@ select {
     box-shadow: 0 0 0 2px rgba(107, 70, 193, 0.2);
   }
 
+  .border-none{
+    border:0!important;
+  }
+  /* .z-999 {
+    z-index: 9999;
+  } */
+.after\:bg-repeat:after{
+    z-index: -1!important;
+}
   /* When user has typed something (optional enhancement) */
   input:not(:placeholder-shown),
   textarea:not(:placeholder-shown) {
@@ -159,7 +168,7 @@ select {
     document.getElementById('success').showModal()
     @endif
 
-    @if (request()->path()!='priority-access')
+    @if (request()->path()!='priority-access'&&!Str::contains(request()->path(), 'attachment'))
  @if ($errors->any())
         @foreach ($errors->all() as $error)
             Toastify({

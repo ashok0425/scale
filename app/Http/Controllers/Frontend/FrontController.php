@@ -335,7 +335,7 @@ class FrontController extends Controller
             $waitlist = new Crm();
             $waitlist->name = $request->full_name;
             $waitlist->email = $request->footer_email;
-            $waitlist->role =$request->role;
+            $waitlist->role =$request->footer_role;
             $waitlist->page = $page;
             $waitlist->type = 1;
             $waitlist->save();
@@ -365,13 +365,19 @@ class FrontController extends Controller
 
     public function SaveAttachment(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'attachment_id' => 'required'
+       $validated = $request->validate([
+            'name' => 'required',
+            'email' => [
+                'required',
+                'email'
+        ]], [
+            'name.required' => "Oops! We’d love to know what to call you. Mind entering your name?",
+
+            'email.required' => "Looks like something’s missing or off — can you double-check your email?",
+            'email.email' => "Hmm... that doesn’t seem like a valid email address."
         ]);
 
         $link = route('link.attachment', ['attachment_id' => $request->attachment_id]);
-
         $crm = new Crm();
         $crm->email = $request->email;
         $crm->name = $request->name;

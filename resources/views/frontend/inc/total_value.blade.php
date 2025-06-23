@@ -12,7 +12,7 @@
                     Join the exclusive network of forward-thinking professionals positioning
                     themselves at the forefront of the new service economy. These privileges
                     disappear when we launch – lock them in now or miss them forever. You can
-                    download the value documentation <a href="#" class="underline">here</a>
+                    download the value documentation <a href="#" class="underline text-purple">here</a>
                   </p>
                   <div class="mt-3 flex items-center justify-between gap-4">
                     <div class="gradient-border-animated rounded-lg px-6 py-1">

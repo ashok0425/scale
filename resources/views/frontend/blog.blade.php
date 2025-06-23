@@ -175,28 +175,20 @@
                     class="flex w-full flex-col flex-wrap items-center justify-center gap-3 sm:flex-row"
                   >
                   @csrf
-                    <input class="w-full" type="text"  placeholder="Enter full name" name="full_name"/>
-                    <input class="w-full" type="email"  placeholder="Enter your email" name="email"/>
-                    <select class="w-full min-w-[250px]"  name="role">
-                      <option value="">Select your role</option>
-                      <option value="founder">Founder/Aspiring Founder</option>
-                      <option value="freelancer">Freelancer/Agency</option>
-                      <option value="investor">Investor</option>
-                      <option value="mentor">Mentor</option>
-                    </select>
-                    <button
+
+                    <a href="#waitlistSection"
                       type="submit"
-                      class="btn-primary hover:shadow-brand-purple/60 group w-full hover:shadow-lg"
+                      class="text-center btn-primary hover:shadow-brand-purple/60 group w-full hover:shadow-lg"
                     >
                       <span class="inner-wrapper inline-flex h-6 overflow-hidden">
                         <span
                           class="inner flex flex-col duration-200 group-hover:-translate-y-full"
                         >
-                          <span class="text">Get Priority Access</span>
-                          <span class="text">Get Priority Access</span>
+                          <span class="text">Join our waitlist</span>
+                          <span class="text">Join our waitlist</span>
                         </span>
                       </span>
-                    </button>
+                    </a>
                   </form>
                 </div>
               </div>

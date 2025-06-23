@@ -5,17 +5,18 @@
         </a>
         <ul class="nav">
 
+       <li>
+  <a href="{{ route('founder') }}" class="nav-item {{ request()->routeIs('founder') ? 'current' : '' }}">Founder</a>
+</li>
+<li>
+  <a href="{{ route('freelancer') }}" class="nav-item {{ request()->routeIs('freelancer') ? 'current' : '' }}">Freelancers</a>
+</li>
+<li>
+  <a href="{{ route('investor') }}" class="nav-item {{ request()->routeIs('investor') ? 'current' : '' }}">Investor</a>
+</li>
+
           <li>
-            <a href="{{route('founder')}}" class="nav-item">Founder</a>
-          </li>
-          <li>
-            <a href="{{route('freelancer')}}" class="nav-item">Freelancers</a>
-          </li>
-          <li>
-            <a href="{{route('investor')}}" class="nav-item">Investor</a>
-          </li>
-          <li>
-            <a href="{{route('blog')}}" class="nav-item">Blogs</a>
+            <a href="{{route('blog')}}" class="nav-item {{ request()->routeIs('blog') ? 'current' : '' }}">Blogs</a>
           </li>
         </ul>
         <div class="flex items-center justify-end gap-6">
