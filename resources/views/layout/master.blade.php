@@ -30,7 +30,7 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
         />
-    </head>
+     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Hubot+Sans&family=Bricolage+Grotesque&family=Instrument+Serif&family=Playfair+Display&family=Raleway&display=swap" rel="stylesheet">
 
     <style>
     .rotate-180 {
@@ -135,6 +135,7 @@
             left:-100px!important;
         }
     </style>
+    </head>
 
     <body>
         <div class="wrapper">
@@ -215,12 +216,12 @@
     ['view', ['fullscreen', 'codeview', 'help']]
   ],
   fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '24', '36', '48', '64', '82', '150'],
-  fontNames: [
-    'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Georgia',
-    'Helvetica', 'Impact', 'Lucida Console', 'Palatino Linotype',
-    'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana',
-    'Roboto', 'Merriweather', 'Open Sans', 'Lato', 'Montserrat'
+   fontNames: [
+    'Arial', 'Verdana', 'Times New Roman', 'Courier New',
+    'Roboto', 'Open Sans', 'Merriweather', 'Lato', 'Montserrat',
+    'Inter', 'Hubot Sans', 'Bricolage Grotesque', 'Instrument Serif', 'Playfair Display', 'Raleway'
   ],
+
    buttons: {
         linkedImage: function (context) {
           var ui = $.summernote.ui;

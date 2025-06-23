@@ -50,7 +50,7 @@ class FrontController extends Controller
 
     public function storePriorityAccess(Request $request)
     {
-       $validated = $request->validate([
+  $validated = $request->validate([
     'full_name' => 'required',
     'email' => [
         'required',
@@ -65,7 +65,17 @@ class FrontController extends Controller
     'city' => 'required',
     'message' => 'required',
     'country' => 'required',
-
+], [
+    'full_name.required' => "Oops! We’d love to know what to call you. Mind entering your name?",
+    'email.required' => "Looks like something’s missing or off — can you double-check your email?",
+    'email.email' => "That email doesn’t seem valid — can you double-check?",
+    'email.unique' => "Hey again! Looks like you’ve already joined the waitlist. We love that energy!",
+    'role.required' => "We’d love to tailor your journey — just let us know who you are to ScaleDux - founder, freelancer, investor, or mentor?",
+    'role.in' => "That doesn’t seem right — please select one of the listed roles.",
+    'phone.required' => "We’ll need your number to reach you — could you fill that in?",
+    'city.required' => "Which city are you in? This helps us personalize your experience.",
+    'message.required' => "Tell us a bit about what you're looking for or expecting — we’re listening!",
+    'country.required' => "A country helps us stay globally relevant — mind picking one?",
 ]);
 
     // try {
@@ -237,13 +247,26 @@ public function subscribe(Request $request)
 
 public function waitlist(Request $request)
 {
-   $validated= $request->validate([
-        'full_name' => 'required',
-        'email' =>  ['required','email',Rule::unique('crms')->where(function ($query) use ($request) {
+  $validated = $request->validate([
+    'full_name' => 'required',
+    'email' => [
+        'required',
+        'email',
+        Rule::unique('crms')->where(function ($query) use ($request) {
             return $query->where('type', 1);
-        })],
-        'role' => 'required|in:founder,freelancer,investor,mentor',
-    ]);
+        }),
+    ],
+    'role' => 'required|in:founder,freelancer,investor,mentor',
+], [
+    'full_name.required' => "Oops! We’d love to know what to call you. Mind entering your name?",
+
+    'email.required' => "Looks like something’s missing or off — can you double-check your email?",
+    'email.email' => "Hmm... that doesn’t seem like a valid email address.",
+    'email.unique' => "Hey again! Looks like you’ve already joined the waitlist. We love that energy!",
+
+    'role.required' => "We’d love to tailor your journey — just let us know who you are to ScaleDux - founder, freelancer, investor, or mentor?",
+    'role.in' => "That doesn’t seem right — please select one of the listed roles.",
+]);
     try {
         $page = parse_url(url()->previous(), PHP_URL_PATH);
 
