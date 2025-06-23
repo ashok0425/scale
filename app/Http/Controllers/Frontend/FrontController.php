@@ -288,6 +288,7 @@ public function SaveAttachment(Request $request)
 
     $crm = new Crm();
     $crm->email = $request->email;
+    $crm->name = $request->name;
     $crm->type = 3;
     $crm->attachment_link = $link;
     $crm->save();

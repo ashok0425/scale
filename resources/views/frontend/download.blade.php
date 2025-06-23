@@ -10,10 +10,10 @@
             <input type="hidden" value="{{$attachment->uuid}}" name="attachment_id">
           @csrf
             <input
-            type="email"
-            name="email"
+            type="text"
+            name="name"
             required
-            placeholder="Email Address"
+            placeholder="Enter full name"
             class="custom-input"
           />
           <input
