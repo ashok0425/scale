@@ -1,29 +1,29 @@
 <?php
 
 use App\Http\Controllers\FaqController;
-use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\SeoController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/freelancer', [HomeController::class, 'freelancer'])->name('freelancer');
-Route::get('/investors', [HomeController::class, 'investor'])->name('investor');
-Route::get('/founders', [HomeController::class, 'founder'])->name('founder');
-Route::get('/blogs', [HomeController::class, 'blog'])->name('blog');
-Route::get('/categort/{slug}', [HomeController::class, 'categoryBlog'])->name('category');
+Route::get('/', [FrontController::class, 'index']);
+Route::get('/freelancer', [FrontController::class, 'freelancer'])->name('freelancer');
+Route::get('/investors', [FrontController::class, 'investor'])->name('investor');
+Route::get('/founders', [FrontController::class, 'founder'])->name('founder');
+Route::get('/blogs', [FrontController::class, 'blog'])->name('blog');
+Route::get('/categort/{slug}', [FrontController::class, 'categoryBlog'])->name('category');
 
-Route::get('/blog/{slug}', [HomeController::class, 'blogDetail'])->name('blog.detail');
-Route::post('/subscribe', [HomeController::class, 'subscribe'])->name('subscribe.store');
-Route::post('/waitlist', [HomeController::class, 'waitlist'])->name('waitlist.store');
-Route::get('/priority-access', [HomeController::class, 'priorityAccess'])->name('priority.access');
-Route::post('/priority-access', [HomeController::class, 'storePriorityAccess']);
-Route::get('/about-us', [HomeController::class, 'pages']);
-Route::get('/terms-of-services', [HomeController::class, 'pages']);
-Route::get('/privacy-policy', [HomeController::class, 'pages']);
-Route::get('attachment/{attachment_id}/{blog_id?}', [HomeController::class,'attachment'])->name('link.attachment');
-Route::post('attachment', [HomeController::class,'SaveAttachment'])->name('link.attachment.save');
-Route::get('attachment-download/{encoded_id}/{token}', [HomeController::class, 'downloadFile'])->name('attachment.download.file')->middleware('signed');
+Route::get('/blog/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
+Route::post('/subscribe', [FrontController::class, 'subscribe'])->name('subscribe.store');
+Route::post('/waitlist', [FrontController::class, 'waitlist'])->name('waitlist.store');
+Route::get('/priority-access', [FrontController::class, 'priorityAccess'])->name('priority.access');
+Route::post('/priority-access', [FrontController::class, 'storePriorityAccess']);
+Route::get('/about-us', [FrontController::class, 'pages']);
+Route::get('/terms-of-services', [FrontController::class, 'pages']);
+Route::get('/privacy-policy', [FrontController::class, 'pages']);
+Route::get('attachment/{attachment_id}/{blog_id?}', [FrontController::class,'attachment'])->name('link.attachment');
+Route::post('attachment', [FrontController::class,'SaveAttachment'])->name('link.attachment.save');
+Route::get('attachment-download/{encoded_id}/{token}', [FrontController::class, 'downloadFile'])->name('attachment.download.file')->middleware('signed');
 
 
 

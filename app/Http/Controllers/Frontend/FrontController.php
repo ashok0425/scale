@@ -21,7 +21,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use URL;
 
-class HomeController extends Controller
+class FrontController extends Controller
 {
     public function index()
     {
