@@ -64,23 +64,26 @@ class HomeController extends Controller
     'linkedin' => 'nullable',
     'city' => 'required',
     'message' => 'required',
+    'country' => 'required',
+
 ]);
 
     // try {
         $page = parse_url(url()->previous(), PHP_URL_PATH);
 
-       $waitlist=new Crm();
-       $waitlist->name=$validated['full_name'];
-       $waitlist->email=$validated['email'];
-       $waitlist->role=$validated['role'];
-       $waitlist->phone=$validated['phone'];
-       $waitlist->city=$validated['city'];
-       $waitlist->linkedin=$validated['linkedin'];
-    //    $waitlist->message=$validated['message'];
-       $waitlist->page=$page;
-       $waitlist->type=2;
-       $waitlist->save();
-Notification::route('mail', $request->email)->notify(new PreAccessNotification($waitlist));
+       $access=new Crm();
+       $access->name=$validated['full_name'];
+       $access->email=$validated['email'];
+       $access->role=$validated['role'];
+       $access->phone=$validated['phone'];
+       $access->city=$validated['city'];
+       $access->linkedin=$validated['linkedin'];
+       $access->message=$validated['message'];
+       $access->country=$validated['country'];
+       $access->page=$page;
+       $access->type=2;
+       $access->save();
+Notification::route('mail', $request->email)->notify(new PreAccessNotification($access));
 
         return back()->with('message', 'Thank you for joining.')->with('type', 'success');
 
@@ -236,9 +239,9 @@ public function waitlist(Request $request)
 {
    $validated= $request->validate([
         'full_name' => 'required',
-        'email' => 'required|email',Rule::unique('crms')->where(function ($query) use ($request) {
+        'email' =>  ['required','email',Rule::unique('crms')->where(function ($query) use ($request) {
             return $query->where('type', 1);
-        }),
+        })],
         'role' => 'required|in:founder,freelancer,investor,mentor',
     ]);
     try {

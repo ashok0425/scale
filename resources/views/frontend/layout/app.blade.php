@@ -75,6 +75,31 @@ select {
     @include('frontend.layout.footer')
 
 
+       <dialog
+        id="success"
+        class="gradient-border fixed top-1/2 left-1/2 w-full max-w-[683px] -translate-1/2 flex-col justify-center space-y-6 rounded-3xl p-10 open:flex"
+      >
+        <img src="{{ asset('frontend/images/div.galaxy-logo-circle.svg') }}" alt="" class="mx-auto size-[73px]" />
+        <h2 class="dh-2 text-center">Thanks for joining!</h2>
+        <p class="b1 text-center font-normal">
+          Welcome to the ScaleDux Family. You're officially one of our Founding Members. You'll
+          receive a personal welcome email with your Founding Member kit and exclusive updates
+          roadmap.
+        </p>
+        <button
+          onclick="document.getElementById('success').close()"
+          class="btn-primary hover:shadow-brand-purple/60 group mx-auto h-fit w-full hover:shadow-lg sm:max-w-2/3"
+        >
+          <span class="inner-wrapper inline-flex h-6 overflow-hidden">
+            <span class="inner flex flex-col duration-200 group-hover:-translate-y-full">
+              <span class="text">Close popup</span>
+              <span class="text">Close popup</span>
+            </span>
+          </span>
+        </button>
+      </dialog>
+
+
    <script type="application/ld+json">
 {!! json_encode([
     "@context" => "https://schema.org",
@@ -95,15 +120,9 @@ select {
     <script type="module" crossorigin src="{{asset('frontend/assets/main.js')}}"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script>
-    @if (session()->has('message'))
-        Toastify({
-  text: "{{session()->get('message')}}",
-  className: "error",
-   duration: 4000,
-  style: {
-    background: "{{session()->get('type')=='error'?'red':'green'}}",
-  }
-}).showToast();
+
+    @if (session()->has('message')&&session()->get('type')!='error')
+    document.getElementById('success').showModal()
     @endif
 
     @if ($errors->any())
@@ -124,6 +143,7 @@ select {
 </script>
 
 @stack('script')
+
 
   </body>
 </html>

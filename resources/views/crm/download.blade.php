@@ -27,7 +27,7 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->attachment }}</td>
                             <td>{{ $user->blog->name }}</td>
-                            <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}</td>
+                            <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y g:i:s A') }}</td>
                         </tr>
                     @endforeach
                 </tbody>

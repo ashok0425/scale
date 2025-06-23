@@ -27,14 +27,19 @@
                 <option value="mentor">Mentor</option>
               </select>
               <input class="w-full" type="text" placeholder="LinkedIn profile URL (optional)" name="linkedin" />
-              <select class="w-full" name="city" required>
-                <option value="">City</option>
-                <option value="mumbai">Mumbai</option>
-                <option value="delhi">Delhi</option>
-                <option value="bangalore">Bangalore</option>
-                <option value="kolkata">Kolkata</option>
-                <option value="chennai">Chennai</option>
+              <select class="w-full" name="country" required>
+                <option value="">Country</option>
+                <option value="India">India</option>
               </select>
+             <select class="w-full" name="city" required>
+                <option value="">City</option>
+                @foreach (App\Models\Crm::getCity() as $city)
+                <option value="{{$city}}">{{$city}}</option>
+
+                @endforeach
+
+              </select>
+
             </div>
             <div class="flex-1">
               <textarea
@@ -42,6 +47,13 @@
                 required
                 placeholder="When you need to find freelancers/investors/business partners, what usually goes wrong? Tell us all the pain points you are facing now..."
               ></textarea>
+                <label class="flex items-center gap-1">
+                <input type="checkbox" name="term" id="" required>
+                <p class="b4 text-white">
+                 I agree to the Terms of Service and Privacy Policy of ScaleDux.
+                </p>
+              </label>
+              <br>
               <div class="flex items-center gap-1">
                 <img src="{{ asset('frontend/images/lock.png') }}" alt="" />
                 <p class="b4 text-white">
@@ -50,7 +62,6 @@
                 </p>
               </div>
               <button
-                {{-- onclick="document.getElementById('success').showModal()" --}}
                 class="btn-primary hover:shadow-brand-purple/60 group mt-6 mb-3 h-fit w-full hover:shadow-lg"
               >
                 <span class="inner-wrapper inline-flex h-6 overflow-hidden">
@@ -70,28 +81,6 @@
 
         </div>
       </section>
-      <dialog
-        id="success"
-        class="gradient-border fixed top-1/2 left-1/2 w-full max-w-[683px] -translate-1/2 flex-col justify-center space-y-6 rounded-3xl p-10 open:flex"
-      >
-        <img src="{{ asset('frontend/images/div.galaxy-logo-circle.svg') }}" alt="" class="mx-auto size-[73px]" />
-        <h2 class="dh-2 text-center">Thanks for joining!</h2>
-        <p class="b1 text-center font-normal">
-          Welcome to the ScaleDux Family. You're officially one of our Founding Members. You'll
-          receive a personal welcome email with your Founding Member kit and exclusive updates
-          roadmap.
-        </p>
-        <button
-          onclick="document.getElementById('success').close()"
-          class="btn-primary hover:shadow-brand-purple/60 group mx-auto h-fit w-full hover:shadow-lg sm:max-w-2/3"
-        >
-          <span class="inner-wrapper inline-flex h-6 overflow-hidden">
-            <span class="inner flex flex-col duration-200 group-hover:-translate-y-full">
-              <span class="text">Close popup</span>
-              <span class="text">Close popup</span>
-            </span>
-          </span>
-        </button>
-      </dialog>
+
     </main>
 @endsection

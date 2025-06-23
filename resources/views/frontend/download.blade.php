@@ -9,6 +9,13 @@
         <form method="POST" class="flex flex-col" action="{{route('link.attachment.save')}}">
             <input type="hidden" value="{{$attachment->uuid}}" name="attachment_id">
           @csrf
+            <input
+            type="email"
+            name="email"
+            required
+            placeholder="Email Address"
+            class="custom-input"
+          />
           <input
             type="email"
             name="email"
