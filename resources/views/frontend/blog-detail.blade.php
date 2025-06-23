@@ -25,30 +25,32 @@
             <p class="b3 text-light">{{$blog->author_post}}</p>
           </div>
         </div>
-        <button id="shareBtn" class="flex cursor-pointer items-center gap-3 duration-200 hover:opacity-80">
-          <img src="{{ asset('frontend/images/share.svg') }}" alt="{{$blog->title}}" class="size-6" />
-          <span class="b3 text-light text-sm">Share</span>
-        </button>
-
-        <div id="shareOptions" class="hidden absolute mt-2 right-0 bg-gray-800 rounded-lg shadow-lg p-3 space-y-2 z-50 w-40">
-  <button id="closeShare" aria-label="Close share options" class="absolute top-1 right-1 text-white hover:text-red-400">
-    &times;
+       <div class="relative inline-block">
+  <button id="shareBtn" class="flex cursor-pointer items-center gap-3 duration-200 hover:opacity-80">
+    <img src="{{ asset('frontend/images/share.svg') }}" alt="{{ $blog->title }}" class="size-6" />
+    <span class="b3 text-light text-sm">Share</span>
   </button>
-  <a href="#" class="flex items-center gap-2 text-white hover:text-blue-500" target="_blank" rel="noopener" id="facebookShare">
-    <img src="{{ asset('frontend/images/facebook.svg') }}" alt="Facebook" class="w-5 h-5" /> Facebook
-  </a>
-  <a href="#" class="flex items-center gap-2 text-white hover:text-blue-400" target="_blank" rel="noopener" id="twitterShare">
-    <img src="{{ asset('frontend/images/twitter.svg') }}" alt="Twitter" class="w-5 h-5" /> Twitter
-  </a>
-  <a href="#" class="flex items-center gap-2 text-white hover:text-blue-700" target="_blank" rel="noopener" id="linkedinShare">
-    <img src="{{ asset('frontend/images/linkedin.svg') }}" alt="LinkedIn" class="w-5 h-5" /> LinkedIn
-  </a>
-  <a href="#" class="flex items-center gap-2 text-white hover:text-green-500" target="_blank" rel="noopener" id="whatsappShare">
-    <img src="{{ asset('frontend/images/whatsapp.svg') }}" alt="WhatsApp" class="w-5 h-5" /> WhatsApp
-  </a>
-  <a href="#" class="flex items-center gap-2 text-white hover:text-pink-500" target="_blank" rel="noopener" id="instagramShare">
-    <img src="{{ asset('frontend/images/instagram.svg') }}" alt="Instagram" class="w-5 h-5" /> Instagram
-  </a>
+
+  <div id="shareOptions" class="hidden absolute right-0 mt-2 bg-gray-800 rounded-lg shadow-lg p-3 space-y-2 z-50 w-40 transition-opacity duration-200" style="background:linear-gradient(90deg,#2407f8,#7f04ff) 0/150% 400%;width:160px">
+    <button id="closeShare" aria-label="Close share options" class="absolute top-1 right-1 text-white hover:text-red-400">
+      &times;
+    </button>
+    <a href="#" class="flex items-center gap-2 text-white hover:text-blue-500" target="_blank" id="facebookShare">
+      <img src="{{ asset('frontend/images/facebook.svg') }}" alt="Facebook" class="w-5 h-5" /> Facebook
+    </a>
+    <a href="#" class="flex items-center gap-2 text-white hover:text-blue-400" target="_blank" id="twitterShare">
+      <img src="{{ asset('frontend/images/twitter.svg') }}" alt="Twitter" class="w-5 h-5" /> Twitter
+    </a>
+    <a href="#" class="flex items-center gap-2 text-white hover:text-blue-700" target="_blank" id="linkedinShare">
+      <img src="{{ asset('frontend/images/linkedin.svg') }}" alt="LinkedIn" class="w-5 h-5" /> LinkedIn
+    </a>
+    <a href="#" class="flex items-center gap-2 text-white hover:text-green-500" target="_blank" id="whatsappShare">
+      <img src="{{ asset('frontend/images/whatsapp.svg') }}" alt="WhatsApp" class="w-5 h-5" /> WhatsApp
+    </a>
+    <a href="#" class="flex items-center gap-2 text-white hover:text-pink-500" target="_blank" id="instagramShare">
+      <img src="{{ asset('frontend/images/instagram.svg') }}" alt="Instagram" class="w-5 h-5" /> Instagram
+    </a>
+  </div>
 </div>
 
       </div>
@@ -262,99 +264,95 @@ color: #7f04ff!important;
 @push('script')
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  // Share dropdown functionality
   const shareBtn = document.getElementById('shareBtn');
   const shareOptions = document.getElementById('shareOptions');
   const closeBtn = document.getElementById('closeShare');
 
-  // Toggle share options visibility
-  shareBtn.addEventListener('click', () => {
-    shareOptions.classList.toggle('hidden');
-  });
+  if (shareBtn && shareOptions && closeBtn) {
+    shareBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      shareOptions.classList.toggle('hidden');
+    });
 
-  // Close share options when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!shareBtn.contains(e.target) && !shareOptions.contains(e.target)) {
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       shareOptions.classList.add('hidden');
-    }
-  });
+    });
 
-  // Close share options when clicking close button
-  closeBtn.addEventListener('click', () => {
-    shareOptions.classList.add('hidden');
-  });
+    document.addEventListener('click', (e) => {
+      if (!shareBtn.contains(e.target) && !shareOptions.contains(e.target)) {
+        shareOptions.classList.add('hidden');
+      }
+    });
+  }
 
- // Get current page URL and title
+  // Set share URLs
   const pageUrl = encodeURIComponent(window.location.href);
   const pageTitle = encodeURIComponent(document.title);
 
-  // Set share URLs
-  document.getElementById('facebookShare').href =
-    `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+  const facebook = document.getElementById('facebookShare');
+  const twitter = document.getElementById('twitterShare');
+  const linkedin = document.getElementById('linkedinShare');
+  const whatsapp = document.getElementById('whatsappShare');
+  const instagram = document.getElementById('instagramShare');
 
-  document.getElementById('twitterShare').href =
-    `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+  if (facebook) facebook.href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+  if (twitter) twitter.href = `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+  if (linkedin) linkedin.href = `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}&title=${pageTitle}`;
+  if (whatsapp) whatsapp.href = `https://api.whatsapp.com/send?text=${pageTitle}%20${pageUrl}`;
+  if (instagram) instagram.href = 'https://www.instagram.com/yourprofile/';
 
-  document.getElementById('linkedinShare').href =
-    `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}&title=${pageTitle}`;
+  // Popup handling
+  setTimeout(() => {
+    const popup = document.querySelector('.popup');
+    if (popup) popup.style.display = 'block';
+  }, 5000);
 
-  document.getElementById('whatsappShare').href =
-    `https://api.whatsapp.com/send?text=${pageTitle}%20${pageUrl}`;
+  const popupClose = document.getElementById('popup-close');
+  if (popupClose) {
+    popupClose.addEventListener('click', () => {
+      const popup = document.querySelector('.popup');
+      if (popup) popup.style.display = 'none';
+    });
+  }
 
-  // Instagram does not support direct URL sharing, so you can link to your Instagram page or hide this option
-  document.getElementById('instagramShare').href = 'https://www.instagram.com/yourprofile/';
-});
+  // TOC (Table of Contents) scroll sync
+  const tocWrapper = document.querySelector('.toc-wrapper');
+  const activeIndicator = document.getElementById('active-indicator');
+  const tocLinks = document.querySelectorAll('.toc-link');
+  const headings = document.querySelectorAll('.col-span-12 h2[id], .col-span-12 h3[id], .col-span-12 h4[id]');
 
-setTimeout(() => {
-    document.querySelector('.popup').style='display:block'
-}, 5000);
+  function clearActive() {
+    tocLinks.forEach(link => link.classList.remove('active'));
+  }
 
-// Close popup when close button clicked
-document.getElementById('popup-close').addEventListener('click', () => {
-    document.querySelector('.popup').style.display = 'none';
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    const tocWrapper = document.querySelector('.toc-wrapper');
-    const activeIndicator = document.getElementById('active-indicator');
-    const tocLinks = document.querySelectorAll('.toc-link');
-    const headings = document.querySelectorAll('.col-span-12 h2[id], .col-span-12 h3[id], .col-span-12 h4[id]');
-
-    function clearActive() {
-        tocLinks.forEach(link => link.classList.remove('active'));
+  function onScroll() {
+    let currentId = null;
+    for (let i = 0; i < headings.length; i++) {
+      const rect = headings[i].getBoundingClientRect();
+      if (rect.top <= 140) {
+        currentId = headings[i].id;
+      }
     }
 
-    function onScroll() {
-        let currentId = null;
-        for (let i = 0; i < headings.length; i++) {
-            const rect = headings[i].getBoundingClientRect();
-            if (rect.top <= 140) {
-                currentId = headings[i].id;
-            }
-        }
-        if (currentId) {
-            clearActive();
-            const activeLink = document.querySelector(`.toc-link[href="#${currentId}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
+    if (currentId && tocWrapper && activeIndicator) {
+      clearActive();
+      const activeLink = document.querySelector(`.toc-link[href="#${currentId}"]`);
+      if (activeLink) {
+        activeLink.classList.add('active');
+        const wrapperRect = tocWrapper.getBoundingClientRect();
+        const linkRect = activeLink.getBoundingClientRect();
+        const topPosition = linkRect.top - wrapperRect.top + 25 + tocWrapper.scrollTop;
 
-                // Calculate position relative to tocWrapper
-                const wrapperRect = tocWrapper.getBoundingClientRect();
-                const linkRect = activeLink.getBoundingClientRect();
-
-                const topPosition = linkRect.top - wrapperRect.top + 25 + tocWrapper.scrollTop;
-
-                // Move the indicator to the active link's vertical position
-                activeIndicator.style.top = `${topPosition}px`;
-                activeIndicator.style.height = `${linkRect.height}px`; // match height of link
-            }
-        }
+        activeIndicator.style.top = `${topPosition}px`;
+        activeIndicator.style.height = `${linkRect.height}px`;
+      }
     }
+  }
 
-    // Initialize indicator position on page load
-    onScroll();
-
-    window.addEventListener('scroll', onScroll);
+  onScroll(); // Initial sync
+  window.addEventListener('scroll', onScroll);
 });
-
 </script>
 @endpush
