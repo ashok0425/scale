@@ -104,7 +104,7 @@
               </div>
             </div>
             <ul class="flex-[1.5] space-y-3">
-                @foreach ($pages as $page)
+                {{-- @foreach ($pages as $page)
                      <li>
                 <a
                   href="{{url($page->slug)}}"
@@ -112,7 +112,7 @@
                   >{{Str::title($page->name)}}</a
                 >
               </li>
-                @endforeach
+                @endforeach --}}
 
               <li>
                 <a

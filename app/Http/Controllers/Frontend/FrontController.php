@@ -308,9 +308,10 @@ class FrontController extends Controller
         'footer_email' => [
             'required',
             'email',
-            Rule::unique('crms')->where(function ($query) use ($request) {
-                return $query->where('type', 1);
-            }),
+                   Rule::unique('crms', 'email')->where(function ($query) use ($request) {
+            return $query->where('type', 1);
+        }),
+
         ],
         'footer_role' => 'required|in:founder,freelancer,investor,mentor',
     ], [

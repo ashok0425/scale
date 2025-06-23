@@ -22,6 +22,8 @@ Route::post('/priority-access', [FrontController::class, 'storePriorityAccess'])
 Route::get('/about-us', [FrontController::class, 'pages']);
 Route::get('/terms-of-services', [FrontController::class, 'pages']);
 Route::get('/privacy-policy', [FrontController::class, 'pages']);
+Route::get('/priority-access-refund-policy', [FrontController::class, 'pages']);
+
 Route::get('attachment/{attachment_id}/{blog_id?}', [FrontController::class,'attachment'])->name('link.attachment');
 Route::post('attachment', [FrontController::class,'SaveAttachment'])->name('link.attachment.save');
 Route::get('attachment-download/{encoded_id}/{token}', [FrontController::class, 'downloadFile'])->name('attachment.download.file')->middleware('signed');
