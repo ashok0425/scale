@@ -65,7 +65,43 @@ select {
 }
     </style>
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+<style>
+    .error-text {
+  color: #FF6B6B;
+  font-size: 0.875rem; /* small font */
+  margin-top: 0.25rem; /* 4px */
+}
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  select,
+  textarea {
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+  }
 
+  /* On focus (typing) */
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #6b46c1; /* custom purple */
+    box-shadow: 0 0 0 2px rgba(107, 70, 193, 0.2);
+  }
+
+  /* When user has typed something (optional enhancement) */
+  input:not(:placeholder-shown),
+  textarea:not(:placeholder-shown) {
+    border-color: #6b46c1;
+  }
+
+  /* Red border for errors */
+  .border-red-300 {
+    border-color: #fa6565 !important;
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.3) !important;
+    margin-bottom: 1px;
+  }
+</style>
   </head>
   <body>
     @include('frontend.layout.header')
@@ -125,21 +161,24 @@ select {
     document.getElementById('success').showModal()
     @endif
 
-    @if ($errors->any())
+    @if (request()->path()!='priority-access')
+ @if ($errors->any())
         @foreach ($errors->all() as $error)
             Toastify({
                 text: @json($error),
                 style: {
-                    background: "red",
+                    background: "#810202",
                     color: "#fff"
                 },
-                duration: 4000,
+                duration: 8000,
                 gravity: "top",
                 position: "right",
                 close: true,
             }).showToast();
         @endforeach
     @endif
+    @endif
+
 </script>
 
 @stack('script')

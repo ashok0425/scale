@@ -16,6 +16,7 @@ Route::get('/categort/{slug}', [FrontController::class, 'categoryBlog'])->name('
 Route::get('/blog/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
 Route::post('/subscribe', [FrontController::class, 'subscribe'])->name('subscribe.store');
 Route::post('/waitlist', [FrontController::class, 'waitlist'])->name('waitlist.store');
+Route::post('/waitlist/store', [FrontController::class, 'waitlistStore'])->name('waitlist.store.footer');
 Route::get('/priority-access', [FrontController::class, 'priorityAccess'])->name('priority.access');
 Route::post('/priority-access', [FrontController::class, 'storePriorityAccess']);
 Route::get('/about-us', [FrontController::class, 'pages']);

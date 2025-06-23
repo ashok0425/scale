@@ -65,41 +65,54 @@
             </div>
           </div>
           <div class="mx-auto mt-6 sm:w-fit">
-            <form method="POST" action="{{route('waitlist.store')}}">
-                @csrf
-            <div class="flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row">
-              <input
-                class="min-w-[250px] max-sm:w-full"
-                type="text"
-                required
-                name="full_name"
-                placeholder="Enter full name"
-              />
-              <input
-                class="min-w-[250px] max-sm:w-full"
-                type="email"
-                required
-                name="email"
-                placeholder="Enter your email"
-              />
-              <select class="min-w-[250px] max-sm:w-full"
-                name="role" required>
-                <option value="">Select your role</option>
-                <option value="founder">Founder/Aspiring Founder</option>
-                <option value="freelancer">Freelancer/Agency</option>
-                <option value="investor">Investor</option>
-                <option value="mentor">Mentor</option>
-              </select>
-              <button class="btn-primary hover:shadow-brand-purple/60 group hover:shadow-lg">
-                <span class="inner-wrapper inline-flex h-6 overflow-hidden">
-                  <span class="inner flex flex-col duration-200 group-hover:-translate-y-full">
-                    <span class="text">Join our waitlist</span>
-                    <span class="text">Join our waitlist</span>
-                  </span>
-                </span>
-              </button>
-            </div>
-            </form>
+          <form method="POST" action="{{ route('waitlist.store') }}">
+  @csrf
+  <div class="flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row">
+
+    <div class="min-w-[250px] max-sm:w-full flex flex-col">
+      <input
+        class="@error('full_name') border-red-300 @enderror"
+        type="text"
+        name="full_name"
+        placeholder="Enter full name"
+        value="{{ old('full_name') }}"
+      />
+
+    </div>
+
+    <div class="min-w-[250px] max-sm:w-full flex flex-col">
+      <input
+        class="@error('email') border-red-300 @enderror"
+        type="email"
+        name="email"
+        placeholder="Enter your email"
+        value="{{ old('email') }}"
+      />
+
+    </div>
+
+    <div class="min-w-[250px] max-sm:w-full flex flex-col">
+      <select class="@error('role') border-red-300 @enderror" name="role">
+        <option value="">Select your role</option>
+        <option value="founder" {{ old('role') == 'founder' ? 'selected' : '' }}>Founder/Aspiring Founder</option>
+        <option value="freelancer" {{ old('role') == 'freelancer' ? 'selected' : '' }}>Freelancer/Agency</option>
+        <option value="investor" {{ old('role') == 'investor' ? 'selected' : '' }}>Investor</option>
+        <option value="mentor" {{ old('role') == 'mentor' ? 'selected' : '' }}>Mentor</option>
+      </select>
+
+    </div>
+
+    <button class="btn-primary hover:shadow-brand-purple/60 group hover:shadow-lg">
+      <span class="inner-wrapper inline-flex h-6 overflow-hidden">
+        <span class="inner flex flex-col duration-200 group-hover:-translate-y-full">
+          <span class="text">Join our waitlist</span>
+          <span class="text">Join our waitlist</span>
+        </span>
+      </span>
+    </button>
+  </div>
+</form>
+
           </div>
         </div>
         <div class="center z-10 container">

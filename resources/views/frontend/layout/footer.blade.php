@@ -5,7 +5,7 @@
       <div id="waitlistSection"
         class="before:bg-brand-purple after:bg-triangles relative isolate overflow-clip py-11 before:absolute before:-top-14 before:-left-14 before:z-20 before:size-72 before:rounded-full before:blur-[130px] after:absolute after:top-0 after:left-0 after:z-10 after:aspect-square after:h-full after:bg-no-repeat sm:py-16 md:py-[3.125rem]"
       >
-        <div class="container">
+        <div class="container"  id="{{request()->path()!='/'?'waitlist-Section':''}}">
           <div
             class="before:brand-gradient relative rounded-lg bg-gradient-to-r from-[#100548] to-[#1c0441] px-6 py-[60px] before:!absolute before:-inset-[2px] before:-z-10 before:rounded-lg"
           >
@@ -27,48 +27,53 @@
                 </p>
               </div>
               <div class="mx-auto mt-6 sm:w-fit">
-                <form class="flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row" method="POST" action="{{route('waitlist.store')}}">
-                    @csrf
-                  <input
-                    class="max-sm:w-full sm:max-w-[224px]"
-                    type="text"
-                    name="full_name"
-                    required
-                    placeholder="Enter full name"
-                  />
-                  <input
-                    class="max-sm:w-full sm:max-w-[224px]"
-                    type="email"
-                    required
-                    name="email"
-                    placeholder="Enter your email"
-                  />
-                  <select class="max-sm:w-full sm:max-w-[224px]" name="role" required>
-                    <option value="">Select your role</option>
-                    <option value="founder">Founder/Aspiring Founder</option>
-                    <option value="freelancer">Freelancer/Agency</option>
-                    <option value="investor">Investor</option>
-                    <option value="mentor">Mentor</option>
-                  </select>
-                  <button
-                    type="submit"
-                    class="btn-primary hover:shadow-brand-purple/60 group hover:shadow-lg max-sm:w-full"
-                  >
-                    <span class="inner-wrapper inline-flex h-6 overflow-hidden">
-                      <span class="inner flex flex-col duration-200 group-hover:-translate-y-full">
-                        <span class="text">Join our Waitlist</span>
-                        <span class="text">Join our Waitlist</span>
-                      </span>
-                    </span>
-                  </button>
-                </form>
+             <form id="" class="flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row" method="POST" action="{{ route('waitlist.store.footer') }}">
+  @csrf
+
+  <input
+    class="max-sm:w-full sm:max-w-[224px] @error('footer_full_name') border-red-300 @enderror"
+    type="text"
+    name="footer_full_name"
+    placeholder="Enter full name"
+    value="{{ old('footer_full_name') }}"
+  />
+
+  <input
+    class="max-sm:w-full sm:max-w-[224px] @error('footer_email') border-red-300 @enderror"
+    type="email"
+    name="footer_email"
+    placeholder="Enter your email"
+    value="{{ old('footer_email') }}"
+  />
+
+  <select class="max-sm:w-full sm:max-w-[224px] @error('footer_role') border-red-300 @enderror" name="footer_role">
+    <option value="">Select your role</option>
+    <option value="founder" {{ old('footer_role') == 'founder' ? 'selected' : '' }}>Founder/Aspiring Founder</option>
+    <option value="freelancer" {{ old('footer_role') == 'freelancer' ? 'selected' : '' }}>Freelancer/Agency</option>
+    <option value="investor" {{ old('footer_role') == 'investor' ? 'selected' : '' }}>Investor</option>
+    <option value="mentor" {{ old('footer_role') == 'mentor' ? 'selected' : '' }}>Mentor</option>
+  </select>
+
+  <button id=""
+    type="submit"
+    class="btn-primary hover:shadow-brand-purple/60 group hover:shadow-lg max-sm:w-full"
+  >
+    <span class="inner-wrapper inline-flex h-6 overflow-hidden">
+      <span class="inner flex flex-col duration-200 group-hover:-translate-y-full">
+        <span class="text">Join our Waitlist</span>
+        <span class="text">Join our Waitlist</span>
+      </span>
+    </span>
+  </button>
+</form>
+
               </div>
             </div>
           </div>
         </div>
       </div>
       <hr class="hr" />
-      <div class="relative pt-12 pb-7 sm:pt-20 sm:pb-12">
+      <div class="relative pt-12 pb-7 sm:pt-20 sm:pb-12" id="{{request()->path()=='/'?'waitlist-Section':''}}">
         <div class="container">
           <div class="flex gap-8 max-sm:flex-col sm:items-end-safe sm:gap-20 md:gap-28">
             <div class="flex-1 space-y-4">

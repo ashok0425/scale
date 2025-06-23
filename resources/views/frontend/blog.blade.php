@@ -175,9 +175,9 @@
                     class="flex w-full flex-col flex-wrap items-center justify-center gap-3 sm:flex-row"
                   >
                   @csrf
-                    <input class="w-full" type="text" required placeholder="Enter full name" name="full_name"/>
-                    <input class="w-full" type="email" required placeholder="Enter your email" name="email"/>
-                    <select class="w-full min-w-[250px]" required name="role">
+                    <input class="w-full" type="text"  placeholder="Enter full name" name="full_name"/>
+                    <input class="w-full" type="email"  placeholder="Enter your email" name="email"/>
+                    <select class="w-full min-w-[250px]"  name="role">
                       <option value="">Select your role</option>
                       <option value="founder">Founder/Aspiring Founder</option>
                       <option value="freelancer">Freelancer/Agency</option>
