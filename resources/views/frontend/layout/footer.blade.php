@@ -168,10 +168,10 @@
           </a>
           {{-- <a href="reddit.com" target="_blank" rel="noopener noreferrer">
             <img src="{{ asset('frontend/images/reddit.svg') }}" alt="" class="size-6" />
-          </a>
-          <a href="youtube.com" target="_blank" rel="noopener noreferrer">
-            <img src="{{ asset('frontend/images/youtube.svg') }}" alt="" class="size-6" />
           </a> --}}
+          <a href="{{cms()->url}}" target="_blank" rel="noopener noreferrer">
+            <img src="{{ asset('frontend/images/youtube.svg') }}" alt="" class="size-6" />
+          </a>
         </div>
         <div class="b2 flex items-center gap-1 max-sm:flex-wrap max-sm:justify-center">
           <span>&copy; {{date('Y')}} ScaleDux</span>

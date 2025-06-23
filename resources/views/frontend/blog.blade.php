@@ -135,7 +135,7 @@
              <div class="my-7 space-y-12 sm:my-12">
           <div class="border-brand-purple flex items-center justify-between gap-4 border-b">
             <h2 class="heading-2">{{$category->name}}</h2>
-            <a href="#" class="heading-2 duration-200 hover:text-white/70">See More</a>
+            <a href="{{route('category',['slug'=>$category->slug])}}" class="heading-2 duration-200 hover:text-white/70">See More</a>
           </div>
           <div class="has-divide grid grid-cols-1 gap-x-8 gap-y-7 sm:gap-y-12 md:grid-cols-3">
             @foreach ($category->blogs()->where('status',1)->latest()->limit(2)->get() as $blog)

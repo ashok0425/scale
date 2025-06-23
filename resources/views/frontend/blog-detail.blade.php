@@ -7,9 +7,9 @@
   <div class="container px-2">
     <div class="mb-7 space-y-6 md:mb-12">
       <div class="flex items-center gap-3">
-        <a href="{{route('blog')}}" class="cursor-pointer text-white underline hover:text-gray-300">Home</a>
+        <a href="{{route('blog')}}" class="cursor-pointer text-white underline hover:text-gray-300">Blogs</a>
         <img src="{{ asset('frontend/images/arrow-right.svg') }}" alt="{{$blog->title}}" />
-        <a href="/blog" class="cursor-pointer text-white underline hover:text-gray-300">{{$blog->category->name}}</a>
+        <a href="{{route('category',['slug'=>$category->slug])}}" class="cursor-pointer text-white underline hover:text-gray-300">{{$blog->category->name}}</a>
         <img src="{{ asset('frontend/images/arrow-right.svg') }}" alt="{{$blog->title}}" />
         <span>{{$blog->title}}</span>
       </div>

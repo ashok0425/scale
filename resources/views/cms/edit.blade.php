@@ -56,18 +56,7 @@
                 />
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label class="form-label">Url</label>
-                <input
-                  type="url"
-                  name="url"
-                  class="form-control"
-                  placeholder="cms url"
-                  value="{{ $cms->url }}"
-                />
-              </div>
-            </div>
+
             <div class="mb-3 col-md-6">
               <label class="form-label">Logo</label>
               <div class="file-upload-wrapper" data-text="Select your file!">
@@ -85,6 +74,8 @@
               <br />
               <img src="{{ getImage($cms->fevicon) }}" width="70" alt="" />
             </div>
+
+
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="form-label">Address</label>
@@ -167,6 +158,19 @@
                   name="linkedin"
                   class="form-control"
                   value="{{ $cms->linkedin }}"
+                />
+              </div>
+            </div>
+
+             <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Youtube</label>
+                <input
+                  type="text"
+                  name="url"
+                  class="form-control"
+                  placeholder="cms url"
+                  value="{{ $cms->url }}"
                 />
               </div>
             </div>
