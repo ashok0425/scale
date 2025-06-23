@@ -27,7 +27,7 @@
         </div>
         <button id="shareBtn" class="flex cursor-pointer items-center gap-3 duration-200 hover:opacity-80">
           <img src="{{ asset('frontend/images/share.svg') }}" alt="{{$blog->title}}" class="size-6" />
-          <span class="b3 text-light text-sm">Save</span>
+          <span class="b3 text-light text-sm">Share</span>
         </button>
 
         <div id="shareOptions" class="hidden absolute mt-2 right-0 bg-gray-800 rounded-lg shadow-lg p-3 space-y-2 z-50 w-40">
