@@ -73,7 +73,7 @@
           <div class="flex gap-8 max-sm:flex-col sm:items-end-safe sm:gap-20 md:gap-28">
             <div class="flex-1 space-y-4">
               <div class="space-y-1">
-                <img src="/logo.svg" alt="" class="h-[33px]" />
+                <img src="{{getImage(cms()->logo)}}" alt="" class="h-[33px]" />
                 <!-- <p class="text-body-2 b3">© 2024 ScaleDux. All rights reserved.</p> -->
               </div>
               <div class="space-y-2">

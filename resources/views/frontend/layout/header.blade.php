@@ -1,7 +1,7 @@
  <header class="header">
       <div class="container">
         <a href="/">
-          <img src="{{getImage(cms()->logo)}}" alt="" class="h-5 md:h-7" />
+          <img src="{{getImage(cms()->logo)}}" alt="Scaledux" class="h-5 md:h-7" />
         </a>
         <ul class="nav">
 

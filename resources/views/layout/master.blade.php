@@ -197,25 +197,54 @@
 
         @stack('scripts')
 
-        <script>
-           $(document).ready(function () {
-    if ($('#summernote').length) {
-        $('#summernote').summernote({
-            height: 300,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'italic', 'underline', 'clear']],
-                ['fontname', ['fontname']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['insert', ['link', 'picture', 'video']],
-                ['view', ['fullscreen', 'codeview', 'help']]
-            ],
-            fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '24', '36', '48', '64', '82', '150']
-        });
+<script>
+    $(document).ready(function () {
+        if ($('#summernote').length) {
+         $('#summernote').summernote({
+  height: 300,
+  toolbar: [
+    ['style', ['style']],
+    ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+    ['fontname', ['fontname']],
+    ['fontsize', ['fontsize']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['height', ['height']],
+    ['insert', ['link', 'picture', 'video', 'table','linkedImage']],
+    ['misc', ['undo', 'redo']],
+    ['view', ['fullscreen', 'codeview', 'help']]
+  ],
+  fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '24', '36', '48', '64', '82', '150'],
+  fontNames: [
+    'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Georgia',
+    'Helvetica', 'Impact', 'Lucida Console', 'Palatino Linotype',
+    'Tahoma', 'Times New Roman', 'Trebuchet MS', 'Verdana',
+    'Roboto', 'Merriweather', 'Open Sans', 'Lato', 'Montserrat'
+  ],
+   buttons: {
+        linkedImage: function (context) {
+          var ui = $.summernote.ui;
+          return ui.button({
+            contents: '<i class="note-icon-picture"></i> 🔗 Img Link',
+            tooltip: 'Insert Linked Image',
+            click: function () {
+              const imageUrl = prompt("Enter image URL");
+              const linkUrl = prompt("Enter link URL");
+              if (imageUrl && linkUrl) {
+                const html = `<a href="${linkUrl}" target="_blank"><img src="${imageUrl}" alt="" style="max-width: 100%;" /></a>`;
+                context.invoke('editor.pasteHTML', html);
+              }
+            }
+          }).render();
+        }
     }
+
 });
+
+        }
+    });
+</script>
+
 
 
             @if (Session::has('message')) //toatser
