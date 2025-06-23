@@ -101,8 +101,9 @@ class FrontController extends Controller
         $access->save();
         Notification::route('mail', $request->email)->notify(new PreAccessNotification($access));
 
-        return back()->with('message', 'Thank you for joining.')->with('type', 'success');
-
+     return back()->with('message', "Welcome to the ScaleDux Family. You're officially one of our Founding Members. You'll
+          receive a personal welcome email with your Founding Member kit and exclusive updates
+          roadmap.")->with('type', 'success')->with('title',"Thanks for joining!");
         // } catch (\Exception $e) {
         //     // Log error if needed
         //     return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
@@ -235,19 +236,29 @@ class FrontController extends Controller
 
     public function subscribe(Request $request)
     {
-        $validate = $request->validate([
-            'email' => 'required|email|unique:subscribers,email',
-        ]);
-        try {
+
+          $validator = Validator::make($request->all(), [
+         'subscriber_email' => 'required|email|unique:subscribers,email'
+    ], [
+        'subscriber_email.required' => "Looks like something’s missing or off — can you double-check your email?",
+        'subscriber_email.email' => "Hmm... that doesn’t seem like a valid email address.",
+        'subscriber_email.unique' => "Hey again! Looks like you’ve already joined the waitlist. We love that energy!",
+
+    ]);
+
+    // Handle validation manually
+    if ($validator->fails()) {
+        return redirect(url()->previous() . '#subscriber-email')
+            ->withErrors($validator)
+            ->withInput();
+    }
+
             Subscriber::updateOrCreate([
-                'email' => $validate['email']
+                'email' => $request->subscriber_email
             ]);
-            Notification::route('mail', $request->email)->notify(new SubscriberNotification());
+            Notification::route('mail', $request->subscriber_email)->notify(new SubscriberNotification());
             return back()->with('message', 'Thank you for subscribing our newsletter.')->with('type', 'success');
-        } catch (\Exception $e) {
-            // Log error if needed
-            return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
-        }
+
     }
 
     public function waitlist(Request $request)
@@ -283,7 +294,7 @@ class FrontController extends Controller
             $waitlist->type = 1;
             $waitlist->save();
             Notification::route('mail', $request->email)->notify(new WaitlistNotification($waitlist));
-            return back()->with('message', 'Thank you for joining our waitlist.')->with('type', 'success');
+           return back()->with('message', "We’ll keep you posted with early updates and insider drops, exciting things ahead.")->with('type', 'success')->with('title',"🎉Amazing! You’re on the waitlist.");
         } catch (\Exception $e) {
             // Log error if needed
             return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
@@ -321,14 +332,16 @@ class FrontController extends Controller
             $page = parse_url(url()->previous(), PHP_URL_PATH);
 
             $waitlist = new Crm();
-            $waitlist->name = $validated['full_name'];
-            $waitlist->email = $validated['email'];
-            $waitlist->role = $validated['role'];
+            $waitlist->name = $request->full_name;
+            $waitlist->email = $request->footer_email;
+            $waitlist->role =$request->role;
             $waitlist->page = $page;
             $waitlist->type = 1;
             $waitlist->save();
-            Notification::route('mail', $request->email)->notify(new WaitlistNotification($waitlist));
-            return back()->with('message', 'Thank you for joining our waitlist.')->with('type', 'success');
+            Notification::route('mail', $request->footer_email)->notify(new WaitlistNotification($waitlist));
+
+
+            return back()->with('message', "We’ll keep you posted with early updates and insider drops, exciting things ahead.")->with('type', 'success')->with('title',"🎉Amazing! You’re on the waitlist.");
         } catch (\Exception $e) {
             // Log error if needed
             return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');

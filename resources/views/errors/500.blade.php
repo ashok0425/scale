@@ -59,8 +59,7 @@
 		<h3 class="h2">
 		 Something’s Off on Our End
         <br>
-This isn’t you — it’s us.
-
+     This isn’t you — it’s us.
 		</h3>
 
 		<p>

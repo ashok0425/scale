@@ -5,7 +5,7 @@
       <div id="waitlistSection"
         class="before:bg-brand-purple after:bg-triangles relative isolate overflow-clip py-11 before:absolute before:-top-14 before:-left-14 before:z-20 before:size-72 before:rounded-full before:blur-[130px] after:absolute after:top-0 after:left-0 after:z-10 after:aspect-square after:h-full after:bg-no-repeat sm:py-16 md:py-[3.125rem]"
       >
-        <div class="container"  id="{{request()->path()!='/'?'waitlist-Section':''}}">
+        <div class="container"  id="waitlist-Section">
           <div
             class="before:brand-gradient relative rounded-lg bg-gradient-to-r from-[#100548] to-[#1c0441] px-6 py-[60px] before:!absolute before:-inset-[2px] before:-z-10 before:rounded-lg"
           >
@@ -73,7 +73,7 @@
         </div>
       </div>
       <hr class="hr" />
-      <div class="relative pt-12 pb-7 sm:pt-20 sm:pb-12" id="{{request()->path()=='/'?'waitlist-Section':''}}">
+      <div class="relative pt-12 pb-7 sm:pt-20 sm:pb-12">
         <div class="container">
           <div class="flex gap-8 max-sm:flex-col sm:items-end-safe sm:gap-20 md:gap-28">
             <div class="flex-1 space-y-4">
@@ -90,15 +90,14 @@
                 </p>
               </div>
               <div class="space-y-2">
-                <h6 class="dh-6">Subscribe to our Newsletter</h6>
-                <form class="flex flex-wrap gap-3" method="POST" action="{{route('subscribe.store')}}">
+                <h6 class="dh-6" id="">Subscribe to our Newsletter</h6>
+                <form class="flex flex-wrap gap-3" id="subscriber-email" method="POST" action="{{route('subscribe.store')}}">
                     @csrf
                   <input
                     type="email"
-                    required
-                    name="email"
+                    name="subscriber_email"
                     placeholder="Enter your email"
-                    class="max-sm:w-full"
+                    class="max-sm:w-full @error('subscriber_email') border-red-300 @enderror"
                   />
                   <button type="submit" class="btn-primary">Subscribe</button>
                 </form>

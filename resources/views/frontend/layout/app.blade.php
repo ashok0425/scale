@@ -116,11 +116,9 @@ select {
         class="gradient-border fixed top-1/2 left-1/2 w-full max-w-[683px] -translate-1/2 flex-col justify-center space-y-6 rounded-3xl p-10 open:flex"
       >
         <img src="{{ asset('frontend/images/div.galaxy-logo-circle.svg') }}" alt="" class="mx-auto size-[73px]" />
-        <h2 class="dh-2 text-center">Thanks for joining!</h2>
+        <h2 class="dh-2 text-center">{{session()->get('title')}}</h2>
         <p class="b1 text-center font-normal">
-          Welcome to the ScaleDux Family. You're officially one of our Founding Members. You'll
-          receive a personal welcome email with your Founding Member kit and exclusive updates
-          roadmap.
+         {{session()->get('message')}}
         </p>
         <button
           onclick="document.getElementById('success').close()"
@@ -183,6 +181,24 @@ select {
 
 @stack('script')
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.location.hash === '#waitlist-Section') {
+      const el = document.getElementById('waitlist-Section');
+      if (el) {
+        // Scroll to actual element position smoothly
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
 
+     if (window.location.hash === '#subscriber-email') {
+      const el = document.getElementById('subscriber-email');
+      if (el) {
+        // Scroll to actual element position smoothly
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
+</script>
   </body>
 </html>
