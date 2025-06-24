@@ -45,7 +45,7 @@ class PreAccessNotification extends Notification
         ->subject('Priority Access Email Confirmation')
         ->view('emails.priority_access', [
             'firstName' => $this->user->name,
-            'role' => $this->user->role,
+            'user_role' => $this->user->role,
         ]);
 }
 

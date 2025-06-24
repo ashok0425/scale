@@ -47,7 +47,7 @@ class WaitlistNotification extends Notification
         ->subject('WAITLIST EMAIL CONFIRMATION')
         ->view('emails.waitlist', [
             'firstName' => $this->user->name,
-            'role' => $this->user->role,
+            'user_role' => $this->user->role,
         ]);
     }
 

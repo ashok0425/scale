@@ -50,7 +50,7 @@
   <div class="container">
     <h1>Thank You for Joining the ScaleDux Waitlist — Let’s Build with Purpose</h1>
 
-    <p>Hey {{ firstName }},</p>
+    <p>Hey {{ $firstName }},</p>
 
     <!-- Founder Message -->
     @if ($user_role === 'founder')

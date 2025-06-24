@@ -284,7 +284,7 @@ We’ve got good stuff coming your way')->with('title','You’re subscribed! �
             'role.required' => "We’d love to tailor your journey — just let us know who you are to ScaleDux - founder, freelancer, investor, or mentor?",
             'role.in' => "That doesn’t seem right — please select one of the listed roles.",
         ]);
-        try {
+        // try {
             $page = parse_url(url()->previous(), PHP_URL_PATH);
 
             $waitlist = new Crm();
@@ -296,10 +296,10 @@ We’ve got good stuff coming your way')->with('title','You’re subscribed! �
             $waitlist->save();
             Notification::route('mail', $request->email)->notify(new WaitlistNotification($waitlist));
            return back()->with('message', "We’ll keep you posted with early updates and insider drops, exciting things ahead.")->with('type', 'success')->with('title',"🎉Amazing! You’re on the waitlist.");
-        } catch (\Exception $e) {
-            // Log error if needed
-            return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
-        }
+        // } catch (\Exception $e) {
+        //     // Log error if needed
+        //     return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
+        // }
     }
 
      public function waitlistStore(Request $request)
@@ -330,7 +330,7 @@ We’ve got good stuff coming your way')->with('title','You’re subscribed! �
             ->withErrors($validator)
             ->withInput();
     }
-        try {
+        // try {
             $page = parse_url(url()->previous(), PHP_URL_PATH);
 
             $waitlist = new Crm();
@@ -344,10 +344,10 @@ We’ve got good stuff coming your way')->with('title','You’re subscribed! �
 
 
             return back()->with('message', "We’ll keep you posted with early updates and insider drops, exciting things ahead.")->with('type', 'success')->with('title',"🎉Amazing! You’re on the waitlist.");
-        } catch (\Exception $e) {
-            // Log error if needed
-            return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
-        }
+        // } catch (\Exception $e) {
+        //     // Log error if needed
+        //     return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
+        // }
     }
 
 
