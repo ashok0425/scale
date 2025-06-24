@@ -17,9 +17,13 @@ class SendAttachmentNotification extends Notification
      * @return void
      */
     public $downloadLink;
-    public function __construct($downloadLink)
+    public $user;
+
+    public function __construct($downloadLink,$user)
     {
         $this->downloadLink=$downloadLink;
+        $this->user=$user;
+
     }
 
     /**
@@ -41,11 +45,12 @@ class SendAttachmentNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                   ->subject('Download Attachemnet')
-                    ->line('Your download link is available.Click button below')
-                    ->action('Download', $this->downloadLink)
-                    ->line('Thank you for using our application!');
+         return (new \Illuminate\Notifications\Messages\MailMessage)
+        ->subject('WAITLIST EMAIL CONFIRMATION')
+        ->view('emails.waitlist', [
+            'firstName' => $this->user->name,
+            'link' => $this->downloadLink,
+        ]);
     }
 
     /**

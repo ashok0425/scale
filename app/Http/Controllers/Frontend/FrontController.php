@@ -242,7 +242,7 @@ class FrontController extends Controller
     ], [
         'subscriber_email.required' => "Looks like something’s missing or off — can you double-check your email?",
         'subscriber_email.email' => "Hmm... that doesn’t seem like a valid email address.",
-        'subscriber_email.unique' => "Hey again! Looks like you’ve already joined the waitlist. We love that energy!",
+        'subscriber_email.unique' => "Hey again! Looks like you’ve already joined the Newsletter. We love that energy!",
 
     ]);
 
@@ -257,7 +257,8 @@ class FrontController extends Controller
                 'email' => $request->subscriber_email
             ]);
             Notification::route('mail', $request->subscriber_email)->notify(new SubscriberNotification());
-            return back()->with('message', 'Thank you for subscribing our newsletter.')->with('type', 'success');
+            return back()->with('message','Thanks for joining ScaleDux.
+We’ve got good stuff coming your way')->with('title','You’re subscribed! 🎉')->with('type', 'success');
 
     }
 
@@ -392,7 +393,7 @@ class FrontController extends Controller
             'token' => uniqid(),
         ]);
 
-        Notification::route('mail', $request->email)->notify(new SendAttachmentNotification($downloadLink));
+        Notification::route('mail', $request->email)->notify(new SendAttachmentNotification($downloadLink,$crm));
 
         return back()->with('message', 'Check your email. We have sent a download link to your email.')
             ->with('type', 'success');
