@@ -3,14 +3,14 @@
 
 $totalBlog=App\Models\Blog::query()->count();
 $blogs=App\Models\Blog::limit(5)->latest()->get();
-$users=App\Models\User::limit(5)->latest()->get();
-$draftBlog=App\Models\Blog::where('status',0)
-->count();
+$cms=App\Models\Crm::limit(5)->latest()->get();
+$waitlists=App\Models\Crm::limit(5)->where('type',1)->latest()->get();
+$waitlistCount=App\Models\Crm::where('type',1)->count();
+$access=App\Models\Crm::limit(5)->where('type',2)->latest()->get();
+$accessCount=App\Models\Crm::where('type',2)->count();
+$pdfDownload=App\Models\Crm::where('type',3)->count();
 
-$publishBlog=App\Models\Blog::where('status',1)
-->count();
-$totalBanner=App\Models\Banner::query()->count();
-$totalUser=App\Models\User::query()->count();
+
 
 @endphp
 
@@ -60,66 +60,45 @@ $totalUser=App\Models\User::query()->count();
                 </a>
             </div>
         </div>
-        @if (!Auth::user()->can('do:anything'))
-        <div class="col-md-3">
-            <div class="card shadow-sm stat-card border-0 rounded text-center">
-                <a href="{{route('blogs.index',['status'=>0])}}" class="text-decoration-none text-dark">
-                <div class="card-body py-4">
-                    <div class="icon-circle mx-auto mb-3">
-                        <i class="fas fa-toolbox fa-2x"></i>
-                    </div>
-                    <small class="text-muted h5">Draft Posts</small>
-                    <h4 class="fw-bold mt-1 h3">{{$draftBlog}}</h4>
-                </div>
-                </a>
-            </div>
-        </div>
+
 
         <div class="col-md-3">
             <div class="card shadow-sm stat-card border-0 rounded text-center">
-                <a href="{{route('blogs.index',['status'=>1])}}" class="text-decoration-none text-dark">
-                <div class="card-body py-4">
-                    <div class="icon-circle mx-auto mb-3">
-                        <i class="fas fa-cogs fa-2x"></i>
-                    </div>
-                    <small class="text-muted h5">Publish Posts</small>
-                    <h4 class="fw-bold mt-1 h3">{{$publishBlog}}</h4>
-                </div>
-                </a>
-            </div>
-        </div>
-
-
-        @endif
-
-        @if (Auth::user()->can('do:anything'))
-        <div class="col-md-3">
-            <div class="card shadow-sm stat-card border-0 rounded text-center">
-                <a href="{{route('banners.index',['type'=>1])}}" class="text-decoration-none text-dark">
-                <div class="card-body py-4">
-                    <div class="icon-circle mx-auto mb-3">
-                        <i class="fas fa-image fa-2x"></i>
-                    </div>
-                    <small class="text-muted h5">Total Banner</small>
-                    <h4 class="fw-bold mt-1 h3">{{$totalBanner}}</h4>
-                </div>
-                </a>
-            </div>
-        </div>
-
-
-
-        @endif
-
-        <div class="col-md-3">
-            <div class="card shadow-sm stat-card border-0 rounded text-center">
-                <a href="{{route('access.index')}}" class="text-decoration-none text-dark">
+                <a href="{{route('crm',['type'=>1])}}" class="text-decoration-none text-dark">
                 <div class="card-body py-4">
                     <div class="icon-circle mx-auto mb-3">
                         <i class="fas fa-users fa-2x"></i>
                     </div>
-                    <small class="text-muted h5">Total User</small>
-                    <h4 class="fw-bold mt-1 h3">{{$totalUser}}</h4>
+                    <small class="text-muted h5">Waitlist Count</small>
+                    <h4 class="fw-bold mt-1 h3">{{$waitlistCount}}</h4>
+                </div>
+                </a>
+            </div>
+        </div>
+
+          <div class="col-md-3">
+            <div class="card shadow-sm stat-card border-0 rounded text-center">
+                <a href="{{route('crm',['type'=>2])}}" class="text-decoration-none text-dark">
+                <div class="card-body py-4">
+                    <div class="icon-circle mx-auto mb-3">
+                        <i class="fas fa-user fa-2x"></i>
+                    </div>
+                    <small class="text-muted h5">Priority Access </small>
+                    <h4 class="fw-bold mt-1 h3">{{$accessCount}}</h4>
+                </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm stat-card border-0 rounded text-center">
+                <a href="{{route('crm',['type'=>3])}}" class="text-decoration-none text-dark">
+                <div class="card-body py-4">
+                    <div class="icon-circle mx-auto mb-3">
+                        <i class="fas fa-copy fa-2x"></i>
+                    </div>
+                    <small class="text-muted h5">Pdf Download </small>
+                    <h4 class="fw-bold mt-1 h3">{{$pdfDownload}}</h4>
                 </div>
                 </a>
             </div>
@@ -159,10 +138,10 @@ $totalUser=App\Models\User::query()->count();
             </div>
         </div>
 
-        {{-- <div class="col-md-6">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    Employee List
+                    Waitlist
                 </div>
                 <div class="card-body">
                     <table class="table">
@@ -171,14 +150,16 @@ $totalUser=App\Models\User::query()->count();
                                 #
                             </th>
                             <th>Name</th>
-                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Role</th>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($waitlists as $user)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$user->name}}</td>
-                                <td>{{$user->phone}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>{{$user->role}}</td>
 
 
                             </tr>
@@ -188,7 +169,7 @@ $totalUser=App\Models\User::query()->count();
                     </table>
                 </div>
             </div>
-        </div> --}}
+        </div>
     </div>
 
 

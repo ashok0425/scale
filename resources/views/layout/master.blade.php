@@ -137,6 +137,13 @@
             .note-editable ul {
                 list-style-type: disc !important;
             }
+            /* #sidebar,.sidebar{
+                background-color: #fff!important;
+            }
+            .sidebar-link, a.sidebar-link{
+                background-color: #fff!important;
+                color: #000;
+            } */
         </style>
     </head>
 

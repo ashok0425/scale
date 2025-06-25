@@ -2,7 +2,7 @@
     <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="{{ route('dashboard') }}">
             <span class="align-middle">
-                <img src="{{ getImage(cms()->logo) }}" alt="" width="40" height="40" />
+                <img src="{{ getImage(cms()->logo) }}" alt="" width="60" height="60" />
             </span>
         </a>
 
