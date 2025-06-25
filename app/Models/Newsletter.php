@@ -12,10 +12,9 @@ class Newsletter extends Model
     // Appending computed attributes to the model's array form
     protected $appends = ['total_email_count', 'deliver_email_count', 'seen_email_count'];
 
-    // Define the relationship between Newsletter and Subscription via the campaigns pivot table
     public function campaigns()
     {
-        return $this->belongsToMany(Subscription::class, 'email_campaigns', 'newsletter_id', 'subscription_id');
+        return $this->belongsToMany(Subscriber::class, 'email_campaigns', 'newsletter_id', 'subscription_id');
     }
 
     // Accessor for the total_email_count attribute

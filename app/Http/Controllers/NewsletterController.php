@@ -164,7 +164,9 @@ class NewsletterController extends Controller
             $filename = 'newsletter_images/' . Str::random(10) . '.' . $type;
 
             Storage::disk('s3')->put($filename, $data, 'public');
-            $newPath = Storage::disk('s3')->url($filename);
+        Storage::disk('public')->put($filename, $data);
+
+        $newPath = asset('storage/' . $filename);
 
             $html = str_replace($base64Image, $newPath, $html);
         }

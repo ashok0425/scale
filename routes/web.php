@@ -124,3 +124,4 @@ Route::get('storages', function () {
     return 'Storage link created';
 });
 
+Route::get('email/open/{campaign_id}',App\Http\Controllers\MarkEmailController::class)->name('email.open');

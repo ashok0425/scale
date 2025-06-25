@@ -92,21 +92,21 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-md-6">
+                                    {{-- <div class="form-group col-md-6">
                                         <label class="col-form-label h4">Subject Title</label>
                                         <div>
                                             <input type="text" class="form-control" v-model="emailSubject" required
                                                 placeholder="Enter email subject">
                                         </div>
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="form-group col-md-6">
+                                    {{-- <div class="form-group col-md-6">
                                         <label class="col-form-label h4">Thumbnail</label>
                                         <div>
                                             <input type="file" class="form-control-file form-control"
                                                 @change="handleImageUpload">
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group col-md-6">
                                         <label class="col-form-label h4">Schedule Date & Time</label>
@@ -191,7 +191,7 @@
                         document.getElementById('backBtn').classList.remove('d-none');
                         this.currentStep++;
                     } else if (this.currentStep === 2) {
-                        if (!this.title.trim() || !this.emailSubject.trim()) {
+                        if (!this.title.trim()) {
                             alert('Please enter both Title and Subject.');
                             return;
                         }

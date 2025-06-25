@@ -3,25 +3,10 @@
     <div class="d-flex flex-column-fluid">
         <div class="container">
             <div class="card card-custom">
-                <div class="card-header flex-wrap border-0 pt-6 pb-0">
-                    <div class="card-title">
-                        <div class="row align-items-center">
-                            <div class="col-md-12 my-md-0">
-                                <form action="" method="get">
-                                    <div class="input-icon">
-                                        <input type="text" name="keyword" class="form-control" placeholder="Search..."
-                                           value="{{request()->query('keyword')}}"  />
-                                        <span><i class="flaticon2-search-1 text-muted"></i></span>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-toolbar">
-                        <a href="{{ route('admin.campaigns.create') }}" class="btn btn-primary font-weight-bolder mr-3">Create New Campaign</a>
-
-                    </div>
+                <div class="card-header card-header d-flex align-items-center justify-content-bewteen bg-dark text-white">
+                   <div>
+                    <h5 class="text-white">Draft campaign</h5>
+                   </div>
                 </div>
                 <div class="card-body">
                     <table class="table" >

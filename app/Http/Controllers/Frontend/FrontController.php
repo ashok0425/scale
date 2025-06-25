@@ -7,6 +7,7 @@ use App\Models\Attachment;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Crm;
+use App\Models\EmailGroup;
 use App\Models\Page;
 use App\Models\Subscriber;
 use App\Notifications\PreAccessNotification;
@@ -101,9 +102,9 @@ class FrontController extends Controller
         $access->save();
         Notification::route('mail', $request->email)->notify(new PreAccessNotification($access));
 
-     return back()->with('message', "Welcome to the ScaleDux Family. You're officially one of our Founding Members. You'll
+        return back()->with('message', "Welcome to the ScaleDux Family. You're officially one of our Founding Members. You'll
           receive a personal welcome email with your Founding Member kit and exclusive updates
-          roadmap.")->with('type', 'success')->with('title',"Thanks for joining!");
+          roadmap.")->with('type', 'success')->with('title', "Thanks for joining!");
         // } catch (\Exception $e) {
         //     // Log error if needed
         //     return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
@@ -237,29 +238,41 @@ class FrontController extends Controller
     public function subscribe(Request $request)
     {
 
-          $validator = Validator::make($request->all(), [
-         'subscriber_email' => 'required|email|unique:subscribers,email'
-    ], [
-        'subscriber_email.required' => "Looks like something’s missing or off — can you double-check your email?",
-        'subscriber_email.email' => "Hmm... that doesn’t seem like a valid email address.",
-        'subscriber_email.unique' => "Hey again! Looks like you’ve already joined the Newsletter. We love that energy!",
+        $validator = Validator::make($request->all(), [
+            'subscriber_email' => 'required|email|unique:subscribers,email'
+        ], [
+            'subscriber_email.required' => "Looks like something’s missing or off — can you double-check your email?",
+            'subscriber_email.email' => "Hmm... that doesn’t seem like a valid email address.",
+            'subscriber_email.unique' => "Hey again! Looks like you’ve already joined the Newsletter. We love that energy!",
 
-    ]);
+        ]);
 
-    // Handle validation manually
-    if ($validator->fails()) {
-        return redirect(url()->previous() . '#subscriber-email')
-            ->withErrors($validator)
-            ->withInput();
-    }
+        // Handle validation manually
+        if ($validator->fails()) {
+            return redirect(url()->previous() . '#subscriber-email')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
-            Subscriber::updateOrCreate([
-                'email' => $request->subscriber_email
-            ]);
-            Notification::route('mail', $request->subscriber_email)->notify(new SubscriberNotification());
-            return back()->with('message','Thanks for joining ScaleDux.
-We’ve got good stuff coming your way')->with('title','You’re subscribed! 🎉')->with('type', 'success');
+        $subscription = Subscriber::updateOrCreate([
+            'email' => $request->subscriber_email
+        ]);
 
+        $emailGroup = EmailGroup::query()->first();
+
+        $emailIds = is_array($emailGroup->email_ids) ? $emailGroup->email_ids : json_decode($emailGroup->email_ids, true);
+
+        if (!is_array($emailIds)) {
+            $emailIds = [];
+        }
+
+        $emailIds[] = $subscription->id;
+
+        $emailGroup->email_ids = $emailIds;
+        $emailGroup->save();
+        Notification::route('mail', $request->subscriber_email)->notify(new SubscriberNotification());
+        return back()->with('message', 'Thanks for joining ScaleDux.
+We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 🎉')->with('type', 'success');
     }
 
     public function waitlist(Request $request)
@@ -285,65 +298,65 @@ We’ve got good stuff coming your way')->with('title','You’re subscribed! �
             'role.in' => "That doesn’t seem right — please select one of the listed roles.",
         ]);
         // try {
-            $page = parse_url(url()->previous(), PHP_URL_PATH);
+        $page = parse_url(url()->previous(), PHP_URL_PATH);
 
-            $waitlist = new Crm();
-            $waitlist->name = $validated['full_name'];
-            $waitlist->email = $validated['email'];
-            $waitlist->role = $validated['role'];
-            $waitlist->page = $page;
-            $waitlist->type = 1;
-            $waitlist->save();
-            Notification::route('mail', $request->email)->notify(new WaitlistNotification($waitlist));
-           return back()->with('message', "We’ll keep you posted with early updates and insider drops, exciting things ahead.")->with('type', 'success')->with('title',"🎉Amazing! You’re on the waitlist.");
+        $waitlist = new Crm();
+        $waitlist->name = $validated['full_name'];
+        $waitlist->email = $validated['email'];
+        $waitlist->role = $validated['role'];
+        $waitlist->page = $page;
+        $waitlist->type = 1;
+        $waitlist->save();
+        Notification::route('mail', $request->email)->notify(new WaitlistNotification($waitlist));
+        return back()->with('message', "We’ll keep you posted with early updates and insider drops, exciting things ahead.")->with('type', 'success')->with('title', "🎉Amazing! You’re on the waitlist.");
         // } catch (\Exception $e) {
         //     // Log error if needed
         //     return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
         // }
     }
 
-     public function waitlistStore(Request $request)
+    public function waitlistStore(Request $request)
     {
-         $validator = Validator::make($request->all(), [
-        'footer_full_name' => 'required',
-        'footer_email' => [
-            'required',
-            'email',
-                   Rule::unique('crms', 'email')->where(function ($query) use ($request) {
-            return $query->where('type', 1);
-        }),
+        $validator = Validator::make($request->all(), [
+            'footer_full_name' => 'required',
+            'footer_email' => [
+                'required',
+                'email',
+                Rule::unique('crms', 'email')->where(function ($query) use ($request) {
+                    return $query->where('type', 1);
+                }),
 
-        ],
-        'footer_role' => 'required|in:founder,freelancer,investor,mentor',
-    ], [
-        'footer_full_name.required' => "Oops! We’d love to know what to call you. Mind entering your name?",
-        'footer_email.required' => "Looks like something’s missing or off — can you double-check your email?",
-        'footer_email.email' => "Hmm... that doesn’t seem like a valid email address.",
-        'footer_email.unique' => "Hey again! Looks like you’ve already joined the waitlist. We love that energy!",
-        'footer_role.required' => "We’d love to tailor your journey — just let us know who you are to ScaleDux - founder, freelancer, investor, or mentor?",
-        'footer_role.in' => "That doesn’t seem right — please select one of the listed roles.",
-    ]);
+            ],
+            'footer_role' => 'required|in:founder,freelancer,investor,mentor',
+        ], [
+            'footer_full_name.required' => "Oops! We’d love to know what to call you. Mind entering your name?",
+            'footer_email.required' => "Looks like something’s missing or off — can you double-check your email?",
+            'footer_email.email' => "Hmm... that doesn’t seem like a valid email address.",
+            'footer_email.unique' => "Hey again! Looks like you’ve already joined the waitlist. We love that energy!",
+            'footer_role.required' => "We’d love to tailor your journey — just let us know who you are to ScaleDux - founder, freelancer, investor, or mentor?",
+            'footer_role.in' => "That doesn’t seem right — please select one of the listed roles.",
+        ]);
 
-    // Handle validation manually
-    if ($validator->fails()) {
-        return redirect(url()->previous() . '#waitlist-Section')
-            ->withErrors($validator)
-            ->withInput();
-    }
+        // Handle validation manually
+        if ($validator->fails()) {
+            return redirect(url()->previous() . '#waitlist-Section')
+                ->withErrors($validator)
+                ->withInput();
+        }
         // try {
-            $page = parse_url(url()->previous(), PHP_URL_PATH);
+        $page = parse_url(url()->previous(), PHP_URL_PATH);
 
-            $waitlist = new Crm();
-            $waitlist->name = $request->full_name;
-            $waitlist->email = $request->footer_email;
-            $waitlist->role =$request->footer_role;
-            $waitlist->page = $page;
-            $waitlist->type = 1;
-            $waitlist->save();
-            Notification::route('mail', $request->footer_email)->notify(new WaitlistNotification($waitlist));
+        $waitlist = new Crm();
+        $waitlist->name = $request->full_name;
+        $waitlist->email = $request->footer_email;
+        $waitlist->role = $request->footer_role;
+        $waitlist->page = $page;
+        $waitlist->type = 1;
+        $waitlist->save();
+        Notification::route('mail', $request->footer_email)->notify(new WaitlistNotification($waitlist));
 
 
-            return back()->with('message', "We’ll keep you posted with early updates and insider drops, exciting things ahead.")->with('type', 'success')->with('title',"🎉Amazing! You’re on the waitlist.");
+        return back()->with('message', "We’ll keep you posted with early updates and insider drops, exciting things ahead.")->with('type', 'success')->with('title', "🎉Amazing! You’re on the waitlist.");
         // } catch (\Exception $e) {
         //     // Log error if needed
         //     return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
@@ -366,12 +379,13 @@ We’ve got good stuff coming your way')->with('title','You’re subscribed! �
 
     public function SaveAttachment(Request $request)
     {
-       $validated = $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
             'email' => [
                 'required',
                 'email'
-        ]], [
+            ]
+        ], [
             'name.required' => "Oops! We’d love to know what to call you. Mind entering your name?",
 
             'email.required' => "Looks like something’s missing or off — can you double-check your email?",
@@ -393,7 +407,7 @@ We’ve got good stuff coming your way')->with('title','You’re subscribed! �
             'token' => uniqid(),
         ]);
 
-        Notification::route('mail', $request->email)->notify(new SendAttachmentNotification($downloadLink,$crm));
+        Notification::route('mail', $request->email)->notify(new SendAttachmentNotification($downloadLink, $crm));
 
         return back()->with('message', 'Check your email. We have sent a download link to your email.')
             ->with('type', 'success');

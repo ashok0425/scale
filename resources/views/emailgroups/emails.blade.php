@@ -235,7 +235,7 @@
     },
     methods: {
       fetchEmails() {
-        axios.get('/admin/api/emails', {
+        axios.get('/api/emails', {
           params: {
             page: this.currentPage,
             perPage: this.perPage,
@@ -280,7 +280,7 @@
           return;
         }
 
-        axios.post('/admin/api/emails/add-to-group', {
+        axios.post('/api/emails/add-to-group', {
           group_id: this.selectedGroupId,
           email_ids: this.selectedEmails
         })

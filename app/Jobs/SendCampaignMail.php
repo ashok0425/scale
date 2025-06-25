@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\EmailCampaign;
+use App\Models\Subscriber;
 use App\Models\Subscription;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -36,7 +37,7 @@ class SendCampaignMail implements ShouldQueue
      */
     public function handle(): void
     {
-        $emails=Subscription::whereIn('id',$this->emailIds)->pluck('email','id');
+        $emails=Subscriber::whereIn('id',$this->emailIds)->pluck('email','id');
         $newsletter=$this->newsletter;
         foreach ($emails as $key => $email) {
 

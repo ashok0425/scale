@@ -48,10 +48,10 @@
                     </div>
                     <div class="card-toolbar">
                         <a class="btn mr-10 text-white" href="{{ route('admin.campaigns.index') }}">Cancel</a>
-                        <button class="btn btn-secondary font-weight-bolder d-none" id="backBtn" @click="prevStep">Back</button>
-                        <button class="btn btn-primary font-weight-bolder" id="nextBtn" @click="nextStep">Next</button>
-                        <button class="btn btn-success font-weight-bolder d-none" id="saveBtn" @click="submitForm(false)">Save</button>
-                        <button class="btn btn-info font-weight-bolder" type="button" v-if="showTestMailButton" @click="openTestEmailModal">Test Mail</button>
+                        <button class="btn btn-info  d-none" id="backBtn" @click="prevStep">Back</button>
+                        <button class="btn btn-info " id="nextBtn" @click="nextStep">Next</button>
+                        <button class="btn btn-info  d-none" id="saveBtn" @click="submitForm(false)">Save</button>
+                        <button class="btn btn-info " type="button" v-if="showTestMailButton" @click="openTestEmailModal">Test Mail</button>
                     </div>
                 </div>
 
@@ -84,19 +84,19 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group col-md-6">
+                                {{-- <div class="form-group col-md-6">
                                     <label class="col-form-label h4">Subject Title</label>
                                     <div>
                                         <input type="text" class="form-control" v-model="emailSubject" required placeholder="Enter email subject">
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="form-group col-md-6">
+                                {{-- <div class="form-group col-md-6">
                                     <label class="col-form-label h4">Thumbnail</label>
                                     <div>
                                         <input type="file" class="form-control-file form-control" @change="handleImageUpload">
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group col-md-6">
                                     <label class="col-form-label h4">Schedule Date & Time</label>
@@ -178,7 +178,7 @@
                     document.getElementById('backBtn').classList.remove('d-none');
                     this.currentStep++;
                 } else if (this.currentStep === 2) {
-                    if (!this.title.trim() || !this.emailSubject.trim()) {
+                    if (!this.title.trim()) {
                         alert('Please enter both Title and Subject.');
                         return;
                     }

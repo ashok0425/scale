@@ -10,6 +10,6 @@ class EmailCampaign extends Model
     use HasFactory;
 
     public function subscription(){
-       return $this->belongsTo(Subscription::class,'subscription_id','id');
+       return $this->belongsTo(Subscriber::class,'subscription_id','id');
     }
 }
