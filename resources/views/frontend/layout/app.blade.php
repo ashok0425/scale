@@ -32,6 +32,7 @@
 <meta property="og:url" content="{{ url()->current() }}" />
 <meta property="og:image" content="{{ url('storage/'.$seo?->thumbnail??cms()->logo) }}" />
 <meta property="og:site_name" content="ScaleDux" />
+<link rel="icon" href="{{getImage(cms()->fevicon)}}" type="image/x-icon" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
