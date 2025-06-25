@@ -1,5 +1,5 @@
 @php
-    $pages=App\Models\Page::limit(3)->all();
+    $pages=App\Models\Page::limit(3)->get();
 @endphp
 <footer>
       <div id="waitlistSection"
@@ -181,7 +181,7 @@
           <span>&copy; {{date('Y')}} ScaleDux</span>
            @foreach ($pages as $page)
                    <span>|</span>
-          <span><a href="{{$page->slug}}" class="hover:text-gray-300">{{Str::title($page->name)}}</a></span>
+          <span><a href="/{{$page->slug}}" class="hover:text-gray-300">{{Str::title($page->name)}}</a></span>
            @endforeach
           <!-- <span>|</span>
           <span><a href="#">Cookies</a></span> -->

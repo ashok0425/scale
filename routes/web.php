@@ -19,10 +19,6 @@ Route::post('/waitlist', [FrontController::class, 'waitlist'])->name('waitlist.s
 Route::post('/waitlist/store', [FrontController::class, 'waitlistStore'])->name('waitlist.store.footer');
 Route::get('/priority-access', [FrontController::class, 'priorityAccess'])->name('priority.access');
 Route::post('/priority-access', [FrontController::class, 'storePriorityAccess']);
-Route::get('/about-us', [FrontController::class, 'pages']);
-Route::get('/terms-of-services', [FrontController::class, 'pages']);
-Route::get('/privacy-policy', [FrontController::class, 'pages']);
-Route::get('/priority-access-refund-policy', [FrontController::class, 'pages']);
 
 Route::get('attachment/{attachment_id}/{blog_id?}', [FrontController::class,'attachment'])->name('link.attachment');
 Route::post('attachment', [FrontController::class,'SaveAttachment'])->name('link.attachment.save');
@@ -126,3 +122,4 @@ Route::get('storages', function () {
 });
 
 Route::get('email/open/{campaign_id}',App\Http\Controllers\MarkEmailController::class)->name('email.open');
+Route::get('/{slug?}', [FrontController::class, 'pages']);

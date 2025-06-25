@@ -364,9 +364,9 @@ We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 
     }
 
 
-    public function pages()
+    public function pages($slug)
     {
-        $page = Page::where('slug', request()->path())->firstOrFail();
+        $page = Page::where('slug', $slug)->firstOrFail();
         return view('frontend.page', compact('page'));
     }
 
