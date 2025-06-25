@@ -2,6 +2,21 @@
 @section('main-content')
 
     <div class="container">
+            <form action="" class="mb-3 card">
+            <div class="row card-body">
+                <input type="hidden" value="{{request()->query('type')}}" name="type">
+                <div class="col-md-3 mb-2 ml-auto">
+                    <input type="search" name="keyword" value="{{request()->query('keyword')}}" class="form-control" placeholder="search...">
+                </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                    </div>
+                     <div class="col-md-1">
+                        <button class="btn btn-success" name="export" value="1"><i class="fas fa-file-excel"></i></button>
+                    </div>
+            </div>
+        </form>
+
         <div class="card">
             <div class="card-header d-flex justify-content-between bg-dark">
                 <div>
@@ -18,6 +33,7 @@
                         <th>Email</th>
                         <th>Role</th>
                         <th>Register on</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +44,7 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->role }}</td>
                             <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y g:i:s A') }}</td>
+                            <td><a href=""><i class="fas fa-trash"></i></a></td>
                         </tr>
                     @endforeach
                 </tbody>

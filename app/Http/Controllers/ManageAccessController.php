@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
+use App\Exports\CrmsExport;
 use App\Models\Crm;
 use App\Models\Subscriber;
 use App\Models\User;
@@ -11,6 +11,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -237,15 +238,21 @@ class ManageAccessController extends Controller
 
     public function crm(Request $request)
     {
-        // if (!auth()->user()->can('can:do_anything')) {
-        //     $notification = [
-        //         'alert-type' => 'error',
-        //         'message' => 'You do not have sufficient permissions.',
-        //     ];
-        //     return redirect()->back()->with($notification);
-        // }
+        $search=$request->keyword;
+        $users = Crm::where('type', $request->type)
+    ->when($search, function ($query, $search) {
+        $query->where(function ($q) use ($search) {
+            $q->where('name', 'like', '%' . $search . '%')
+              ->orWhere('email', 'like', '%' . $search . '%')
+              ->orWhere('phone', 'like', '%' . $search . '%');
+        });
+    })
+    ->latest();
 
-        $users = Crm::where('type',$request->type)->latest()->paginate(20);
+    if($request->export){
+         return Excel::download(new CrmsExport(null,null,null,1), 'filtered-users.xlsx');
+    }
+    $users=$users->paginate(20);
         if($request->type==1)
         return view("crm.waitlist", compact('users'));
 
