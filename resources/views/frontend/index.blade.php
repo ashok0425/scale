@@ -652,7 +652,7 @@
                     </ul>
                   </div>
                 </div>
-                @include('frontend.inc.total_value')
+                @include('frontend.inc.total_value',['link'=>url('/founders-benefit')])
               </div>
 
               <div class="tabs-content">
@@ -786,7 +786,7 @@
                     </ul>
                   </div>
                 </div>
-                 @include('frontend.inc.total_value')
+                 @include('frontend.inc.total_value',['link'=>url('/freelancers-agencies-benefit')])
               </div>
               <div class="tabs-content">
                 <div
@@ -925,7 +925,7 @@
                     </ul>
                   </div>
                 </div>
-                 @include('frontend.inc.total_value')
+                 @include('frontend.inc.total_value',['link'=>url('/enabler-investor-mentor-benefits')])
               </div>
             </div>
           </div>

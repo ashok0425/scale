@@ -13,6 +13,10 @@
                     themselves at the forefront of the new service economy. These privileges
                     disappear when we launch – lock them in now or miss them forever. You can
                     download the value documentation
+                    @if (request()->path()=='/')
+                         <a href="{{$link}}" class="underline text-purple">here</a>
+
+                        @else
                     @if (request()->path()=='freelancer')
                          <a href="{{url('/freelancers-agencies-benefit')}}" class="underline text-purple">here</a>
                     @endif
@@ -22,6 +26,8 @@
                     @if (request()->path()=='investors')
                          <a href="{{url('/enabler-investor-mentor-benefits')}}" class="underline text-purple">here</a>
                     @endif
+                    @endif
+
                   </p>
                   <div class="mt-3 flex items-center justify-between gap-4">
                     <div class="gradient-border-animated rounded-lg px-6 py-1">
