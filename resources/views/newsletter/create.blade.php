@@ -42,12 +42,12 @@
     <div class="d-flex flex-column-fluid">
         <div class="container">
             <div class="card card-custom">
-                <div class="card-header flex-wrap pt-4 pb-4">
+                <div class="card-header d-flex justify-content-between align-items-center bg-dark ">
                     <div class="card-title">
-                        <h4>Create Campaign</h4>
+                        <h5 class="text-white">Create Campaign</h5>
                     </div>
                     <div class="card-toolbar">
-                        <a class="btn mr-10" href="{{ route('admin.campaigns.index') }}">Cancel</a>
+                        <a class="btn mr-10 text-white" href="{{ route('admin.campaigns.index') }}">Cancel</a>
                         <button class="btn btn-secondary font-weight-bolder d-none" id="backBtn" @click="prevStep">Back</button>
                         <button class="btn btn-primary font-weight-bolder" id="nextBtn" @click="nextStep">Next</button>
                         <button class="btn btn-success font-weight-bolder d-none" id="saveBtn" @click="submitForm(false)">Save</button>
@@ -235,13 +235,13 @@
                 const selectedGroups = Array.from(document.querySelectorAll('select[name="group_ids[]"] option:checked')).map(option => option.value);
                 formData.append('group_ids', JSON.stringify(selectedGroups));
 
-                axios.post('/admin/campaigns', formData)
+                axios.post('/campaigns', formData)
                     .then(response => {
                         this.loading = false;
                         this.campaign_id=response.data.campaign_id;
                         if(!is_draft){
                         alert('Newsletter saved successfully!');
-                        window.location.href = '/admin/campaigns';
+                        window.location.href = '/campaigns';
 
                         }
                     })
@@ -272,7 +272,7 @@
                     formData.append('emailJson', this.emailJson);
 
 
-                    axios.post('/admin/send-test-email', formData)
+                    axios.post('/send-test-email', formData)
                         .then(response => {
                             this.loading = false;
                             alert('Test email sent!');

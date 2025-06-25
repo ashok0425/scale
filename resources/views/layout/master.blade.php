@@ -148,6 +148,26 @@
                 text-decoration: none!important;
              }
         </style>
+        @stack('styles')
+        <style>
+            .flex-wrap{
+                display: flex;
+                justify-content: space-between;
+                padding: 0px!important;
+                font-size: 18px!important;
+
+            }
+            .flex-wrap.pt-4.pb-4{
+                /* padding: 0px!important; */
+                padding:1rem .4rem!important;
+                padding-bottom: .4rem!important;
+            }
+            .flex-wrap h4{
+                font-size: 16px!important;
+
+            }
+
+        </style>
     </head>
 
     <body>

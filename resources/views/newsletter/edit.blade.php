@@ -250,13 +250,13 @@
                         'select[name="group_ids[]"] option:checked')).map(option => option.value);
                     formData.append('group_ids', JSON.stringify(selectedGroups));
 
-                    axios.post('/admin/campaigns', formData)
+                    axios.post('/campaigns', formData)
                         .then(response => {
                             this.loading = false;
                             this.campaign_id = response.data.campaign_id;
                             if (!is_draft) {
                                 alert('Newsletter saved successfully!');
-                                window.location.href = '/admin/campaigns';
+                                window.location.href = '/campaigns';
                             }
                         })
                         .catch(error => {
@@ -285,7 +285,7 @@
                         formData.append('title', this.title);
 
 
-                        axios.post('/admin/send-test-email', formData)
+                        axios.post('/send-test-email', formData)
                             .then(response => {
                                 this.loading = false;
                                 alert('Test email sent!');

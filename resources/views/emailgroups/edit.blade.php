@@ -11,15 +11,11 @@
     <div class="d-flex flex-column-fluid">
         <div class="container">
             <div class="card card-custom">
-                <div class="card-header flex-wrap pt-4 pb-4">
+                <div class="card-header card-header d-flex align-items-center justify-content-between bg-dark text-white">
                     <div class="card-title">
-                        <h4>Edit Group</h4>
+                        <h6 class="text-white">Edit Group</h6>
                     </div>
-                    <div class="card-toolbar">
-                        <a class="btn mr-10" href="{{ route('admin.emailgroups.index') }}">Cancel</a>
-                        <a class="btn btn-primary font-weight-bolder" onclick="document.getElementById('form').submit();">Save</a>
 
-                    </div>
                 </div>
 
                 <div class="card-body">
@@ -29,6 +25,9 @@
                         <label for="" class="h5">Group Name</label>
                         <input type="text" name="name" placeholder="Group Name" required class="form-control" value="{{old('name',$emailgroup->name)}}">
 
+                        <div class="mt-2">
+                            <button class="btn btn-info px-4">Save</button>
+                        </div>
                     </form>
                 </div>
             </div>

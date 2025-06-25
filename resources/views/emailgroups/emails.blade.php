@@ -2,15 +2,14 @@
 @section('main-content')
 <div class="d-flex flex-column-fluid" id="app">
     <div class="container">
-        <div class="card card-custom">
-                <div class="d-flex justify-content-between p-3">
-                        <h4>Email List</h4>
+        <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between bg-dark text-white">
+                        <h5 class="text-white">Email List</h5>
                     <div class="d-flex">
                         <input type="text" v-model="searchQuery" placeholder="Search emails..." @input="fetchEmails" class="form-control mb-3">
-                        @if (!request()->query('group_id'))
-                           <button class="btn btn-info mx-2" style="width:200px" data-toggle="modal" data-target="#CreateModal">Add Email</button>
-                         <button class="btn btn-info mx-2" style="width:200px" data-toggle="modal" data-target="#importModal">Import</button>
-                         @endif
+                        {{-- @if (!request()->query('group_id'))
+                         <div></div>
+                         @endif --}}
                     </div>
                 </div>
 

@@ -26,7 +26,6 @@ class EmailGroupController extends Controller
         ]);
 
         EmailGroup::create($request->all());
-        notify()->info('Group Created.');
 
         return redirect()->route('admin.emailgroups.index')->with('success', 'Email group created.');
     }
@@ -51,7 +50,6 @@ class EmailGroupController extends Controller
         ]);
 
         $emailgroup->update($request->all());
-        notify()->info('Group updated.');
 
         return redirect()->route('admin.emailgroups.index')->with('success', 'Email group updated.');
     }
@@ -59,7 +57,6 @@ class EmailGroupController extends Controller
     public function destroy(EmailGroup $emailgroup)
     {
         $emailgroup->delete();
-        notify()->info('Group Deleted.');
 
         return redirect()->route('admin.emailgroups.index')->with('success', 'Email group deleted.');
     }

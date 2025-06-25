@@ -3,26 +3,18 @@
     <div class="d-flex flex-column-fluid">
         <div class="container">
             <div class="card card-custom">
-                <div class="card-header flex-wrap border-0 pt-6 pb-0">
-                    <div class="card-title">
-                        <div class="row align-items-center">
-                            <div class="col-md-12 my-md-0">
-                                <div class="input-icon">
-                                    <input type="text" class="form-control" placeholder="Search..." id="kt_datatable_search_query" />
-                                    <span><i class="flaticon2-search-1 text-muted"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-toolbar">
-                        <a href="{{ route('admin.emailgroups.create') }}" class="btn btn-primary font-weight-bolder mr-3">Add Group</a>
-
+                <div class="card-header card-header d-flex align-items-center justify-content-between bg-dark text-white">
+<div>
+    <h6 class="text-white">Email Group</h6>
+</div>
+                                 <div>
+                        <a href="{{ route('admin.emailgroups.create') }}" class="btn btn-info mx-2"><i class="fas fa-plus"></i> Add Group</a>
                     </div>
                 </div>
 
                 <div class="card-body">
 
-                    <table class="datatable datatable-bordered datatable-head-custom" id="kt_datatable">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>#</th>

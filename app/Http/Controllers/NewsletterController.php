@@ -56,36 +56,6 @@ class NewsletterController extends Controller
         return view('newsletter.create');
     }
 
-    public function oldNewsletter(){
-        if (! auth()->user()->can('others:campaign')) {
-            notify()->info('You do not have sufficient permissions.');
-            return back();
-        }
-        return view('newsletter.add');
-    }
-
-    public function storeoldNewsletter(Request $request){
-        if (! auth()->user()->can('others:campaign')) {
-            notify()->info('You do not have sufficient permissions.');
-            return back();
-        }
-
-        $content=$this->processImages($request->content);
-        $newsletter=new Newsletter();
-        $newsletter->title=$request->title;
-        $newsletter->subject=$request->subject;
-        $newsletter->content=$content;
-        $newsletter->type=2;
-        $newsletter->publish_date=$request->date;
-        $newsletter->subject=$request->subject;
-        $newsletter->slug=$request->slug??Str::slug($request->title);
-        $newsletter->thumbnail=  $request->file('thumbnail')->store('images/newsletter', ['disk' => 's3', 'visibility' => 'public']);
-
-        $newsletter->save();
-        notify()->info('Newsletter Added');
-        return back();
-
-    }
 
     public function show(Request $request,Newsletter $campaign)
 {
@@ -165,8 +135,6 @@ class NewsletterController extends Controller
 
     }
 
-    // mail to login user about email is schedule with link
-   Notification::route('mail',auth()->user()->email)->notify(new SendNewsletterScheduleNotification("https://atypicaladvantage.in/newsletter/$newsletter->slug",auth()->user()->name,$newsletter->publish_date));
     }
 
 
