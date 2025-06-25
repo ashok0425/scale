@@ -566,8 +566,8 @@
           <div class="tabs-container mx-auto max-w-[840px] space-y-6">
             <div class="flex flex-wrap items-center justify-center gap-6">
               <button class="tabs-trigger gradient-border">Founder</button>
-              <button class="tabs-trigger gradient-border">Creator</button>
-              <button class="tabs-trigger gradient-border">Enabler</button>
+              <button class="tabs-trigger gradient-border">Freelancer</button>
+              <button class="tabs-trigger gradient-border">Investor</button>
             </div>
             <div
               class="before:brand-gradient relative before:absolute before:top-1/2 before:left-1/2 before:size-[750px] before:-translate-1/2 before:rounded-full before:blur-[240px]"
