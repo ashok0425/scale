@@ -5,143 +5,160 @@
                 <img src="{{ getImage(cms()->logo) }}" alt="" width="60" height="60" />
             </span>
         </a>
-
+        <ul class="sidebar-nav">
         <li class="sidebar-item">
-            <a class="sidebar-link {{Request::is('dashboard','dashboard/*')?'text-light':' '}}" href="{{ route('dashboard') }}">
+            <a
+                class="sidebar-link {{ Request::is('dashboard', 'dashboard/*') ? 'text-light' : ' ' }}"
+                href="{{ route('dashboard') }}"
+            >
                 <i class="fas fa-th"></i>
                 <span class="align-middle">Dashboard</span>
             </a>
         </li>
-
-{{--
-@can('banners:view')
-<li class="sidebar-item">
-    <a href="javascript:void(0);" class="sidebar-link d-flex justify-between align-items-center {{Request::is('banners','banners/*')?'text-light':' '}}" data-toggle="banner-dropdown">
-        <span>
-            <i class="fas fa-images"></i>
-            <span class="align-middle">Banners</span>
-        </span>
-        <i class="fas fa-chevron-down toggle-icon"></i>
-    </a>
-    <ul class="submenu {{Request::is('banners','banners/*')?'d-block':' d-none'}}" id="banner-dropdown" >
-        <li class="submenu-item">
-            <a href="{{ route('banners.index',['type'=>1]) }}" class="sidebar-link">Notice Banner</a>
-        </li>
-        <li class="submenu-item">
-            <a href="{{ route('banners.index',['type'=>2]) }}" class="sidebar-link">Rep Banner</a>
-        </li>
-    </ul>
-</li>
-@endcan --}}
-
- <li class="sidebar-item">
-           <a class="sidebar-link {{Request::is('attachments','attachments/*')?'text-light':' '}}" href="{{ route('attachments.index') }}">
-               <i class="fas fa-copy"></i>
-               <span class="align-middle">Attachment</span>
-           </a>
-       </li>
-
-       @can('can:do anything')
-       <li class="sidebar-item">
-           <a class="sidebar-link {{Request::is('manage-access','manage-access/*')?'text-light':' '}}" href="{{ route('access.index') }}">
-               <i class="fas fa-users"></i>
-               <span class="align-middle">Employee</span>
-           </a>
-       </li>
-       @endcan
-
-
-        <ul class="sidebar-nav">
-            <li class="sidebar-header">Manage Post</li>
-
-          @can('view:category')
-          <li class="sidebar-item">
-            <a class="sidebar-link {{Request::is('categories','categories/*')?'text-light':' '}}" href="{{ route('categories.index') }}">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="align-middle">Category</span>
-            </a>
-        </li>
-        @endcan
-
-
-        @canAny(['post:view','post:create','post:edit','post:delete'])
         <li class="sidebar-item">
-            <a class="sidebar-link {{Request::is('blogs','blogs/*')?'text-light':' '}}" href="{{ route('blogs.index') }}">
-                <i class="fas fa-photo-video"></i>
-                <span class="align-middle">Post</span>
+            <a
+                class="sidebar-link {{ Request::is('attachments', 'attachments/*') ? 'text-light' : ' ' }}"
+                href="{{ route('attachments.index') }}"
+            >
+                <i class="fas fa-copy"></i>
+                <span class="align-middle">Attachment</span>
             </a>
         </li>
-          @endcanAny
-
-            @can('do:anything')
-          <li class="sidebar-header">General</li>
+        <li class="sidebar-item">
+            <a
+                class="sidebar-link {{ Request::is('manage-access', 'manage-access/*') ? 'text-light' : ' ' }}"
+                href="{{ route('access.index') }}"
+            >
+                <i class="fas fa-users"></i>
+                <span class="align-middle">Employee</span>
+            </a>
+        </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link {{Request::is('pages','pages/*')?'text-light':' '}}" href="{{ route('pages.index') }}">
-                    <i class="far fa-calendar-minus"></i>
-                    <span class="align-middle">Pages</span>
+                <a
+                    class="sidebar-link {{ Request::is('categories', 'categories/*') ? 'text-light' : ' ' }}"
+                    href="{{ route('categories.index') }}"
+                >
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="align-middle">Category</span>
                 </a>
             </li>
-
             <li class="sidebar-item">
-                <a class="sidebar-link {{Request::is('websites','websites/*')?'text-light':' '}}" href="{{ route('cms.edit', 1) }}">
-                    <i class="fas fa-images"></i>
-                    <span class="align-middle">Cms</span>
+                <a
+                    class="sidebar-link {{ Request::is('blogs', 'blogs/*') ? 'text-light' : ' ' }}"
+                    href="{{ route('blogs.index') }}"
+                >
+                    <i class="fas fa-photo-video"></i>
+                    <span class="align-middle">Post</span>
                 </a>
             </li>
-            @endcan
-
-
-       @can('user:view')
-
-
-             <li class="sidebar-header">CRM</li>
-
             <li class="sidebar-item">
-                <a class="sidebar-link {{Request::is('crm','crm/*')?'text-light':' '}}" href="{{ route('crm',['type'=>1]) }}">
+                <a
+                    href="javascript:void(0);"
+                    class="sidebar-link d-flex justify-between align-items-center {{ Request::is('pages*', 'websites*', 'seos*', 'faqs*') ? 'text-light' : '' }}"
+                    data-toggle="content-dropdown"
+                >
+                    <span>
+                        <i class="fas fa-images"></i>
+                        <span class="align-middle">Content</span>
+                    </span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </a>
+                <ul
+                    class="submenu {{ Request::is('pages*', 'websites*', 'seos*', 'faqs*') ? 'd-block' : 'd-none' }}"
+                    id="content-dropdown"
+                >
+                    <li class="submenu-item">
+                        <a href="{{ route('pages.index') }}" class="sidebar-link">Pages</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="{{ route('cms.edit', 1) }}" class="sidebar-link">Cms</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="{{ route('seos.index') }}" class="sidebar-link">Seo</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="{{ route('faqs.index') }}" class="sidebar-link">Faq</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidebar-item">
+                <a
+                    href="javascript:void(0);"
+                    class="sidebar-link d-flex justify-between align-items-center {{ Request::is('admin/campaigns*', 'admin/emailgroups*', 'admin/emails*') ? 'text-light' : '' }}"
+                    data-toggle="email-marketing-dropdown"
+                >
+                    <span>
+                        <i class="fas fa-envelope-open-text"></i>
+                        <span class="align-middle">Email Marketing</span>
+                    </span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </a>
+                <ul
+                    class="submenu {{ Request::is('admin/campaigns*', 'admin/emailgroups*', 'admin/emails*') ? 'd-block' : 'd-none' }}"
+                    id="email-marketing-dropdown"
+                >
+                    <li class="submenu-item">
+                        <a href="{{ route('admin.campaigns.index') }}" class="sidebar-link">
+                            Campaign
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a
+                            href="{{ route('admin.campaigns.index', ['draft' => 1]) }}"
+                            class="sidebar-link"
+                        >
+                            Draft
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="{{ route('admin.emailgroups.index') }}" class="sidebar-link">
+                            Email Group
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="{{ route('admin.emails.index') }}" class="sidebar-link">
+                            All Subscriber
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidebar-item">
+                <a
+                    class="sidebar-link {{ Request::is('crm', 'crm/*') ? 'text-light' : ' ' }}"
+                    href="{{ route('crm', ['type' => 1]) }}"
+                >
                     <i class="far fa-calendar-minus"></i>
                     <span class="align-middle">Waitlist</span>
                 </a>
             </li>
-
             <li class="sidebar-item">
-                <a class="sidebar-link {{Request::is('crm','crm/*')?'text-light':' '}}" href="{{ route('crm',['type'=>2]) }}">
+                <a
+                    class="sidebar-link {{ Request::is('crm', 'crm/*') ? 'text-light' : ' ' }}"
+                    href="{{ route('crm', ['type' => 2]) }}"
+                >
                     <i class="fas fa-images"></i>
                     <span class="align-middle">Priority Access</span>
                 </a>
             </li>
-
-               <li class="sidebar-item">
-              <a class="sidebar-link {{Request::is('crm','crm/*')?'text-light':' '}}" href="{{ route('crm',['type'=>3]) }}">
+            <li class="sidebar-item">
+                <a
+                    class="sidebar-link {{ Request::is('crm', 'crm/*') ? 'text-light' : ' ' }}"
+                    href="{{ route('crm', ['type' => 3]) }}"
+                >
                     <i class="fas fa-images"></i>
                     <span class="align-middle">Pdf Download</span>
                 </a>
             </li>
-
-                 <li class="sidebar-item">
-                <a class="sidebar-link {{Request::is('subscriber','subscriber/*')?'text-light':' '}}" href="{{ route('subscriber') }}">
+            <li class="sidebar-item">
+                <a
+                    class="sidebar-link {{ Request::is('subscriber', 'subscriber/*') ? 'text-light' : ' ' }}"
+                    href="{{ route('subscriber') }}"
+                >
                     <i class="fas fa-images"></i>
                     <span class="align-middle">Subscriber</span>
                 </a>
             </li>
-
-             <li class="sidebar-item">
-                <a class="sidebar-link {{Request::is('seos','seos/*')?'text-light':' '}}" href="{{ route('seos.index') }}">
-                    <i class="fas fa-users"></i>
-                    <span class="align-middle">Seo</span>
-                </a>
-            </li>
-
-            <li class="sidebar-item">
-                <a class="sidebar-link {{Request::is('faqs','faqs/*')?'text-light':' '}}" href="{{ route('faqs.index') }}">
-                    <i class="fas fa-copy"></i>
-                    <span class="align-middle">Faq</span>
-                </a>
-            </li>
-
-       @endcan
         </ul>
     </div>
-
 </nav>
-

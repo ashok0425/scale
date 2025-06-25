@@ -85,6 +85,29 @@ Route::middleware('auth')->group(function () {
         Route::delete('{id}/delete', [App\Http\Controllers\ManageAccessController::class, 'destroy'])->name('access.destroy');
     });
 
+
+      Route::resource('emailgroups', App\Http\Controllers\EmailGroupController::class, [
+        'as' => 'admin'
+    ]);
+
+    Route::resource('campaigns', App\Http\Controllers\NewsletterController::class, [
+        'as' => 'admin'
+    ]);
+    Route::get('camapaign/{id}/status',[App\Http\Controllers\NewsletterController::class,'updateStatus'])->name('admin.campaigns.status');
+    Route::get('api/emails',[App\Http\Controllers\EmailGroupController::class,'getemails']);
+    Route::get('/all-subscriber',[App\Http\Controllers\EmailGroupController::class,'emails'])->name('admin.emails.index');
+    Route::get('/subscriber/{id}',[App\Http\Controllers\EmailGroupController::class,'show'])->name('admin.emails.show');
+    Route::post('/subscriber/import',[App\Http\Controllers\NewsletterController::class,'import'])->name('admin.subscriber.import');
+    Route::post('/subscriber/store',[App\Http\Controllers\NewsletterController::class,'storeEmail'])->name('admin.subscriber.store');
+
+
+    Route::post('/api/emails/add-to-group',[App\Http\Controllers\EmailGroupController::class,'addtogroup'])->name('admin.emails.group');
+    Route::post('/send-test-email',[App\Http\Controllers\NewsletterController::class,'testMail'])->name('admin.test.mail');
+    Route::get('/add-email',[App\Http\Controllers\NewsletterController::class,'oldNewsletter']);
+    Route::post('/add-email',[App\Http\Controllers\NewsletterController::class,'storeoldNewsletter']);
+
+
+
 });
 
 Route::get('page/{slug}', function ($slug) {
