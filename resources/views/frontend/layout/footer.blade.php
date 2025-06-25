@@ -1,5 +1,5 @@
 @php
-    $pages=App\Models\Page::all();
+    $pages=App\Models\Page::limit(3)->all();
 @endphp
 <footer>
       <div id="waitlistSection"
