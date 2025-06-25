@@ -49,10 +49,7 @@ class NewsletterController extends Controller
           }
     }
     public function create(){
-        if (! auth()->user()->can('others:campaign')) {
-            notify()->info('You do not have sufficient permissions.');
-            return back();
-        }
+
         return view('newsletter.create');
     }
 
@@ -211,7 +208,6 @@ public function import(Request $request){
 
     Excel::queueImport(new SubscriberImport($request->group), $request->file('file'));
 
-   notify()->info('Import is in process');
     return back();
 }
 
@@ -234,7 +230,6 @@ public function storeEmail(Request $request){
     $emailGroup->save();
             }
 
-   notify()->info('Email added ');
     return back();
 }
 
@@ -243,7 +238,6 @@ public function updateStatus($id){
   $newsletter->status=4;
   $newsletter->save();
 
-    notify()->info('Campaign moved to draft ');
     return back();
 }
 

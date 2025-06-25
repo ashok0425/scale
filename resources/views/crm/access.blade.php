@@ -48,8 +48,9 @@
                             <td>{{ $user->city }}</td>
                             <td>{{ $user->linkedin }}</td>
                             <td>{{ $user->message }}</td>
-
                             <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y g:i:s A') }}</td>
+                            <td><a href="{{route('crm.delete',['id'=>$user->id])}}"><i class="fas fa-trash"></i></a></td>
+
                         </tr>
                     @endforeach
                 </tbody>

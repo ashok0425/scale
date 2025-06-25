@@ -72,6 +72,7 @@ Route::middleware('auth')->group(function () {
     Route::get('subscribe', [\App\Http\Controllers\ManageAccessController::class,'subscriber'])->name('subscriber');
     Route::resource('seos', SeoController::class);
     Route::resource('faqs', FaqController::class);
+    Route::get('crm/{id}', [\App\Http\Controllers\ManageAccessController::class,'crmDelete'])->name('crm.delete');
 
 
 

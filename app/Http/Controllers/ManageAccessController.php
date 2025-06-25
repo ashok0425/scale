@@ -236,6 +236,16 @@ class ManageAccessController extends Controller
         return view('user.index', compact('users'));
     }
 
+    public function crmDelete($id){
+        Crm::where('id',$id)->delete();
+          $notification = [
+            'alert-type' => 'success',
+            'message' => 'User Deleted',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
     public function crm(Request $request)
     {
         $search=$request->keyword;
