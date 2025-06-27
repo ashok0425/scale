@@ -349,7 +349,10 @@ We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 
 
         Notification::route('mail', $request->email)->notify(new SendAttachmentNotification($downloadLink, $crm));
 
-        return back()->with('message', 'Check your email. We have sent a download link to your email.')
+
+
+        return back()->with('message', 'We’ve sent the download link to your email.
+Check your inbox (spam/junk) and enjoy the resource.')->with('title','🎉 Thank you for downloading!')
             ->with('type', 'success');
     }
 

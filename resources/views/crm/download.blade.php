@@ -30,7 +30,7 @@
                         <th>#</th>
                         <th>Email</th>
                         <th>Attachment</th>
-                        <th>Blog</th>
+
                         <th>Register on</th>
                     </tr>
                 </thead>
@@ -39,8 +39,8 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->attachment }}</td>
-                            <td>{{ $user->blog->name }}</td>
+                            <td><a href="{{ $user->attachment_link }}">view</a></td>
+
                             <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y g:i:s A') }}</td>
                          <td>
   <a href="{{ route('crm.delete', ['id' => $user->id]) }}"
