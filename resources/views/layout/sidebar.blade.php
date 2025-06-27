@@ -5,7 +5,7 @@
                 <img src="{{ getImage(cms()->logo) }}" alt="" width="60" height="60" />
             </span>
         </a>
-        <ul class="sidebar-nav">
+        <ul class="sidebar-nav" style="overflow-y: scroll!important;    scrollbar-width: none;">
         <li class="sidebar-item">
             <a
                 class="sidebar-link {{ Request::is('dashboard', 'dashboard/*') ? 'text-light' : ' ' }}"
