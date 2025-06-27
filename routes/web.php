@@ -17,7 +17,12 @@ Route::get('/', [FrontController::class, 'index'])->name('/');
 Route::get('/freelancer', [FrontController::class, 'freelancer'])->name('freelancer');
 Route::get('/investors', [FrontController::class, 'investor'])->name('investor');
 Route::get('/founders', [FrontController::class, 'founder'])->name('founder');
-Route::get('/categort/{slug}', [FrontController::class, 'categoryBlog'])->name('category');
+Route::get('/category/{slug}', [FrontController::class, 'categoryBlog'])->name('category');
+
+Route::get('/unsubscribe/{uuid}', [FrontController::class, 'unsubscribe'])->name('unsubscribe');
+Route::post('/unsubscribe/{uuid}', [FrontController::class, 'unsubscribeStore']);
+
+
 
 
 
@@ -117,4 +122,4 @@ Route::get('storages', function () {
 });
 
 Route::get('email/open/{campaign_id}',App\Http\Controllers\MarkEmailController::class)->name('email.open');
-Route::get('/{slug?}', [FrontController::class, 'pages']);
+Route::get('/{slug?}', [FrontController::class, 'pages'])->name('page');

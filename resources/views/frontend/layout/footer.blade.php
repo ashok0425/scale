@@ -181,7 +181,7 @@
           <span>&copy; {{date('Y')}} ScaleDux</span>
            @foreach ($pages as $page)
                    <span>|</span>
-          <span><a href="/{{$page->slug}}" class="hover:text-gray-300">{{Str::title($page->name)}}</a></span>
+          <span><a href="{{route('page',['slug'=>$page->slug])}}" class="hover:text-gray-300">{{Str::title($page->name)}}</a></span>
            @endforeach
           <!-- <span>|</span>
           <span><a href="#">Cookies</a></span> -->

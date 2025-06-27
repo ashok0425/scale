@@ -13,8 +13,8 @@
                     <tr>
                         <th>#</th>
                         <th>Email</th>
-                        <th>Created At</th>
-
+                        <th>Is Unsubscribe</th>
+                        <th>Subscribe At</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +22,14 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{!! $user->is_unsubscribe?"<span class='badge bg-danger'>unsubscribed</span>":'' !!}
+                           <br>
+                                {{$user->reason}}
+                            <br>
+                            {{$user->other_reason}}
+
+                            </td>
+
                             <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y g:i:s A') }}</td>
 
                         </tr>

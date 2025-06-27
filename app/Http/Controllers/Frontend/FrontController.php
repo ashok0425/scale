@@ -7,6 +7,7 @@ use App\Models\Attachment;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Crm;
+use App\Models\EmailCampaign;
 use App\Models\EmailGroup;
 use App\Models\Page;
 use App\Models\Subscriber;
@@ -199,7 +200,7 @@ class FrontController extends Controller
 
         $emailGroup = EmailGroup::query()->first();
 
-        $emailIds = is_array($emailGroup->email_ids) ? $emailGroup->email_ids : json_decode($emailGroup->email_ids, true);
+        $emailIds = is_array($emailGroup->email_ids) ? $emailGroup->email_ids : $emailGroup->email_ids??[];
 
         if (!is_array($emailIds)) {
             $emailIds = [];
@@ -368,5 +369,44 @@ We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 
         } catch (\Exception $e) {
             abort(404, 'Invalid or expired download link.');
         }
+    }
+
+
+    public function unsubscribe($uuid){
+        $subscribe=EmailCampaign::where('campaign_id',$uuid)->firstOrFail();
+        return view('frontend.unsubscribe',compact('subscribe'));
+    }
+
+
+     public function unsubscribeStore(Request $request){
+
+        $subscribe=EmailCampaign::where('campaign_id',$request->uuid)->firstOrFail();
+       $subscribe->subscription()->update([
+        'is_unsubscribe'=>1,
+        'reason'=>$request->reason,
+        'other_reason'=>$request->other_reason,
+
+       ]);
+
+        // Get the email to be removed
+    $emailToRemove = $subscribe->subscription->id ?? null;
+
+    if ($emailToRemove) {
+        // Fetch all email groups
+        $emailGroups = EmailGroup::all();
+
+        foreach ($emailGroups as $group) {
+            $emails = $group->email_ids?? [];
+
+            if (in_array($emailToRemove, $emails)) {
+                $updatedEmails = array_values(array_diff($emails, [$emailToRemove]));
+                $group->email_ids = json_encode($updatedEmails);
+                $group->save();
+            }
+        }
+    }
+
+          return redirect('/')->with('message', 'You have unsubscribed')->with('title', 'Unsubscribe successfully.')->with('type', 'success');
+
     }
 }
