@@ -7,7 +7,13 @@
     body { font-family: Arial, sans-serif; background: #ffffff; color: #333; padding: 20px; }
     a { color: #1a73e8; text-decoration: none; }
     ul { padding-left: 20px; }
-    .footer { font-size: 12px; color: #777; margin-top: 30px; border-top: 1px solid #ddd; padding-top: 15px; }
+     .footer {
+      font-size: 12px;
+      color: #666;
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      padding-top: 15px;
+    }
   </style>
 </head>
 <body>

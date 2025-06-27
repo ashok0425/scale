@@ -373,15 +373,19 @@ We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 
 
 
     public function unsubscribe($uuid){
-        $subscribe=EmailCampaign::where('campaign_id',$uuid)->firstOrFail();
+      $subscribe=Subscriber::where('email',base64_decode($uuid))->firstOrFail();
+      if ($subscribe&&$subscribe->is_unsubscribe) {
+          return redirect('/')->with('title', 'Already unsubscribed')->with('message', 'You have already unsubscribed our newsletter')->with('type', 'success');
+
+      }
         return view('frontend.unsubscribe',compact('subscribe'));
     }
 
 
      public function unsubscribeStore(Request $request){
 
-        $subscribe=EmailCampaign::where('campaign_id',$request->uuid)->firstOrFail();
-       $subscribe->subscription()->update([
+        $subscribe=Subscriber::where('email',base64_decode($request->uuid))->firstOrFail();
+       $subscribe->update([
         'is_unsubscribe'=>1,
         'reason'=>$request->reason,
         'other_reason'=>$request->other_reason,

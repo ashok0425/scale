@@ -139,6 +139,32 @@ class NewsletterController extends Controller
     $html=$request->htmlContent;
     $processedHtml=$this->processImages($html);
 
+       // Prepare footer HTML
+        $footer = '
+            <div class="footer" style="font-size: 12px;
+      color: #666;
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      padding: 20px;background-color:#fff">
+                <p>
+                    ScaleDux Software Innovations Pvt Ltd<br>
+                    Registered under the Companies Act, 2013<br>
+                    Bengaluru, Karnataka – 560001, India<br>
+                    CIN: U62013OD2025PTC049049<br>
+                    📞 +91 9606626500 | 🌐 <a href="https://www.scaledux.com">scaledux.com</a> | ✉ <a href="mailto:contact@scaledux.com">contact@scaledux.com</a>
+                </p>
+                <p>
+                    You’re receiving this because you joined the ScaleDux waitlist or used our startup tools.<br>
+                    <a href="' . url('privacy-policy') . '">Privacy Policy</a> |
+                    <a href="' . url('terms-of-services') . '">Terms of Service</a> |
+                    <a href="' . route('unsubscribe', ['uuid' => base64_encode($request->email)]) . '">Unsubscribe</a>
+                </p>
+            </div>
+        ';
+
+        // Append pixel + footer to content
+        $processedHtml = str_replace('</body>',  $footer . '</body>', $processedHtml);
+
     Mail::html($processedHtml, function ($message) use ($request) {
         $message->to($request->email)
                 ->subject($request->title);

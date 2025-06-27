@@ -50,8 +50,35 @@ class SendCampaignMail implements ShouldQueue
 
     // Add the tracking pixel image (with display:none) to the content
     $trackingPixel = '<img src="' . $trackingPixelUrl . '" alt=""  width="10" height="10">';
-    $modifiedContent = str_replace('</body>', $trackingPixel . '</body>', $newsletter->content);
 
+
+       // Prepare footer HTML
+        $footer = '
+            <div class="footer" style="font-size: 12px;
+      color: #666;
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      padding: 20px;background-color:#fff">
+              <div>
+                <p>
+                    ScaleDux Software Innovations Pvt Ltd<br>
+                    Registered under the Companies Act, 2013<br>
+                    Bengaluru, Karnataka – 560001, India<br>
+                    CIN: U62013OD2025PTC049049<br>
+                    📞 +91 9606626500 | 🌐 <a href="https://www.scaledux.com">scaledux.com</a> | ✉ <a href="mailto:contact@scaledux.com">contact@scaledux.com</a>
+                </p>
+                <p>
+                    You’re receiving this because you joined the ScaleDux waitlist or used our startup tools.<br>
+                    <a href="' . url('privacy-policy') . '">Privacy Policy</a> |
+                    <a href="' . url('terms-of-services') . '">Terms of Service</a> |
+                    <a href="' . route('unsubscribe', ['uuid' => base64_encode($email)]) . '">Unsubscribe</a>
+                </p>
+              </div>
+            </div>
+        ';
+
+        // Append pixel + footer to content
+        $modifiedContent = str_replace('</body>', $trackingPixel . $footer . '</body>', $newsletter->content);
             Mail::html($modifiedContent, function ($message) use ($email,$newsletter) {
                 $message->to($email)
                         ->subject($newsletter->title);

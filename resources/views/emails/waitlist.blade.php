@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ScaleDux Waitlist Confirmation</title>
 </head>
+
+<style>
+     .footer {
+      font-size: 12px;
+      color: #666;
+      margin-top: 40px;
+      border-top: 1px solid #ddd;
+      padding-top: 15px;
+    }
+</style>
 <body>
 
 
