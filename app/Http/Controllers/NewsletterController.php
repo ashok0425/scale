@@ -158,9 +158,8 @@ class NewsletterController extends Controller
         if (preg_match('/data:image\/(?<type>[a-zA-Z]+);base64,(?<data>.+)/', $base64Image, $imageData)) {
             $type = $imageData['type'];
             $data = base64_decode($imageData['data']);
-            $filename = 'newsletter_images/' . Str::random(10) . '.' . $type;
+            $filename = 'uploads/' . Str::random(10) . '.' . $type;
 
-            Storage::disk('s3')->put($filename, $data, 'public');
         Storage::disk('public')->put($filename, $data);
 
         $newPath = asset('storage/' . $filename);
