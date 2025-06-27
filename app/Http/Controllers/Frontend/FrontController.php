@@ -311,9 +311,12 @@ We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 
     }
 
 
-    public function attachment($attachment_id, $blog_id = null)
+    public function attachment(Request $request,$attachment_id, $blog_id = null)
     {
         $attachment = Attachment::where('uuid', $attachment_id)->firstOrFail();
+        if ($request->view) {
+            return getImage($attachment->attachment);
+        }
         return view('frontend.download', compact('attachment'));
     }
 
