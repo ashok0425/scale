@@ -188,7 +188,7 @@ class NewsletterController extends Controller
 
         Storage::disk('public')->put($filename, $data);
 
-        $newPath = asset('storage/' . $filename);
+        $newPath = getImage($filename);
 
             $html = str_replace($base64Image, $newPath, $html);
         }
@@ -227,7 +227,7 @@ public function replaceWithOwnServerImage($imageUrl, $imageFilename = null)
     Storage::disk('public')->put($path, $imageContent);
 
     // Return full URL
-    return asset('storage/' . $path);
+    return  getImage($path);
 }
 
 public function edit(Newsletter $campaign){
