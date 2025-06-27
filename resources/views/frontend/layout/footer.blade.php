@@ -121,13 +121,13 @@
                   >Investors</a
                 >
               </li>
-              <li>
+              {{-- <li>
                 <a
                   href="{{route('blog')}}"
                   class="text-body-2 hover:text-text-light text-base leading-[24px] duration-200"
                   >Blogs</a
                 >
-              </li>
+              </li> --}}
               <li>
                 <a
                   href="{{route('founder')}}"

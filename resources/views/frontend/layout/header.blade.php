@@ -15,9 +15,9 @@
   <a href="{{ route('investor') }}" class="nav-item {{ request()->routeIs('investor') ? 'current' : '' }}">Investor</a>
 </li>
 
-          <li>
+          {{-- <li>
             <a href="{{route('blog')}}" class="nav-item {{ request()->routeIs('blog') ? 'current' : '' }}">Blogs</a>
-          </li>
+          </li> --}}
         </ul>
         <div class="flex items-center justify-end gap-6">
           <div class="flex flex-wrap items-center gap-6">
