@@ -375,7 +375,9 @@ We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 
     public function unsubscribe($uuid){
       $subscribe=Subscriber::where('email',base64_decode($uuid))->firstOrFail();
       if ($subscribe&&$subscribe->is_unsubscribe) {
-          return redirect('/')->with('title', 'Already unsubscribed')->with('message', 'You have already unsubscribed our newsletter')->with('type', 'success');
+          return redirect('/')->with('title', "😟 You’re already off the list.
+")->with('message', "No emails coming your way.
+But hey, if something changes — we’re just one click away")->with('type', 'success');
 
       }
         return view('frontend.unsubscribe',compact('subscribe'));
@@ -410,7 +412,9 @@ We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 
         }
     }
 
-          return redirect('/')->with('message', 'You have unsubscribed')->with('title', 'Unsubscribe successfully.')->with('type', 'success');
+          return redirect('/')->with('message', "We’ll miss you in the inbox, but we respect your choice.
+If you ever want to come back — we’ll be right here.")->with('title', "😔 You're unsubscribed.
+")->with('type', 'success');
 
     }
 }

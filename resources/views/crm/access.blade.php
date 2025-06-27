@@ -27,26 +27,27 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
+                        <th>User Detail</th>
                         <th>Role</th>
-                        <th>Phone</th>
                         <th>City</th>
-                        {{-- <th>Linkedin</th> --}}
+                        <th>Linkedin</th>
                         <th>Message</th>
                         <th>Register on</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->name }}
+                               <br> {{ $user->email }}
+                            <br>
+                            {{ $user->phone }}
+                            </td>
                             <td>{{ $user->role }}</td>
-                            <td>{{ $user->phone }}</td>
                             <td>{{ $user->city }}</td>
-                            {{-- <td>{{ $user->linkedin }}</td> --}}
+                            <td>{{ $user->linkedin }}</td>
                             <td>{{ $user->message }}</td>
                             <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y g:i:s A') }}</td>
                        <td>
