@@ -11,7 +11,8 @@
 <p>Hi {{ $firstName }},</p>
 
 @php
-    $page=Page::where('type','2')->where('name',$user_role)->where('slug','waitlist')->first();
+      $page=App\Models\Page::where('type',2)->where('name','waitlist')->where('slug',$user_role)->first();
+
 @endphp
 
 @if ($page)

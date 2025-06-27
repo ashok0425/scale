@@ -75,7 +75,7 @@ public function priorityAccess()
         $access->payment_status=0;
         $access->unique_id=$unique_id;
         $access->save();
-        // Notification::route('mail', $request->email)->notify(new PreAccessNotification($access));
+        Notification::route('mail', $request->email)->notify(new PreAccessNotification($access));
 
      //phone service
 
@@ -89,7 +89,6 @@ public function priorityAccess()
             ];
 
             $res = $this->phonePeService->payRequest($payload);
-            dd($res);
 
             if ($res->success) {
                return redirect($res->data->instrumentResponse->redirectInfo->url);

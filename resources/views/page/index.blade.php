@@ -19,6 +19,7 @@
                         <tr>
                             <th>#</th>
                             <th>Page</th>
+                            <th>Type</th>
                             <th>Path</th>
                             <th>Action</th>
                         </tr>
@@ -28,6 +29,8 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $page->name }}</td>
+                                <td>{{ $page->type==1?'Page':'Email Template' }}</td>
+
                                 <td>{{ $page->slug }}</td>
 
                                 <td>

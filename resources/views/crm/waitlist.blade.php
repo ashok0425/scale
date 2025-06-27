@@ -44,7 +44,12 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->role }}</td>
                             <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y g:i:s A') }}</td>
-                            <td><a href="{{route('crm.delete',['id'=>$user->id])}}"><i class="fas fa-trash"></i></a></td>
+<td>
+  <a href="{{ route('crm.delete', ['id' => $user->id]) }}"
+     onclick="return confirm('Are you sure you want to delete this user?');">
+    <i class="fas fa-trash"></i>
+  </a>
+</td>
                         </tr>
                     @endforeach
                 </tbody>

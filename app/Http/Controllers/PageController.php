@@ -35,6 +35,8 @@ class PageController extends Controller
         $page->name = $request->name;
         $page->description = $request->description;
         $page->slug = $request->slug;
+        $page->type = $request->type??1;
+
         $page->save();
 
         $notification = [
@@ -64,6 +66,8 @@ class PageController extends Controller
         $page->name = $request->name;
         $page->description = $request->description;
         $page->slug = $request->slug;
+        $page->type = $request->type??1;
+
         $page->save();
 
         $notification = [

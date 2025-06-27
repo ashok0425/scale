@@ -15,8 +15,7 @@
 <p>Hi {{ $firstName }},</p>
 
 @php
-    $page=Page::where('type','2')->where('name',$user_role)->where('slug','priority-access')->first();
-
+    $page=App\Models\Page::where('type',2)->where('name','access')->where('slug',$user_role)->first();
 @endphp
 
 @if ($page)

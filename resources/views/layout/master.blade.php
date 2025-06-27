@@ -21,11 +21,7 @@
         {{-- custom css --}}
         <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet" />
 
-        {{-- toastr --}}
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-        />
+
         <link
             href="https://fonts.googleapis.com/css2?family=Inter&family=Hubot+Sans&family=Bricolage+Grotesque&family=Instrument+Serif&family=Playfair+Display&family=Raleway&display=swap"
             rel="stylesheet"
@@ -112,7 +108,6 @@
                 border: 0.5px solid rgb(209, 208, 208) !important;
                 border-collapse: collapse;
             }
-
             .card {
                 border-top: 5px solid rgb(5, 24, 199);
             }
@@ -167,6 +162,26 @@
 
             }
 
+        </style>
+
+        <link
+            href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.css"
+            rel="stylesheet"
+        />
+          {{-- toastr --}}
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+        />
+
+        <style>
+            .toast-success {
+  background-color: #0dec3d !important; /* dark background */
+  color: #fff !important;            /* white text */
+  opacity: 1 !important;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
         </style>
     </head>
 
@@ -239,8 +254,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="{{ asset('admin/js/app.js') }}"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-        <!-- jQuery -->
 
         <script
             src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -260,11 +273,9 @@
             crossorigin="anonymous"
         ></script>
 
-        <link
-            href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.css"
-            rel="stylesheet"
-        />
         <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
         @stack('scripts')
 
         <script>
@@ -350,41 +361,34 @@
             });
         </script>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const fileInputs = document.querySelectorAll('.file-upload-field');
+     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const fileInput = document.querySelector('.file-upload-field');
 
-                fileInputs.forEach((fileInput, index) => {
-                    fileInput.addEventListener('change', function (event) {
-                        const file = event.target.files[0];
-                        if (file) {
-                            const reader = new FileReader();
-                            reader.onload = function (e) {
-                                let previewImage = document.querySelector('.file-preview');
+            fileInput.addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                if (!file) return;
 
-                                // If preview image does not exist, create it
-                                if (!previewImage) {
-                                    previewImage = document.createElement('img');
-                                    previewImage.classList.add(
-                                        'file-preview' + index,
-                                        'img-fluid',
-                                        'mt-2',
-                                    );
-                                    previewImage.style.width = '100px';
-                                    fileInput.parentNode.insertAdjacentElement(
-                                        'afterend',
-                                        previewImage,
-                                    );
-                                }
+                // Remove any existing preview
+                const existingPreview = document.querySelector('.preview-image');
+                if (existingPreview) {
+                    existingPreview.remove();
+                }
 
-                                previewImage.src = e.target.result;
-                            };
-                            reader.readAsDataURL(file);
-                        }
-                    });
-                });
+                // Create and insert new preview
+                const img = document.createElement('img');
+                img.classList.add('preview-image');
+                img.classList.add('mt-5');
+
+                img.style.width = '80px';
+                img.style.marginTop = '10px';
+                img.src = URL.createObjectURL(file);
+
+                fileInput.parentNode.appendChild(img);
             });
-        </script>
+        });
+    </script>
+
 
         <script>
             document.querySelectorAll('[data-toggle]').forEach(function (toggleBtn) {
