@@ -64,10 +64,11 @@
 
                                 <td>
                                     @if ($post->status == 1)
-                                        <a class="badge bg-success">Publish</a>
+                                        <a class="badge bg-success" href="{{route('blog.detail',['slug'=>$post->slug])}}">Publish</a>
                                     @else
-                                        <a class="badge bg-danger">Draft</a>
+                                        <a class="badge bg-danger" href="{{route('blog.detail',['slug'=>$post->slug])}}">Draft</a>
                                     @endif
+
                                 </td>
                                 <td>
                                     <a
