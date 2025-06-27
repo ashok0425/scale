@@ -2,89 +2,79 @@
 
 namespace App\Services;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class PhonePeService
 {
-
-
-    protected  $url;
-    protected  $merchantId;
-    protected  $apiKey;
-
+    protected string $url;
+    protected string $merchantId;
+    protected string $apiKey;
+    protected int $saltIndex;
 
     public function __construct()
     {
-
         $this->url = config('services.phonepe.url');
         $this->merchantId = config('services.phonepe.merchant_id');
         $this->apiKey = config('services.phonepe.api_key');
+        $this->saltIndex = (int)(config('services.phonepe.salt_index', 1));
     }
 
-
-    public function payRequest($data)
+    public function payRequest(array $data): object|null
     {
-
-        $order_id = $data['order_id'];
-        $name = $data['name'];
-        $email = $data['email'];
-        $mobile = $data['mobile'];
-        $amount = $data['amount']; // amount in INR
-        $description = 'Payment for Product/Service';
-        $redirectUrl = $data['redirect_url'];
-        // dd($this->merchantId);
-
-        $paymentData = array(
+        $orderId = $data['order_id'];
+        $paymentData = [
             'merchantId' => $this->merchantId,
-            'merchantTransactionId' => $order_id,
-            'amount' => $amount * 100,
-            'redirectUrl' => $redirectUrl,
-            'redirectMode' => "POST",
-            'callbackUrl' => $redirectUrl,
-            "merchantOrderId" => $order_id,
-            "mobileNumber" => $mobile,
-            "message" => $description,
-            "email" => $email,
-            "shortName" => $name,
-            "paymentInstrument" => array(
-                "type" => "PAY_PAGE",
-            )
-        );
+            'merchantTransactionId' => $orderId,
+            'amount' => $data['amount'] * 100, // Convert to paisa
+            'redirectUrl' => $data['redirect_url'],
+            'redirectMode' => 'POST',
+            'callbackUrl' => $data['redirect_url'],
+            'merchantOrderId' => $orderId,
+            'mobileNumber' => $data['mobile'],
+            'message' => 'Payment for Product/Service',
+            'email' => $data['email'],
+            'shortName' => $data['name'],
+            'paymentInstrument' => [
+                'type' => 'PAY_PAGE',
+            ],
+        ];
 
+        $jsonEncoded = json_encode($paymentData, JSON_UNESCAPED_SLASHES);
+        $base64Payload = base64_encode($jsonEncoded);
+        $verifyPayload = $base64Payload . "/pg/v2/pay" . $this->apiKey;
+        $hashed = hash("sha256", $verifyPayload);
+        $xVerifyHeader = "{$hashed}###{$this->saltIndex}";
 
-        $jsonencode = json_encode($paymentData);
-        $payloadMain = base64_encode($jsonencode);
-        $salt_index = 1;
-        $payload = $payloadMain . "/pg/v1/pay" . $this->apiKey;
-        $sha256 = hash("sha256", $payload);
-        $final_x_header = $sha256 . '###' . $salt_index;
-        $request = json_encode(array('request' => $payloadMain));
+        $postFields = json_encode(['request' => $base64Payload]);
+
+        $headers = [
+            "Content-Type: application/json",
+            "X-VERIFY: $xVerifyHeader",
+            "accept: application/json",
+        ];
 
         $curl = curl_init();
+
         curl_setopt_array($curl, [
             CURLOPT_URL => $this->url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => $request,
-            CURLOPT_HTTPHEADER => [
-                "Content-Type: application/json",
-                "X-VERIFY: " . $final_x_header,
-                "accept: application/json"
-            ],
+            CURLOPT_POSTFIELDS => $postFields,
+            CURLOPT_HTTPHEADER => $headers,
         ]);
 
         $response = curl_exec($curl);
-        $err = curl_error($curl);
-
+        $curlError = curl_error($curl);
         curl_close($curl);
 
-        $res = json_decode($response);
-           Log::info([$res]);
-        return $res;
+        if ($curlError) {
+            Log::error('PhonePe CURL Error: ' . $curlError);
+            return null;
+        }
+
+        $responseObject = json_decode($response);
+        Log::info('PhonePe Response: ', (array) $responseObject);
+
+        return $responseObject;
     }
-
-
 }
-
-

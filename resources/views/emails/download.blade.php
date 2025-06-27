@@ -55,7 +55,7 @@
     <div class="container">
         <h1>Thanks for Grabbing Your Free Resource 🎉</h1>
 
-        <p>Hi {{$name}},</p>
+        <p>Hi {{$firstName}},</p>
 
         <p>
             Thanks for requesting one of our free resources — and welcome to a growing circle of builders

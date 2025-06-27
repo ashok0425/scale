@@ -46,8 +46,8 @@ class SendAttachmentNotification extends Notification
     public function toMail($notifiable)
     {
          return (new \Illuminate\Notifications\Messages\MailMessage)
-        ->subject('WAITLIST EMAIL CONFIRMATION')
-        ->view('emails.waitlist', [
+        ->subject('Your ScaleDux resource is ready, download now')
+        ->view('emails.download', [
             'firstName' => $this->user->name,
             'link' => $this->downloadLink,
             'uuid'=>base64_encode($this->user->email)

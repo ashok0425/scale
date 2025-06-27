@@ -111,6 +111,10 @@ select {
     box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.3) !important;
     margin-bottom: 1px;
   }
+
+  .accordion-content{
+    width: 95%;
+  }
 </style>
   </head>
   <body>
