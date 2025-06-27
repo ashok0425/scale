@@ -46,6 +46,7 @@ class PreAccessNotification extends Notification
         ->view('emails.priority_access', [
             'firstName' => $this->user->name,
             'user_role' => $this->user->role,
+            'uuid'=>base64_encode($this->user->email)
         ]);
 }
 

@@ -131,7 +131,8 @@
                 with one of our startup tools or resources.<br />
                 <a href="{{ url('privacy-policy') }}">Privacy Policy</a> |
                 <a href="{{ url('terms-of-services') }}">Terms of Service</a> |
-                <a href="{{url('unsubscribe')}}">Unsubscribe</a>
+                        <a href="{{route('unsubscribe',['uuid'=>$uuid])}}">Unsubscribe</a>
+
             </p>
         </div>
     </div>

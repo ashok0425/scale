@@ -50,6 +50,7 @@ class SendAttachmentNotification extends Notification
         ->view('emails.waitlist', [
             'firstName' => $this->user->name,
             'link' => $this->downloadLink,
+            'uuid'=>base64_encode($this->user->email)
         ]);
     }
 

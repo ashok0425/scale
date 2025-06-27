@@ -16,9 +16,10 @@ class SubscriberNotification extends Notification
      *
      * @return void
      */
-    public function __construct()
+    protected $email;
+    public function __construct($email)
     {
-        //
+        $this->email=$email;
     }
 
     /**
@@ -43,6 +44,7 @@ class SubscriberNotification extends Notification
          return (new \Illuminate\Notifications\Messages\MailMessage)
         ->subject('Newsletter Subscribe email confirmation ')
         ->view('emails.newsletter', [
+            'uuid'=>base64_encode($this->email)
         ]);
     }
 

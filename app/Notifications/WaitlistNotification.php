@@ -48,6 +48,7 @@ class WaitlistNotification extends Notification
         ->view('emails.waitlist', [
             'firstName' => $this->user->name,
             'user_role' => $this->user->role,
+             'uuid'=>base64_encode($this->user->email)
         ]);
     }
 

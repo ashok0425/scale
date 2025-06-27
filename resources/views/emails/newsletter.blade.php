@@ -173,7 +173,8 @@
                     |
                     <a href="{{ url('terms-of-services') }}">Terms of Service</a>
                     |
-                     <a href="{{url('unsubscribe')}}">Unsubscribe</a>
+                            <a href="{{route('unsubscribe',['uuid'=>$uuid])}}">Unsubscribe</a>
+
                 </p>
             </div>
         </div>

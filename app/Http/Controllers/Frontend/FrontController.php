@@ -210,7 +210,7 @@ class FrontController extends Controller
 
         $emailGroup->email_ids = $emailIds;
         $emailGroup->save();
-        Notification::route('mail', $request->subscriber_email)->notify(new SubscriberNotification());
+        Notification::route('mail', $request->subscriber_email)->notify(new SubscriberNotification($request->subscriber_email));
         return back()->with('message', 'Thanks for joining ScaleDux.
 We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 🎉')->with('type', 'success');
     }
