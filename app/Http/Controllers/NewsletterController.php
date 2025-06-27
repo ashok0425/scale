@@ -227,7 +227,7 @@ public function replaceWithOwnServerImage($imageUrl, $imageFilename = null)
     Storage::disk('public')->put($path, $imageContent);
 
     // Return full URL
-    return  getImage($path);
+    return asset('storage/' . $path);
 }
 
 public function edit(Newsletter $campaign){
