@@ -13,7 +13,7 @@ Route::domain('blog.scaledux.com')->group(function () {
     Route::get('/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
 });
 
-Route::get('/', [FrontController::class, 'index']);
+Route::get('/', [FrontController::class, 'index'])->name('/');
 Route::get('/freelancer', [FrontController::class, 'freelancer'])->name('freelancer');
 Route::get('/investors', [FrontController::class, 'investor'])->name('investor');
 Route::get('/founders', [FrontController::class, 'founder'])->name('founder');

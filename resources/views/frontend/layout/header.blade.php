@@ -1,6 +1,6 @@
  <header class="header">
       <div class="container">
-        <a href="/">
+        <a href="{{route('/')}}">
           <img src="{{getImage(cms()->logo)}}" alt="Scaledux" class="h-5 md:h-7" />
         </a>
         <ul class="nav">
