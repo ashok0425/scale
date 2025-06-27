@@ -311,12 +311,9 @@ We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 
     }
 
 
-    public function attachment(Request $request,$attachment_id, $blog_id = null)
+    public function attachment($attachment_id, $blog_id = null)
     {
         $attachment = Attachment::where('uuid', $attachment_id)->firstOrFail();
-        if ($request->view) {
-            return getImage($attachment->attachment);
-        }
         return view('frontend.download', compact('attachment'));
     }
 
@@ -336,19 +333,20 @@ We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 
         ]);
 
         $link = route('link.attachment', ['attachment_id' => $request->attachment_id]);
-        $crm = new Crm();
-        $crm->email = $request->email;
-        $crm->name = $request->name;
-        $crm->type = 3;
-        $crm->attachment_link = $link;
-        $crm->save();
-
         $encodedId = base64_encode($request->attachment_id);
 
         $downloadLink = URL::signedRoute('attachment.download.file', [
             'encoded_id' => $encodedId,
             'token' => uniqid(),
         ]);
+        $crm = new Crm();
+        $crm->email = $request->email;
+        $crm->name = $request->name;
+        $crm->type = 3;
+        $crm->attachment_link = $downloadLink;
+        $crm->save();
+
+
 
         Notification::route('mail', $request->email)->notify(new SendAttachmentNotification($downloadLink, $crm));
 

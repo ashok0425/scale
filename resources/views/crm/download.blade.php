@@ -39,7 +39,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $user->email }}</td>
-                            <td><a href="{{ $user->attachment_link }}?view=1">view</a></td>
+                            <td><a href="{{ $user->attachment_link }}">view</a></td>
 
                             <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y g:i:s A') }}</td>
                          <td>
