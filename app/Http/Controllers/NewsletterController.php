@@ -183,16 +183,25 @@ class NewsletterController extends Controller
 
     return $html;
 }
-
-// Helper method to replace external image with your server or S3 URL
-public function replaceWithOwnServerImage($imageUrl, $imageFilename)
+public function replaceWithOwnServerImage($imageUrl, $imageFilename = null)
 {
+    // Get image content
     $imageContent = file_get_contents($imageUrl);
-    $s3Path = 'newsletter_images/' . $imageFilename;
 
-    Storage::disk('s3')->put($s3Path, $imageContent, 'public');
+    // Generate filename if not provided
+    if (!$imageFilename) {
+        $extension = pathinfo(parse_url($imageUrl, PHP_URL_PATH), PATHINFO_EXTENSION);
+        $imageFilename = Str::random(40) . '.' . $extension;
+    }
 
-    return Storage::disk('s3')->url($s3Path);
+    // Define path
+    $path = 'uploads/' . $imageFilename;
+
+    // Store to local disk (public folder)
+    Storage::disk('public')->put($path, $imageContent);
+
+    // Return full URL
+    return asset('storage/' . $path);
 }
 
 public function edit(Newsletter $campaign){
