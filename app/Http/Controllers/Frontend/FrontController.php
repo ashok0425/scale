@@ -286,7 +286,7 @@ We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 
         $page = parse_url(url()->previous(), PHP_URL_PATH);
 
         $waitlist = new Crm();
-        $waitlist->name = $request->full_name;
+        $waitlist->name = $request->footer_full_name;
         $waitlist->email = $request->footer_email;
         $waitlist->role = $request->footer_role;
         $waitlist->page = $page;

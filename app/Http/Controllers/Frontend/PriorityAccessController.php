@@ -34,7 +34,7 @@ public function priorityAccess()
                 'required',
                 'email'],
             'role' => 'required|in:founder,freelancer,investor,mentor',
-            'phone' => 'required',
+            'phone' => 'required|min:10',
             'linkedin' => 'nullable|url',
             'city' => 'required',
             'message' => 'nullable',
@@ -48,6 +48,7 @@ public function priorityAccess()
             'role.required' => "Who are you building as? Founder, freelancer, investor, or mentor?",
             'role.in' => "Hmm… that doesn't look like a valid role. Choose from founder, freelancer, investor, or mentor.",
             'phone.required' => "Ensure phone number is filled. It helps us verify you're real (and awesome).",
+            'phone.min' => "Ensure phone number 10 digit. It helps us verify phone number.",
             'linkedin.url' => "Looks like that link isn’t working — can you check your LinkedIn URL?",
             'city.required' => "Let us know your city — we’re planning meetups, too 😉",
             'message.required' => "Tell us a bit about what you're looking for or expecting — we’re listening!",
@@ -74,7 +75,7 @@ public function priorityAccess()
         $access->payment_status=0;
         $access->unique_id=$unique_id;
         $access->save();
-        Notification::route('mail', $request->email)->notify(new PreAccessNotification($access));
+        // Notification::route('mail', $request->email)->notify(new PreAccessNotification($access));
 
      //phone service
 
@@ -88,10 +89,11 @@ public function priorityAccess()
             ];
 
             $res = $this->phonePeService->payRequest($payload);
-          
-            // if ($res->success) {
-            //    return redirect($res->data->instrumentResponse->redirectInfo->url);
-            // }
+            dd($res);
+
+            if ($res->success) {
+               return redirect($res->data->instrumentResponse->redirectInfo->url);
+            }
 
         return back()->with('message', "Welcome to the ScaleDux Family. You're officially one of our Founding Members. You'll
           receive a personal welcome email with your Founding Member kit and exclusive updates
