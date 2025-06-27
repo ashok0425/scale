@@ -89,7 +89,7 @@ public function priorityAccess()
             ];
 
             $res = $this->phonePeService->payRequest($payload);
-
+// dd($res);
             if ($res->success) {
                return redirect($res->data->instrumentResponse->redirectInfo->url);
             }

@@ -32,7 +32,7 @@
                         <th>Role</th>
                         <th>Phone</th>
                         <th>City</th>
-                        <th>Linkedin</th>
+                        {{-- <th>Linkedin</th> --}}
                         <th>Message</th>
                         <th>Register on</th>
                     </tr>
@@ -46,7 +46,7 @@
                             <td>{{ $user->role }}</td>
                             <td>{{ $user->phone }}</td>
                             <td>{{ $user->city }}</td>
-                            <td>{{ $user->linkedin }}</td>
+                            {{-- <td>{{ $user->linkedin }}</td> --}}
                             <td>{{ $user->message }}</td>
                             <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y g:i:s A') }}</td>
                        <td>
