@@ -11,10 +11,13 @@ Route::get('/', [FrontController::class, 'index']);
 Route::get('/freelancer', [FrontController::class, 'freelancer'])->name('freelancer');
 Route::get('/investors', [FrontController::class, 'investor'])->name('investor');
 Route::get('/founders', [FrontController::class, 'founder'])->name('founder');
-Route::get('/blogs', [FrontController::class, 'blog'])->name('blog');
 Route::get('/categort/{slug}', [FrontController::class, 'categoryBlog'])->name('category');
 
-Route::get('/blog/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
+Route::domain('blog.scaledux.com')->group(function () {
+    Route::get('/', [FrontController::class, 'blog'])->name('blog');
+    Route::get('/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
+});
+
 Route::post('/subscribe', [FrontController::class, 'subscribe'])->name('subscribe.store');
 Route::post('/waitlist', [FrontController::class, 'waitlist'])->name('waitlist.store');
 Route::post('/waitlist/store', [FrontController::class, 'waitlistStore'])->name('waitlist.store.footer');

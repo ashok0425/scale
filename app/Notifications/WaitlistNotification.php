@@ -44,7 +44,7 @@ class WaitlistNotification extends Notification
     public function toMail($notifiable)
     {
           return (new \Illuminate\Notifications\Messages\MailMessage)
-        ->subject('WAITLIST EMAIL CONFIRMATION')
+        ->subject('Thank You for Joining the ScaleDux Waitlist — Let’s Build with Purpose')
         ->view('emails.waitlist', [
             'firstName' => $this->user->name,
             'user_role' => $this->user->role,

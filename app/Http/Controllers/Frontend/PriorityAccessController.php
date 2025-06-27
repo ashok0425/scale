@@ -48,7 +48,7 @@ public function priorityAccess()
             'role.required' => "Who are you building as? Founder, freelancer, investor, or mentor?",
             'role.in' => "Hmm… that doesn't look like a valid role. Choose from founder, freelancer, investor, or mentor.",
             'phone.required' => "Ensure phone number is filled. It helps us verify you're real (and awesome).",
-            'phone.min' => "Ensure phone number 10 digit. It helps us verify phone number.",
+            'phone.min' => "Ensure phone number is 10 digit.",
             'linkedin.url' => "Looks like that link isn’t working — can you check your LinkedIn URL?",
             'city.required' => "Let us know your city — we’re planning meetups, too 😉",
             'message.required' => "Tell us a bit about what you're looking for or expecting — we’re listening!",
