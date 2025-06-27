@@ -43,6 +43,11 @@ return [
         'client_secret' => '_X1WjvqIuLeTpxXvFK4F4-6c',
         'redirect' => 'https://rumorhasitnepal.com/auth/google/callback',
     ],
+ 'phonepe' => [
+        'merchant_id' => env('PHONEPE_MERCHANT_ID'),
+        'api_key' => env('PHONEPE_API_KEY'),
+        'url' => env('PHONEPE_URL'),
+    ],
 
     'facebook' => [
         'client_id' => '973081543479024',

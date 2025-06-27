@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\Frontend\FrontController;
+use App\Http\Controllers\Frontend\PriorityAccessController;
 use App\Http\Controllers\SeoController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
@@ -17,26 +18,14 @@ Route::get('/blog/{slug}', [FrontController::class, 'blogDetail'])->name('blog.d
 Route::post('/subscribe', [FrontController::class, 'subscribe'])->name('subscribe.store');
 Route::post('/waitlist', [FrontController::class, 'waitlist'])->name('waitlist.store');
 Route::post('/waitlist/store', [FrontController::class, 'waitlistStore'])->name('waitlist.store.footer');
-Route::get('/priority-access', [FrontController::class, 'priorityAccess'])->name('priority.access');
-Route::post('/priority-access', [FrontController::class, 'storePriorityAccess']);
+Route::get('/priority-access', [PriorityAccessController::class, 'priorityAccess'])->name('priority.access');
+Route::post('/priority-access', [PriorityAccessController::class, 'storePriorityAccess']);
 
 Route::get('attachment/{attachment_id}/{blog_id?}', [FrontController::class,'attachment'])->name('link.attachment');
 Route::post('attachment', [FrontController::class,'SaveAttachment'])->name('link.attachment.save');
 Route::get('attachment-download/{encoded_id}/{token}', [FrontController::class, 'downloadFile'])->name('attachment.download.file')->middleware('signed');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Route::get('phone-callback', [PriorityAccessController::class,'phonePeCallback'])->name('phonepe.callback');
+Route::get('phone-sucess', [PriorityAccessController::class,'phonePeSuccess'])->name('phonepe.success');
 
 
 

@@ -19,7 +19,7 @@
         <div class="flex max-w-[1043px] flex-col gap-6 sm:flex-row">
           <div class="flex-1 space-y-6">
 
-            <input disabled
+            <input
               class="w-full @error('full_name') border-red-300 @enderror"
               type="text"
               placeholder="Enter full name"
@@ -30,7 +30,7 @@
               <p class="error-text text-sm mt-1">{{ $message }}</p>
             @enderror
 
-            <input disabled
+            <input
               class="w-full @error('email') border-red-300 @enderror"
               type="email"
               placeholder="Email address"
@@ -41,7 +41,7 @@
               <p class="error-text text-sm mt-1">{{ $message }}</p>
             @enderror
 
-            <input disabled
+            <input
               class="w-full @error('phone') border-red-300 @enderror"
               type="number"
               placeholder="Phone Number"
@@ -52,7 +52,7 @@
               <p class="error-text text-sm mt-1">{{ $message }}</p>
             @enderror
 
-            <select disabled class="w-full @error('role') border-red-300 @enderror" name="role">
+            <select  class="w-full @error('role') border-red-300 @enderror" name="role">
               <option value="">Select your role</option>
               <option value="founder" {{ old('role') == 'founder' ? 'selected' : '' }}>Founder/Aspiring Founder</option>
               <option value="freelancer" {{ old('role') == 'freelancer' ? 'selected' : '' }}>Freelancer/Agency</option>
@@ -63,7 +63,7 @@
               <p class="error-text text-sm mt-1">{{ $message }}</p>
             @enderror
 
-            <input disabled
+            <input
               class="w-full @error('linkedin') border-red-300 @enderror"
               type="text"
               placeholder="LinkedIn profile URL (optional)"
@@ -74,7 +74,7 @@
               <p class="error-text text-sm mt-1">{{ $message }}</p>
             @enderror
 
-            <select disabled class="w-full @error('country') border-red-300 @enderror" name="country">
+            <select  class="w-full @error('country') border-red-300 @enderror" name="country">
               <option value="">Country</option>
               <option value="India" {{ old('country') == 'India' ? 'selected' : '' }}>India</option>
             </select>
@@ -82,7 +82,7 @@
               <p class="error-text text-sm mt-1">{{ $message }}</p>
             @enderror
 
-            <select disabled class="w-full @error('city') border-red-300 @enderror" name="city">
+            <select  class="w-full @error('city') border-red-300 @enderror" name="city">
               <option value="">City</option>
               @foreach (App\Models\Crm::getCity() as $city)
                 <option value="{{ $city }}" {{ old('city') == $city ? 'selected' : '' }}>{{ $city }}</option>
@@ -96,7 +96,7 @@
 
           <div class="flex-1">
 
-            <textarea disabled
+            <textarea
               class="@error('message') border-red-300 @enderror"
               name="message"
               placeholder="When you need to find freelancers/investors/business partners, what usually goes wrong? Tell us all the pain points you are facing now..."
@@ -106,7 +106,7 @@
             @enderror
 
             <label class="flex items-center gap-1">
-              <input disabled
+              <input
                 type="checkbox"
                 name="terms"
                 value="1"
@@ -131,13 +131,13 @@
               </p>
             </div>
 
-            <button type="button"
+            <button type="submit"
               class="btn-primary hover:shadow-brand-purple/60 group mt-6 mb-3 h-fit w-full hover:shadow-lg"
             >
               <span class="inner-wrapper inline-flex h-6 overflow-hidden">
                 <span class="inner flex flex-col duration-200 group-hover:-translate-y-full">
-                  <span class="text">Priority Access ➡ Comming Soon</span>
-                  <span class="text">Priority Access ➡ Comming Soon</span>
+                  <span class="text">Proceed to pay</span>
+                  <span class="text">Proceed to pay</span>
                 </span>
               </span>
             </button>

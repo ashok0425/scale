@@ -10,7 +10,6 @@ use App\Models\Crm;
 use App\Models\EmailGroup;
 use App\Models\Page;
 use App\Models\Subscriber;
-use App\Notifications\PreAccessNotification;
 use App\Notifications\SendAttachmentNotification;
 use App\Notifications\SubscriberNotification;
 use App\Notifications\WaitlistNotification;
@@ -26,6 +25,9 @@ use URL;
 
 class FrontController extends Controller
 {
+
+
+
     public function index()
     {
         return view('frontend.index');
@@ -46,70 +48,7 @@ class FrontController extends Controller
         return view('frontend.founder');
     }
 
-    public function priorityAccess()
-    {
-        return view('frontend.form');
-    }
 
-    public function storePriorityAccess(Request $request)
-    {
-        $validated = $request->validate([
-            'full_name' => 'required',
-            'email' => [
-                'required',
-                'email',
-                Rule::unique('crms')->where(function ($query) use ($request) {
-                    return $query->where('type', 2);
-                }),
-            ],
-            'role' => 'required|in:founder,freelancer,investor,mentor',
-            'phone' => 'required',
-            'linkedin' => 'nullable|url',
-            'city' => 'required',
-            'message' => 'nullable',
-            'country' => 'required',
-            'terms' => 'accepted',
-        ], [
-            'full_name.required' => "Mind sharing your name? We’d love to greet you properly.",
-            'email.required' => "We’re missing your email — mind sharing it?",
-            'email.email' => "That email doesn’t look quite right. Could you check once more?",
-            'email.unique' => "You’ve already reserved your spot! If you’re not seeing updates, check your spam folder — or drop us a note, we’ll sort it out.",
-            'role.required' => "Who are you building as? Founder, freelancer, investor, or mentor?",
-            'role.in' => "Hmm… that doesn't look like a valid role. Choose from founder, freelancer, investor, or mentor.",
-            'phone.required' => "Ensure phone number is filled. It helps us verify you're real (and awesome).",
-            'linkedin.url' => "Looks like that link isn’t working — can you check your LinkedIn URL?",
-            'city.required' => "Let us know your city — we’re planning meetups, too 😉",
-            'message.required' => "Tell us a bit about what you're looking for or expecting — we’re listening!",
-            'country.required' => "Where in the world are you building from? Helps us personalize your experience.",
-            'terms.accepted' => "Please agree to the Terms to join the movement — we keep it respectful and transparent.",
-        ]);
-
-
-        // try {
-        $page = parse_url(url()->previous(), PHP_URL_PATH);
-
-        $access = new Crm();
-        $access->name = $validated['full_name'];
-        $access->email = $validated['email'];
-        $access->role = $validated['role'];
-        $access->phone = $validated['phone'];
-        $access->city = $validated['city'];
-        $access->linkedin = $validated['linkedin'];
-        $access->message = $validated['message'];
-        $access->country = $validated['country'];
-        $access->page = $page;
-        $access->type = 2;
-        $access->save();
-        Notification::route('mail', $request->email)->notify(new PreAccessNotification($access));
-
-        return back()->with('message', "Welcome to the ScaleDux Family. You're officially one of our Founding Members. You'll
-          receive a personal welcome email with your Founding Member kit and exclusive updates
-          roadmap.")->with('type', 'success')->with('title', "Thanks for joining!");
-        // } catch (\Exception $e) {
-        //     // Log error if needed
-        //     return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
-        // }
-    }
     public function blog(Request $request)
     {
         $categories = Category::whereHas('blogs')
