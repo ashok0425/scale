@@ -23,7 +23,7 @@
 
           </div>
           <div class="gradient-border overflow-clip rounded-md">
-           <form id="sortForm" method="GET" action="{{ url()->current() }}">
+           <form id="sortForm" method="GET" action="{{ route('blog')}}">
   <div class="gradient-border overflow-clip rounded-md w-max">
     <select
       name="sort"
