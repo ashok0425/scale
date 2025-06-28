@@ -12,6 +12,8 @@ Route::domain('blog.scaledux.com')->group(function () {
     Route::get('/', [FrontController::class, 'blog'])->name('blog');
     Route::get('/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
 });
+    Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
+    Route::get('/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
 
 Route::get('/', [FrontController::class, 'index'])->name('/');
 Route::get('/freelancer', [FrontController::class, 'freelancer'])->name('freelancer');
@@ -36,7 +38,7 @@ Route::get('attachment/{attachment_id}/{blog_id?}', [FrontController::class,'att
 Route::post('attachment', [FrontController::class,'SaveAttachment'])->name('link.attachment.save');
 Route::get('attachment-download/{encoded_id}/{token}', [FrontController::class, 'downloadFile'])->name('attachment.download.file')->middleware('signed');
 Route::get('phone-callback/', [PriorityAccessController::class,'phonePeCallback'])->name('phonepe.callback');
-Route::get('phone-sucess', [PriorityAccessController::class,'phonePeSuccess'])->name('phonepe.success');
+Route::get('phone-success', [PriorityAccessController::class,'phonePeSuccess'])->name('phonepe.success');
 
 
 

@@ -40,14 +40,12 @@
                                     >
                                         <i class="far fa-edit"></i>
                                     </a>
-                                    {{--
-                                        <a
-                                        id="delete"
-                                        href="{{ route('pages.delete', $page) }}"
-                                        class="btn btn-danger">
-                                        <i class="fas fa-times"></i>
-                                        </a>
-                                    --}}
+                                    <a
+                                    href="{{ route('pages.destroy',$page->id) }}"
+                                    class="btn btn-danger delete_btn"
+                                >
+                                    <i class="fas fa-trash"></i>
+                                </a>
                                 </td>
                             </tr>
                         @endforeach

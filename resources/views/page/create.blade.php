@@ -4,10 +4,9 @@
 <div class="card">
   <div class="card-header d-flex justify-content-between bg-dark">
     <div>
-      <h5 class="card-title text-white">Add New Page</h5>
+      <h5 class="card-title text-white">Create Page</h5>
     </div>
   </div>
-
   <div class="card-body">
     <form action="{{ route('pages.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
@@ -17,12 +16,12 @@
         <div class="mb-3 col-md-4">
           <label class="form-label" for="type">Type</label>
           <select name="type" id="type" class="form-control form-select" required>
-            <option value="page" {{ old('type') == 'page' ? 'selected' : '' }}>Page</option>
-            <option value="template" {{ old('type') == 'template' ? 'selected' : '' }}>Template</option>
+            <option value="1" {{ old('type') == 1 ? 'selected' : '' }}>Page</option>
+            <option value="2" {{ old('type') == 2 ? 'selected' : '' }}>Template</option>
           </select>
         </div>
 
-        <!-- Name input text (for page) -->
+        <!-- Name as text input -->
         <div class="mb-3 col-md-4" id="name-text-container">
           <label class="form-label" for="name-text">Name</label>
           <input
@@ -35,7 +34,7 @@
           />
         </div>
 
-        <!-- Name dropdown (for template) -->
+        <!-- Name as dropdown -->
         <div class="mb-3 col-md-4 d-none" id="name-dropdown-container">
           <label class="form-label" for="name-dropdown">Name</label>
           <select name="name" id="name-dropdown" class="form-control form-select">
@@ -45,16 +44,30 @@
           </select>
         </div>
 
-        <div class="mb-3 col-md-4" id="slug-container">
-          <label class="form-label" for="slug">Slug</label>
+        <!-- Slug as text input -->
+        <div class="mb-3 col-md-4" id="slug-text-container">
+          <label class="form-label" for="slug-text">Slug</label>
           <input
             type="text"
             name="slug"
-            id="slug"
+            id="slug-text"
             class="form-control"
             placeholder="Page slug"
             value="{{ old('slug') }}"
+
           />
+        </div>
+
+        <!-- Slug as dropdown -->
+        <div class="mb-3 col-md-4 d-none" id="slug-dropdown-container">
+          <label class="form-label" for="slug-dropdown">Slug</label>
+          <select name="slug" id="slug-dropdown" class="form-control form-select" >
+            <option value="">Select Slug</option>
+            <option value="founder" {{ old('slug') == 'founder' ? 'selected' : '' }}>Founder</option>
+            <option value="freelancer" {{ old('slug') == 'freelancer' ? 'selected' : '' }}>Freelancer</option>
+            <option value="investor" {{ old('slug') == 'investor' ? 'selected' : '' }}>Investor</option>
+            <option value="mentor" {{ old('slug') == 'mentor' ? 'selected' : '' }}>Mentor</option>
+          </select>
         </div>
 
         <div class="mb-3 col-md-12 px-5">
@@ -67,6 +80,7 @@
             required
           >{{ old('description') }}</textarea>
         </div>
+
       </div>
 
       <button type="submit" class="btn btn-primary">Save</button>
@@ -74,38 +88,48 @@
   </div>
 </div>
 
+
+@endsection
+@push('scripts')
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const typeSelect = document.getElementById('type');
+
     const nameTextContainer = document.getElementById('name-text-container');
     const nameDropdownContainer = document.getElementById('name-dropdown-container');
-    const slugContainer = document.getElementById('slug-container');
+
+    const slugTextContainer = document.getElementById('slug-text-container');
+    const slugDropdownContainer = document.getElementById('slug-dropdown-container');
 
     function toggleFields() {
       const selectedType = typeSelect.value;
 
-      if (selectedType === 'page') {
+      if (selectedType == 1) {
         nameTextContainer.classList.remove('d-none');
         nameDropdownContainer.classList.add('d-none');
-        slugContainer.classList.remove('d-none');
-      } else if (selectedType === 'template') {
+
+        slugTextContainer.classList.remove('d-none');
+        slugDropdownContainer.classList.add('d-none');
+      } else if (selectedType ==2) {
         nameTextContainer.classList.add('d-none');
         nameDropdownContainer.classList.remove('d-none');
-        // slugContainer.classList.add('d-none'); // Hide slug if you want
+
+        slugTextContainer.classList.add('d-none');
+        slugDropdownContainer.classList.remove('d-none');
       } else {
-        // Default: show both inputs hidden or text name visible, slug visible
+        // Hide all if no type selected
         nameTextContainer.classList.add('d-none');
         nameDropdownContainer.classList.add('d-none');
-        slugContainer.classList.remove('d-none');
+
+        slugTextContainer.classList.add('d-none');
+        slugDropdownContainer.classList.add('d-none');
       }
     }
 
-    // Initialize on page load
     toggleFields();
 
-    // Listen to changes
     typeSelect.addEventListener('change', toggleFields);
   });
 </script>
-
-@endsection
+@endpush

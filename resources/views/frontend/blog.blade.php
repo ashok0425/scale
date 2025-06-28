@@ -71,7 +71,7 @@
               </a>
             </div>
           </div>
-          <div class="fex-1 flex flex-col gap-8">
+          <div class="fex-1 flex flex-col gap-8" style="max-width: 680px">
             <h2 class="heading-2 border-brand-purple border-b">Featured posts</h2>
             @foreach ($featuresPost as $post)
                   <div class="blog-card-wrapper">

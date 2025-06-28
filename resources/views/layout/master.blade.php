@@ -361,33 +361,33 @@
             });
         </script>
 
-     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const fileInput = document.querySelector('.file-upload-field');
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const fileInputs = document.querySelectorAll('.file-upload-field');
 
-            fileInput.addEventListener('change', function (event) {
-                const file = event.target.files[0];
-                if (!file) return;
+    fileInputs.forEach(function(fileInput) {
+        fileInput.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (!file) return;
 
-                // Remove any existing preview
-                const existingPreview = document.querySelector('.preview-image');
-                if (existingPreview) {
-                    existingPreview.remove();
-                }
+            // Remove existing preview specific to this input
+            const existingPreview = fileInput.parentNode.querySelector('.preview-image');
+            if (existingPreview) {
+                existingPreview.remove();
+            }
 
-                // Create and insert new preview
-                const img = document.createElement('img');
-                img.classList.add('preview-image');
-                img.classList.add('mt-5');
+            // Create and insert new preview
+            const img = document.createElement('img');
+            img.classList.add('preview-image', 'mt-3');
+            img.style.width = '80px';
+            img.src = URL.createObjectURL(file);
 
-                img.style.width = '80px';
-                img.style.marginTop = '10px';
-                img.src = URL.createObjectURL(file);
-
-                fileInput.parentNode.appendChild(img);
-            });
+            fileInput.parentNode.appendChild(img);
         });
-    </script>
+    });
+});
+</script>
+
 
 
         <script>

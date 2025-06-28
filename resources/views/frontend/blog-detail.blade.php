@@ -6,7 +6,7 @@
 <main class="relative py-9">
   <div class="container px-2">
     <div class="mb-7 space-y-6 md:mb-12">
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-3 breadcrum">
         <a href="{{route('blog')}}" class="cursor-pointer text-white underline hover:text-gray-300">Blogs</a>
         <img src="{{ asset('frontend/images/arrow-right.svg') }}" alt="{{$blog->title}}" />
         <a href="{{route('category',['slug'=>$blog->category->slug])}}" class="cursor-pointer text-white underline hover:text-gray-300">{{$blog->category->name}}</a>
@@ -188,6 +188,11 @@ function renderToc($items, $level = 0) {
 
 @push('style')
 <style>
+   @media (max-width:670px){
+     .breadcrum{
+        font-size: 12px;
+    }
+   }
 .updated{
     line-height: 40;
 }    #closeShare {

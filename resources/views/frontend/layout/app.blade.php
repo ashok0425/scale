@@ -134,8 +134,8 @@ background: #ffff!important;
         class="gradient-border fixed top-1/2 left-1/2 w-full max-w-[683px] -translate-1/2 flex-col justify-center space-y-6 rounded-3xl p-10 open:flex"
       >
         <img src="{{ asset('frontend/images/div.galaxy-logo-circle.svg') }}" alt="" class="mx-auto size-[73px]" />
-        <h2 class="dh-2 text-center">{{session()->get('title')}}</h2>
-        <p class="b1 text-center font-normal">
+        <h2 class="dh-2 text-center" id="successTitle">{{session()->get('title')}}</h2>
+        <p class="b1 text-center font-normal" id="successMessage">
          {{session()->get('message')}}
         </p>
         <button
@@ -171,6 +171,8 @@ background: #ffff!important;
 
     <script type="module" crossorigin src="{{asset('frontend/assets/main.js')}}"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 <script>
 
     @if (session()->has('message')&&session()->get('type')!='error')
@@ -218,5 +220,68 @@ background: #ffff!important;
     }
   });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("footer-waitlist-form");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const actionUrl = form.getAttribute("action");
+
+
+        axios.post(actionUrl, formData, {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+            }
+        })
+        .then(response => {
+            // console.log(response.data.success);
+            if (response.data) {
+                document.getElementById('successTitle').innerHTML=response.data.title
+                document.getElementById('successMessage').innerHTML=response.data.message
+
+              document.getElementById('success').showModal();
+                form.reset();
+            }
+            return;
+        })
+        .catch(error => {
+            if (error.response.status === 422) {
+                const errors = error.response.data.errors;
+                for (let field in errors) {
+                      Toastify({
+                text: errors[field][0],
+                style: {
+                    background: "#810202",
+                    color: "#fff"
+                },
+                duration: 8000,
+                gravity: "top",
+                position: "right",
+                close: true,
+            }).showToast();
+                }
+            } else {
+                 Toastify({
+                text: 'something went wrong',
+                style: {
+                    background: "#810202",
+                    color: "#fff"
+                },
+                duration: 8000,
+                gravity: "top",
+                position: "right",
+                close: true,
+            }).showToast();
+            }
+        });
+    });
+});
+</script>
+
+
   </body>
 </html>

@@ -50,7 +50,7 @@
                         </div>
                     </div>
 
- <div class="mb-3 col-md-4">
+ <div class="mb-5 col-md-4">
                         <label class="form-label">Cover Photo (w-1800Xh-1200)</label>
                         <div class="file-upload-wrapper" data-text="Select your file!">
                             <input name="cover" type="file" class="file-upload-field" value="" />

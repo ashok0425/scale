@@ -278,11 +278,17 @@ We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 
         ]);
 
         // Handle validation manually
-        if ($validator->fails()) {
-            return redirect(url()->previous() . '#waitlist-Section')
-                ->withErrors($validator)
-                ->withInput();
-        }
+       if ($validator->fails()) {
+    if ($request->ajax()) {
+        return response()->json([
+            'errors' => $validator->errors(),
+        ], 422);
+    }
+
+    return redirect(url()->previous() . '#waitlist-Section')
+        ->withErrors($validator)
+        ->withInput();
+}
         // try {
         $page = parse_url(url()->previous(), PHP_URL_PATH);
 
@@ -295,12 +301,11 @@ We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 
         $waitlist->save();
         Notification::route('mail', $request->footer_email)->notify(new WaitlistNotification($waitlist));
 
-
-        return back()->with('message', "We’ll keep you posted with early updates and insider drops, exciting things ahead.")->with('type', 'success')->with('title', "🎉Amazing! You’re on the waitlist.");
-        // } catch (\Exception $e) {
-        //     // Log error if needed
-        //     return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
-        // }
+        return response()->json([
+            'message'=>"We’ll keep you posted with early updates and insider drops, exciting things ahead.",
+            'title'=>"🎉Amazing! You’re on the waitlist.",
+            'success'=>true,
+        ]);
     }
 
 

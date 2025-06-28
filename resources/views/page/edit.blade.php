@@ -55,14 +55,14 @@
             class="form-control"
             placeholder="Page slug"
             value="{{ old('slug', $page->slug) }}"
-            required
+
           />
         </div>
 
         <!-- Slug as dropdown -->
         <div class="mb-3 col-md-4 d-none" id="slug-dropdown-container">
           <label class="form-label" for="slug-dropdown">Slug</label>
-          <select name="slug" id="slug-dropdown" class="form-control form-select" required>
+          <select name="slug" id="slug-dropdown" class="form-control form-select" >
             <option value="">Select Slug</option>
             <option value="founder" {{ old('slug', $page->slug) == 'founder' ? 'selected' : '' }}>Founder</option>
             <option value="freelancer" {{ old('slug', $page->slug) == 'freelancer' ? 'selected' : '' }}>Freelancer</option>
@@ -88,6 +88,10 @@
     </form>
   </div>
 </div>
+
+
+@endsection
+@push('scripts')
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -129,5 +133,4 @@
     typeSelect.addEventListener('change', toggleFields);
   });
 </script>
-
-@endsection
+@endpush

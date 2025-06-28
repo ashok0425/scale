@@ -27,7 +27,7 @@
                 </p>
               </div>
               <div class="mx-auto mt-6 sm:w-fit">
-             <form id="" class="flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row" method="POST" action="{{ route('waitlist.store.footer') }}">
+             <form id="footer-waitlist-form" class="flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row" method="POST" action="{{ route('waitlist.store.footer') }}">
   @csrf
 
   <input
