@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
         axios.post(actionUrl, formData, {
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                // 'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
             }
         })
         .then(response => {
