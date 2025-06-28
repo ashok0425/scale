@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('pages', function (Blueprint $table) {
-            $table->integer('status')->nullable()->default(0);
+            $table->integer('status')->nullable()->default(1);
+            $table->integer('show_on_footer')->nullable()->default(1);
+
         });
     }
 
@@ -26,7 +28,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('pages', function (Blueprint $table) {
-            $table->dropColumn('status');
+            $table->dropColumn(['status','show_on_footer']);
         });
     }
 };

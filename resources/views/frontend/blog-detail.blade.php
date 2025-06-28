@@ -188,7 +188,9 @@ function renderToc($items, $level = 0) {
 
 @push('style')
 <style>
-
+main{
+    overflow: visible!important;
+}
     .blog-content table,.blog-content tr,.blog-content td,.blog-content th{
           border: 1px solid #ffff!important;
           border-collapse: collapse !important;

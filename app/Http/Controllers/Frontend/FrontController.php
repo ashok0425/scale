@@ -311,7 +311,7 @@ We’ve got good stuff coming your way')->with('title', 'You’re subscribed! 
 
     public function pages($slug)
     {
-        $page = Page::where('slug', $slug)->firstOrFail();
+        $page = Page::where('slug', $slug)->where('status',1)->firstOrFail();
         return view('frontend.page', compact('page'));
     }
 

@@ -37,10 +37,10 @@
         <!-- Name as dropdown -->
         <div class="mb-3 col-md-4 d-none" id="name-dropdown-container">
           <label class="form-label" for="name-dropdown">Name</label>
-          <select name="name" id="name-dropdown" class="form-control form-select">
+          <select name="template_name" id="name-dropdown" class="form-control form-select">
             <option value="">Select Name</option>
-            <option value="access" {{ old('name') == 'access' ? 'selected' : '' }}>Access</option>
-            <option value="waitlist" {{ old('name') == 'waitlist' ? 'selected' : '' }}>Waitlist</option>
+            <option value="access" {{ old('template_name') == 'access' ? 'selected' : '' }}>Access</option>
+            <option value="waitlist" {{ old('template_name') == 'waitlist' ? 'selected' : '' }}>Waitlist</option>
           </select>
         </div>
 
@@ -61,15 +61,40 @@
         <!-- Slug as dropdown -->
         <div class="mb-3 col-md-4 d-none" id="slug-dropdown-container">
           <label class="form-label" for="slug-dropdown">Role</label>
-          <select name="slug" id="slug-dropdown" class="form-control form-select" >
+          <select name="template_slug" id="slug-dropdown" class="form-control form-select" >
             <option value="">Select Role</option>
-            <option value="founder" {{ old('slug') == 'founder' ? 'selected' : '' }}>Founder</option>
-            <option value="freelancer" {{ old('slug') == 'freelancer' ? 'selected' : '' }}>Freelancer</option>
-            <option value="investor" {{ old('slug') == 'investor' ? 'selected' : '' }}>Investor</option>
-            <option value="mentor" {{ old('slug') == 'mentor' ? 'selected' : '' }}>Mentor</option>
+            <option value="founder" {{ old('template_slug') == 'founder' ? 'selected' : '' }}>Founder</option>
+            <option value="freelancer" {{ old('template_slug') == 'freelancer' ? 'selected' : '' }}>Freelancer</option>
+            <option value="investor" {{ old('template_slug') == 'investor' ? 'selected' : '' }}>Investor</option>
+            <option value="mentor" {{ old('template_slug') == 'mentor' ? 'selected' : '' }}>Mentor</option>
           </select>
         </div>
 
+          <div class="mb-3 col-md-6">
+                        <label class="form-label">Status</label>
+                        <select name="status" id="" class="form-control form-select" required>
+                            <option value="">select status</option>
+                            <option value="1">
+                                Publish
+                            </option>
+                            <option value="0">
+                                Draft
+                            </option>
+                        </select>
+                    </div>
+
+                     <div class="mb-3 col-md-4">
+                        <label class="form-label">Show on footer</label>
+                        <select name="show_on_footer" id="" class="form-control form-select" required>
+                            <option value="">select </option>
+                            <option value="1">
+                                Yes
+                            </option>
+                            <option value="0">
+                                No
+                            </option>
+                        </select>
+                    </div>
         <div class="mb-3 col-md-12 px-5">
           <label class="form-label" for="description">Long Description</label>
           <textarea

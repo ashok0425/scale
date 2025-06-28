@@ -1,5 +1,5 @@
 @php
-    $pages=App\Models\Page::limit(3)->get();
+    $pages=App\Models\Page::where('show_on_footer',1)->where('status',1)->get();
 @endphp
 <footer>
       <div id="waitlistSection"

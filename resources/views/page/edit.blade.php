@@ -71,6 +71,31 @@
           </select>
         </div>
 
+          <div class="mb-3 col-md-4">
+                        <label class="form-label">Status</label>
+                        <select name="status" id="" class="form-control form-select" required>
+                            <option value="">select status</option>
+                            <option value="1" {{ $page->status ? 'selected' : '' }}>
+                                Publish
+                            </option>
+                            <option value="0" {{ ! $page->status ? 'selected' : '' }}>
+                                Draft
+                            </option>
+                        </select>
+                    </div>
+
+                     <div class="mb-3 col-md-4">
+                        <label class="form-label">Show on footer</label>
+                        <select name="show_on_footer" id="" class="form-control form-select" required>
+                            <option value="">select</option>
+                            <option value="1" {{ $page->show_on_footer ? 'selected' : '' }}>
+                                Yes
+                            </option>
+                            <option value="0" {{ ! $page->show_on_footer ? 'selected' : '' }}>
+                                No
+                            </option>
+                        </select>
+                    </div>
         <div class="mb-3 col-md-12 px-5">
           <label class="form-label" for="description">Long Description</label>
           <textarea
