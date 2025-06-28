@@ -281,8 +281,10 @@
             <div class="swiper-wrapper">
                 @foreach ($categories as $category)
                      <div class="swiper-slide space-y-3">
+               <a href="{{route('category',['slug'=>$category->slug])}}">
                 <img src="{{ getImage($category->thumbnail) }}" alt="{{$category->name}}" class="aspect-[3/2] w-full object-cover" />
                 <h5 class="heading-5 text-center">{{$category->name}}</h5>
+                </a>
               </div>
                 @endforeach
             </div>

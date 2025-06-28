@@ -11,13 +11,17 @@ use Illuminate\Support\Facades\Route;
 Route::domain('blog.scaledux.com')->group(function () {
     Route::get('/', [FrontController::class, 'blog'])->name('blog');
     Route::get('/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
+Route::get('/category/{slug}', [FrontController::class, 'categoryBlog'])->name('category');
+
 });
+//  Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
+//     Route::get('/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
+// Route::get('/category/{slug}', [FrontController::class, 'categoryBlog'])->name('category');
 
 Route::get('/', [FrontController::class, 'index'])->name('/');
 Route::get('/freelancer', [FrontController::class, 'freelancer'])->name('freelancer');
 Route::get('/investors', [FrontController::class, 'investor'])->name('investor');
 Route::get('/founders', [FrontController::class, 'founder'])->name('founder');
-Route::get('/category/{slug}', [FrontController::class, 'categoryBlog'])->name('category');
 
 Route::get('/unsubscribe/{uuid}', [FrontController::class, 'unsubscribe'])->name('unsubscribe');
 Route::post('/unsubscribe/{uuid}', [FrontController::class, 'unsubscribeStore']);
