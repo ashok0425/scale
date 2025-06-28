@@ -194,7 +194,7 @@ function renderToc($items, $level = 0) {
           border-collapse: collapse !important;
     }
     .blog-content tr,.blog-content td,.blog-content th{
-        padding: .3rem!important;
+        padding: .6rem!important;
     }
     .blog-content table{
     overflow-x: auto;
