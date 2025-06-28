@@ -29,8 +29,8 @@
                 <option value="investor">Investor</option>
                 <option value="mentor">Mentor</option>
               </select> -->
-              <a href="#waitlistSection"
-                class="btn-primary hover:shadow-brand-purple/60 group hover:shadow-lg max-sm:w-full"
+             <a href="#waitlistSection"
+                class="btn-primary text-center hover:shadow-brand-purple/60 group hover:shadow-lg "
               >
                 <span class="inner-wrapper inline-flex h-6 overflow-hidden">
                   <span class="inner flex flex-col duration-200 group-hover:-translate-y-full">

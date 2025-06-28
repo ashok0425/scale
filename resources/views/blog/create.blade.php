@@ -44,20 +44,20 @@
                     </div>
 
                     <div class="mb-3 col-md-4">
-                        <label class="form-label">Thumbnail</label>
+                        <label class="form-label">Thumbnail (w-600Xh-800)</label>
                         <div class="file-upload-wrapper" data-text="Select your file!">
                             <input name="thumbnail" type="file" class="file-upload-field" value="" required />
                         </div>
                     </div>
 
  <div class="mb-3 col-md-4">
-                        <label class="form-label">Cover Photo </label>
+                        <label class="form-label">Cover Photo (w-1800Xh-1200)</label>
                         <div class="file-upload-wrapper" data-text="Select your file!">
                             <input name="cover" type="file" class="file-upload-field" value="" />
                         </div>
                     </div>
                        <div class="mb-3 col-md-4">
-                        <label class="form-label">Thumbnail Alt</label>
+                        <label class="form-label">Thumbnail Alt </label>
                         <input type="text" name="thumbnail_alt" class="form-control" placeholder="Alt"
                             value="{{ old('thumbnail_alt') }}" required />
                     </div>
@@ -69,7 +69,7 @@
                     </div> --}}
 
                     <div class="mb-3 col-md-4">
-                        <label class="form-label">Audio</label>
+                        <label class="form-label">Audio (Max-10MB)</label>
                         <input type="file" name="audio" class="form-control" placeholder="Audio"
                             value="{{ old('audio') }}" />
                     </div>
@@ -86,7 +86,7 @@
                     </div>
 
                     <div class="mb-3 col-md-4">
-                        <label class="form-label">User Photo </label>
+                        <label class="form-label">User Photo (w-200Xh-200)</label>
                         <div class="file-upload-wrapper" data-text="Select your file!">
                             <input name="author_image" type="file" class="file-upload-field" value="" />
                         </div>
@@ -95,7 +95,7 @@
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Slug</label>
                         <input type="text" name="slug" class="form-control" placeholder="Enter Slug"
-                            value="{{ old('slug') }}" required />
+                            value="{{ old('slug') }}"  />
                     </div>
 
 

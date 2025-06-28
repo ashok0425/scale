@@ -6,11 +6,9 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Crm;
 use App\Services\PhonePeService;
 use Illuminate\Http\Request;
-use App\Notifications\PreAccessNotification;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Validation\Rule;
 use Log;
 use App\Http\Controllers\Controller;
+use Str;
 
 class PriorityAccessController extends Controller
 {
@@ -57,7 +55,6 @@ public function priorityAccess()
         ]);
 
 
-        // try {
         $page = parse_url(url()->previous(), PHP_URL_PATH);
         $unique_id=uniqid();
 
@@ -83,68 +80,63 @@ public function priorityAccess()
                 'name' => $access->name,
                 'email' => $access->email,
                 'mobile' =>$access->phone,
-                'amount' => 399,
-                'redirect_url' => route('phonepe.callback'),
+                'amount' => 1,
+                'redirect_url' => route('phonepe.callback',['order_id'=>base64_encode($unique_id),'signature'=> uniqid()]),
                 'order_id' =>$unique_id ,
             ];
 
             $res = $this->phonePeService->payRequest($payload);
-dd($res);
-            if ($res->success) {
-               return redirect($res->data->instrumentResponse->redirectInfo->url);
+
+            if ($res->redirectUrl) {
+               return redirect($res->redirectUrl);
             }
 
         return back()->with('message', "Welcome to the ScaleDux Family. You're officially one of our Founding Members. You'll
           receive a personal welcome email with your Founding Member kit and exclusive updates
           roadmap.")->with('type', 'success')->with('title', "Thanks for joining!");
-        // } catch (\Exception $e) {
-        //     // Log error if needed
-        //     return back()->with('message', 'Something went wrong. Please try again.')->with('type', 'error');
-        // }
+
     }
 
 
 
     public function phonePeCallback(Request $request)
     {
-        if (!$request->has('code') || $request->code != 'PAYMENT_SUCCESS') {
-            abort(400, 'Payment failed.');
-        }
 
-        $orderId = $request->get('transactionId');
+
+        $orderId=base64_decode($request->order_id);
+       $crm=Crm::where('unique_id',$orderId)->firstOrFail();
+
+    $res = $this->phonePeService->checkOrderStatus($orderId);
+
+    if(!isset($res)){
+ return redirect()->route('priority.access')->with('message','Payment Failed')->with('title','Payment Failed')->with('type', 'success');
+    }
+
+
         Log::info('Payment Order: ' . $orderId);
-        $paymentIntent = Crm::where('order_id', '=', $orderId)->first();
+        $paymentIntent = Crm::where('unique_id', '=', $orderId)->first();
 
         if (!$paymentIntent) {
-            abort(400, 'Payment failed.');
+            abort(404, 'Payment failed.');
         }
 
-        if ($request->get('code') !== 'PAYMENT_SUCCESS') {
+        if ($res?->state!='COMPLETED') {
             Log::info('Payment Status: ' . $request->get('code'));
             $paymentIntent->payment_status = 2;
             $paymentIntent->save();
-            abort(400, 'Payment failed.');
+          return redirect()->route('priority.access')->with('message','Payment Failed')->with('title','Payment Failed')->with('type', 'success');
         }
 
-        Log::info('Success Payment Intent ID: ' . $paymentIntent->id);
-        Log::info('Success Payment Intent Order ID: ' . $paymentIntent->order_id);
 
-        Crm::updateOrCreate(
-            ['unique_id' => $paymentIntent->orderId],
-            [
-                'payment_status' => 1,
-                'payment_token'=>''
-            ]
-        );
+       $crm->payment_status=1;
+       $crm->payment_token=$res->paymentDetails[0]['transactionId'];
+        $crm->save();
 
-        $paymentIntent->save();
-
-        return redirect()->route('phonepe.success',['orderId'=>$orderId]);
+ return redirect()->route('priority.access')->with('message','payment successful')->with('title','paymentsuccesful')->with('type', 'success');
     }
 
 
-    public function phonePeSuccess($orderId){
-        $paymentIntent = Crm::where('order_id', '=', $orderId)->firstorFail();
-        return view('frontend.form')->with('message','payment successful')->with('title','paymentsuccesful');
-    }
+    // public function phonePeSuccess(){
+
+    // }
 }

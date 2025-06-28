@@ -115,6 +115,10 @@ select {
   .accordion-content{
     width: 95%;
   }
+
+ .swiper-pagination .swiper-pagination-bullet{
+background: #ffff!important;
+  }
 </style>
   </head>
   <body>

@@ -44,9 +44,13 @@ return [
         'redirect' => 'https://rumorhasitnepal.com/auth/google/callback',
     ],
  'phonepe' => [
-        'merchant_id' => env('PHONEPE_MERCHANT_ID'),
-        'api_key' => env('PHONEPE_API_KEY'),
-        'url' => env('PHONEPE_URL'),
+    'url' => env('PHONEPE_URL'),
+    'merchant_id' => env('PHONEPE_MERCHANT_ID'),
+    'salt_index' => env('PHONEPE_SALT_INDEX', 1),
+    'client_id' => env('PHONEPE_CLIENT_ID'),
+    'client_secret' => env('PHONEPE_CLIENT_SECRET'),
+    'token_url' => env('PHONEPE_TOKEN_URL'),
+
     ],
 
     'facebook' => [

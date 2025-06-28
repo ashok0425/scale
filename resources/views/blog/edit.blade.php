@@ -31,16 +31,16 @@
 
 
 
-                    <div class="mb-3 col-md-4">
-                        <label class="form-label">Thumbnail</label>
+                    <div class=" col-md-4 mb-5">
+                        <label class="form-label">Thumbnail (w-600Xh-800)</label>
                         <div class="file-upload-wrapper" data-text="Select your file!">
                             <input name="thumbnail" type="file" class="file-upload-field" value="" />
                         </div>
                         <img src="{{ getImage($post->thumbnail) }}" alt="" width="100">
                     </div>
 
-                      <div class="mb-3 col-md-4">
-                        <label class="form-label">Cover</label>
+                      <div class=" col-md-4 mb-5">
+                        <label class="form-label">Cover (w-1800Xh-1200)</label>
                         <div class="file-upload-wrapper" data-text="Select your file!">
                             <input name="cover" type="file" class="file-upload-field" value="" />
                         </div>
@@ -61,7 +61,7 @@
 
 
                     <div class="mb-3 col-md-4">
-                        <label class="form-label">Audio</label>
+                        <label class="form-label">Audio (Max-10MB)</label>
                         <input type="file" name="audio" class="form-control" placeholder="Audio"
                             value="{{ old('audio') }}" />
                         <a href="{{ getImage($post->audio) }}">Click</a>
@@ -81,7 +81,7 @@
                     </div>
 
                     <div class="mb-3 col-md-4">
-                        <label class="form-label">Author Photo </label>
+                        <label class="form-label">Author Photo (w-200Xh-200)</label>
                         <div class="file-upload-wrapper" data-text="Select your file!">
                             <input name="author_image" type="file" class="file-upload-field" value="" />
                         </div>
@@ -107,7 +107,7 @@
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Slug</label>
                         <input type="text" name="slug" class="form-control" placeholder="Enter Slug"
-                            value="{{ old('slug', $post->slug) }}" required />
+                            value="{{ old('slug', $post->slug) }}" />
                     </div>
 
                     <div class="mb-3 col-md-12">

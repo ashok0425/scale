@@ -4,7 +4,7 @@
                   <div class="flex items-center justify-between gap-4 max-sm:flex-col">
                     <h3 class="font-inter text-lg leading-7 font-bold">Total Values:</h3>
                     <div class="flex items-center gap-2">
-                      <span class="text-body-2 text-sm line-through">₹799/-</span>
+                      <span class="text-body-2 text-sm line-through">₹3,07,000/-</span>
                       <h3 class="dh-3 font-stretch-condensed">₹399</h3>
                     </div>
                   </div>
