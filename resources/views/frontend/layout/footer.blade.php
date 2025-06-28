@@ -27,7 +27,13 @@
                 </p>
               </div>
               <div class="mx-auto mt-6 sm:w-fit">
-             <form id="footer-waitlist-form" class="flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row" method="POST" action="{{ route('waitlist.store.footer') }}">
+                @php
+                    $route=route('waitlist.store.footer');
+                    if (request()->getSchemeAndHttpHost()=='https://blog.scaledux.com') {
+                    $route=route('waitlist.footer');
+                    }
+                @endphp
+             <form id="footer-waitlist-form" class="flex flex-col flex-wrap items-center justify-center gap-3 sm:flex-row" method="POST" action="{{$route}}">
   @csrf
 
   <input

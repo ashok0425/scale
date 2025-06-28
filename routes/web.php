@@ -12,8 +12,7 @@ Route::domain('blog.scaledux.com')->group(function () {
     Route::get('/', [FrontController::class, 'blog'])->name('blog');
     Route::get('/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
    Route::get('/category/{slug}', [FrontController::class, 'categoryBlog'])->name('category');
-   Route::post('/priority-access', [PriorityAccessController::class, 'storePriorityAccess']);
-
+  Route::post('/waitlist/store', [FrontController::class, 'waitlistStore'])->name('waitlist.footer');
 });
 //  Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
 //     Route::get('/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
