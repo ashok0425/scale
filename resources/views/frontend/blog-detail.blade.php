@@ -207,7 +207,11 @@ main{
         font-size: 12px;
     }
    }
-    .blog-content ul,.blog-content ol{
+    .blog-content ul{
+        list-style: inherit!important;
+    }
+
+     .blog-content ol{
         list-style: inherit!important;
     }
 .updated{
