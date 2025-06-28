@@ -62,6 +62,12 @@ class ManageAccessController extends Controller
         return view('access.create', compact('permissions', 'roles', 'permissionMap'));
     }
 
+    public function show($id)
+{
+    $user = Crm::findOrFail($id);
+    return view('crm.show', compact('user'));
+}
+
     public function store(Request $request)
     {
         if (!auth()->user()->can('user:create')) {

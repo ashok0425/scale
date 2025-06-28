@@ -8,6 +8,8 @@ use App\Services\PhonePeService;
 use Illuminate\Http\Request;
 use Log;
 use App\Http\Controllers\Controller;
+use App\Notifications\PreAccessNotification;
+use Illuminate\Support\Facades\Notification;
 use Str;
 
 class PriorityAccessController extends Controller
@@ -72,7 +74,7 @@ public function priorityAccess()
         $access->payment_status=0;
         $access->unique_id=$unique_id;
         $access->save();
-        // Notification::route('mail', $request->email)->notify(new PreAccessNotification($access));
+        Notification::route('mail', $request->email)->notify(new PreAccessNotification($access));
 
      //phone service
 

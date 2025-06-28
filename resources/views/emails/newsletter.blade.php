@@ -89,7 +89,7 @@
             <ul>
                 <li>
                     <a
-                        href="https://www.scaledux.com/blogs"
+                        href="https://blog.scaledux.com"
                         target="_blank"
                         rel="noopener noreferrer"
                     >

@@ -30,8 +30,6 @@
                         <th>User Detail</th>
                         <th>Role</th>
                         <th>City</th>
-                        <th>Linkedin</th>
-                        <th>Message</th>
                         <th>Register on</th>
                         <th>Action</th>
                     </tr>
@@ -47,8 +45,6 @@
                             </td>
                             <td>{{ $user->role }}</td>
                             <td>{{ $user->city }}</td>
-                            <td>{{ $user->linkedin }}</td>
-                            <td>{{ $user->message }}</td>
                             <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}
 <br>
                                 {{ Carbon\Carbon::parse($user->created_at)->format('g:i:s A') }}
@@ -66,10 +62,12 @@
                         @endif
                         <br>
   <a href="{{ route('crm.delete', ['id' => $user->id]) }}"
-     onclick="return confirm('Are you sure you want to delete this user?');">
+     onclick="return confirm('Are you sure you want to delete this user?');" class="btn btn-sm btn-danger">
     <i class="fas fa-trash"></i>
   </a>
+  <a href="{{ route('crm.show', ['id' => $user->id]) }}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
 </td>
+
 
                         </tr>
                     @endforeach

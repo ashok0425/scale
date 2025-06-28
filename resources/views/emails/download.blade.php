@@ -83,7 +83,7 @@
         </p>
         <ul>
             <li>
-                <a href="https://www.scaledux.com/blog" target="_blank" rel="noopener noreferrer">
+                <a href="https://blog.scaledux.com" target="_blank" rel="noopener noreferrer">
                     Read our founder-first blogs
                 </a>
             </li>

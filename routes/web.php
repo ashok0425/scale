@@ -18,6 +18,8 @@ Route::domain('blog.scaledux.com')->group(function () {
 //     Route::get('/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
 // Route::get('/category/{slug}', [FrontController::class, 'categoryBlog'])->name('category');
 
+Route::redirect('/blog','https://blog.scaledux.com',301);
+
 Route::get('/', [FrontController::class, 'index'])->name('/');
 Route::get('/freelancer', [FrontController::class, 'freelancer'])->name('freelancer');
 Route::get('/investors', [FrontController::class, 'investor'])->name('investor');
@@ -73,6 +75,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('seos', SeoController::class);
     Route::resource('faqs', FaqController::class);
     Route::get('crm/{id}', [\App\Http\Controllers\ManageAccessController::class,'crmDelete'])->name('crm.delete');
+Route::get('/crm/user/{id}', [\App\Http\Controllers\ManageAccessController::class, 'show'])->name('crm.show');
 
 
 
