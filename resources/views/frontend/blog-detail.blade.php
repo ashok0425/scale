@@ -207,6 +207,9 @@ main{
         font-size: 12px;
     }
    }
+    .blog-content ul{
+        list-style: inherit!important;
+    }
 .updated{
     line-height: 40;
 }    #closeShare {
