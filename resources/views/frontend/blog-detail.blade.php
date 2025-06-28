@@ -188,6 +188,18 @@ function renderToc($items, $level = 0) {
 
 @push('style')
 <style>
+
+    .blog-content table,.blog-content tr,.blog-content td,.blog-content th{
+          border: 1px solid #ffff!important;
+          border-collapse: collapse !important;
+    }
+    .blog-content tr,.blog-content td,.blog-content th{
+        padding: .3rem!important;
+    }
+    .blog-content table{
+    overflow-x: auto;
+ max-width: 90vw;
+    }
    @media (max-width:670px){
      .breadcrum{
         font-size: 12px;
