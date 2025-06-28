@@ -212,7 +212,7 @@ main{
     }
 
      .blog-content ol{
-        list-style: inherit!important;
+        list-style: decimal!important;
     }
 .updated{
     line-height: 40;
