@@ -22,22 +22,22 @@ class PageController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'required',
-        //     'slug' => 'required',
-        //     'description' => 'required',
-        //     // 'title' => 'required',
-        // ]);
+        $request->validate([
+            'name' => 'required_without:template_name',
+            'slug' => 'required_without:template_slug',
+            'description' => 'required',
+            // 'title' => 'required',
+        ]);
 
         $page = new Page;
 
         $page->title = $request->title;
-        $page->name = $request->name??$request->template_name;
+        $page->name = $request->name ?? $request->template_name;
         $page->description = $request->description;
-        $page->slug = $request->slug??$request->template_slug;
+        $page->slug = $request->slug ?? $request->template_slug;
         $page->status = $request->status;
         $page->show_on_footer = $request->show_on_footer;
-        $page->type = $request->type??1;
+        $page->type = $request->type ?? 1;
 
         $page->save();
 
@@ -57,19 +57,19 @@ class PageController extends Controller
 
     public function update(Request $request, Page $page)
     {
-        // $request->validate([
-        //     'name' => 'required',
-        //     'slug' => 'required',
-        //     'description' => 'required',
-        //     // 'title' => 'required',
-        // ]);
+        $request->validate([
+            'name' => 'required_without:template_name',
+            'slug' => 'required_without:template_slug',
+            'description' => 'required',
+            // 'title' => 'required',
+        ]);
 
         $page->title = $request->title;
-         $page->name = $request->name??$request->template_name;
+        $page->name = $request->name ?? $request->template_name;
         $page->description = $request->description;
-        $page->slug = $request->slug??$request->template_slug;
+        $page->slug = $request->slug ?? $request->template_slug;
         $page->status = $request->status;
-        $page->type = $request->type??1;
+        $page->type = $request->type ?? 1;
         $page->show_on_footer = $request->show_on_footer;
 
 

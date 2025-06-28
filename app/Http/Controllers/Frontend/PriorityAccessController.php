@@ -8,6 +8,7 @@ use App\Services\PhonePeService;
 use Illuminate\Http\Request;
 use Log;
 use App\Http\Controllers\Controller;
+use App\Models\Cms;
 use App\Notifications\PreAccessNotification;
 use Illuminate\Support\Facades\Notification;
 use Str;
@@ -137,6 +138,11 @@ No worries, this can happen for a number of reasons. You can try again in a m
        $crm->payment_token=$res->paymentDetails[0]['transactionId'];
         $crm->save();
         Notification::route('mail', $crm->email)->notify(new PreAccessNotification($crm));
+
+    //update priority count
+     $cms=new Cms();
+     $cms->booked_seat=Crm::where('type',2)->where('payment_status',1)->count();
+     $cms->save();
 
  return redirect()->route('priority.access')->with('title','🎉 Awesome - Payment Successful.
 ')->with('message','Thank you for securing your Priority Access to ScaleDux. You will receive a confirmation email shortly')->with('type', 'success');
