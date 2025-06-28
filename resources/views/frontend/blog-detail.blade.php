@@ -101,7 +101,7 @@ function renderToc($items, $level = 0) {
       <div class="[&_p]:b1 [&_p]:text-body-2 col-span-12 space-y-6 sm:col-span-7 md:col-span-8 [&_p]:leading-8 [&_p]:font-normal">
         <div class="space-y-3">
 
-      @if (getImage($blog->audio))
+      @if ($blog->audio&&getImage($blog->audio))
     <audio controls class="custom-audio">
         <source src="{{ getImage($blog->audio) }}" type="audio/mpeg" />
     </audio>
