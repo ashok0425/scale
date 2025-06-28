@@ -105,10 +105,11 @@ function renderToc($items, $level = 0) {
     <audio controls class="custom-audio">
         <source src="{{ getImage($blog->audio) }}" type="audio/mpeg" />
     </audio>
+          <p class="b3 text-light text-center text-sm">Play audio transcript here</p>
+
 @endif
 
 
-          <p class="b3 text-light text-center text-sm">Play audio transcript here</p>
         </div>
         <div class="blog-content">
             {!! $blogWithIds ?? $blog->long_description !!}
