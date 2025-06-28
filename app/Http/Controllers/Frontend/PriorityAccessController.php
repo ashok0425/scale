@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Notifications\PreAccessNotification;
 use Illuminate\Support\Facades\Notification;
 use Str;
-
+use Illuminate\Validation\Rule;
 class PriorityAccessController extends Controller
 {
 
@@ -32,7 +32,9 @@ public function priorityAccess()
             'full_name' => 'required',
             'email' => [
                 'required',
-                'email'],
+                'email', Rule::unique('crms', 'email')->where(function ($query) use ($request) {
+                    return $query->where('type', 2);
+                }),],
             'role' => 'required|in:founder,freelancer,investor,mentor',
             'phone' => 'required|min:10',
             'linkedin' => 'nullable|url',

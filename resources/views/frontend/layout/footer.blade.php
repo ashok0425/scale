@@ -37,7 +37,7 @@
   @csrf
 
   <input
-    class="max-sm:w-full sm:max-w-[224px] @error('footer_full_name') border-red-300 @enderror"
+    class="max-sm:w-full foot_cont sm:max-w-[224px] @error('footer_full_name') border-red-300 @enderror"
     type="text"
     name="footer_full_name"
     placeholder="Enter full name"
@@ -45,14 +45,14 @@
   />
 
   <input
-    class="max-sm:w-full sm:max-w-[224px] @error('footer_email') border-red-300 @enderror"
+    class="max-sm:w-full foot_cont sm:max-w-[224px] @error('footer_email') border-red-300 @enderror"
     type="email"
     name="footer_email"
     placeholder="Enter your email"
     value="{{ old('footer_email') }}"
   />
 
-  <select class="max-sm:w-full sm:max-w-[224px] @error('footer_role') border-red-300 @enderror" name="footer_role">
+  <select class="max-sm:w-full foot_cont sm:max-w-[224px] @error('footer_role') border-red-300 @enderror" name="footer_role">
     <option value="">Select your role</option>
     <option value="founder" {{ old('footer_role') == 'founder' ? 'selected' : '' }}>Founder/Aspiring Founder</option>
     <option value="freelancer" {{ old('footer_role') == 'freelancer' ? 'selected' : '' }}>Freelancer/Agency</option>
@@ -127,13 +127,13 @@
                   >Investors</a
                 >
               </li>
-              {{-- <li>
+              <li>
                 <a
                   href="{{route('blog')}}"
                   class="text-body-2 hover:text-text-light text-base leading-[24px] duration-200"
                   >Blogs</a
                 >
-              </li> --}}
+              </li>
               <li>
                 <a
                   href="{{route('founder')}}"

@@ -46,6 +46,7 @@
     @stack('style')
 
     <style>
+
         .text-purple{
             color: #7f04ff;
         }
@@ -228,7 +229,10 @@ background: #ffff!important;
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("footer-waitlist-form");
-
+    form.querySelectorAll('input, select, textarea').forEach(el => {
+    el.addEventListener('input', () => el.classList.remove('border-red-300'));
+    el.addEventListener('change', () => el.classList.remove('border-red-300'));
+});
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
@@ -243,6 +247,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         })
         .then(response => {
+
+
+  form.querySelectorAll('input, select, textarea').forEach(el => {
+        el.classList.remove('border-red-300');
+    });
+
             // console.log(response.data.success);
             if (response.data) {
                 document.getElementById('successTitle').innerHTML=response.data.title
@@ -254,34 +264,32 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         })
         .catch(error => {
-            if (error.response.status === 422) {
-                const errors = error.response.data.errors;
-                for (let field in errors) {
-                      Toastify({
-                text: errors[field][0],
-                style: {
-                    background: "#810202",
-                    color: "#fff"
-                },
-                duration: 8000,
-                gravity: "top",
-                position: "right",
-                close: true,
-            }).showToast();
-                }
-            } else {
-                 Toastify({
-                text: 'something went wrong',
-                style: {
-                    background: "#810202",
-                    color: "#fff"
-                },
-                duration: 8000,
-                gravity: "top",
-                position: "right",
-                close: true,
-            }).showToast();
-            }
+           if (error.response.status === 422) {
+    const errors = error.response.data.errors;
+    form.querySelectorAll('input, select, textarea').forEach(el => {
+        el.classList.remove('border-red-300');
+    });
+
+    // Then apply error styles only to fields that have errors
+    for (let field in errors) {
+        const inputField = form.querySelector(`[name="${field}"]`);
+        if (inputField) {
+            inputField.classList.add('border-red-300');
+        }
+
+        Toastify({
+            text: errors[field][0],
+            style: {
+                background: "#810202",
+                color: "#fff"
+            },
+            duration: 8000,
+            gravity: "top",
+            position: "right",
+            close: true,
+        }).showToast();
+    }
+}
         });
     });
 });
