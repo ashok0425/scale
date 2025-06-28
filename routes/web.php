@@ -8,18 +8,17 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 
-// Route::domain('blog.scaledux.com')->group(function () {
-//     Route::get('/', [FrontController::class, 'blog'])->name('blog');
-//     Route::get('/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
-//    Route::get('/category/{slug}', [FrontController::class, 'categoryBlog'])->name('category');
-//   Route::post('/waitlist/store', [FrontController::class, 'waitlistStore'])->name('waitlist.footer');
-// });
-Route::redirect('/blog','https://blog.scaledux.com',301);
-
- Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
+Route::domain('blog.scaledux.com')->group(function () {
+    Route::get('/', [FrontController::class, 'blog'])->name('blog');
     Route::get('/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
-Route::get('/category/{slug}', [FrontController::class, 'categoryBlog'])->name('category');
+   Route::get('/category/{slug}', [FrontController::class, 'categoryBlog'])->name('category');
+  Route::post('/waitlist/store', [FrontController::class, 'waitlistStore'])->name('waitlist.footer');
+});
+//  Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
+//     Route::get('/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
+// Route::get('/category/{slug}', [FrontController::class, 'categoryBlog'])->name('category');
 
+Route::redirect('/blog','https://blog.scaledux.com',301);
 
 Route::get('/', [FrontController::class, 'index'])->name('/');
 Route::get('/freelancer', [FrontController::class, 'freelancer'])->name('freelancer');
