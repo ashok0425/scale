@@ -140,7 +140,7 @@ No worries, this can happen for a number of reasons. You can try again in a m
         Notification::route('mail', $crm->email)->notify(new PreAccessNotification($crm));
 
     //update priority count
-     $cms=new Cms();
+     $cms=Cms::query()->first();
      $cms->booked_seat=Crm::where('type',2)->where('payment_status',1)->count();
      $cms->save();
 
