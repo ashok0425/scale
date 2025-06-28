@@ -237,6 +237,7 @@ main{
     position: absolute;
     left: -3px; /* aligns with the left border */
     width: 2px;
+    top: 0;
     background-color: #2407f8; /* active indicator color */
     border-radius: 1px;
     transition: top 0.3s ease;
@@ -335,8 +336,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (popup) popup.style.display = 'none';
     });
   }
-
-  // TOC (Table of Contents) scroll sync
+window.addEventListener('DOMContentLoaded', function () {
   const tocWrapper = document.querySelector('.toc-wrapper');
   const activeIndicator = document.getElementById('active-indicator');
   const tocLinks = document.querySelectorAll('.toc-link');
@@ -348,6 +348,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function onScroll() {
     let currentId = null;
+
     for (let i = 0; i < headings.length; i++) {
       const rect = headings[i].getBoundingClientRect();
       if (rect.top <= 140) {
@@ -357,21 +358,33 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (currentId && tocWrapper && activeIndicator) {
       clearActive();
+
       const activeLink = document.querySelector(`.toc-link[href="#${currentId}"]`);
       if (activeLink) {
         activeLink.classList.add('active');
+
         const wrapperRect = tocWrapper.getBoundingClientRect();
         const linkRect = activeLink.getBoundingClientRect();
-        const topPosition = linkRect.top - wrapperRect.top + 25 + tocWrapper.scrollTop;
 
+        const topPosition = linkRect.top - wrapperRect.top + tocWrapper.scrollTop;
+
+        // Move the indicator
         activeIndicator.style.top = `${topPosition}px`;
         activeIndicator.style.height = `${linkRect.height}px`;
+
+        // Optional: Scroll tocWrapper so active link is at top
+        tocWrapper.scrollTop = topPosition - 25; // adjust for padding
       }
     }
   }
 
-  onScroll(); // Initial sync
+  // Scroll & position indicator AFTER everything has loaded
+  window.addEventListener('load', onScroll);
+
+  // Live scroll update
   window.addEventListener('scroll', onScroll);
+});
+
 });
 </script>
 @endpush
