@@ -74,7 +74,6 @@ public function priorityAccess()
         $access->payment_status=0;
         $access->unique_id=$unique_id;
         $access->save();
-        Notification::route('mail', $request->email)->notify(new PreAccessNotification($access));
 
      //phone service
 
@@ -135,6 +134,7 @@ No worries, this can happen for a number of reasons. You can try again in a m
        $crm->payment_status=1;
        $crm->payment_token=$res->paymentDetails[0]['transactionId'];
         $crm->save();
+        Notification::route('mail', $crm->email)->notify(new PreAccessNotification($crm));
 
  return redirect()->route('priority.access')->with('title','🎉 Awesome - Payment Successful.
 ')->with('message','Thank you for securing your Priority Access to ScaleDux. You will receive a confirmation email shortly')->with('type', 'success');
