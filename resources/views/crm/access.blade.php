@@ -49,8 +49,22 @@
                             <td>{{ $user->city }}</td>
                             <td>{{ $user->linkedin }}</td>
                             <td>{{ $user->message }}</td>
-                            <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y g:i:s A') }}</td>
+                            <td>{{ Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }}
+<br>
+                                {{ Carbon\Carbon::parse($user->created_at)->format('g:i:s A') }}
+                            </td>
                        <td>
+                        @if ($user->payment_status==0)
+                            <span class="badge bg-danger">Cancelled</span>
+                        @endif
+                        @if ($user->payment_status==1)
+                            <span class="badge bg-success">Paid</span>
+                        @endif
+
+                        @if ($user->payment_status==2)
+                            <span class="badge bg-danger">Failed</span>
+                        @endif
+                        <br>
   <a href="{{ route('crm.delete', ['id' => $user->id]) }}"
      onclick="return confirm('Are you sure you want to delete this user?');">
     <i class="fas fa-trash"></i>

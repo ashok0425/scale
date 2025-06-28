@@ -119,6 +119,11 @@ select {
  .swiper-pagination .swiper-pagination-bullet{
 background: #ffff!important;
   }
+
+  main{
+    overflow: hidden;
+
+  }
 </style>
   </head>
   <body>

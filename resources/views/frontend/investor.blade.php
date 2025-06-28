@@ -266,7 +266,7 @@
           <div class="container-sm">
             <div class="flex flex-col gap-10 md:flex-row">
               <div
-                class="before:brand-gradient relative max-w-[330px] rounded-lg bg-[#1d1c20] before:!absolute before:-inset-[2px] before:-z-10 before:rounded-lg before:p-3"
+                class="before:brand-gradient relative max-w-[330px] mx-auto rounded-lg bg-[#1d1c20] before:!absolute before:-inset-[2px] before:-z-10 before:rounded-lg before:p-3"
               >
                 <div class="relative isolate flex h-full flex-col justify-between overflow-clip">
                   <div
