@@ -38,10 +38,10 @@
         <!-- Name as dropdown -->
         <div class="mb-3 col-md-4 d-none" id="name-dropdown-container">
           <label class="form-label" for="name-dropdown">Name</label>
-          <select name="name" id="name-dropdown" class="form-control form-select">
+          <select name="template_name" id="name-dropdown" class="form-control form-select">
             <option value="">Select Name</option>
-            <option value="access" {{ old('name', $page->name) == 'access' ? 'selected' : '' }}>Access</option>
-            <option value="waitlist" {{ old('name', $page->name) == 'waitlist' ? 'selected' : '' }}>Waitlist</option>
+            <option value="access" {{ old('template_name', $page->name) == 'access' ? 'selected' : '' }}>Access</option>
+            <option value="waitlist" {{ old('template_name', $page->name) == 'waitlist' ? 'selected' : '' }}>Waitlist</option>
           </select>
         </div>
 
@@ -62,12 +62,12 @@
         <!-- Slug as dropdown -->
         <div class="mb-3 col-md-4 d-none" id="slug-dropdown-container">
           <label class="form-label" for="slug-dropdown">Role</label>
-          <select name="slug" id="slug-dropdown" class="form-control form-select" >
+          <select name="template_slug" id="slug-dropdown" class="form-control form-select" >
             <option value="">Select Role</option>
-            <option value="founder" {{ old('slug', $page->slug) == 'founder' ? 'selected' : '' }}>Founder</option>
-            <option value="freelancer" {{ old('slug', $page->slug) == 'freelancer' ? 'selected' : '' }}>Freelancer</option>
-            <option value="investor" {{ old('slug', $page->slug) == 'investor' ? 'selected' : '' }}>Investor</option>
-            <option value="mentor" {{ old('slug', $page->slug) == 'mentor' ? 'selected' : '' }}>Mentor</option>
+            <option value="founder" {{ old('template_slug', $page->slug) == 'founder' ? 'selected' : '' }}>Founder</option>
+            <option value="freelancer" {{ old('template_slug', $page->slug) == 'freelancer' ? 'selected' : '' }}>Freelancer</option>
+            <option value="investor" {{ old('template_slug', $page->slug) == 'investor' ? 'selected' : '' }}>Investor</option>
+            <option value="mentor" {{ old('template_slug', $page->slug) == 'mentor' ? 'selected' : '' }}>Mentor</option>
           </select>
         </div>
 
