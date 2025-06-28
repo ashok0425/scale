@@ -80,7 +80,7 @@ public function priorityAccess()
                 'name' => $access->name,
                 'email' => $access->email,
                 'mobile' =>$access->phone,
-                'amount' => 1,
+                'amount' => 399,
                 'redirect_url' => route('phonepe.callback',['order_id'=>base64_encode($unique_id),'signature'=> uniqid()]),
                 'order_id' =>$unique_id ,
             ];
