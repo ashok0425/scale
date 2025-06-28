@@ -109,7 +109,8 @@ public function priorityAccess()
     $res = $this->phonePeService->checkOrderStatus($orderId);
 
     if(!isset($res)){
- return redirect()->route('priority.access')->with('message','Payment Failed')->with('title','Payment Failed')->with('type', 'success');
+ return redirect()->route('priority.access')->with('message','Looks like the transaction didn’t go through.
+No worries, this can happen for a number of reasons. You can try again in a moment')->with('title','something went wrong with the payment 😕')->with('type', 'success');
     }
 
 
@@ -124,7 +125,8 @@ public function priorityAccess()
             Log::info('Payment Status: ' . $request->get('code'));
             $paymentIntent->payment_status = 2;
             $paymentIntent->save();
-          return redirect()->route('priority.access')->with('message','Payment Failed')->with('title','Payment Failed')->with('type', 'success');
+          return redirect()->route('priority.access')->with('message','Looks like the transaction didn’t go through.
+No worries, this can happen for a number of reasons. You can try again in a moment')->with('title','something went wrong with the payment 😕')->with('type', 'success');
         }
 
 
@@ -132,7 +134,8 @@ public function priorityAccess()
        $crm->payment_token=$res->paymentDetails[0]['transactionId'];
         $crm->save();
 
- return redirect()->route('priority.access')->with('message','payment successful')->with('title','paymentsuccesful')->with('type', 'success');
+ return redirect()->route('priority.access')->with('title','🎉 Awesome - Payment Successful.
+')->with('message','Thank you for securing your Priority Access to ScaleDux. You will receive a confirmation email shortly')->with('type', 'success');
     }
 
 
