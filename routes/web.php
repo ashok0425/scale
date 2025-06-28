@@ -12,8 +12,6 @@ Route::domain('blog.scaledux.com')->group(function () {
     Route::get('/', [FrontController::class, 'blog'])->name('blog');
     Route::get('/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
 });
-    Route::get('/blog', [FrontController::class, 'blog'])->name('blog');
-    Route::get('/{slug}', [FrontController::class, 'blogDetail'])->name('blog.detail');
 
 Route::get('/', [FrontController::class, 'index'])->name('/');
 Route::get('/freelancer', [FrontController::class, 'freelancer'])->name('freelancer');
