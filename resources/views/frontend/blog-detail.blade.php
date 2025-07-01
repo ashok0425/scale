@@ -204,6 +204,12 @@ main{
  max-width: 90vw;
     }
    @media (max-width:670px){
+   .aspect-video{
+    background-repeat: no-repeat!important;
+    background-size: cover!important;
+    overflow: hidden;
+
+   }
      .breadcrum{
         font-size: 12px;
     }
