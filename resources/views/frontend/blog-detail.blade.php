@@ -208,8 +208,11 @@ main{
     background-repeat: no-repeat!important;
     background-size: cover!important;
     overflow: hidden;
-
    }
+   main{
+    overflow: hidden!important;
+}
+
      .breadcrum{
         font-size: 12px;
     }
