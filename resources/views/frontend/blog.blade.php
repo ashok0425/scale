@@ -196,7 +196,7 @@
 
               @foreach ($category->blogs()->where('status',1)->latest()->skip(2)->limit(2)->get() as $blog)
                  <div class="blog-card-wrapper">
-              <a href="{{route('blog.detail',['slug'=>$featureBlog->slug])}}">
+              <a href="{{route('blog.detail',['slug'=>$blog->slug])}}">
                 <div class="blog-card-body">
                   <div
                     class="flex flex-col flex-wrap items-center gap-1 max-sm:items-start sm:flex-row sm:gap-x-4"
