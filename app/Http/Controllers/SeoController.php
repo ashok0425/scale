@@ -48,7 +48,7 @@ class SeoController extends Controller
         Seo::create($request->all());
 
 
-        return redirect()->route('seos.index')
+        return redirect()->back()
                          ->with('success', 'SEO Meta Tag created successfully.');
     }
 
@@ -93,7 +93,7 @@ class SeoController extends Controller
           }
         $Seo->update($request->all());
 
-        return redirect()->route('seos.index')
+        return redirect()->back()
                          ->with('success', 'SEO Meta Tag updated successfully.');
     }
 
@@ -104,7 +104,7 @@ class SeoController extends Controller
     {
         $Seo->delete();
 
-        return redirect()->route('seos.index')
+        return redirect()->back()
                          ->with('success', 'SEO Meta Tag deleted successfully.');
     }
 }

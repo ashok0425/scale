@@ -56,7 +56,7 @@ class BannerController extends Controller
 
         $banner->save();
 
-        return redirect()->route('banners.index',['type'=>$banner->type])->with('success', 'Banner added successfully');
+        return redirect()->back()->with('success', 'Banner added successfully');
     }
 
     public function edit($id)
@@ -94,7 +94,7 @@ class BannerController extends Controller
         $banner->status = $request->status??1;
         $banner->save();
 
-        return redirect()->route('banners.index',['type'=>$banner->type])->with('success', 'Banner updated successfully');
+        return redirect()->back()->with('success', 'Banner updated successfully');
     }
 
     public function show($id)

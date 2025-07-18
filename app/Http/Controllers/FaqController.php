@@ -37,7 +37,7 @@ class FaqController extends Controller
         Faq::create($request->all());
 
 
-        return redirect()->route('faqs.index')
+        return redirect()->back()
                          ->with('success', 'Faq  created successfully.');
     }
 
@@ -69,7 +69,7 @@ class FaqController extends Controller
 
         $faq->update($request->all());
 
-        return redirect()->route('faqs.index')
+        return redirect()->route()
                          ->with('success', 'Faq  updated successfully.');
     }
 

@@ -97,6 +97,6 @@ class TestimonialController extends Controller
             'message' => 'Testimonial  Deleted',
         ];
 
-        return redirect()->route('testimonials.index')->with($notification);
+        return redirect()->back()->with($notification);
     }
 }

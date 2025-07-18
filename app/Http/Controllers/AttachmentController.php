@@ -70,7 +70,7 @@ class AttachmentController extends Controller
 
         ];
 
-        return redirect()->route('categories.index')->with($notification);
+        return redirect()->back()->with($notification);
     }
 
     public function show(Category $category) {}

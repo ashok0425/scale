@@ -107,7 +107,7 @@ class ManageAccessController extends Controller
             'alert-type' => 'success',
             'message' => 'created successfully',
         ];
-        return redirect()->route('access.index')->with($notification);
+        return redirect()->back()->with($notification);
     }
 
     public function edit($id)
@@ -184,7 +184,7 @@ class ManageAccessController extends Controller
             'alert-type' => 'success',
             'message' => 'updated successfully',
         ];
-        return redirect()->route('access.index')->with($notification);
+        return redirect()->back()->with($notification);
     }
 
     public function destroy($id)
@@ -202,7 +202,7 @@ class ManageAccessController extends Controller
             'message' => 'User Deleted',
         ];
         return redirect()->back()->with($notification);
-        return redirect()->route('access.index');
+        return redirect()->back();
     }
 
     public function password($user_id)

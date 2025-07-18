@@ -94,6 +94,6 @@ class PageController extends Controller
             'message' => 'Page  Deleted',
         ];
 
-        return redirect()->route('pages.index')->with($notification);
+        return redirect()->back()->with($notification);
     }
 }

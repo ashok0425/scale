@@ -119,7 +119,7 @@ class BlogController extends Controller
                 'alert-type' => 'error',
                 'message' => 'unauthorized Request',
             ];
-            return redirect()->route('blogs.index')->with($notification);
+            return redirect()->back()->with($notification);
         }
         $categories = Category::latest()->get();
         $popup=$post->popup;
@@ -183,7 +183,7 @@ class BlogController extends Controller
             'message' => 'Post  updated',
         ];
 
-        return redirect()->route('blogs.index')->with($notification);
+        return redirect()->back()->with($notification);
     }
 
     public function show(Blog $post)
@@ -198,7 +198,7 @@ class BlogController extends Controller
                 'alert-type' => 'error',
                 'message' => 'unauthorized Request',
             ];
-            return redirect()->route('blogs.index')->with($notification);
+            return redirect()->back()->with($notification);
         }
 
         $post->delete();
