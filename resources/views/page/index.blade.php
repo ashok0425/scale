@@ -7,7 +7,7 @@
                     <h5 class="card-title text-white">Pages List</h5>
                 </div>
                 <div>
-                    <a href="{{ route('pages.create') }}" class="btn btn-sm  btn btn-sm -info btn btn-sm -sm">
+                    <a href="{{ route('pages.create') }}" class="btn btn-sm  btn btn-sm btn-info btn btn-sm btn-sm">
                         <o class="fas fa-plus"></o>
                         Add Page
                     </a>
@@ -36,13 +36,13 @@
                                 <td>
                                     <a
                                         href="{{ route('pages.edit', $page) }}"
-                                        class="btn btn-sm  btn btn-sm -primary"
+                                        class="btn btn-sm  btn btn-sm btn-primary"
                                     >
                                         <i class="far fa-edit"></i>
                                     </a>
                                     <a
                                     href="{{ route('pages.destroy',$page->id) }}"
-                                    class="btn btn-sm  btn btn-sm -danger delete_btn btn-sm "
+                                    class="btn btn-sm  btn btn-sm btn-danger delete_btn btn-sm "
                                 >
                                     <i class="fas fa-trash"></i>
                                 </a>

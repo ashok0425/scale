@@ -61,7 +61,7 @@
 
 		<p>the page you are looking for not avaible!</p>
 
-		<a href="/" class="link_404 btn btn-sm -primary hover:shadow-brand-purple/60 group hover:shadow-lg">Go to Home</a>
+		<a href="/" class="link_404 btn btn-sm btn-primary hover:shadow-brand-purple/60 group hover:shadow-lg">Go to Home</a>
 	</div>
 		</div>
 		</div>

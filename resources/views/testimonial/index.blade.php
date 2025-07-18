@@ -7,7 +7,7 @@
                     <h5 class="card-title text-white">Testimonial List</h5>
                 </div>
                 <div>
-                    <a href="{{ route('testimonials.create') }}" class="btn btn-sm  btn btn-sm -info btn btn-sm -sm">
+                    <a href="{{ route('testimonials.create') }}" class="btn btn-sm  btn btn-sm btn-info btn btn-sm btn-sm">
                         <i class="fas fa-plus"></i>
                         Add New
                     </a>
@@ -37,7 +37,7 @@
                                 <td>
                                     <a
                                         href="{{ route('testimonials.edit', $testimonial) }}"
-                                        class="btn btn-sm  btn btn-sm -primary"
+                                        class="btn btn-sm  btn btn-sm btn-primary"
                                     >
                                         <i class="far fa-edit"></i>
                                     </a>

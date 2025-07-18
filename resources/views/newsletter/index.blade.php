@@ -15,7 +15,7 @@
                     </div>
 
                     <div>
-                        <a href="{{ route('admin.campaigns.create') }}" class="btn btn-sm  btn btn-sm -info"><i class="fas fa-plus"></i> New Campaign</a>
+                        <a href="{{ route('admin.campaigns.create') }}" class="btn btn-sm  btn btn-sm btn-info"><i class="fas fa-plus"></i> New Campaign</a>
 
                     </div>
                 </div>
@@ -48,8 +48,8 @@
                                     <td>{{ Carbon\Carbon::parse($newsletter->publish_date)->format('d/m/Y g:i:s A') }}</td>
 
                                     <td>
-                                        <a href="{{route('admin.campaigns.edit',$newsletter)}}" class="btn btn-sm  btn btn-sm -primary"><i class="fas fa-copy"></i></a>
-                                           <a  onclick="return confirm('Are you sure you want to delete this campaign?');" href="{{route('admin.campaigns.status',$newsletter)}}" class="btn btn-sm  btn btn-sm -danger"><i class="fas fa-trash"></i></a>
+                                        <a href="{{route('admin.campaigns.edit',$newsletter)}}" class="btn btn-sm  btn btn-sm btn-primary"><i class="fas fa-copy"></i></a>
+                                           <a  onclick="return confirm('Are you sure you want to delete this campaign?');" href="{{route('admin.campaigns.status',$newsletter)}}" class="btn btn-sm  btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                                     </td>
                                     <td></td>
                                 </tr>

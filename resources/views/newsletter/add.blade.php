@@ -17,7 +17,7 @@
                     </div>
                     <div class="card-toolbar">
                         <a class="btn btn-sm  mr-10" href="{{ route('admin.atypical-blog') }}">Cancel</a>
-                        <a class="btn btn-sm  btn btn-sm -primary font-weight-bolder"
+                        <a class="btn btn-sm  btn btn-sm btn-primary font-weight-bolder"
                            onclick="document.getElementById('form').submit();">Save</a>
                     </div>
                 </div>

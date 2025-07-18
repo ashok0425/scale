@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-sm  btn btn-sm -primary btn btn-sm -lg">Log in</button>
+                        <button type="submit" class="btn btn-sm  btn btn-sm btn-primary btn btn-sm btn-lg">Log in</button>
                     </div>
                 </form>
             </div>

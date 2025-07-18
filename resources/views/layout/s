@@ -236,12 +236,12 @@
                                 @csrf
                                 <button
                                     type="button"
-                                    class="btn btn-sm  btn btn-sm -secondary btn btn-sm -rounded"
+                                    class="btn btn-sm  btn btn-sm btn-secondary btn btn-sm btn-rounded"
                                     data-dismiss="modal"
                                 >
                                     &nbsp; No &nbsp;
                                 </button>
-                                <button class="btn btn-sm  btn btn-sm -primary btn btn-sm -rounded">
+                                <button class="btn btn-sm  btn btn-sm btn-primary btn btn-sm btn-rounded">
                                     &nbsp; Yes &nbsp;
                                 </button>
                             </form>

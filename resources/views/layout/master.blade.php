@@ -29,6 +29,9 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
         />
         <style>
+            .badge{
+                color: #fff!important;
+            }
             h3.card-title {
                 font-size: 16px !important;
                 margin-bottom: 0px !important;
@@ -68,7 +71,7 @@
                         <!-- Sidebar Toggle (Topbar) -->
                         <button
                             id="sidebarToggleTop"
-                            class="btn btn-sm btn btn-sm -link rounded-circle mr-3"
+                            class="btn btn-sm btn btn-sm btn-link rounded-circle mr-3"
                         >
                             <i class="fa fa-bars"></i>
                         </button>
@@ -121,9 +124,10 @@
                     <!-- End of Topbar -->
                     <!-- Begin Page Content -->
                     <div class="container">
+                        <x-errormsg />
                         @if (Request::segment(2))
                             {{-- Means there is something after /resource --}}
-                            <a href="{{ url()->previous() }}" class="btn btn-primary">
+                            <a href="/{{Request::segment(1)}}?type={{request()->query('type')}}" class="btn btn-primary">
                                 <i class="fas fa-arrow-left"></i>
                                 Back
                             </a>
@@ -173,13 +177,13 @@
                     </div>
                     <div class="modal-footer">
                         <button
-                            class="btn btn-sm btn btn-sm -secondary"
+                            class="btn btn-sm btn btn-sm btn-secondary"
                             type="button"
                             data-dismiss="modal"
                         >
                             Cancel
                         </button>
-                        <a class="btn btn-sm btn btn-sm -primary" href="{{ route('logout') }}">
+                        <a class="btn btn-sm btn btn-sm btn-primary" href="{{ route('logout') }}">
                             Logout
                         </a>
                     </div>
@@ -216,12 +220,12 @@
                                 @csrf
                                 <button
                                     type="button"
-                                    class="btn btn-sm btn btn-sm -secondary btn btn-sm -rounded"
+                                    class="btn btn-sm btn btn-sm btn-secondary btn btn-sm btn-rounded"
                                     data-dismiss="modal"
                                 >
                                     &nbsp; No &nbsp;
                                 </button>
-                                <button class="btn btn-sm btn btn-sm -primary btn btn-sm -rounded">
+                                <button class="btn btn-sm btn btn-sm btn-primary btn btn-sm btn-rounded">
                                     &nbsp; Yes &nbsp;
                                 </button>
                             </form>

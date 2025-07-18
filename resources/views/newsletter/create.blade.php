@@ -48,10 +48,10 @@
                     </div>
                     <div class="card-toolbar">
                         <a class="btn btn-sm  mr-10 text-white" href="{{ route('admin.campaigns.index') }}">Cancel</a>
-                        <button class="btn btn-sm  btn btn-sm -info  d-none" id="backbtn btn-sm " @click="prevStep">Back</button>
-                        <button class="btn btn-sm  btn btn-sm -info " id="nextbtn btn-sm " @click="nextStep">Next</button>
-                        <button class="btn btn-sm  btn btn-sm -info  d-none" id="savebtn btn-sm " @click="submitForm(false)">Save</button>
-                        <button class="btn btn-sm  btn btn-sm -info " type="button" v-if="showTestMailButton" @click="openTestEmailModal">Test Mail</button>
+                        <button class="btn btn-sm  btn btn-sm btn-info  d-none" id="backbtn btn-sm " @click="prevStep">Back</button>
+                        <button class="btn btn-sm  btn btn-sm btn-info " id="nextbtn btn-sm " @click="nextStep">Next</button>
+                        <button class="btn btn-sm  btn btn-sm btn-info  d-none" id="savebtn btn-sm " @click="submitForm(false)">Save</button>
+                        <button class="btn btn-sm  btn btn-sm btn-info " type="button" v-if="showTestMailButton" @click="openTestEmailModal">Test Mail</button>
                     </div>
                 </div>
 
@@ -136,7 +136,7 @@
                             <label>Enter Email Address</label>
                             <input type="email" class="form-control" v-model="testEmail" required placeholder="Recipient email">
                         </div>
-                        <button type="submit" class="btn btn-sm  btn btn-sm -primary" :disabled="loading">
+                        <button type="submit" class="btn btn-sm  btn btn-sm btn-primary" :disabled="loading">
                             <span v-if="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             Send Test Email
                         </button>

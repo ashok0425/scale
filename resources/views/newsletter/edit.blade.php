@@ -51,13 +51,13 @@
                         </div>
                         <div class="card-toolbar">
                             <a class="btn btn-sm  mr-10" href="{{ route('admin.campaigns.index') }}">Cancel</a>
-                            <button class="btn btn-sm  btn btn-sm -secondary font-weight-bolder d-none" id="backbtn btn-sm "
+                            <button class="btn btn-sm  btn btn-sm btn-secondary font-weight-bolder d-none" id="backbtn btn-sm "
                                 @click="prevStep">Back</button>
-                            <button class="btn btn-sm  btn btn-sm -primary font-weight-bolder" id="nextbtn btn-sm "
+                            <button class="btn btn-sm  btn btn-sm btn-primary font-weight-bolder" id="nextbtn btn-sm "
                                 @click="nextStep">Next</button>
-                            <button class="btn btn-sm  btn btn-sm -success font-weight-bolder d-none" id="savebtn btn-sm "
+                            <button class="btn btn-sm  btn btn-sm btn-success font-weight-bolder d-none" id="savebtn btn-sm "
                                 @click="submitForm(false)">Save</button>
-                            <button class="btn btn-sm  btn btn-sm -info font-weight-bolder" type="button" v-if="showTestMailButton"
+                            <button class="btn btn-sm  btn btn-sm btn-info font-weight-bolder" type="button" v-if="showTestMailButton"
                                 @click="openTestEmailModal">Test Mail</button>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                                 <input type="email" class="form-control" v-model="testEmail" required
                                     placeholder="Recipient email">
                             </div>
-                            <button type="submit" class="btn btn-sm  btn btn-sm -primary" :disabled="loading">
+                            <button type="submit" class="btn btn-sm  btn btn-sm btn-primary" :disabled="loading">
                                 <span v-if="loading" class="spinner-border spinner-border-sm" role="status"
                                     aria-hidden="true"></span>
                                 Send Test Email

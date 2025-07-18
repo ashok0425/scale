@@ -9,7 +9,7 @@
                         <h5 class="card-title text-white">User List</h5>
                     </div>
                     <div>
-                        <a href="{{ route('access.create') }}" class="btn btn-sm  btn btn-sm -info btn btn-sm -sm">
+                        <a href="{{ route('access.create') }}" class="btn btn-sm  btn btn-sm btn-info btn btn-sm btn-sm">
                             <o class="fas fa-plus"></o>
                             Add User
                         </a>
@@ -39,10 +39,10 @@
                                     </td>
                                     <td>
                                         <div class="actions-div">
-                                            <a href="{{ route('access.edit', ['id' => $user->id]) }}" class="btn btn-sm  btn btn-sm -info btn btn-sm -sm mx-3">
+                                            <a href="{{ route('access.edit', ['id' => $user->id]) }}" class="btn btn-sm  btn btn-sm btn-info btn btn-sm btn-sm mx-3">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                             <a href="{{ route('access.destroy', $user->id) }}" class="btn btn-sm  btn btn-sm -danger delete_btn btn-sm " title="Delete">
+                                             <a href="{{ route('access.destroy', $user->id) }}" class="btn btn-sm  btn btn-sm btn-danger delete_btn btn-sm " title="Delete">
                                         <i class="fas fa-trash"></i>
                                     </a>
 

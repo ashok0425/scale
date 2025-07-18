@@ -57,7 +57,17 @@
                         />
                     </div>
                 </div>
-                <button type="submit" class="btn btn-sm  btn btn-sm -primary">update</button>
+                 @if (Request::segment(2))
+                    {{-- Means there is something after /resource --}}
+                    <a
+                        href="/{{ Request::segment(1) }}?type={{ request()->query('type') }}"
+                        class="btn btn-secondary btn-sm"
+                    >
+                        <i class="fas fa-arrow-left"></i>
+                        Back
+                    </a>
+                @endif
+                <button type="submit" class="btn btn-sm  btn btn-sm btn-primary">update</button>
             </form>
         </div>
     </div>

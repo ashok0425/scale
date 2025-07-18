@@ -198,7 +198,17 @@
                 />
               </div>
 
-                            <input type="submit" value="update" class="btn btn-sm  btn btn-sm -block btn btn-sm -info" />
+               @if (Request::segment(2))
+                    {{-- Means there is something after /resource --}}
+                    <a
+                        href="/{{ Request::segment(1) }}?type={{ request()->query('type') }}"
+                        class="btn btn-secondary btn-sm"
+                    >
+                        <i class="fas fa-arrow-left"></i>
+                        Back
+                    </a>
+                @endif
+                            <input type="submit" value="update" class="btn btn-sm  btn btn-sm btn-block btn btn-sm btn-info" />
                         </div>
                     </div>
                 </form>

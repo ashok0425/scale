@@ -9,7 +9,7 @@
               Please view this content on a mobile device for the best experience.
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-sm  btn btn-sm -success" id="savebtn btn-sm ">ok</button>
+              <button type="button" class="btn btn-sm  btn btn-sm btn-success" id="savebtn btn-sm ">ok</button>
             </div>
           </div>
         </div>

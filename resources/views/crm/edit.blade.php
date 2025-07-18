@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-3">
                         <label>Expertise</label>
                         <select class="form-control" name="expertise">
                             <option value="">Select Expertise</option>
@@ -50,40 +50,53 @@
                             <option value="finance" {{ old('expertise', $crm->expertise ?? '') == 'finance' ? 'selected' : '' }}>Finance</option>
                         </select>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-3">
                         <label>Speciality</label>
-                        <select class="form-control" name="speciality">
+                        <select class="form-control" name="specialist">
                             <option value="">Select Speciality</option>
-                            <option value="ai" {{ old('speciality', $crm->speciality ?? '') == 'ai' ? 'selected' : '' }}>AI</option>
-                            <option value="design" {{ old('speciality', $crm->speciality ?? '') == 'design' ? 'selected' : '' }}>Design</option>
-                            <option value="product" {{ old('speciality', $crm->speciality ?? '') == 'product' ? 'selected' : '' }}>Product</option>
+                            <option value="ai" {{ old('specialist', $crm->specialist ?? '') == 'ai' ? 'selected' : '' }}>AI</option>
+                            <option value="design" {{ old('specialist', $crm->specialist ?? '') == 'design' ? 'selected' : '' }}>Design</option>
+                            <option value="product" {{ old('specialist', $crm->specialist ?? '') == 'product' ? 'selected' : '' }}>Product</option>
                         </select>
                     </div>
-                </div>
 
-                <div class="mb-3">
+                <div class="mb-3 col-md-6">
                     <label>LinkedIn profile URL (optional)</label>
                     <input type="url" class="form-control" name="linkedin" value="{{ old('linkedin', $crm->linkedin ?? '') }}">
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-3 col-md-6">
                     <label>City</label>
                     <input type="text" class="form-control" name="city" value="{{ old('city', $crm->city ?? '') }}">
+                </div>
                 </div>
 
                 <div class="mb-3">
                     <label>What challenges do you face...?</label>
-                    <textarea class="form-control" name="challenges" rows="4">{{ old('challenges', $crm->challenges ?? '') }}</textarea>
+                    <textarea class="form-control" name="message" rows="2">{{ old('message', $crm->message ?? '') }}</textarea>
                 </div>
 
                 <div class="mb-3">
                     <label>What excites you about ScaleDux?</label>
-                    <textarea class="form-control" name="excitement" rows="3">{{ old('excitement', $crm->excitement ?? '') }}</textarea>
+                    <textarea class="form-control" name="what_excited" rows="1">{{ old('what_excited', $crm->what_excited ?? '') }}</textarea>
                 </div>
 
+                <div class="">
+                    <label ><input type="checkbox" value="1" name="show_on_frontend" {{$crm->show_on_frontend?'checked':''}}> Show on Frontend</label>
+                </div>
 
+                   @if (Request::segment(2))
+                    {{-- Means there is something after /resource --}}
+                    <a
+                        href="/{{ Request::segment(1) }}?type={{ request()->query('type') }}"
+                        class="btn btn-secondary btn-sm"
+                    >
+                        <i class="fas fa-arrow-left"></i>
+                        Back
+                    </a>
+                @endif
+                <button type="submit" class="btn btn-sm  btn btn-sm btn-primary">Update Info</button>
 
-                <button type="submit" class="btn btn-sm  btn btn-sm -primary">Update Info</button>
             </form>
         </div>
     </div>

@@ -43,9 +43,9 @@
                     </div>
                 </div>
 
-                <div class="card-footer text-right">
-                    <a href="{{ route('seos.index') }}" class="btn btn-sm  btn btn-sm -secondary">Cancel</a>
-                    <button type="submit" class="btn btn-sm  btn btn-sm -primary">Create SEO</button>
+                <div class="card-footer">
+                    <a href="{{ route('seos.index') }}" class="btn btn-sm  btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i>Back</a>
+                    <button type="submit" class="btn btn-sm  btn btn-sm btn-primary">Save</button>
                 </div>
             </form>
         </div>

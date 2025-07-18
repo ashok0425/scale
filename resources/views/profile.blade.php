@@ -25,7 +25,7 @@
                             @csrf
                             <input
                                 type="submit"
-                                class="btn btn-sm  btn btn-sm -danger"
+                                class="btn btn-sm  btn btn-sm btn-danger"
                                 value="logout"
                                 style="width: 200px"
                             />
@@ -97,7 +97,7 @@
                                 <input
                                     type="submit"
                                     value="save"
-                                    class="form-control btn btn-sm  btn btn-sm -primary"
+                                    class="form-control btn btn-sm  btn btn-sm btn-primary"
                                 />
                             </div>
                         </form>
@@ -144,7 +144,7 @@
                                 <input
                                     type="submit"
                                     value="save"
-                                    class="form-control btn btn-sm  btn btn-sm -primary"
+                                    class="form-control btn btn-sm  btn btn-sm btn-primary"
                                 />
                             </div>
                         </form>

@@ -24,7 +24,7 @@
                         <input type="text" name="name" placeholder="Group Name" class="form-control" value="{{old('name')}}" required>
 
                         <div>
-                            <button class="btn btn-sm  btn btn-sm -info mt-2 px-4">save</button>
+                            <button class="btn btn-sm  btn btn-sm btn-info mt-2 px-4">save</button>
                         </div>
                     </form>
                 </div>

@@ -290,4 +290,42 @@ class ManageAccessController extends Controller
        $crm=Crm::find($id);
         return view('crm.edit',compact('crm'));
     }
+
+    public function crmUpdate( Request $request,$id){
+         $validated = $request->validate([
+        'name' => 'required',
+        'phone' => 'required',
+        'email' => ['required', 'email'],
+        'role' => 'required|in:founder,freelancer,investor,mentor',
+        'city' => 'nullable|string',
+        'linkedin' => 'nullable|url',
+        'message' => 'nullable|string',
+        'show_on_frontend' => 'nullable|boolean',
+        'expertise' => 'nullable|string',
+        'specialist' => 'nullable|string',
+        'what_excited' => 'nullable|string',
+        'country' => 'nullable|string',
+    ]);
+       $crm=Crm::find($id);
+       $crm->name = $validated['name'];
+        $crm->email = $validated['email'];
+        $crm->role = $validated['role'];
+        $crm->phone = $validated['phone'];
+        $crm->city = $validated['city'];
+        $crm->linkedin = $validated['linkedin'];
+        $crm->message = $validated['message'];
+        $crm->show_on_frontend = $validated['show_on_frontend']??0;
+        $crm->expertise = $validated['expertise'];
+        $crm->specialist = $validated['specialist'];
+        $crm->what_excited = $validated['what_excited'];
+        // $crm->country = $validated['country'];
+        $crm->save();
+
+          $notification = [
+            'alert-type' => 'success',
+            'message' => 'updated succesfully',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
 }

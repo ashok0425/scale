@@ -36,14 +36,24 @@
                             <input
                                 name="thumbnail"
                                 type="file"
-                                class="file-upload-field"
+                                class="file-upload-field form-control border custom-file"
                                 value=""
                             />
                         </div>
                     </div>
                 </div>
+                @if (Request::segment(2))
+                    {{-- Means there is something after /resource --}}
+                    <a
+                        href="/{{ Request::segment(1) }}?type={{ request()->query('type') }}"
+                        class="btn btn-secondary btn-sm"
+                    >
+                        <i class="fas fa-arrow-left"></i>
+                        Back
+                    </a>
+                @endif
 
-                <button type="submit" class="btn btn-sm  btn btn-sm -primary">Add</button>
+                <button type="submit" class="btn btn-sm btn btn-sm btn-primary">Add</button>
             </form>
         </div>
     </div>

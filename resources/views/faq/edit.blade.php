@@ -29,8 +29,17 @@
                 </div>
 
                 <div class="card-footer text-right">
-                    <a href="{{ route('faqs.index') }}" class="btn btn-sm  btn btn-sm -secondary">Cancel</a>
-                    <button type="submit" class="btn btn-sm  btn btn-sm -success">Update SEO</button>
+ @if (Request::segment(2))
+                    {{-- Means there is something after /resource --}}
+                    <a
+                        href="/{{ Request::segment(1) }}?type={{ request()->query('type') }}"
+                        class="btn btn-secondary btn-sm"
+                    >
+                        <i class="fas fa-arrow-left"></i>
+                        Back
+                    </a>
+                @endif
+                <button type="submit" class="btn btn-sm  btn btn-sm btn-success">Update SEO</button>
                 </div>
             </form>
         </div>
