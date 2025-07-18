@@ -26,7 +26,7 @@ $pdfDownload=App\Models\Crm::where('type',3)->count();
             font-size: 2.8rem;
         }
     </style>
-<div class="container dashboard">
+<div class=" dashboard">
 <div class="row">
 
     <!-- Total Blog Posts -->
