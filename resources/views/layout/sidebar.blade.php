@@ -107,6 +107,19 @@
             <span>Subscriber</span>
         </a>
     </li>
+    <li class="nav-item {{ Request::is(['teams/*','teams']) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('teams.index') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Team</span>
+        </a>
+    </li>
+
+     <li class="nav-item {{ Request::is(['recognitions/*','recognitions']) ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('recognitions.index') }}">
+            <i class="fas fa-fw fa-copy"></i>
+            <span>Recognition</span>
+        </a>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

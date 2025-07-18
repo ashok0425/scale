@@ -64,6 +64,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('posts', \App\Http\Controllers\BlogController::class)->names('blogs');
     Route::resource('banners', \App\Http\Controllers\BannerController::class);
+    Route::resource('teams', \App\Http\Controllers\TeamController::class);
+    Route::resource('recognitions', \App\Http\Controllers\RecognitionController::class);
+
     Route::resource('attachments', \App\Http\Controllers\AttachmentController::class);
 
 

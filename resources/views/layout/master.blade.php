@@ -52,6 +52,9 @@
                 align-items: center !important;
                 color: #fff !important;
             }
+            .file-upload-field{
+                border: 1px solid blue!important;
+            }
         </style>
     </head>
     <body id="page-top">
@@ -201,8 +204,8 @@
             >
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalTitle">
+                        <div class="card-body">
+                            <h5 class="modal-title text-dark" id="deleteModalTitle">
                                 Are you sure you want to delete this item ?
                             </h5>
                             <button
@@ -246,8 +249,8 @@
         <!-- Page level plugins -->
         <script src="{{ asset('admin/vendor/chart.js/Chart.min.js') }}"></script>
         <!-- Page level custom scripts -->
-        <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
-        <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script>
+        {{-- <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script> --}}
+        {{-- <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script> --}}
         @stack('scripts')
         <script>
             $(document).ready(function () {
@@ -297,14 +300,14 @@
             });
                     }
                 });
-                        @if (Session::has('message')) //toatser
-                            var type = "{{ Session::get('alert-type', 'info') }}"
+                        @if (Session::has('message')||Session::has('success')) //toatser
+                            var type = "{{ Session::get('alert-type', 'success') }}"
                             switch (type) {
                                 case 'info':
-                                    toastr.info("{{ Session::get('message') }}");
+                                    toastr.info("{{ Session::get('message')?? session('success')}}");
                                     break;
                                 case 'success':
-                                    toastr.success("{{ Session::get('message') }}");
+                                    toastr.success("{{ Session::get('message')??session('success') }}");
                                     break;
                                 case 'warning':
                                     toastr.warning("{{ Session::get('message') }}");
@@ -316,7 +319,7 @@
                         @endif
         </script>
         <script>
-            let delete_rows = document.querySelectorAll('.delete_btn btn-sm ');
+            let delete_rows = document.querySelectorAll('.delete_btn');
             let form = document.querySelector('#delete_form');
             let deleteModal = new bootstrap.Modal(document.getElementById('deleteModal')); // Initialize Bootstrap modal
             delete_rows.forEach(function (ele) {
@@ -351,7 +354,7 @@
                 });
             });
         </script>
-        <script>
+        {{-- <script>
             document.querySelectorAll('[data-toggle]').forEach(function (togglebtn btn-sm ) {
                 togglebtn btn-sm .addEventListener('click', function () {
                     const targetId = this.getAttribute('data-toggle');
@@ -369,6 +372,6 @@
                     }
                 });
             });
-        </script>
+        </script> --}}
     </body>
 </html>

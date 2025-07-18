@@ -5,10 +5,10 @@
         <div class="card">
        <div class="card-header d-flex justify-content-between bg-dark">
                 <div>
-                    <h5 class="card-title text-white">Faq List</h5>
+                    <h5 class="card-title text-white">Recognition List</h5>
                 </div>
                 <div>
-                    <a href="{{ route('faqs.create') }}" class="btn btn-sm  btn btn-sm btn-info btn btn-sm btn-sm">
+                    <a href="{{ route('recognitions.create') }}" class="btn btn-sm  btn btn-sm btn-info btn btn-sm btn-sm">
                         <o class="fas fa-plus"></o>
                         Add New
                     </a>
@@ -20,25 +20,22 @@
                     <thead class="thead-light">
                         <tr>
                             <th>#</th>
-                            <th>Page</th>
-                            <th>Question</th>
-                            <th>Answer</th>
-                            <th>Created At</th>
+                            <th>Name</th>
+                            <th>Thumbnail</th>
+                            {{-- <th>Position</th> --}}
                             <th>Action</th>
-
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($faqs as $faq)
+                        @forelse ($recognitions as $recognition)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $faq->page_url }}</td>
-                                <td>{{ $faq->question }}</td>
-                                <td>{{ $faq->answer }}</td>
-                                <td>{{ \Carbon\Carbon::parse($faq->created_at)->format('d/m/Y') }}</td>
+                                <td>{{ $recognition->name }}</td>
+                                <td><img src="{{getImage($recognition->thumbnail)}}" alt="" width="100"></td>
+                                {{-- <td>{{ $team->position }}</td> --}}
                                 <td>
                                         <a
-                                        href="{{ route('faqs.edit', $faq) }}"
+                                        href="{{ route('recognitions.edit', $recognition) }}"
                                         class="btn btn-sm  btn btn-sm btn-primary"
                                     >
                                         <i class="far fa-edit"></i>
@@ -46,7 +43,7 @@
 
                                         <a
                                         id="delete"
-                                        href="{{ route('faqs.destroy', $faq) }}"
+                                        href="{{ route('recognitions.destroy', $recognition) }}"
                                         class="btn btn-sm  btn btn-sm btn-danger delete_btn btn-sm ">
                                         <i class="fas fa-trash"></i>
                                         </a>
@@ -55,7 +52,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center text-muted">No Faq records found.</td>
+                                <td colspan="6" class="text-center text-muted">No Team records found.</td>
                             </tr>
                         @endforelse
                     </tbody>
