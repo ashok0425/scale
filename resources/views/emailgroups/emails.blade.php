@@ -15,7 +15,7 @@
 
             <div class="card-body">
                 <div v-if="selectedEmails.length" class="mb-3">
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#groupModal">
+                    <button class="btn btn-sm  btn btn-sm -primary" data-toggle="modal" data-target="#groupModal">
                         Add to Group
                     </button>
                 </div>
@@ -112,8 +112,8 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Import</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-sm  btn btn-sm -success">Import</button>
+          <button type="button" class="btn btn-sm  btn btn-sm -secondary" data-dismiss="modal">Cancel</button>
         </div>
       </form>
     </div>
@@ -148,8 +148,8 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Import</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-sm  btn btn-sm -success">Import</button>
+          <button type="button" class="btn btn-sm  btn btn-sm -secondary" data-dismiss="modal">Cancel</button>
         </div>
       </form>
     </div>
@@ -174,8 +174,8 @@
 
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Add</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-sm  btn btn-sm -success">Add</button>
+          <button type="button" class="btn btn-sm  btn btn-sm -secondary" data-dismiss="modal">Cancel</button>
         </div>
       </form>
     </div>

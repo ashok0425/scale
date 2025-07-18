@@ -111,7 +111,7 @@
 
                         </div> --}}
                         <div>
-                            <button class="btn btn-primary mt-3">save</button>
+                            <button class="btn btn-sm  btn btn-sm -primary mt-3">save</button>
                         </div>
 
 

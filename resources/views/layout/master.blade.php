@@ -1,413 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="{{ cms('meta_description') }}" />
-        <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-        <meta name="keywords" content="cms('meta_keyword')" />
+<head>
 
-        <link rel="shortcut icon" href="{{ asset(cms('fevicon')) }}" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <title>{{ cms()->title }}</title>
+    <title>Scaledux - Dashboard</title>
 
-        {{-- fontawsome --}}
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        />
-        {{-- custom css --}}
-        <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet" />
+    <!-- Custom fonts for this template-->
+    <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{asset('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
+   <style>
+    h3.card-title{
+        font-size: 16px!important;
+        margin-bottom: 0px!important;
+                color: #fff!important;
 
 
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter&family=Hubot+Sans&family=Bricolage+Grotesque&family=Instrument+Serif&family=Playfair+Display&family=Raleway&display=swap"
-            rel="stylesheet"
-        />
 
-        <style>
-            .rotate-180 {
-                transform: rotate(180deg);
-                transition: transform 0.3s ease;
-            }
-            ul,
-            .submenu {
-                list-style: none !important;
-            }
-            .file-upload-wrapper {
-                position: relative;
-                width: 100%;
-                height: 40px;
-                border: 1px solid #17e67e;
-            }
+    }
+    h5.card-title{
+        font-size: 16px!important;
+        margin-bottom: 0px!important;
+                color: #fff!important;
 
-            .file-upload-wrapper:after {
-                content: attr(data-text);
-                font-size: 18px;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background: #fff;
-                padding: 0px 15px;
-                display: block;
-                width: calc(100% - 40px);
-                pointer-events: none;
-                z-index: 20;
-                height: 10px;
-                line-height: 40px;
-                color: #999;
-                border-radius: 5px 10px 10px 5px;
-                font-weight: 300;
-            }
 
-            .file-upload-wrapper:before {
-                content: 'Choose file';
-                position: absolute;
-                top: 0;
-                right: 0;
-                display: inline-block;
-                height: 40px;
-                background: #4daf7c;
-                color: #fff;
-                font-weight: 700;
-                z-index: 25;
-                font-size: 16px;
-                line-height: 40px;
-                padding: 0 15px;
-                text-transform: uppercase;
-                pointer-events: none;
-                border-radius: 0 5px 5px 0;
-            }
+    }
+    h3,h5{
+        font-size: 16px!important;
+        color: #fff!important;
 
-            .file-upload-wrapper:hover:before {
-                background: #17e67e;
-            }
+    }
+    .card-header{
+        background: #4e73df!important;
+        align-items: center!important;
+        color: #fff!important;
 
-            .file-upload-wrapper input {
-                opacity: 0;
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                z-index: 99;
-                height: 20px;
-                margin: 0;
-                padding: 0;
-                display: block;
-                cursor: pointer;
-                width: 100%;
-            }
+    }
+   </style>
+</head>
 
-            table,
-            td,
-            tr,
-            th {
-                border: 0.5px solid rgb(209, 208, 208) !important;
-                border-collapse: collapse;
-            }
-            .card {
-                border-top: 5px solid rgb(5, 24, 199);
-            }
+<body id="page-top">
 
-            .card-header {
-                padding: 0.3rem 1rem !important;
-                border-radius: 0px !important;
-            }
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-            #myTable_length {
-                margin-bottom: 1rem !important;
-            }
+        <!-- Sidebar -->
+         @include('layout.sidebar')
+        <!-- End of Sidebar -->
 
-            .dataTables_wrapper select {
-                border: 1px solid #aaa;
-                border-radius: 3px;
-                padding: 0.4rem 3rem !important;
-            }
-            .dropdown-menu {
-                left: -100px !important;
-            }
-            .note-editable ul {
-                list-style-type: disc !important;
-            }
-            /* #sidebar,.sidebar{
-                background-color: #fff!important;
-            }
-            .sidebar-link, a.sidebar-link{
-                background-color: #fff!important;
-                color: #000;
-            } */
-             a:hover{
-                text-decoration: none!important;
-             }
-        </style>
-        @stack('styles')
-        <style>
-            .flex-wrap{
-                display: flex;
-                justify-content: space-between;
-                padding: 0px!important;
-                font-size: 18px!important;
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-            }
-            .flex-wrap.pt-4.pb-4{
-                /* padding: 0px!important; */
-                padding:1rem .4rem!important;
-                padding-bottom: .4rem!important;
-            }
-            .flex-wrap h4{
-                font-size: 16px!important;
+            <!-- Main Content -->
+            <div id="content">
 
-            }
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-        </style>
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-sm  btn btn-sm -link rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
 
-        <link
-            href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.css"
-            rel="stylesheet"
-        />
-          {{-- toastr --}}
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-        />
 
-        <style>
-            .toast-success {
-  background-color: #0dec3d !important; /* dark background */
-  color: #fff !important;            /* white text */
-  opacity: 1 !important;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  border-radius: 4px;
-}
-        </style>
-    </head>
 
-    <body>
-        <div class="wrapper">
-            {{-- include sidebar --}}
-            @include('layout.sidebar')
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
 
-            <div class="main">
-                {{-- include header --}}
 
-                @include('layout.header')
 
-                <main class="content">
-                    {{-- include breadcrum --}}
-                    {{-- Dyanmic content --}}
-                    @include('layout.breadcrum')
-                    <x-errormsg />
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{{route('profile')}}">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
                     @yield('main-content')
-                </main>
-            </div>
-        </div>
 
-        <!-- Modal -->
-        <div class="container">
-            <div
-                class="modal fade"
-                id="deleteModal"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalCenterTitle"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalTitle">
-                                Are you sure you want to delete this item ?
-                            </h5>
-                            <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="" method="post" id="delete_form" class="text-right">
-                                @method('DELETE')
-                                @csrf
-                                <button
-                                    type="button"
-                                    class="btn btn-secondary btn-rounded"
-                                    data-dismiss="modal"
-                                >
-                                    &nbsp; No &nbsp;
-                                </button>
-                                <button class="btn btn-primary btn-rounded">
-                                    &nbsp; Yes &nbsp;
-                                </button>
-                            </form>
-                        </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
                     </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm  btn btn-sm -secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-sm  btn btn-sm -primary" href="{{route('logout')}}">Logout</a>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="{{ asset('admin/js/app.js') }}"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{asset('admin/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
+    <!-- Core plugin JavaScript-->
+    <script src="{{asset('admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
-        <script
-            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"
-        ></script>
+    <!-- Custom scripts for all pages-->
+    <script src="{{asset('admin/js/sb-admin-2.min.js')}}"></script>
 
-        <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-            crossorigin="anonymous"
-        />
-        <script
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"
-        ></script>
+    <!-- Page level plugins -->
+    <script src="{{asset('admin/vendor/chart.js/Chart.min.js')}}"></script>
 
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="{{asset('admin/js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{asset('admin/js/demo/chart-pie-demo.js')}}"></script>
 
-        @stack('scripts')
+</body>
 
-        <script>
-            $(document).ready(function () {
-                    if ($('#summernote').length) {
-                     $('#summernote').summernote({
-              height: 300,
-              toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
-                ['fontname', ['fontname']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['height', ['height']],
-                ['insert', ['link', 'picture', 'video', 'table','linkedImage']],
-                ['misc', ['undo', 'redo']],
-                ['view', ['fullscreen', 'codeview', 'help']]
-              ],
-              fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '24', '36', '48', '64', '82', '150'],
-               fontNames: [
-                'Arial', 'Verdana', 'Times New Roman', 'Courier New',
-                'Roboto', 'Open Sans', 'Merriweather', 'Lato', 'Montserrat',
-                'Inter', 'Hubot Sans', 'Bricolage Grotesque', 'Instrument Serif', 'Playfair Display', 'Raleway'
-              ],
-
-               buttons: {
-                    linkedImage: function (context) {
-                      var ui = $.summernote.ui;
-                      return ui.button({
-                        contents: '<i class="note-icon-picture"></i> 🔗 Img Link',
-                        tooltip: 'Insert Linked Image',
-                        click: function () {
-                          const imageUrl = prompt("Enter image URL");
-                          const linkUrl = prompt("Enter link URL");
-                          if (imageUrl && linkUrl) {
-                            const html = `<a href="${linkUrl}" target="_blank"><img src="${imageUrl}" alt="" style="max-width: 100%;" /></a>`;
-                            context.invoke('editor.pasteHTML', html);
-                          }
-                        }
-                      }).render();
-                    }
-                }
-
-            });
-
-                    }
-                });
-
-
-
-                        @if (Session::has('message')) //toatser
-                            var type = "{{ Session::get('alert-type', 'info') }}"
-                            switch (type) {
-                                case 'info':
-                                    toastr.info("{{ Session::get('message') }}");
-                                    break;
-                                case 'success':
-                                    toastr.success("{{ Session::get('message') }}");
-                                    break;
-                                case 'warning':
-                                    toastr.warning("{{ Session::get('message') }}");
-                                    break;
-                                case 'error':
-                                    toastr.error("{{ Session::get('message') }}");
-                                    break;
-                            }
-                        @endif
-        </script>
-
-        <script>
-            let delete_rows = document.querySelectorAll('.delete_btn');
-            let form = document.querySelector('#delete_form');
-            let deleteModal = new bootstrap.Modal(document.getElementById('deleteModal')); // Initialize Bootstrap modal
-
-            delete_rows.forEach(function (ele) {
-                ele.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    let url = ele.href;
-                    form.setAttribute('action', url);
-                    deleteModal.show(); // Show modal
-                });
-            });
-        </script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const fileInputs = document.querySelectorAll('.file-upload-field');
-
-    fileInputs.forEach(function(fileInput) {
-        fileInput.addEventListener('change', function (event) {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            // Remove existing preview specific to this input
-            const existingPreview = fileInput.parentNode.querySelector('.preview-image');
-            if (existingPreview) {
-                existingPreview.remove();
-            }
-
-            // Create and insert new preview
-            const img = document.createElement('img');
-            img.classList.add('preview-image', 'mt-3');
-            img.style.width = '80px';
-            img.src = URL.createObjectURL(file);
-
-            fileInput.parentNode.appendChild(img);
-        });
-    });
-});
-</script>
-
-
-
-        <script>
-            document.querySelectorAll('[data-toggle]').forEach(function (toggleBtn) {
-                toggleBtn.addEventListener('click', function () {
-                    const targetId = this.getAttribute('data-toggle');
-                    const dropdown = document.getElementById(targetId);
-                    if (dropdown) {
-                        if (dropdown.classList.contains('d-none')) {
-                            dropdown.classList.remove('d-none');
-                            dropdown.classList.add('d-block');
-                            this.querySelector('.toggle-icon')?.classList.add('rotate-180');
-                        } else {
-                            dropdown.classList.remove('d-block');
-                            dropdown.classList.add('d-none');
-                            this.querySelector('.toggle-icon')?.classList.remove('rotate-180');
-                        }
-                    }
-                });
-            });
-        </script>
-    </body>
 </html>

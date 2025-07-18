@@ -28,8 +28,8 @@
                 </div>
 
                 <div class="card-footer text-right">
-                    <a href="{{ route('faqs.index') }}" class="btn btn-secondary">Faq</a>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="{{ route('faqs.index') }}" class="btn btn-sm  btn btn-sm -secondary">Faq</a>
+                    <button type="submit" class="btn btn-sm  btn btn-sm -primary">Save</button>
                 </div>
             </form>
         </div>

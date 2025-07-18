@@ -9,10 +9,10 @@
                     <input type="search" name="keyword" value="{{request()->query('keyword')}}" class="form-control" placeholder="search...">
                 </div>
                     <div class="col-md-1">
-                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-sm  btn btn-sm -primary"><i class="fas fa-search"></i></button>
                     </div>
                      <div class="col-md-1">
-                        <button class="btn btn-success" name="export" value="1"><i class="fas fa-file-excel"></i></button>
+                        <button class="btn btn-sm  btn btn-sm -success" name="export" value="1"><i class="fas fa-file-excel"></i></button>
                     </div>
             </div>
         </form>

@@ -57,7 +57,7 @@
                         />
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">update</button>
+                <button type="submit" class="btn btn-sm  btn btn-sm -primary">update</button>
             </form>
         </div>
     </div>

@@ -8,7 +8,7 @@
                     <h5 class="card-title text-white">Seo List</h5>
                 </div>
                 <div>
-                    <a href="{{ route('seos.create') }}" class="btn btn-info btn-sm">
+                    <a href="{{ route('seos.create') }}" class="btn btn-sm  btn btn-sm -info btn btn-sm -sm">
                         <o class="fas fa-plus"></o>
                         Add New
                     </a>
@@ -39,7 +39,7 @@
                                 <td>
                                         <a
                                         href="{{ route('seos.edit', $seo) }}"
-                                        class="btn btn-primary"
+                                        class="btn btn-sm  btn btn-sm -primary"
                                     >
                                         <i class="far fa-edit"></i>
                                     </a>
@@ -47,7 +47,7 @@
                                         <a
                                         id="delete"
                                         href="{{ route('seos.destroy', $seo) }}"
-                                        class="btn btn-danger delete_btn">
+                                        class="btn btn-sm  btn btn-sm -danger delete_btn btn-sm ">
                                         <i class="fas fa-trash"></i>
                                         </a>
 

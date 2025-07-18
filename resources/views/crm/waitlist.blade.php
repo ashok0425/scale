@@ -9,10 +9,10 @@
                     <input type="search" name="keyword" value="{{request()->query('keyword')}}" class="form-control" placeholder="search...">
                 </div>
                     <div class="col-md-1">
-                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-sm  btn btn-sm -primary"><i class="fas fa-search"></i></button>
                     </div>
                      <div class="col-md-1">
-                        <button class="btn btn-success" name="export" value="1"><i class="fas fa-file-excel"></i></button>
+                        <button class="btn btn-sm  btn btn-sm -success" name="export" value="1"><i class="fas fa-file-excel"></i></button>
                     </div>
             </div>
         </form>
@@ -48,6 +48,10 @@
   <a href="{{ route('crm.delete', ['id' => $user->id]) }}"
      onclick="return confirm('Are you sure you want to delete this user?');">
     <i class="fas fa-trash"></i>
+  </a>
+   <a href="{{ route('crm.edit', ['id' => $user]) }}"
+    >
+    <i class="fas fa-edit"></i>
   </a>
 </td>
                         </tr>

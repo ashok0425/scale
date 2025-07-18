@@ -6,7 +6,7 @@
    <div class="card-header pt-2">
     <p class="text-dark">Email List</p>
                          <div>
-                            <a href="{{ route('admin.emailgroups.index') }}" class="btn btn-primary font-weight-bolder mr-3">Back</a>
+                            <a href="{{ route('admin.emailgroups.index') }}" class="btn btn-sm  btn btn-sm -primary font-weight-bolder mr-3">Back</a>
                          </div>
 
                     </div>

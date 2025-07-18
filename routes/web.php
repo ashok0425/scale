@@ -75,7 +75,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('seos', SeoController::class);
     Route::resource('faqs', FaqController::class);
     Route::get('crm/{id}', [\App\Http\Controllers\ManageAccessController::class,'crmDelete'])->name('crm.delete');
-Route::get('/crm/user/{id}', [\App\Http\Controllers\ManageAccessController::class, 'show'])->name('crm.show');
+    Route::get('crm/{id}/edit', [\App\Http\Controllers\ManageAccessController::class,'crmEdit'])->name('crm.edit');
+    Route::post('crm/{id}/update', [\App\Http\Controllers\ManageAccessController::class,'crmUpdate'])->name('crm.update');
+
+   Route::get('/crm/user/{id}', [\App\Http\Controllers\ManageAccessController::class, 'show'])->name('crm.show');
 
 
 

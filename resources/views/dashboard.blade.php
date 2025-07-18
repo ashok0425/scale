@@ -22,91 +22,83 @@ $pdfDownload=App\Models\Crm::where('type',3)->count();
             font-size: 14px;
         }
 
-        .fa {
+        .dashboard .fa {
             font-size: 2.8rem;
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<div class="container dashboard">
+<div class="row">
 
-
-<div class="container-fluid p-0">
-    @php
-    $hour = now()->hour;
-    if ($hour < 12) {
-        $greeting = 'Good Morning';
-    } elseif ($hour < 17) {
-        $greeting = 'Good Afternoon';
-    } else {
-        $greeting = 'Good Evening';
-    }
-@endphp
-
-<div class="alert alert-success bg-success text-white p-2">
-    {{ $greeting }}  &nbsp;<strong>{{Auth::user()->name}} </strong>, Welcome Back!
-</div>
-
-
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card shadow-sm stat-card border-0 rounded text-center">
-                <a href="{{route('blogs.index')}}" class="text-decoration-none text-dark">
-                    <div class="card-body py-4">
-                        <div class="icon-circle mx-auto mb-3">
-                            <i class="fas fa-copy fa-2x"></i>
-                        </div>
-                        <small class="text-muted h5">Total Posts</small>
-                        <h4 class="fw-bold mt-1 h3">{{$totalBlog}}</h4>
+    <!-- Total Blog Posts -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Posts</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalBlog }}</div>
                     </div>
-                </a>
-            </div>
-        </div>
-
-
-        <div class="col-md-3">
-            <div class="card shadow-sm stat-card border-0 rounded text-center">
-                <a href="{{route('crm',['type'=>1])}}" class="text-decoration-none text-dark">
-                <div class="card-body py-4">
-                    <div class="icon-circle mx-auto mb-3">
-                        <i class="fas fa-users fa-2x"></i>
+                    <div class="col-auto">
+                        <i class="fas fa-copy fa-2x text-gray-300"></i>
                     </div>
-                    <small class="text-muted h5">Waitlist Count</small>
-                    <h4 class="fw-bold mt-1 h3">{{$waitlistCount}}</h4>
                 </div>
-                </a>
             </div>
         </div>
-
-          <div class="col-md-3">
-            <div class="card shadow-sm stat-card border-0 rounded text-center">
-                <a href="{{route('crm',['type'=>2])}}" class="text-decoration-none text-dark">
-                <div class="card-body py-4">
-                    <div class="icon-circle mx-auto mb-3">
-                        <i class="fas fa-user fa-2x"></i>
-                    </div>
-                    <small class="text-muted h5">Priority Access </small>
-                    <h4 class="fw-bold mt-1 h3">{{$accessCount}}</h4>
-                </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="card shadow-sm stat-card border-0 rounded text-center">
-                <a href="{{route('crm',['type'=>3])}}" class="text-decoration-none text-dark">
-                <div class="card-body py-4">
-                    <div class="icon-circle mx-auto mb-3">
-                        <i class="fas fa-copy fa-2x"></i>
-                    </div>
-                    <small class="text-muted h5">Pdf Download </small>
-                    <h4 class="fw-bold mt-1 h3">{{$pdfDownload}}</h4>
-                </div>
-                </a>
-            </div>
-        </div>
-
     </div>
 
-    <div class="row">
+    <!-- Waitlist Count -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Waitlist</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $waitlistCount }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Priority Access -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Priority Access</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $accessCount }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-user fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF Downloads -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">PDF Downloads</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pdfDownload }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-download fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
@@ -171,9 +163,6 @@ $pdfDownload=App\Models\Crm::where('type',3)->count();
             </div>
         </div>
     </div>
-
-
-
 </div>
 
 

@@ -11,7 +11,7 @@
                     <h5 class="card-title text-white">Category List</h5>
                 </div>
                 <div>
-                    <a href="{{ route('categories.create') }}" class="btn btn-info btn-sm">
+                    <a href="{{ route('categories.create') }}" class="btn btn-sm  btn btn-sm -info btn btn-sm -sm">
                         <o class="fas fa-plus"></o>
                         Add Category
                     </a>
@@ -52,13 +52,13 @@
                                 <td>
                                     <a
                                         href="{{ route('categories.edit', $category) }}"
-                                        class="btn btn-primary"
+                                        class="btn btn-sm  btn btn-sm -primary"
                                     >
                                         <i class="far fa-edit"></i>
                                     </a>
                                     <a
                                     href="{{ route('categories.destroy',$category->id) }}"
-                                    class="btn btn-danger delete_btn"
+                                    class="btn btn-sm  btn btn-sm -danger delete_btn btn-sm "
                                 >
                                     <i class="fas fa-trash"></i>
                                 </a>

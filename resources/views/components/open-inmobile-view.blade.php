@@ -9,7 +9,7 @@
               Please view this content on a mobile device for the best experience.
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success" id="saveBtn">ok</button>
+              <button type="button" class="btn btn-sm  btn btn-sm -success" id="savebtn btn-sm ">ok</button>
             </div>
           </div>
         </div>
@@ -34,7 +34,7 @@
         }
     });
 
-    document.getElementById('saveBtn').addEventListener('click', function() {
+    document.getElementById('savebtn btn-sm ').addEventListener('click', function() {
         // Simulate switching to a mobile view
         alert('Switching to mobile view...');
         const currentUrl = window.location.href;

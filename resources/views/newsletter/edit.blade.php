@@ -50,14 +50,14 @@
                             <h4>Create Campaign</h4>
                         </div>
                         <div class="card-toolbar">
-                            <a class="btn mr-10" href="{{ route('admin.campaigns.index') }}">Cancel</a>
-                            <button class="btn btn-secondary font-weight-bolder d-none" id="backBtn"
+                            <a class="btn btn-sm  mr-10" href="{{ route('admin.campaigns.index') }}">Cancel</a>
+                            <button class="btn btn-sm  btn btn-sm -secondary font-weight-bolder d-none" id="backbtn btn-sm "
                                 @click="prevStep">Back</button>
-                            <button class="btn btn-primary font-weight-bolder" id="nextBtn"
+                            <button class="btn btn-sm  btn btn-sm -primary font-weight-bolder" id="nextbtn btn-sm "
                                 @click="nextStep">Next</button>
-                            <button class="btn btn-success font-weight-bolder d-none" id="saveBtn"
+                            <button class="btn btn-sm  btn btn-sm -success font-weight-bolder d-none" id="savebtn btn-sm "
                                 @click="submitForm(false)">Save</button>
-                            <button class="btn btn-info font-weight-bolder" type="button" v-if="showTestMailButton"
+                            <button class="btn btn-sm  btn btn-sm -info font-weight-bolder" type="button" v-if="showTestMailButton"
                                 @click="openTestEmailModal">Test Mail</button>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                                 <input type="email" class="form-control" v-model="testEmail" required
                                     placeholder="Recipient email">
                             </div>
-                            <button type="submit" class="btn btn-primary" :disabled="loading">
+                            <button type="submit" class="btn btn-sm  btn btn-sm -primary" :disabled="loading">
                                 <span v-if="loading" class="spinner-border spinner-border-sm" role="status"
                                     aria-hidden="true"></span>
                                 Send Test Email
@@ -188,7 +188,7 @@
                     if (this.currentStep === 1) {
                         document.getElementById('step-subject').style.display = 'none';
                         document.getElementById('step-details').style.display = 'block';
-                        document.getElementById('backBtn').classList.remove('d-none');
+                        document.getElementById('backbtn btn-sm ').classList.remove('d-none');
                         this.currentStep++;
                     } else if (this.currentStep === 2) {
                         if (!this.title.trim()) {
@@ -197,8 +197,8 @@
                         }
                         document.getElementById('step-details').style.display = 'none';
                         document.getElementById('step-email-editor').style.display = 'block';
-                        document.getElementById('nextBtn').classList.add('d-none');
-                        document.getElementById('saveBtn').classList.remove('d-none');
+                        document.getElementById('nextbtn btn-sm ').classList.add('d-none');
+                        document.getElementById('savebtn btn-sm ').classList.remove('d-none');
                         this.showTestMailButton = true;
                         this.currentStep++;
                     }
@@ -207,13 +207,13 @@
                     if (this.currentStep === 2) {
                         document.getElementById('step-details').style.display = 'none';
                         document.getElementById('step-subject').style.display = 'block';
-                        document.getElementById('backBtn').classList.add('d-none');
+                        document.getElementById('backbtn btn-sm ').classList.add('d-none');
                         this.currentStep--;
                     } else if (this.currentStep === 3) {
                         document.getElementById('step-email-editor').style.display = 'none';
                         document.getElementById('step-details').style.display = 'block';
-                        document.getElementById('nextBtn').classList.remove('d-none');
-                        document.getElementById('saveBtn').classList.add('d-none');
+                        document.getElementById('nextbtn btn-sm ').classList.remove('d-none');
+                        document.getElementById('savebtn btn-sm ').classList.add('d-none');
                         this.showTestMailButton = false;
                         this.currentStep--;
                     }

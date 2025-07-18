@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="col-md-1">
-                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-sm  btn btn-sm -primary"><i class="fas fa-search"></i></button>
                     </div>
             </div>
         </form>
@@ -33,7 +33,7 @@
                     <h5 class="card-title text-white">Post List</h5>
                 </div>
                 <div>
-                    <a href="{{ route('blogs.create') }}" class="btn btn-info btn-sm">
+                    <a href="{{ route('blogs.create') }}" class="btn btn-sm  btn btn-sm -info btn btn-sm -sm">
                         <o class="fas fa-plus"></o>
                         Add Post
                     </a>
@@ -73,13 +73,13 @@
                                 <td>
                                     <a
                                         href="{{ route('blogs.edit', $post) }}"
-                                        class="btn btn-primary"
+                                        class="btn btn-sm  btn btn-sm -primary"
                                     >
                                         <i class="far fa-edit"></i>
                                     </a>
                                     {{-- <a
                                     href="{{ route('blogs.show', $post) }}"
-                                    class="btn btn-primary"
+                                    class="btn btn-sm  btn btn-sm -primary"
                                     target="_blank"
                                 >
                                     <i class="far fa-eye"></i>
@@ -87,7 +87,7 @@
                                   @can('post:delete')
   <a
                                     href="{{ route('blogs.destroy',$post) }}"
-                                    class="btn btn-danger delete_btn"
+                                    class="btn btn-sm  btn btn-sm -danger delete_btn btn-sm "
                                 >
                                     <i class="fas fa-trash"></i>
                                 </a>

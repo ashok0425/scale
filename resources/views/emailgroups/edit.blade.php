@@ -26,7 +26,7 @@
                         <input type="text" name="name" placeholder="Group Name" required class="form-control" value="{{old('name',$emailgroup->name)}}">
 
                         <div class="mt-2">
-                            <button class="btn btn-info px-4">Save</button>
+                            <button class="btn btn-sm  btn btn-sm -info px-4">Save</button>
                         </div>
                     </form>
                 </div>

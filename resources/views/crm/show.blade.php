@@ -5,7 +5,7 @@
     <div class="card shadow-sm">
         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
             <h6 class="mb-0 text-white">User Details</h6>
-            <a href="{{ route('crm',['type'=>2]) }}" class="btn btn-light btn-sm">Back to List</a>
+            <a href="{{ route('crm',['type'=>2]) }}" class="btn btn-sm  btn btn-sm -light btn btn-sm -sm">Back to List</a>
         </div>
 
         <div class="card-body">

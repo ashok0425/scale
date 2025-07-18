@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="card-toolbar">
-                        <a href="{{ route('admin.campaigns.index') }}" class="btn btn-primary font-weight-bolder mr-3">Cancel</a>
+                        <a href="{{ route('admin.campaigns.index') }}" class="btn btn-sm  btn btn-sm -primary font-weight-bolder mr-3">Cancel</a>
                     </div>
                 </div>
 

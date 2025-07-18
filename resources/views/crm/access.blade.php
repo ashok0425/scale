@@ -9,10 +9,10 @@
                     <input type="search" name="keyword" value="{{request()->query('keyword')}}" class="form-control" placeholder="search...">
                 </div>
                     <div class="col-md-1">
-                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-sm  btn btn-sm -primary"><i class="fas fa-search"></i></button>
                     </div>
                      <div class="col-md-1">
-                        <button class="btn btn-success" name="export" value="1"><i class="fas fa-file-excel"></i></button>
+                        <button class="btn btn-sm  btn btn-sm -success" name="export" value="1"><i class="fas fa-file-excel"></i></button>
                     </div>
             </div>
         </form>
@@ -62,10 +62,10 @@
                         @endif
                         <br>
   <a href="{{ route('crm.delete', ['id' => $user->id]) }}"
-     onclick="return confirm('Are you sure you want to delete this user?');" class="btn btn-sm btn-danger">
+     onclick="return confirm('Are you sure you want to delete this user?');" class="btn btn-sm  btn btn-sm -sm btn btn-sm -danger">
     <i class="fas fa-trash"></i>
   </a>
-  <a href="{{ route('crm.show', ['id' => $user->id]) }}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+  <a href="{{ route('crm.show', ['id' => $user->id]) }}" class="btn btn-sm  btn btn-sm -sm btn btn-sm -info"><i class="fas fa-eye"></i></a>
 </td>
 
 

@@ -11,7 +11,7 @@
                     <h5 class="card-title text-white">Attachment List</h5>
                 </div>
                 <div>
-                    <a href="{{ route('attachments.create') }}" class="btn btn-info btn-sm">
+                    <a href="{{ route('attachments.create') }}" class="btn btn-sm  btn btn-sm -info btn btn-sm -sm">
                         <i class="fas fa-plus"></i>
                         Add Attachment
                     </a>
@@ -39,11 +39,11 @@
                                 </td>
 
                                 <td>
-                                    <a href="{{ route('attachments.edit', $attachment) }}" class="btn btn-primary" title="Edit">
+                                    <a href="{{ route('attachments.edit', $attachment) }}" class="btn btn-sm  btn btn-sm -primary" title="Edit">
                                         <i class="far fa-edit"></i>
                                     </a>
   <button
-                                        class="btn btn-secondary copy-btn"
+                                        class="btn btn-sm  btn btn-sm -secondary copy-btn btn-sm "
                                         data-link="{{ route('link.attachment',['attachment_id'=>$attachment->uuid]) }}"
                                         title="Copy Link"
                                     >
@@ -51,7 +51,7 @@
                                     </button>
                                   @can('do:anything')
 
-                                    <a href="{{ route('attachments.destroy', $attachment->id) }}" class="btn btn-danger delete_btn" title="Delete">
+                                    <a href="{{ route('attachments.destroy', $attachment->id) }}" class="btn btn-sm  btn btn-sm -danger delete_btn btn-sm " title="Delete">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                   @endcan
@@ -69,10 +69,10 @@
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const copyButtons = document.querySelectorAll('.copy-btn');
+        const copyButtons = document.querySelectorAll('.copy-btn btn-sm ');
 
-        copyButtons.forEach(btn => {
-            btn.addEventListener('click', function () {
+        copyButtons.forEach(btn btn-sm  => {
+            btn btn-sm .addEventListener('click', function () {
                 const link = this.getAttribute('data-link');
 
                 navigator.clipboard.writeText(link)

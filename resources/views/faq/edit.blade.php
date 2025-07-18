@@ -29,8 +29,8 @@
                 </div>
 
                 <div class="card-footer text-right">
-                    <a href="{{ route('faqs.index') }}" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-success">Update SEO</button>
+                    <a href="{{ route('faqs.index') }}" class="btn btn-sm  btn btn-sm -secondary">Cancel</a>
+                    <button type="submit" class="btn btn-sm  btn btn-sm -success">Update SEO</button>
                 </div>
             </form>
         </div>

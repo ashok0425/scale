@@ -66,7 +66,7 @@
                 <div class="text-center my-5">
                     <button
                         type="submit"
-                        class="btn custom-fs-25 custom-fw-400 px-5 custom-bg-secondary custom-text-white"
+                        class="btn btn-sm  custom-fs-25 custom-fw-400 px-5 custom-bg-secondary custom-text-white"
                     >
                         Sign up
                     </button>
@@ -76,7 +76,7 @@
             <div class="d-flex mt-5">
                 <a
                     href="{{ url('auth/google') }}"
-                    class="btn custom-fs-16 custom-text-secondary custom-fw-400 px-4 custom-bg-white border-2 custom-bc-secondary"
+                    class="btn btn-sm  custom-fs-16 custom-text-secondary custom-fw-400 px-4 custom-bg-white border-2 custom-bc-secondary"
                     style="width: 100%"
                 >
                     sign up with Google
@@ -84,7 +84,7 @@
                 <span class="mx-2"></span>
                 <a
                     href=""
-                    class="btn custom-fs-16 custom-text-secondary custom-fw-400 px-4 custom-bg-white border-2 custom-bc-secondary"
+                    class="btn btn-sm  custom-fs-16 custom-text-secondary custom-fw-400 px-4 custom-bg-white border-2 custom-bc-secondary"
                     style="width: 100%"
                 >
                     sign up with Google

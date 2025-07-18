@@ -24,7 +24,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{ $newsletter->title }}</td>
                                     <td>
-                                        <a href="{{route('admin.campaigns.edit',['campaign'=>$newsletter,'is_draft'=>1])}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                        <a href="{{route('admin.campaigns.edit',['campaign'=>$newsletter,'is_draft'=>1])}}" class="btn btn-sm  btn btn-sm -primary"><i class="fas fa-edit"></i></a>
                                     </td>
                                     <td></td>
                                 </tr>

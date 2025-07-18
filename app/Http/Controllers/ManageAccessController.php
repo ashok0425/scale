@@ -285,4 +285,9 @@ class ManageAccessController extends Controller
         return view("subscriber.index", compact('users'));
 
     }
+
+    public function crmEdit( $id){
+       $crm=Crm::find($id);
+        return view('crm.edit',compact('crm'));
+    }
 }

@@ -8,7 +8,7 @@
     <h6 class="text-white">Email Group</h6>
 </div>
                                  <div>
-                        <a href="{{ route('admin.emailgroups.create') }}" class="btn btn-info mx-2"><i class="fas fa-plus"></i> Add Group</a>
+                        <a href="{{ route('admin.emailgroups.create') }}" class="btn btn-sm  btn btn-sm -info mx-2"><i class="fas fa-plus"></i> Add Group</a>
                     </div>
                 </div>
 
@@ -36,7 +36,7 @@
                                             @if ($group->id!=1)
 
                                             <a href="{{ route('admin.emailgroups.edit', $group) }}"
-                                            class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3">
+                                            class="btn btn-sm  btn btn-sm -icon btn btn-sm -light btn btn-sm -hover-primary btn btn-sm -sm mx-3">
                                             <span class="svg-icon svg-icon-md svg-icon-primary">
                                                 <!--begin::Svg Icon | path:/metronic/themes/metronic/theme/html/demo2/dist/assets/media/svg/icons/Communication/Write.svg-->
                                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -60,13 +60,13 @@
                                         </a>
                                   <a
                                     href="{{ route('admin.emailgroups.destroy',$group) }}"
-                                    class="btn btn-danger delete_btn"
+                                    class="btn btn-sm  btn btn-sm -danger delete_btn btn-sm "
                                 >
                                     <i class="fas fa-trash"></i>
                                 </a>
                                         @endif
 
-                                        <a href="{{route('admin.emails.index',['group_id'=>$group->id])}}" class="btn btn-info btn-sm">Add Emails</a>
+                                        <a href="{{route('admin.emails.index',['group_id'=>$group->id])}}" class="btn btn-sm  btn btn-sm -info btn btn-sm -sm">Add Emails</a>
                                         </div>
                                     </td>
                                     <td></td>

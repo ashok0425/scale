@@ -54,7 +54,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
                             <input
                                 type="submit"
                                 value="Send OTP"
-                                class="form-control btn btn-success"
+                                class="form-control btn btn-sm  btn btn-sm -success"
                             />
                         </div>
                     </form>

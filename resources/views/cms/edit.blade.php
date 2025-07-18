@@ -198,7 +198,7 @@
                 />
               </div>
 
-                            <input type="submit" value="update" class="btn btn-block btn-info" />
+                            <input type="submit" value="update" class="btn btn-sm  btn btn-sm -block btn btn-sm -info" />
                         </div>
                     </div>
                 </form>

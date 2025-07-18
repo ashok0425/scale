@@ -120,7 +120,7 @@
 
                         </div> --}}
 
-                        <button class="btn btn-primary mt-4">Save</button>
+                        <button class="btn btn-sm  btn btn-sm -primary mt-4">Save</button>
                     </form>
                 </div>
             </div>
