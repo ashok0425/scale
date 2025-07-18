@@ -262,7 +262,7 @@
                 ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['height', ['height']],
-                ['insert', ['link', 'picture', 'video', 'table','linkedImage']],
+                ['insert', ['link', 'video', 'table','linkedImage']],
                 ['misc', ['undo', 'redo']],
                 ['view', ['fullscreen', 'codeview', 'help']]
               ],
@@ -273,21 +273,26 @@
                 'Inter', 'Hubot Sans', 'Bricolage Grotesque', 'Instrument Serif', 'Playfair Display', 'Raleway'
               ],
                buttons: {
-                    linkedImage: function (context) {
-                      var ui = $.summernote.ui;
-                      return ui.button({
-                        contents: '<i class="note-icon-picture"></i> 🔗 Img Link',
-                        tooltip: 'Insert Linked Image',
-                        click: function () {
-                          const imageUrl = prompt("Enter image URL");
-                          const linkUrl = prompt("Enter link URL");
-                          if (imageUrl && linkUrl) {
-                            const html = `<a href="${linkUrl}" target="_blank"><img src="${imageUrl}" alt="" style="max-width: 100%;" /></a>`;
-                            context.invoke('editor.pasteHTML', html);
-                          }
-                        }
-                      }).render();
-                    }
+                     linkedImage: function (context) {
+    var ui = $.summernote.ui;
+    return ui.button({
+      contents: '<i class="note-icon-picture"></i> 🔗 Img Link',
+      tooltip: 'Insert Linked Image with Alt',
+      click: function () {
+        const imageUrl = prompt("Enter image URL");
+        const linkUrl = prompt("Enter link URL");
+        const altText = prompt("Enter alt text for the image");
+
+        if (imageUrl && linkUrl) {
+          const html = `<a href="${linkUrl}" target="_blank">
+                          <img src="${imageUrl}" alt="${altText || ''}" style="max-width: 100%;" />
+                        </a>`;
+          context.invoke('editor.pasteHTML', html);
+        }
+      }
+    }).render();
+  }
+
                 }
             });
                     }
