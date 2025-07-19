@@ -14,7 +14,7 @@
             <guid>{{ route('blog.detail',['slug'=>$post->slug]) }}</guid>
             <pubDate>{{ $post->created_at->toRfc2822String() }}</pubDate>
             <description><![CDATA[{!! Str::limit(strip_tags($post->long_description), 300) !!}]]></description>
-              <media:content url="{{ getImage($post->thumbnail) }}" medium="image" />
+              <media:content url="https://blog.scaledux.com/storage/{{ $post->thumbnail }}" medium="image" />
 
         </item>
     @endforeach
