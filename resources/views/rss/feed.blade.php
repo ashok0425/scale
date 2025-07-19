@@ -9,11 +9,13 @@
 
     @foreach ($posts as $post)
         <item>
-            <title><![CDATA[{{ $post->title }}]]></title>
+            <title><![CDATA[{!! $post->title !!}]]></title>
             <link>{{ route('blog.detail',['slug'=>$post->slug]) }}</link>
             <guid>{{ route('blog.detail',['slug'=>$post->slug]) }}</guid>
             <pubDate>{{ $post->created_at->toRfc2822String() }}</pubDate>
-            <description><![CDATA[{!! Str::limit(strip_tags($post->content), 300) !!}]]></description>
+            <description><![CDATA[{!! Str::limit(strip_tags($post->long_description), 300) !!}]]></description>
+              <media:content url="{{ getImage($post->thumbnail) }}" medium="image" />
+
         </item>
     @endforeach
 </channel>
