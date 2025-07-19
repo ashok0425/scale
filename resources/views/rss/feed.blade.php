@@ -13,7 +13,7 @@
             <link>{{ route('blog.detail',['slug'=>$post->slug]) }}</link>
             <guid>{{ route('blog.detail',['slug'=>$post->slug]) }}</guid>
             <pubDate>{{ $post->created_at->toRfc2822String() }}</pubDate>
-            <description><![CDATA[{!! Str::limit($post->long_description, 600) !!}]]></description>
+            <description><![CDATA[{!! Str::limit(strip_tags($post->long_description), 600) !!}]]></description>
               <media:content url="https://blog.scaledux.com/storage/{{ $post->thumbnail }}" medium="image" />
 
         </item>
